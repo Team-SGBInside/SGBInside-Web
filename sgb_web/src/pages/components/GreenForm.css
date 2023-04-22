@@ -1,11 +1,47 @@
+.greenform {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .greenform_bg {
     position: relative;
     text-align: center;
-  }
- 
+}
+
+.greenform_alert {
+  position: absolute;
+  left: 3%;
+  bottom: 75%;
+  text-align: left;
+  font-size: 15px;
+  z-index: 999;
+}
+
 .greenform_content {
-    position: relative;
-    left: 150px;
-    top: 200px;
+    position: absolute;
+    left: 2%;
+    bottom: 50%;
+    text-align: left;
     font-size: 20px;
-  }
+    z-index: 999;
+}
+
+.green_name_input {
+  width: 380px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #6CBD3F;
+  background-color: #F6FCEF;
+}
+
+.green_date_input {
+  width: 360px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #6CBD3F;
+  background-color: #F6FCEF;
+}
+
