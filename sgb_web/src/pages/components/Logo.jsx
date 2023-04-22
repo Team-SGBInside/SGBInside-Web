@@ -1,9 +1,12 @@
 import React from 'react';
+import sgb_logo from './img/sgb_logo.png';
 
 const Logo = () => {
     return (
         <div>
-            <h1>SGB LOGO</h1>
+            <div>
+                <img src={sgb_logo} alt="logo" width="264.5" height="87"/>
+            </div>
         </div>
     );
 };
