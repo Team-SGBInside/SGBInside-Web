@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import greenform_bg from './img/greenform_bg.png';
 import green_alert from './img/green_alert.png';
+import green_save from './img/green_save.png';
 import './GreenForm.css';
 
 const GreenForm = () => {
@@ -126,6 +127,10 @@ const GreenForm = () => {
                                 value={greenActivity}
                                 onChange={handleGreenActivity}>
                             </textarea>
+                        <br/><br/>
+                        <div className = "green_save">
+                            <img src={green_save} alt="green_save" width="230" height="60"/> 
+                        </div>
                 </div>
             </div> 
         </div>
