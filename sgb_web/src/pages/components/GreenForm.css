@@ -18,6 +18,10 @@
   z-index: 999;
 }
 
+input, textarea, select {
+  padding-left: 1%;
+}
+
 .greenform_content {
     position: absolute;
     left: 2%;
