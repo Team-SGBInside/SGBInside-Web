@@ -12,7 +12,7 @@
 .greenform_alert {
   position: absolute;
   left: 3%;
-  bottom: 75%;
+  bottom: 60%;
   text-align: left;
   font-size: 15px;
   z-index: 999;
@@ -21,7 +21,7 @@
 .greenform_content {
     position: absolute;
     left: 2%;
-    bottom: 50%;
+    top: 7%;
     text-align: left;
     font-size: 20px;
     z-index: 999;
@@ -45,3 +45,20 @@
   background-color: #F6FCEF;
 }
 
+.green_semester_select {
+  width: 200px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #6CBD3F;
+  background-color: #F6FCEF;
+}
+
+.green_activity_text {
+  width: 1200px;
+  height: 150px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #6CBD3F;
+  background-color: #F6FCEF;
+}
