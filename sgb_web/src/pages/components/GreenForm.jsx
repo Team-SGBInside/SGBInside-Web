@@ -6,6 +6,7 @@ import './GreenForm.css';
 
 const GreenForm = () => {
     const [greenName, setGreenName] = useState("");
+    const [greenType, setGreenType] = useState("");
     const [greenStartDate, setGreenStartDate] = useState("");
     const [greenEndDate, setGreenEndDate] = useState("");
     const [greenSemester, setGreenSemester] = useState("");
@@ -14,6 +15,10 @@ const GreenForm = () => {
 
     const handleGreenName = (e) => {
         setGreenName(e.target.value);
+    }
+
+    const handleGreenType = (e) => {
+        setGreenType(e.target.value);
     }
 
     const handleGreenStartDate = (e) => {
@@ -39,10 +44,13 @@ const GreenForm = () => {
     const onClickSubmit = () => {
         console.log('click submit');
         console.log('Activity Name: ', greenName);
+        console.log('Activity Type: ', greenType);
         console.log('Activity Start Date: ', greenStartDate);
         console.log('Activity End Date: ', greenEndDate);
         console.log('Semester: ', greenSemester);
-        console.log('Activity', greenActivity);
+        console.log('Activity: ', greenActivity);
+        console.log('Thought: ', greenThought);
+        window.alert('저장되었습니다!');
     }   
 
 
@@ -66,29 +74,29 @@ const GreenForm = () => {
                             className = "green_radio"
                             name= "green_type"
                             type="radio"
-                            value="self"
-                            onclick='getType(event)'                   
+                            value="자율"
+                            onChange={handleGreenType}                  
                         />자율활동
                         <input
                             className = "green_radio"
                             name= "green_type"
                             type="radio"
-                            value="club"
-                            onclick='getType(event)'                   
+                            value="동아리"
+                            onChange={handleGreenType}                      
                         />동아리활동 
                         <input
                             className = "green_radio"
                             name= "green_type"
                             type="radio"
-                            value="career"
-                            onclick='getType(event)'                   
+                            value="진로"
+                            onChange={handleGreenType}                     
                         />진로활동 
                         <input
                             className = "green_radio"
                             name= "green_type"
                             type="radio"
-                            value="volunteer"
-                            onclick='getType(event)'                   
+                            value="봉사"
+                            onChange={handleGreenType}                      
                         />봉사활동     
                         <br/><br/>   
                     <p className="green_date"><strong>활동 날짜</strong>와 <strong>기간</strong>도 기록하자.</p>
@@ -135,7 +143,7 @@ const GreenForm = () => {
                         <br/><br/>
                 </div>
                 <div className = "green_save">
-                    <img src={green_save} alt="green_save" width="230" height="60"/> 
+                    <img src={green_save} alt="green_save" width="230" height="60" onClick={onClickSubmit}/> 
                 </div>
             </div>     
         </div>
