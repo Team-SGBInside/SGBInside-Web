@@ -10,6 +10,7 @@ const GreenForm = () => {
     const [greenEndDate, setGreenEndDate] = useState("");
     const [greenSemester, setGreenSemester] = useState("");
     const [greenActivity, setGreenActivity] = useState("");
+    const [greenThought, setGreenThought] = useState("");
 
     const handleGreenName = (e) => {
         setGreenName(e.target.value);
@@ -29,6 +30,10 @@ const GreenForm = () => {
 
     const handleGreenActivity = (e) => {
         setGreenActivity(e.target.value);
+    }
+
+    const handleGreenThought = (e) => {
+        setGreenThought(e.target.value);
     }
 
     const onClickSubmit = () => {
@@ -120,20 +125,21 @@ const GreenForm = () => {
                                 onChange={handleGreenActivity}>
                             </textarea>
                             <br/><br/>
-                        <p className="green_activity">위 활동에서 네 <strong>역할</strong>과 <strong>어떤 일을 했는지</strong> 알려줘!</p>
+                        <p className="green_thought"><strong>활동 소감</strong>도 함께 남겨두자! 기억에 더 오래남도록 말이야 :) </p>
                             <textarea
-                                className="green_activity_text"
+                                className="green_thought_text"
                                 placeholder="ex) 반 친구들의 의견을 하나로 모으고, 학급비를 관리하는 데에 어려움이 있었다. 그렇지만, 주기적으로 학급회의를 열어 최대한 많은 친구들의 의견을 참고할 수 있었고 결과적으로 재미있는 행사를 다함께 즐길 수 있어서 좋은 기억으로 남는다.  "
-                                value={greenActivity}
-                                onChange={handleGreenActivity}>
+                                value={greenThought}
+                                onChange={handleGreenThought}>
                             </textarea>
                         <br/><br/>
-                        <div className = "green_save">
-                            <img src={green_save} alt="green_save" width="230" height="60"/> 
-                        </div>
                 </div>
-            </div> 
+                <div className = "green_save">
+                    <img src={green_save} alt="green_save" width="230" height="60"/> 
+                </div>
+            </div>     
         </div>
+        
     );
 };
 

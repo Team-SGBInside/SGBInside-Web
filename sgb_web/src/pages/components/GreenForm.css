@@ -24,7 +24,7 @@ input, textarea, select {
 
 .greenform_content {
     position: absolute;
-    left: 2%;
+    left: 5%;
     top: 7%;
     text-align: left;
     font-size: 20px;
@@ -67,6 +67,18 @@ input, textarea, select {
   background-color: #F6FCEF;
 }
 
+.green_thought_text {
+  width: 1200px;
+  height: 150px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #6CBD3F;
+  background-color: #F6FCEF;
+}
+
 .green_save {
   text-align: center;
+  position: absolute;
+  top: 92%;
+  justify-content: center;
 }
