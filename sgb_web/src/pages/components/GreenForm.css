@@ -24,7 +24,7 @@ input, textarea, select {
 
 .greenform_content {
     position: absolute;
-    left: 5%;
+    left: 2%;
     top: 7%;
     text-align: left;
     font-size: 20px;
@@ -78,8 +78,13 @@ input, textarea, select {
 
 .green_save {
   text-align: center;
-  position: absolute;
-  top: 92%;
-  left : 40%;
-  justify-content: center;
+}
+
+button {
+  border: 0;
+  padding-left: 50%;
+}
+
+.error {
+  color : red
 }
