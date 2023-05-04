@@ -6,6 +6,7 @@ import GreenRecordPage from './pages/GreenRecordPage';
 import RedRecordPage from './pages/RedRecordPage';
 import PinkRecordPage from './pages/PinkRecordPage';
 import BlueRecordPage from './pages/BlueRecordPage';
+import GreenModal from './pages/GreenModal';
 
 export default function App() {
   
@@ -19,6 +20,7 @@ export default function App() {
             <Route path={"/redRecord"} element= {<RedRecordPage/>}></Route>
             <Route path={"/pinkRecord"} element= {<PinkRecordPage/>}></Route>
             <Route path={"/blueRecord"} element= {<BlueRecordPage/>}></Route>
+            <Route path={"/modaltest"} element={<GreenModal/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>

@@ -4,6 +4,7 @@ import green_alert from './img/green_alert.png';
 import green_save from './img/green_save.png';
 import './GreenForm.css';
 import {useForm} from "react-hook-form";
+import GreenModal from "../GreenModal";
 
 function GreenForm() {
         
@@ -17,7 +18,7 @@ function GreenForm() {
         return (
         <div className="greenform">
             <div className="greenform_bg">
-            <img src={greenform_bg} alt="greenform_bg" width="1200" height="1230"/>
+            <img src={greenform_bg} alt="greenform_bg" width="1200" height="1300"/>
                 <div className="greenform_content">
                     <form onSubmit={handleSubmit(onSubmit)}>
                     <img src={green_alert} alt="green_alert" width="604" height="86"/> 
@@ -60,7 +61,7 @@ function GreenForm() {
                             value="봉사"
                             {...register("type", {required: true})}
                         />봉사활동     
-                        <span className="error">{errors.type?.type === "required" && " 활돟유형은 필수로 선택해야합니다."}</span>
+                        <span className="error">{errors.type?.type === "required" && " 활동유형은 필수로 선택해야합니다."}</span>
                         <br/><br/>
                         {/* 활동날짜 */}     
                         <p className="green_date"><strong>활동 날짜</strong>와 <strong>기간</strong>도 기록하자.</p>
@@ -75,8 +76,8 @@ function GreenForm() {
                             name="greenEndDate"
                             {...register("date", {required: true})}   
                         />
-                        <span className="error">{errors.date?.type === "required" && " 활돟유형은 필수로 선택해야합니다."}</span>
-                        <br/><br/>
+                        <br/><span className="error">{errors.date?.type === "required" && " 활동날짜는 필수로 입력해야합니다."}</span>
+                        <br/>
                         {/* 활동학기 */}
                         <select
                             className="green_semester_select"
@@ -111,12 +112,13 @@ function GreenForm() {
                         </textarea>
                         <br/><br/>
                         {/* 저장버튼 */}
-                        <div className = "green_save">
+                        {/* <div className = "green_save">
                             <button type="submit">
                                 <img src={green_save} alt="green_save" width="230" height="60"/>
                             </button>
-                        </div>   
-                    </form>
+                        </div>    */}
+                        <GreenModal/>
+                    </form>        
                 </div>
             </div>  
         </div>
