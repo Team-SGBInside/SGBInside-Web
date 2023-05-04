@@ -3,19 +3,24 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import NamePage from './pages/NamePage';
 import GreenRecordPage from './pages/GreenRecordPage';
+import RedRecordPage from './pages/RedRecordPage';
+import PinkRecordPage from './pages/PinkRecordPage';
+import BlueRecordPage from './pages/BlueRecordPage';
 
 export default function App() {
   
   return (
     <div className="App">
-     
-    <BrowserRouter>
-      <Routes>
-          <Route exact path={"/home"} element={<Home/>}></Route>
-          <Route path={"/name"} element={<NamePage/>}></Route>
-          <Route path={"/greenrecord"} element= {<GreenRecordPage/>}></Route>
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+            <Route exact path={"/home"} element={<Home/>}></Route>
+            <Route path={"/name"} element={<NamePage/>}></Route>
+            <Route path={"/greenRecord"} element= {<GreenRecordPage/>}></Route>
+            <Route path={"/redRecord"} element= {<RedRecordPage/>}></Route>
+            <Route path={"/pinkRecord"} element= {<PinkRecordPage/>}></Route>
+            <Route path={"/blueRecord"} element= {<BlueRecordPage/>}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
