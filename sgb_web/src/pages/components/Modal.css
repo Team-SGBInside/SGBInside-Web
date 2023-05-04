@@ -8,6 +8,7 @@
     z-index: 99;
     background-color: rgba(0, 0, 0, 0.6);
   }
+  
   .modal button {
     outline: none;
     cursor: pointer;
@@ -24,15 +25,14 @@
     animation: modal-show 0.3s;
     overflow: hidden;
   }
+
   .modal > section > header {
     position: relative;
-    padding: 16px 64px 16px 16px;
     background-color: #f1f1f1;
     font-weight: 700;
   }
   .modal > section > header button {
     position: absolute;
-    top: 15px;
     right: 15px;
     width: 30px;
     font-size: 21px;

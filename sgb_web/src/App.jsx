@@ -14,7 +14,8 @@ export default function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-            <Route exact path={"/home"} element={<Home/>}></Route>
+            {/* </Routes><Route path={"/"} element={</>}></Route> */}
+            <Route path={"/home"} element={<Home/>}></Route>
             <Route path={"/name"} element={<NamePage/>}></Route>
             <Route path={"/greenRecord"} element= {<GreenRecordPage/>}></Route>
             <Route path={"/redRecord"} element= {<RedRecordPage/>}></Route>

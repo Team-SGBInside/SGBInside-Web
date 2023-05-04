@@ -4,6 +4,7 @@
   font-family: 'Noto Sans KR', 'sans serif';
   font-weight: bold;
   font-size: 22px;
+  min-width: fit-content;
 }
 
 .menu {
