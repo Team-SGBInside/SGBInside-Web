@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+
+* {
+  font-family: 'Noto Sans KR', 'sans serif';
+}
+
 .greenform {
   display: flex;
   justify-content: center;
@@ -24,7 +30,7 @@ input, textarea, select {
 
 .greenform_content {
     position: absolute;
-    left: 2%;
+    left: 5%;
     top: 7%;
     text-align: left;
     font-size: 20px;
@@ -59,7 +65,7 @@ input, textarea, select {
 }
 
 .green_activity_text {
-  width: 1200px;
+  width: 1000px;
   height: 150px;
   font-size: 20px;
   border-radius: 5px;
@@ -68,7 +74,7 @@ input, textarea, select {
 }
 
 .green_thought_text {
-  width: 1200px;
+  width: 1000px;
   height: 150px;
   font-size: 20px;
   border-radius: 5px;
@@ -78,12 +84,15 @@ input, textarea, select {
 
 .green_save {
   text-align: center;
+  color: #D6EBCA;
+  padding-left: auto;
+  padding-right: auto;
 }
 
 button {
   border: 0;
-  padding-left: 50%;
 }
+
 
 .error {
   color : red

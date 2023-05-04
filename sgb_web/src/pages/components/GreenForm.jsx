@@ -7,56 +7,6 @@ import {useForm} from "react-hook-form";
 
 function GreenForm() {
         
-        // const [greenName, setGreenName] = useState("");
-        // const [greenType, setGreenType] = useState("");
-        // const [greenStartDate, setGreenStartDate] = useState("");
-        // const [greenEndDate, setGreenEndDate] = useState("");
-        // const [greenSemester, setGreenSemester] = useState("");
-        // const [greenActivity, setGreenActivity] = useState("");
-        // const [greenThought, setGreenThought] = useState("");
-        
-        // const {register,
-        //     form}
-
-        // const handleGreenName = (e) => {
-        // setGreenName(e.target.value);
-        // }
-
-        // const handleGreenType = (e) => {
-        // setGreenType(e.target.value);
-        // }
-
-        // const handleGreenStartDate = (e) => {
-        // setGreenStartDate(e.target.value);
-        // }
-
-        // const handleGreenEndDate = (e) => {
-        // setGreenEndDate(e.target.value);
-        // }
-    
-        // const handleGreenSemester = (e) => {
-        // setGreenSemester(e.target.value);
-        // }
-
-        // const handleGreenActivity = (e) => {
-        // setGreenActivity(e.target.value);
-        // }
-
-        // const handleGreenThought = (e) => {
-        // setGreenThought(e.target.value);
-        // }
-
-        // const saveBtnClick = (e) => {
-        // console.log('click submit');
-        // console.log('Activity Name: ', greenName);
-        // console.log('Activity Type: ', greenType);
-        // console.log('Activity Start Date: ', greenStartDate);
-        // console.log('Activity End Date: ', greenEndDate);
-        // console.log('Semester: ', greenSemester);
-        // console.log('Activity: ', greenActivity);
-        // console.log('Thought: ', greenThought);
-        // }
-
         //리액트 훅 폼 사용해보기
         const {register,
             formState: {errors},
@@ -67,7 +17,7 @@ function GreenForm() {
         return (
         <div className="greenform">
             <div className="greenform_bg">
-            <img src={greenform_bg} alt="greenform_bg" width="1500" height="1200"/>
+            <img src={greenform_bg} alt="greenform_bg" width="1200" height="1230"/>
                 <div className="greenform_content">
                     <form onSubmit={handleSubmit(onSubmit)}>
                     <img src={green_alert} alt="green_alert" width="604" height="86"/> 
@@ -161,9 +111,11 @@ function GreenForm() {
                         </textarea>
                         <br/><br/>
                         {/* 저장버튼 */}
-                        <button className = "green_save" type="submit">
-                            <img src={green_save} type="submit" alt="green_save" width="230" height="60"/>
-                        </button>   
+                        <div className = "green_save">
+                            <button type="submit">
+                                <img src={green_save} alt="green_save" width="230" height="60"/>
+                            </button>
+                        </div>   
                     </form>
                 </div>
             </div>  

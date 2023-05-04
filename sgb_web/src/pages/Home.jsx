@@ -1,18 +1,18 @@
 import React from 'react';
 import Logo from './components/Logo';
 import Menubar from './components/Menubar';
-import GreenForm from './components/GreenForm';
+import './Home.css';
 
-const GreenRecordPage = () => {
+const Home = () => {
     return (
         <>
-            <div class ="header">
+            <div class = "header">
                 <Logo/>
-                <Menubar/>
+                <Menubar/>   
             </div>
-            <GreenForm/>
+            <h1>HOME</h1>
         </>
     );
 };
 
-export default GreenRecordPage;
+export default Home;
