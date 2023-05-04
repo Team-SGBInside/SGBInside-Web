@@ -9,7 +9,6 @@ import BlueRecordPage from './pages/BlueRecordPage';
 import GreenModal from './pages/GreenModal';
 
 export default function App() {
-  
   return (
     <div className="App">
       <BrowserRouter>

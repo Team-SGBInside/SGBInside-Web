@@ -18,16 +18,18 @@ const GreenModal = (props) => {
             </button>
           </header>
           <main>{props.children}</main>
-          <footer>
-              <Link to = "/mypage">
-                <button className="mypage">
-                  마이페이지 이동
-                </button>&nbsp;
-              </Link>
-              <button className="close" onClick={close}>
-                뒤로가기
-              </button>
-          </footer>
+            <footer>
+              <div class="button-wrap">
+                  <Link to = "/mypage">
+                    <button className="mypage">
+                      마이페이지 이동
+                    </button>&nbsp;
+                  </Link>
+                  <button className="close" onClick={close}>
+                    뒤로가기
+                  </button>
+              </div>    
+            </footer>
         </section>
       ) : null}
     </div>
