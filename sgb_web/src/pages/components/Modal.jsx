@@ -1,5 +1,6 @@
 import React from 'react';
 import './Modal.css';
+import { Link } from 'react-router-dom';
 
 const GreenModal = (props) => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
@@ -18,9 +19,14 @@ const GreenModal = (props) => {
           </header>
           <main>{props.children}</main>
           <footer>
-            <button className="close" onClick={close}>
-              close
-            </button>
+              <Link to = "/mypage">
+                <button className="mypage">
+                  마이페이지 이동
+                </button>&nbsp;
+              </Link>
+              <button className="close" onClick={close}>
+                뒤로가기
+              </button>
           </footer>
         </section>
       ) : null}

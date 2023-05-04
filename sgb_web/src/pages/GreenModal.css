@@ -1,11 +1,4 @@
 
-.button-style {
-    background-color: #A0DE7B;
-    font-weight: bold;
-    font-size: 20px;
-    text-align: center;
-}
-
 .button-position {
     text-align: center;
 }
@@ -22,5 +15,12 @@
 .modal-light {
     text-align: center;
     font-size: 18px;
+    font-weight: lighter;
+}
+
+.modal-red {
+    text-align: center;
+    font-size: 15px;
+    color: red;
     font-weight: lighter;
 }
