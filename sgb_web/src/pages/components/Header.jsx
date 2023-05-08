@@ -1,17 +1,16 @@
 import React from 'react';
 import Logo from './Logo';
 import Menubar from './Menubar';
+import './Header.css';
 
 const Header = () => {
     return (
-        <>
-        <div>
-            <Logo/>
-        </div>
-        <div>   
-            <Menubar/>
+        <div className = "header">
+            <div className='Logo'>
+                <Logo/>
+            </div>       
+                <Menubar/>
         </div> 
-        </>
     );
 };
 
