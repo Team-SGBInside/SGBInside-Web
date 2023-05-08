@@ -121,7 +121,7 @@ function GreenForm() {
                         </div>    */}
                         <GreenModal/>
                         <div className = "tip_button">
-                            <Link to = "/green_tip">
+                            <Link to = "/greenTip">
                                 <button><img src={tip_button} alt="tip_button" width="230" height="60"/></button>
                             </Link>
                         </div> 

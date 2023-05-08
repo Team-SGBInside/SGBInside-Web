@@ -8,10 +8,10 @@
 }
 
 .menu {
+    padding-right: 490px;
     padding-top: 30px;
-    padding-left: 500px;
-    margin: 0 auto;
     cursor: pointer;
+    display: inline-block;
 }
 
 .green {

@@ -1,22 +1,15 @@
 .hello {
     display: flex;
-    justify-content: center;
-    width: 100%;
-    padding-left: 580px;
-}
-
-.hello-text {
+    font-size: 20px;
     text-align: right;
-    padding-right: 105px;
-    margin: 0 auto;
+    padding-left: 70%;
 }
 
-
-img{
-    padding-top: 10px;
+.mypage_btn{
     margin: 0 auto;
 }
 
 .light-text {
     font-weight: lighter;
+    font-size: 20px;
 }

@@ -7,6 +7,7 @@ import RedRecordPage from './pages/RedRecordPage';
 import PinkRecordPage from './pages/PinkRecordPage';
 import BlueRecordPage from './pages/BlueRecordPage';
 import GreenModal from './pages/GreenModal';
+import GreenTip from './pages/GreenTip';
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
             <Route path={"/home"} element={<Home/>}></Route>
             <Route path={"/name"} element={<NamePage/>}></Route>
             <Route path={"/greenRecord"} element= {<GreenRecordPage/>}></Route>
+            <Route path={"/greenTip"} element= {<GreenTip/>}></Route>
             <Route path={"/redRecord"} element= {<RedRecordPage/>}></Route>
             <Route path={"/pinkRecord"} element= {<PinkRecordPage/>}></Route>
             <Route path={"/blueRecord"} element= {<BlueRecordPage/>}></Route>
