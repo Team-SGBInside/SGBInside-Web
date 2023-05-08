@@ -26,9 +26,9 @@ function GreenModal(props) {
       <Modal open={modalOpen} close={closeModal}>
         <div class="modal-img"><img src={changdong} alt="changdong" width="80" height="80"/></div>
         <main>{props.children} </main>
-        <p class="modal-bold">저장 완료!</p>
-        <p class="modal-light">저장한 내용은 마이페이지에서 확인 할 수 있어!<br/>앞으로도 이렇게 제때제때 기록하는 습관을 들여보자 :) </p> 
-        <p class="modal-red">*입력되지 않은 필수 폼이 있을 시, 내용이 저장되지 않습니다.</p>
+        <div class="modal-bold">저장 완료!</div><br/>
+        <div class="modal-light">저장한 내용은 마이페이지에서 확인 할 수 있어!<br/>앞으로도 이렇게 제때제때 기록하는 습관을 들여보자 :) </div> 
+        <div class="modal-red">*입력되지 않은 필수 폼이 있을 시, 내용이 저장되지 않습니다.</div>
       </Modal>
     </React.Fragment>
   );

@@ -20,13 +20,13 @@ function GreenForm() {
         return (
         <div className="greenform">
             <div className="greenform_bg">
-            <img src={greenform_bg} alt="greenform_bg" width="1200" height="1380"/>
+            <img src={greenform_bg} alt="greenform_bg" width="1200" height="1310"/>
                 <div className="greenform_content">
                     <form onSubmit={handleSubmit(onSubmit)}>
                     <img src={green_alert} alt="green_alert" width="604" height="86"/> 
                     <br/><br/>
                         {/* 활동이름 */}
-                        <p className="green_name"><strong>활동 이름</strong>을 적고, 창의적체험활동 유형을 선택해줘!</p>
+                        <label className="green-label">활동 이름을 적고, 창의적체험활동 유형을 선택해줘!</label><br/>
                         <input
                             className = "green_name_input"
                             type="text"
@@ -66,7 +66,7 @@ function GreenForm() {
                         <span className="error">{errors.type?.type === "required" && " 활동유형은 필수로 선택해야합니다."}</span>
                         <br/><br/>
                         {/* 활동날짜 */}     
-                        <p className="green_date"><strong>활동 날짜</strong>와 <strong>기간</strong>도 기록하자.</p>
+                        <label className="green-label">활동 날짜와 기간도 기록하자.</label><br/>
                         <input
                             className = "green_date_input"
                             type="date"
@@ -96,7 +96,7 @@ function GreenForm() {
                         <span className="error">{errors.semester?.type === "required" && "활동학기는 필수로 선택해야합니다."}</span>
                         <br/><br/>
                         {/* 활동내용 */}
-                        <p className="green_activity">위 활동에서 네 <strong>역할</strong>과 <strong>어떤 일을 했는지</strong> 알려줘!</p>
+                        <label className="green-label">위 활동에서 네 역할과 어떤 일을 했는지 알려줘!</label>
                         <textarea
                             className="green_activity_text"
                             placeholder="ex) 창체부장으로서 학급 이벤트를 기획, 체육대회 반티 주문 등  반 분위기를 주도하는 역할을 함."
@@ -104,26 +104,23 @@ function GreenForm() {
                             >
                         </textarea>
                         <br/>
-                        <span className="error">{errors.activity?.type === "required" && "활동내용은 필수로 입력해야합니다."}</span>
+                        <span className="error">{errors.activity?.type === "required" && "활동내용은 필수로 입력해야합니다."}</span><br/>
+                        <br/>
                         {/* 활동소감 (선택) */}
-                        <p className="green_thought"><strong>활동 소감</strong>도 함께 남겨두자! 기억에 더 오래남도록 말이야 :) (선택) </p>
+                        <label className="green-label">활동 소감도 함께 남겨두자! 기억에 더 오래남도록 말이야 :) (선택) </label>
                         <textarea
                             className="green_thought_text"
                             placeholder="ex) 반 친구들의 의견을 하나로 모으고, 학급비를 관리하는 데에 어려움이 있었다. 그렇지만, 주기적으로 학급회의를 열어 최대한 많은 친구들의 의견을 참고할 수 있었고 결과적으로 재미있는 행사를 다함께 즐길 수 있어서 좋은 기억으로 남는다.  "
-                           >
+                        >
                         </textarea>
                         <br/><br/>
-                        {/* 저장버튼 */}
-                        {/* <div className = "green_save">
-                            <button type="submit">
-                                <img src={green_save} alt="green_save" width="230" height="60"/>
-                            </button>
-                        </div>    */}
-                        <GreenModal/>
-                        <div className = "tip_button">
-                            <Link to = "/greenTip">
-                                <button><img src={tip_button} alt="tip_button" width="230" height="60"/></button>
-                            </Link>
+                        <div className = "green_button">
+                            <GreenModal/>
+                            <div className = "tip_button">
+                                <Link to = "/greenTip">
+                                    <button><img src={tip_button} alt="tip_button" width="230" height="60"/></button>
+                                </Link>
+                            </div>
                         </div> 
                     </form>        
                 </div>
