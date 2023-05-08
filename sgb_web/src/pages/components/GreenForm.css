@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+
+* {
+  font-family: 'Noto Sans KR', 'sans serif';
+}
+
+.greenform {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-width: fit-content;
+}
+
+.greenform_bg {
+    position: relative;
+    text-align: center;
+}
+
+.greenform_alert {
+  position: absolute;
+  left: 3%;
+  bottom: 60%;
+  text-align: left;
+  font-size: 15px;
+  z-index: 999;
+}
+
+input, textarea, select {
+  padding-left: 1%;
+}
+
+.greenform_content {
+    position: absolute;
+    left: 5%;
+    top: 7%;
+    text-align: left;
+    font-size: 20px;
+    z-index: 999;
+}
+
+.green_name_input {
+  width: 380px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #6CBD3F;
+  background-color: #F6FCEF;
+}
+
+.green_date_input {
+  width: 360px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #6CBD3F;
+  background-color: #F6FCEF;
+}
+
+.green_semester_select {
+  width: 200px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #6CBD3F;
+  background-color: #F6FCEF;
+}
+
+.green_activity_text {
+  width: 1000px;
+  height: 150px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #6CBD3F;
+  background-color: #F6FCEF;
+}
+
+.green_thought_text {
+  width: 1000px;
+  height: 150px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #6CBD3F;
+  background-color: #F6FCEF;
+}
+
+.green_save {
+  text-align: center;
+  color: #D6EBCA;
+  padding-left: auto;
+  padding-right: auto;
+}
+
+button {
+  border: 0;
+}
+
+
+.error {
+  color : red;
+  font-weight: lighter;
+  font-size: 17px;
+}
+
+.tip_button {
+  text-align: center;
+}
+
+button {
+  background-color: #EAF7DA;
+}
