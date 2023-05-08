@@ -1,0 +1,26 @@
+
+.button-position {
+    text-align: center;
+}
+
+.modal-img {
+    text-align: center;
+}
+
+.modal-bold {
+    text-align: center;
+    font-size: 23px;
+}
+
+.modal-light {
+    text-align: center;
+    font-size: 18px;
+    font-weight: lighter;
+}
+
+.modal-red {
+    text-align: center;
+    font-size: 15px;
+    color: red;
+    font-weight: lighter;
+}
