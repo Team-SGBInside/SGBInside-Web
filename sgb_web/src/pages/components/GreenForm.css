@@ -100,3 +100,11 @@ button {
   font-weight: lighter;
   font-size: 17px;
 }
+
+.tip_button {
+  text-align: center;
+}
+
+button {
+  background-color: #EAF7DA;
+}

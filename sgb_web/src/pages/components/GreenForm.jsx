@@ -2,9 +2,11 @@ import React, {useState} from "react";
 import greenform_bg from './img/greenform_bg.png';
 import green_alert from './img/green_alert.png';
 import green_save from './img/green_save.png';
+import tip_button from './img/tip_button.png';
 import './GreenForm.css';
 import {useForm} from "react-hook-form";
 import GreenModal from "../GreenModal";
+import { Link } from 'react-router-dom';
 
 function GreenForm() {
         
@@ -18,7 +20,7 @@ function GreenForm() {
         return (
         <div className="greenform">
             <div className="greenform_bg">
-            <img src={greenform_bg} alt="greenform_bg" width="1200" height="1300"/>
+            <img src={greenform_bg} alt="greenform_bg" width="1200" height="1380"/>
                 <div className="greenform_content">
                     <form onSubmit={handleSubmit(onSubmit)}>
                     <img src={green_alert} alt="green_alert" width="604" height="86"/> 
@@ -118,6 +120,11 @@ function GreenForm() {
                             </button>
                         </div>    */}
                         <GreenModal/>
+                        <div className = "tip_button">
+                            <Link to = "/green_tip">
+                                <button><img src={tip_button} alt="tip_button" width="230" height="60"/></button>
+                            </Link>
+                        </div> 
                     </form>        
                 </div>
             </div>  

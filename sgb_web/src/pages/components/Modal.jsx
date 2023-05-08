@@ -23,8 +23,9 @@ const GreenModal = (props) => {
                   <Link to = "/mypage">
                     <button className="mypage">
                       마이페이지 이동
-                    </button>&nbsp;
+                    </button> 
                   </Link>
+                  &nbsp;
                   <button className="close" onClick={close}>
                     뒤로가기
                   </button>

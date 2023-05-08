@@ -1,0 +1,22 @@
+.hello {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-left: 580px;
+}
+
+.hello-text {
+    text-align: right;
+    padding-right: 105px;
+    margin: 0 auto;
+}
+
+
+img{
+    padding-top: 10px;
+    margin: 0 auto;
+}
+
+.light-text {
+    font-weight: lighter;
+}
