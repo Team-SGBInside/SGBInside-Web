@@ -1,7 +1,7 @@
 import React from 'react';
 import Logo from './components/Logo';
 import Menubar from './components/Menubar';
-
+import RedForm from './components/RedForm';
 const RedRecordPage = () => {
     return (
         <>
@@ -9,7 +9,9 @@ const RedRecordPage = () => {
                 <Logo/>
                 <Menubar/>
             </div>
-            <h1>RedRecordPage</h1>
+            <div>
+                <RedForm/>
+            </div>
         </>
     );
 };
