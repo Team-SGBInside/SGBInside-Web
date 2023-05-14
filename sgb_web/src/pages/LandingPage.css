@@ -1,0 +1,23 @@
+.landing-light {
+    font-weight: lighter;
+    font-size: 50px;
+    text-align: right;
+}
+
+.landing-bold {
+    font-size: 100px;
+    text-align: right;
+    text-shadow:  2px 2px 2px gray;
+}
+
+.landing-content {
+    padding-right: 40px;
+    padding-top: 200px;
+    text-align: right;
+    cursor: pointer;
+
+}
+
+.landing-body {
+    background-image : linear-gradient(to bottom right, #A0D97E, #E1A08D, #F47DB6, #B1C2CA) ;
+}
