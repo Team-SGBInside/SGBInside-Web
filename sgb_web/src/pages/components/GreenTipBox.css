@@ -1,0 +1,20 @@
+.greentipbox_bg {
+    position: relative;
+    justify-content: center;
+    width: 100%;
+    min-width: fit-content;
+    text-align: center;
+}
+
+.greentip_bold {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.greentip_btn {
+    position: absolute;
+    left: 41%;
+    top: 98%;
+    text-align: center;
+    z-index: 999;
+}
