@@ -10,13 +10,14 @@ import GreenModal from './pages/GreenModal';
 import GreenTip from './pages/GreenTip';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import LandingPage from './pages/LandingPage';
 
 export default function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-            {/* </Routes><Route path={"/"} element={</>}></Route> */}
+            <Route path={"/"} element={<LandingPage/>}></Route>
             <Route path={"/home"} element={<Home/>}></Route>
             <Route path={"/login"} element={<Login/>}></Route>
             <Route path={"/signup"} element={<Signup/>}></Route>
