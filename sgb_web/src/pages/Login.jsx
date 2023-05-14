@@ -95,7 +95,7 @@ const Login = () => {
                             <img src= {login_submit} alt="submit" width="200" height="50"/>
                         </button>
                         </div>
-                        <div classNmae = "login-q">
+                        <div className = "login-q">
                             <Link to ='/signup'><p>아직 회원이 아니신가요?</p></Link>
                         </div>
                 </form>
