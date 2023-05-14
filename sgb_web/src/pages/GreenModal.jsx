@@ -19,7 +19,7 @@ function GreenModal(props) {
   return (
     <React.Fragment>
       <div class="button-position">
-        <button type="submit" class="button-style" onClick={openModal}>
+        <button style={{backgroundColor: '#EAF7DA'}} type="submit" class="button-style" onClick={openModal}>
         <img src={green_save} alt="green_save" width="230" height="60"/>
         </button>
       </div>

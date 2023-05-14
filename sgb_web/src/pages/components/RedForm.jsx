@@ -108,7 +108,7 @@ function RedForm() {
                             <GreenModal/>
                             <div className = "tip_button">
                                 <Link to = "/redTip">
-                                    <button><img src={tip_button} alt="tip_button" width="230" height="60"/></button>
+                                    <button style={{backgroundColor: '#FCE7DE'}}><img src={tip_button} alt="tip_button" width="230" height="60"/></button>
                                 </Link>
                             </div>
                         </div> 
