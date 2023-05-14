@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+
+* {
+  font-family: 'Noto Sans KR', 'sans serif';
+}
+
+.redform {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-width: fit-content;
+}
+
+.redform_bg {
+    position: relative;
+    text-align: center;
+}
+
+.redform_alert {
+  position: absolute;
+  left: 3%;
+  bottom: 60%;
+  text-align: left;
+  font-size: 15px;
+  z-index: 999;
+}
+
+input, textarea, select {
+  padding-left: 1%;
+  margin-top: 1%;
+}
+
+.redform_content {
+    position: absolute;
+    left: 5%;
+    top: 7%;
+    text-align: left;
+    font-size: 20px;
+    z-index: 999;
+}
+
+.red_name_input {
+  width: 380px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #F29191;
+  background-color: #FEF5F1;
+}
+
+.red_lesson_input {
+    width: 1000px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 5px;
+    border-color: #F29191;
+    background-color: #FEF5F1;
+}
+
+.red_activity_input {
+    width: 380px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 5px;
+    border-color: #F29191;
+    background-color: #FEF5F1;
+}
+
+.red_date_input {
+  width: 360px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #F29191;
+  background-color: #FEF5F1;
+}
+
+.red_semester_select {
+  width: 200px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #F29191;
+  background-color: #FEF5F1;
+}
+
+.red_activity_text {
+  width: 1000px;
+  height: 150px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #F29191;
+  background-color: #FEF5F1;
+}
+
+.red_thought_text {
+  width: 1000px;
+  height: 150px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #F29191;
+  background-color: #FEF5F1;
+}
+
+.green_save {
+  text-align: center;
+  color: #D6EBCA;
+  padding-left: auto;
+  padding-right: auto;
+}
+
+button {
+  border: 0;
+}
+
+.error {
+  color : red;
+  font-weight: lighter;
+  font-size: 17px;
+}
+
+.tip_button {
+  text-align: center;
+}
+
+.red_button {
+  padding-left: 5px;
+  padding-right: 105px;
+  text-align: center;
+  background-color: #FCE7DE;
+}
