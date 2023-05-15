@@ -1,4 +1,4 @@
-.greentipbox_bg {
+.redtipbox_bg {
     position: relative;
     justify-content: center;
     width: 100%;
@@ -6,15 +6,14 @@
     text-align: center;
 }
 
-.greentip_bold {
+.redtip_bold {
     font-weight: bold;
     font-size: 20px;
 }
 
-.greentip_btn {
+.redtip_btn {
     position: static;
     left: 720px;
-    bottom: 30px;
     text-align: center;
     z-index: 999;
 }

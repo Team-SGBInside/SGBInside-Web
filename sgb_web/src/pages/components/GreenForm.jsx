@@ -16,7 +16,7 @@ function GreenForm() {
             handleSubmit
             } = useForm();
         const onSubmit = (data) => console.log(data);
-        
+
         return (
         <div className="greenform">
             <div className="greenform_bg">
@@ -118,7 +118,7 @@ function GreenForm() {
                             <GreenModal/>
                             <div className = "tip_button">
                                 <Link to = "/greenTip">
-                                    <button><img src={tip_button} alt="tip_button" width="230" height="60"/></button>
+                                    <button style={{backgroundColor: '#EAF7DA'}}><img src={tip_button} alt="tip_button" width="230" height="60"/></button>
                                 </Link>
                             </div>
                         </div> 
