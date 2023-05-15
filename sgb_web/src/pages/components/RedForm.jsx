@@ -1,12 +1,14 @@
 import React, {useState} from "react";
 import redform_bg from './img/redform_bg.png';
 import red_alert from './img/red_alert.png';
-import green_save from './img/green_save.png';
 import tip_button from './img/tip_button.png';
 import './RedForm.css';
 import {useForm} from "react-hook-form";
-import GreenModal from "../GreenModal";
+import RedModal from "./RedModal";
 import { Link } from 'react-router-dom';
+import teukteuk from './img/teukteuk.png'
+import red_save from './img/red_save.png'
+import Modal from './Modal';
 
 function RedForm() {
         
@@ -105,10 +107,10 @@ function RedForm() {
                         </textarea>
                         <br/><br/>
                         <div className = "red_button">
-                            <GreenModal/>
+                            <RedModal/>
                             <div className = "tip_button">
                                 <Link to = "/redTip">
-                                    <button><img src={tip_button} alt="tip_button" width="230" height="60"/></button>
+                                    <button style={{backgroundColor: '#FCE7DE'}}><img src={tip_button} alt="tip_button" width="230" height="60"/></button>
                                 </Link>
                             </div>
                         </div> 

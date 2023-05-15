@@ -8,6 +8,7 @@ import PinkRecordPage from './pages/PinkRecordPage';
 import BlueRecordPage from './pages/BlueRecordPage';
 import GreenModal from './pages/GreenModal';
 import GreenTip from './pages/GreenTip';
+import RedTip from './pages/RedTip';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import LandingPage from './pages/LandingPage';
@@ -24,6 +25,7 @@ export default function App() {
             <Route path={"/name"} element={<NamePage/>}></Route>
             <Route path={"/greenRecord"} element= {<GreenRecordPage/>}></Route>
             <Route path={"/greenTip"} element= {<GreenTip/>}></Route>
+            <Route path={"/redTip"} element= {<RedTip/>}></Route>
             <Route path={"/redRecord"} element= {<RedRecordPage/>}></Route>
             <Route path={"/pinkRecord"} element= {<PinkRecordPage/>}></Route>
             <Route path={"/blueRecord"} element= {<BlueRecordPage/>}></Route>

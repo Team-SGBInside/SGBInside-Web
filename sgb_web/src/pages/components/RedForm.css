@@ -102,7 +102,7 @@ input, textarea, select {
   background-color: #FEF5F1;
 }
 
-.green_save {
+.red_save {
   text-align: center;
   color: #D6EBCA;
   padding-left: auto;
@@ -127,5 +127,4 @@ button {
   padding-left: 5px;
   padding-right: 105px;
   text-align: center;
-  background-color: #FCE7DE;
 }

@@ -1,9 +1,9 @@
 import React from 'react';
 import Header from './components/Header';
 import Hello from './components/Hello';
-import GreenTipBox from './components/GreenTipBox';
+import RedTipBox from './components/RedTipBox';
 
-const GreenTip = () => {
+const RedTip = () => {
     return (
         <>
         <div>
@@ -14,10 +14,10 @@ const GreenTip = () => {
         </div>
         <br/>
         <div>
-            <GreenTipBox/>
+            <RedTipBox/>
         </div>
         </>
     );
 };
 
-export default GreenTip;
+export default RedTip;
