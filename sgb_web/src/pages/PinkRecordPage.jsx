@@ -1,15 +1,17 @@
 import React from 'react';
-import Logo from './components/Logo';
-import Menubar from './components/Menubar';
+import PinkForm from './components/PinkForm';
+import Hello from './components/Hello';
+import Header from './components/Header';
 
 const PinkRecordPage = () => {
     return (
         <>
             <div class ="header">
-                <Logo/>
-                <Menubar/>
+            <Header/>
             </div>
-            <h1>PinkRecordPage</h1>
+            <Hello/>
+            <br/>
+            <PinkForm/>
         </>
     );
 };

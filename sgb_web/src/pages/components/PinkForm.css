@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+
+* {
+  font-family: 'Noto Sans KR', 'sans serif';
+}
+
+.pinkform {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-width: fit-content;
+}
+
+.pinkform_bg {
+    position: relative;
+    text-align: center;
+}
+
+.pinkform_alert {
+  position: absolute;
+  left: 3%;
+  bottom: 60%;
+  text-align: left;
+  font-size: 15px;
+  z-index: 999;
+}
+
+input, textarea, select {
+  padding-left: 1%;
+  margin-top: 1%;
+}
+
+.pinkform_content {
+    position: absolute;
+    left: 5%;
+    top: 7%;
+    text-align: left;
+    font-size: 20px;
+    z-index: 999;
+}
+
+.pink_name_input {
+  width: 380px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #6CBD3F;
+  background-color: #F6FCEF;
+}
+
+.pink_date_input {
+  width: 360px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #6CBD3F;
+  background-color: #F6FCEF;
+}
+
+.pink_semester_select {
+  width: 200px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #6CBD3F;
+  background-color: #F6FCEF;
+}
+
+.pink_activity_text {
+  width: 1000px;
+  height: 150px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #6CBD3F;
+  background-color: #F6FCEF;
+}
+
+.pink_thought_text {
+  width: 1000px;
+  height: 150px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #6CBD3F;
+  background-color: #F6FCEF;
+}
+
+.pink_save {
+  text-align: center;
+  color: #D6EBCA;
+  padding-left: auto;
+  padding-right: auto;
+}
+
+button {
+  border: 0;
+}
+
+.error {
+  color : red;
+  font-weight: lighter;
+  font-size: 17px;
+}
+
+.tip_button {
+  text-align: center;
+}
+
+.pink_button {
+  padding-left: 5px;
+  padding-right: 105px;
+  text-align: center;
+}
