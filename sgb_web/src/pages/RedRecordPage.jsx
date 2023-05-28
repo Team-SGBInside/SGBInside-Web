@@ -1,16 +1,18 @@
 import React from 'react';
-import Logo from './components/Logo';
-import Menubar from './components/Menubar';
 import RedForm from './components/RedForm';
+import Hello from './components/Hello';
+import Header from './components/Header';
+
 const RedRecordPage = () => {
     return (
         <>
             <div class ="header">
-                <Logo/>
-                <Menubar/>
+            <Header/>
             </div>
             <div>
-                <RedForm/>
+            <Hello/>
+            <br/>    
+            <RedForm/>
             </div>
         </>
     );

@@ -1,6 +1,4 @@
 import React from 'react';
-import Logo from './components/Logo';
-import Menubar from './components/Menubar';
 import GreenForm from './components/GreenForm';
 import Hello from './components/Hello';
 import Header from './components/Header';
