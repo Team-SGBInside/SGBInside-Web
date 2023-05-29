@@ -1,7 +1,6 @@
 import React from "react";
 import Logo from "./components/Logo";
 import { useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
 import { Link } from "react-router-dom";
@@ -17,8 +16,8 @@ const Login = () => {
       const response = await axios.post(
         "http://localhost:3002/auth/signin",
         {
-          id: idRef.current.value,
-          pw: pwRef.current.value,
+          loginId: idRef.current.value,
+          password: pwRef.current.value,
         },
         {
           headers: {
@@ -27,11 +26,12 @@ const Login = () => {
         }
       );
       console.log(response);
-      //navigate("/home");
+
     } catch (error) {
       console.log(error);
-      window.alert(error);
+      window.alert("아이디 또는 비밀번호가 일치하지 않습니다.");
     }
+    window.alert("로그인 성공");
   };
 
   return (
