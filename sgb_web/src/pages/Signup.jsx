@@ -139,9 +139,11 @@ const Signup = () => {
             <br />
           </div>
           <div className="signup-button">
+            <Link to = "/signup_success">
             <button type="submit" width="400" onClick={handleMember}>
               <img src={signup_submit} alt="submit" height="50" />
             </button>
+            </Link>
           </div>
           <div className="signup-q">
             <Link to="/login">
