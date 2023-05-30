@@ -12,6 +12,8 @@ import RedTip from './pages/RedTip';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import LandingPage from './pages/LandingPage';
+import SignupSuccess from './pages/SignupSuccess';
+
 
 export default function App() {
   return (
@@ -30,6 +32,7 @@ export default function App() {
             <Route path={"/pinkRecord"} element= {<PinkRecordPage/>}></Route>
             <Route path={"/blueRecord"} element= {<BlueRecordPage/>}></Route>
             <Route path={"/modaltest"} element={<GreenModal/>}></Route>
+            <Route path={"/signup_success"} element={<SignupSuccess/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>

@@ -20,7 +20,7 @@ const Signup = () => {
     console.log("clicked");
     try {
       const response = await axios.post(
-         "http://localhost:3002/auth",
+         "http://3.37.215.18:3000/auth",
         {
           loginId: idRef.current.value,
           password: pwRef.current.value,
@@ -139,9 +139,11 @@ const Signup = () => {
             <br />
           </div>
           <div className="signup-button">
+            <Link to = "/signup_success">
             <button type="submit" width="400" onClick={handleMember}>
               <img src={signup_submit} alt="submit" height="50" />
             </button>
+            </Link>
           </div>
           <div className="signup-q">
             <Link to="/login">
