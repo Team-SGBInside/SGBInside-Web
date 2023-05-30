@@ -39,8 +39,10 @@ const Signup = () => {
         }
       );
       console.log(response);
+      window.alert("회원가입 되었습니다."); //성공페이지로 라우팅
     } catch (error) {
       console.log(error);
+      window.alert("입력되지 않은 항목이 있습니다."); //실패페이지로 라우팅
     }
   };
   return (
@@ -139,7 +141,7 @@ const Signup = () => {
             <br />
           </div>
           <div className="signup-button">
-            <Link to = "/signup_success">
+            <Link to = "/signup">
             <button type="submit" width="400" onClick={handleMember}>
               <img src={signup_submit} alt="submit" height="50" />
             </button>
