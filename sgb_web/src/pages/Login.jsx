@@ -5,6 +5,7 @@ import axios from "axios";
 import "./Login.css";
 import { Link } from "react-router-dom";
 import login_submit from "./components/img/login_submit.png";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const idRef = useRef();
@@ -14,7 +15,7 @@ const Login = () => {
     console.log("clicked");
     try {
       const response = await axios.post(
-        "http://localhost:3002/auth/signin",
+        "http://3.37.215.18:3000/auth/signin",
         {
           loginId: idRef.current.value,
           password: pwRef.current.value,
@@ -26,12 +27,11 @@ const Login = () => {
         }
       );
       console.log(response);
-
+      window.alert("로그인 되었습니다.");
     } catch (error) {
       console.log(error);
-      window.alert("아이디 또는 비밀번호가 일치하지 않습니다.");
+      window.alert("아이디 또는 비밀번호가 일치하지 않습니다. 다시 시도해주세요.");
     }
-    window.alert("로그인 성공");
   };
 
   return (
@@ -69,6 +69,7 @@ const Login = () => {
             <br />
           </div>
           <div className="login-button">
+            <Link to = "/login">
             <button type="submit">
               <img
                 src={login_submit}
@@ -78,6 +79,7 @@ const Login = () => {
                 height="50"
               />
             </button>
+            </Link>
           </div>
           <div className="login-q">
             <Link to="/signup">

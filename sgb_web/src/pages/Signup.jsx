@@ -20,7 +20,7 @@ const Signup = () => {
     console.log("clicked");
     try {
       const response = await axios.post(
-         "http://localhost:3002/auth",
+         "http://3.37.215.18:3000/auth",
         {
           loginId: idRef.current.value,
           password: pwRef.current.value,
