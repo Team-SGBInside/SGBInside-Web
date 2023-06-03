@@ -25,7 +25,7 @@ function PinkForm() {
                     <img src={pink_alert} alt="pink_alert" width="604" height="86"/> 
                     <br/><br/>
                         {/* 활동이름 */}
-                        <label className="pink-label">활동 이름을 적고, 창의적체험활동 유형을 선택해줘!</label><br/>
+                        <label className="pink-label">수상명을 적어줘! <span className="pink-small">교과우수상(수상과목), 표창장(부문), 대회(참가부문) - 참가부문이 있는 경우만 입력</span></label><br/>
                         <input
                             className = "pink_name_input"
                             type="text"
@@ -40,28 +40,21 @@ function PinkForm() {
                             type="radio"
                             value="자율"
                             {...register("type", {required: true})}                  
-                        />자율활동 
+                        /><span className="pink-small">교과우수상</span>
                         <input
                             className = "pink_radio"
                             name= "pinkType"
                             type="radio"
                             value="동아리"
                             {...register("type", {required: true})}        
-                        />동아리활동 
+                        /><span className="pink-small">교과우수상</span> 
                         <input
                             className = "pink_radio"
                             name= "pinkType"
                             type="radio"
                             value="진로"
                             {...register("type", {required: true})}
-                        />진로활동 
-                        <input
-                            className = "pink_radio"
-                            name= "pinkType"
-                            type="radio"
-                            value="봉사"
-                            {...register("type", {required: true})}
-                        />봉사활동     
+                        /><span className="pink-small">교과우수상</span>   
                         <span className="error">{errors.type?.type === "required" && " 활동유형은 필수로 선택해야합니다."}</span>
                         <br/><br/>
                         {/* 활동날짜 */}     

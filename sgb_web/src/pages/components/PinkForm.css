@@ -25,6 +25,11 @@
   z-index: 999;
 }
 
+.pink-small {
+  font-size: smaller;
+  font-weight: lighter;
+}
+
 input, textarea, select {
   padding-left: 1%;
   margin-top: 1%;
@@ -44,8 +49,12 @@ input, textarea, select {
   height: 40px;
   font-size: 20px;
   border-radius: 5px;
-  border-color: #6CBD3F;
-  background-color: #F6FCEF;
+  border-color: #F879B5;
+  background-color: #FEF3F5;
+}
+
+.pink-radio {
+  font-weight: lighter;
 }
 
 .pink_date_input {
