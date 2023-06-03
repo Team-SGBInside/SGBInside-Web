@@ -5,6 +5,7 @@ import tip_button from './img/tip_button.png';
 import './PinkForm.css';
 import {useForm} from "react-hook-form";
 import { Link } from 'react-router-dom';
+import PinkModal from './PinkModal';
 
 function PinkForm() {
         
@@ -18,7 +19,7 @@ function PinkForm() {
         return (
         <div className="pinkform">
             <div className="pinkform_bg">
-            <img src={pinkform_bg} alt="pinkform_bg" width="1200" height="1310"/>
+            <img src={pinkform_bg} alt="pinkform_bg" width="1200" height="1345"/>
                 <div className="pinkform_content">
                     <form onSubmit={handleSubmit(onSubmit)}>
                     <img src={pink_alert} alt="pink_alert" width="604" height="86"/> 
@@ -28,10 +29,10 @@ function PinkForm() {
                         <input
                             className = "pink_name_input"
                             type="text"
-                            placeholder="ex) 풋풋고등학교 자치법정"
+                            placeholder="ex) 정보통신대회 (정보검색부문)"
                             {...register("name", {required: true})}
                         />
-                        <span className="error">{errors.name?.type === "required" && " 수상명은 필수로 입력해야합니다."}</span>
+                        <span className="error">{errors.name?.type === "required" && " 수상날짜는 필수로 입력해야합니다."}</span>
                         <br/>
                         {/* 수상유형 */}    
                         <input
@@ -54,7 +55,7 @@ function PinkForm() {
                             value="대회"
                             {...register("type", {required: true})}
                         /><span className="pink-small">대회</span>   
-                        <span className="error">{errors.type?.type === "required" && " 수상유형은 필수로 선택해야합니다."}</span>
+                        <br/><span className="error">{errors.type?.type === "required" && " 수상유형은 필수로 선택해야합니다."}</span>
                         <br/><br/>
                         {/* 대회등급 */}     
                         <label className="pink-label">대회라면 등급도 함께 기록해줘. (선택)</label><br/>
@@ -62,7 +63,6 @@ function PinkForm() {
                             className = "pink_grade_input"
                             type="text"
                             placeholder="ex) 우수상 (2위)"
-                            {...register("name", {required: false})}
                         />
                         <br/><br/>
                         {/* 수상날짜 */}
@@ -72,7 +72,7 @@ function PinkForm() {
                             type="date"
                             {...register("date", {required: true})}                           
                         />
-                        <br/><span className="error">{errors.date?.type === "required" && " 수상날짜는 필수로 입력해야합니다."}</span>
+                        <span className="error">{errors.date?.type === "required" && " 수상날짜는 필수로 입력해야합니다."}</span><br/>
                         {/* 수상학기 */}
                         <select
                             className="pink_semester_select"
@@ -108,10 +108,10 @@ function PinkForm() {
                         </textarea>
                         <br/><br/>
                         <div className = "pink_button">
-                            
+                            <PinkModal/>
                             <div className = "tip_button">
                                 <Link to = "/pinkTip">
-                                    <button style={{backgroundColor: '#EAF7DA'}}><img src={tip_button} alt="tip_button" width="230" height="60"/></button>
+                                    <button style={{backgroundColor: '#FDE2E6'}}><img src={tip_button} alt="tip_button" width="230" height="60"/></button>
                                 </Link>
                             </div>
                         </div> 
