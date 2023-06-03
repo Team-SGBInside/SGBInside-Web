@@ -66,7 +66,7 @@ function GreenForm() {
                         <span className="error">{errors.type?.type === "required" && " 활동유형은 필수로 선택해야합니다."}</span>
                         <br/><br/>
                         {/* 활동날짜 */}     
-                        <label className="green-label">활동 날짜와 기간도 기록하자.</label><br/>
+                        <label className="green-label">3활동 날짜와 기간도 기록하자.</label><br/>
                         <input
                             className = "green_date_input"
                             type="date"
