@@ -59,6 +59,7 @@ input, textarea, select {
 
 .pink_image_input {
   background-color: #FDE2E6;
+  font-size: 15px;
 }
 
 .pink_grade_input {

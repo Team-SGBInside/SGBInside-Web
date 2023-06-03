@@ -18,7 +18,7 @@ function PinkForm() {
         return (
         <div className="pinkform">
             <div className="pinkform_bg">
-            <img src={pinkform_bg} alt="pinkform_bg" width="1200" height="1345"/>
+            <img src={pinkform_bg} alt="pinkform_bg" width="1200" height="1450"/>
                 <div className="pinkform_content">
                     <form onSubmit={handleSubmit(onSubmit)}>
                     <img src={pink_alert} alt="pink_alert" width="604" height="86"/> 
