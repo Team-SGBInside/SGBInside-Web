@@ -33,14 +33,14 @@ function BlueForm() {
                         />
                         <span className="error">{errors.name?.type === "required" && " 도서명은 필수로 입력해야합니다."}</span>                        
                         <br/><br/>
-                        {/* 수상날짜 */}
-                        <label className="green-label">수상날짜를 기록해줘</label><br/>
+                        {/* 독서날짜 */}
+                        <label className="green-label">읽은 날짜도 함께 기록하자.</label><br/>
                         <input
                             className = "blue_date_input"
                             type="date"
                             {...register("date", {required: true})}                           
                         />
-                        <span className="error">{errors.date?.type === "required" && " 수상날짜는 필수로 입력해야합니다."}</span><br/>
+                        <span className="error">{errors.date?.type === "required" && " 독서 날짜는 필수로 입력해야합니다."}</span><br/>
                         {/* 수상학기 */}
                         <select
                             className="blue_semester_select"
@@ -54,7 +54,7 @@ function BlueForm() {
                             <option value="3-1">3학년 1학기</option>
                             <option value="3-2">3학년 2학기</option>
                         </select>
-                        <span className="error">{errors.semester?.type === "required" && "수상학기는 필수로 선택해야합니다."}</span>
+                        <span className="error">{errors.semester?.type === "required" && "독서 학기는 필수로 선택해야합니다."}</span>
                         <br/><br/>
                         {/* 수상비결 */}
                         <label className="blue-label">수상한 비결이 궁금해. 대회에서 특히 노력한 부분이나 활약한 영역이 있다면 적어줘. </label>
