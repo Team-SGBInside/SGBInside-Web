@@ -4,7 +4,6 @@ import pink_alert from './img/pink_alert.png';
 import tip_button from './img/tip_button.png';
 import './PinkForm.css';
 import {useForm} from "react-hook-form";
-import PinkModal from "../PinkModal";
 import { Link } from 'react-router-dom';
 
 function PinkForm() {
@@ -87,13 +86,13 @@ function PinkForm() {
                             <option value="3-1">3학년 1학기</option>
                             <option value="3-2">3학년 2학기</option>
                         </select>
-                        <span className="error">{errors.semester?.type === "required" && "활동학기는 필수로 선택해야합니다."}</span>
+                        <span className="error">{errors.semester?.type === "required" && "수상날짜학기는 필수로 선택해야합니다."}</span>
                         <br/><br/>
-                        {/* 활동내용 */}
-                        <label className="pink-label">위 활동에서 네 역할과 어떤 일을 했는지 알려줘!</label>
+                        {/* 수상비결 */}
+                        <label className="pink-label">수상한 비결이 궁금해. 대회에서 특히 노력한 부분이나 활약한 영역이 있다면 적어줘. </label>
                         <textarea
                             className="pink_activity_text"
-                            placeholder="ex) 창체부장으로서 학급 이벤트를 기획, 체육대회 반티 주문 등  반 분위기를 주도하는 역할을 함."
+                            placeholder="ex) 정보검색부문에 참여한 만큼 다양한 논문과 검색포털, 웹서비스 등으르 활발히 활용하였다. 그 중, ‘Chat GPT’를 사용해서 정보검색결과를 빠르게 얻어볼 수 있어 유용했고, 입력한 검색어가 정교할 수록 더욱 정교한 답변을 얻을 수 있었다. "
                             {...register("activity", {required: true})} 
                             >
                         </textarea>
@@ -104,12 +103,12 @@ function PinkForm() {
                         <label className="pink-label">활동 소감도 함께 남겨두자! 기억에 더 오래남도록 말이야 :) (선택) </label>
                         <textarea
                             className="pink_thought_text"
-                            placeholder="ex) 반 친구들의 의견을 하나로 모으고, 학급비를 관리하는 데에 어려움이 있었다. 그렇지만, 주기적으로 학급회의를 열어 최대한 많은 친구들의 의견을 참고할 수 있었고 결과적으로 재미있는 행사를 다함께 즐길 수 있어서 좋은 기억으로 남는다.  "
+                            placeholder="ex) 평소 관심있는 정보통신 분야에서 수상을 해서 기쁘고  뿌듯했다. 후에 정보통신 분야에서 어떤 진로를 잡을 수 있을까 고민해보게 되는 계기도 되었다.  "
                         >
                         </textarea>
                         <br/><br/>
                         <div className = "pink_button">
-                            <pinkModal/>
+                            
                             <div className = "tip_button">
                                 <Link to = "/pinkTip">
                                     <button style={{backgroundColor: '#EAF7DA'}}><img src={tip_button} alt="tip_button" width="230" height="60"/></button>
