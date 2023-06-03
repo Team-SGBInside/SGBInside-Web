@@ -44,7 +44,7 @@ input, textarea, select {
     z-index: 999;
 }
 
-.blue_name_input {
+.blue_name_input, .blue_subject_input {
   width: 380px;
   height: 40px;
   font-size: 20px;
@@ -94,8 +94,8 @@ input, textarea, select {
   height: 150px;
   font-size: 20px;
   border-radius: 5px;
-  border-color: #F879B5;
-  background-color: #FEF3F5;
+  border-color: #B1C2CA;
+  background-color: #F8FAF7;
 }
 
 .blue_thought_text {
@@ -103,8 +103,8 @@ input, textarea, select {
   height: 150px;
   font-size: 20px;
   border-radius: 5px;
-  border-color: #F879B5;
-  background-color: #FEF3F5;
+  border-color: #B1C2CA;
+  background-color: #F8FAF7;
 }
 
 .blue_save {
