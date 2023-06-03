@@ -86,7 +86,7 @@ function PinkForm() {
                             <option value="3-1">3학년 1학기</option>
                             <option value="3-2">3학년 2학기</option>
                         </select>
-                        <span className="error">{errors.semester?.type === "required" && "수상날짜학기는 필수로 선택해야합니다."}</span>
+                        <span className="error">{errors.semester?.type === "required" && "수상학기는 필수로 선택해야합니다."}</span>
                         <br/><br/>
                         {/* 수상비결 */}
                         <label className="pink-label">수상한 비결이 궁금해. 대회에서 특히 노력한 부분이나 활약한 영역이 있다면 적어줘. </label>
@@ -97,7 +97,7 @@ function PinkForm() {
                             >
                         </textarea>
                         <br/>
-                        <span className="error">{errors.activity?.type === "required" && "활동내용은 필수로 입력해야합니다."}</span><br/>
+                        <span className="error">{errors.activity?.type === "required" && "수상활동내용은 필수로 입력해야합니다."}</span><br/>
                         <br/>
                         {/* 활동소감 (선택) */}
                         <label className="pink-label">활동 소감도 함께 남겨두자! 기억에 더 오래남도록 말이야 :) (선택) </label>
