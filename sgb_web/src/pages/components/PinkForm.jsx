@@ -3,12 +3,11 @@ import pinkform_bg from './img/pinkform_bg.png';
 import pink_alert from './img/pink_alert.png';
 import tip_button from './img/tip_button.png';
 import './PinkForm.css';
-import {useForm} from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
 import PinkModal from './PinkModal';
 
 function PinkForm() {
-        
         //리액트 훅 폼 사용해보기
         const {register,
             formState: {errors},
@@ -56,6 +55,13 @@ function PinkForm() {
                             {...register("type", {required: true})}
                         /><span className="pink-small">대회</span>   
                         <br/><span className="error">{errors.type?.type === "required" && " 수상유형은 필수로 선택해야합니다."}</span>
+                        <br/>
+                        {/* 수상이미지 업로드 */}
+                        <label className="pink-label">여기에 상장 이미지를 첨부해줘! (선택)</label><br/>
+                        <input 
+                          className = "pink_image_input"
+                          type="file"  
+                        />
                         <br/><br/>
                         {/* 대회등급 */}     
                         <label className="pink-label">대회라면 등급도 함께 기록해줘. (선택)</label><br/>
