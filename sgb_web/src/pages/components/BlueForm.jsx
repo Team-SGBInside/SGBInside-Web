@@ -56,22 +56,32 @@ function BlueForm() {
                         </select>
                         <span className="error">{errors.semester?.type === "required" && "독서 학기는 필수로 선택해야합니다."}</span>
                         <br/><br/>
-                        {/* 수상비결 */}
-                        <label className="blue-label">수상한 비결이 궁금해. 대회에서 특히 노력한 부분이나 활약한 영역이 있다면 적어줘. </label>
+                        {/* 독후감상 */}
+                        <label className="blue-label">책을 읽게 된 계기와 감상 등을 자유롭게 남겨보자! </label>
                         <textarea
                             className="blue_activity_text"
-                            placeholder="ex) 정보검색부문에 참여한 만큼 다양한 논문과 검색포털, 웹서비스 등으르 활발히 활용하였다. 그 중, ‘Chat GPT’를 사용해서 정보검색결과를 빠르게 얻어볼 수 있어 유용했고, 입력한 검색어가 정교할 수록 더욱 정교한 답변을 얻을 수 있었다. "
+                            placeholder="ex) 헤르만 헤세가 생각하는 '삶'은 자기 자신에게로 이르는 길이었다. 끊임없이 나를 마주하고 탐구하는 것. 아이러니하게도 싱클레어의 삶은 완벽하게 고독해지므로써 혼자가 아니게 되었다. "
                             {...register("activity", {required: true})} 
                             >
                         </textarea>
                         <br/>
-                        <span className="error">{errors.activity?.type === "required" && "수상활동내용은 필수로 입력해야합니다."}</span><br/>
-                        <br/>
+                        <span className="error">{errors.activity?.type === "required" && "독후감상내용은 필수로 입력해야합니다."}</span><br/>
+                    
+                        {/* 연계과목 */}
+                        <label className="blue-label">연계되는 과목이나 영역을 알려줘. 분류가 없다면 ‘없음’ 으로 적어줘. </label><br/>
+                        <input
+                            className = "blue_subject_input"
+                            type="text"
+                            placeholder="ex) 문학"
+                            {...register("name", {required: true})}
+                        />
+                        <span className="error">{errors.name?.type === "required" && " 연계과목은 필수로 입력해야합니다."}</span>                        
+                        <br/><br/>
                         {/* 활동소감 (선택) */}
-                        <label className="blue-label">활동 소감도 함께 남겨두자! 기억에 더 오래남도록 말이야 :) (선택) </label>
+                        <label className="blue-label">특히 인상깊거나 기억하고 싶은 구절이 있었을까? 적어둔다면 기억에 더 오래남을거야! (선택) </label>
                         <textarea
                             className="blue_thought_text"
-                            placeholder="ex) 평소 관심있는 정보통신 분야에서 수상을 해서 기쁘고  뿌듯했다. 후에 정보통신 분야에서 어떤 진로를 잡을 수 있을까 고민해보게 되는 계기도 되었다.  "
+                            placeholder="ex) 당신이 믿지 못하는 소망을 욕심내면 안돼요.  "
                         >
                         </textarea>
                         <br/><br/>
@@ -79,7 +89,7 @@ function BlueForm() {
                             <BlueModal/>
                             <div className = "tip_button">
                                 <Link to = "/blueTip">
-                                    <button style={{backgroundColor: '#FDE2E6'}}><img src={tip_button} alt="tip_button" width="230" height="60"/></button>
+                                    <button style={{backgroundColor: '#EEF2EB'}}><img src={tip_button} alt="tip_button" width="230" height="60"/></button>
                                 </Link>
                             </div>
                         </div> 
