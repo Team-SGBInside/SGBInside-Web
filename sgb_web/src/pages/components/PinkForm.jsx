@@ -31,7 +31,7 @@ function PinkForm() {
                             placeholder="ex) 정보통신대회 (정보검색부문)"
                             {...register("name", {required: true})}
                         />
-                        <span className="error">{errors.name?.type === "required" && " 수상날짜는 필수로 입력해야합니다."}</span>
+                        <span className="error">{errors.name?.type === "required" && " 수상명은  필수로 입력해야합니다."}</span>
                         <br/>
                         {/* 수상유형 */}    
                         <input
