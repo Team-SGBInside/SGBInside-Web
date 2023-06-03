@@ -25,6 +25,11 @@
   z-index: 999;
 }
 
+.pink-small {
+  font-size: smaller;
+  font-weight: lighter;
+}
+
 input, textarea, select {
   padding-left: 1%;
   margin-top: 1%;
@@ -44,8 +49,26 @@ input, textarea, select {
   height: 40px;
   font-size: 20px;
   border-radius: 5px;
-  border-color: #6CBD3F;
-  background-color: #F6FCEF;
+  border-color: #F879B5;
+  background-color: #FEF3F5;
+}
+
+.pink-radio {
+  font-weight: lighter;
+}
+
+.pink_image_input {
+  background-color: #FDE2E6;
+  font-size: 15px;
+}
+
+.pink_grade_input {
+  width: 360px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #F879B5;
+  background-color: #FEF3F5;
 }
 
 .pink_date_input {
@@ -53,8 +76,8 @@ input, textarea, select {
   height: 40px;
   font-size: 20px;
   border-radius: 5px;
-  border-color: #6CBD3F;
-  background-color: #F6FCEF;
+  border-color: #F879B5;
+  background-color: #FEF3F5;
 }
 
 .pink_semester_select {
@@ -62,8 +85,8 @@ input, textarea, select {
   height: 40px;
   font-size: 20px;
   border-radius: 5px;
-  border-color: #6CBD3F;
-  background-color: #F6FCEF;
+  border-color: #F879B5;
+  background-color: #FEF3F5;
 }
 
 .pink_activity_text {
@@ -71,8 +94,8 @@ input, textarea, select {
   height: 150px;
   font-size: 20px;
   border-radius: 5px;
-  border-color: #6CBD3F;
-  background-color: #F6FCEF;
+  border-color: #F879B5;
+  background-color: #FEF3F5;
 }
 
 .pink_thought_text {
@@ -80,8 +103,8 @@ input, textarea, select {
   height: 150px;
   font-size: 20px;
   border-radius: 5px;
-  border-color: #6CBD3F;
-  background-color: #F6FCEF;
+  border-color: #F879B5;
+  background-color: #FEF3F5;
 }
 
 .pink_save {
