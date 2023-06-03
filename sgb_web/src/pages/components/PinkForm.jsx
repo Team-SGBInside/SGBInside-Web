@@ -24,7 +24,7 @@ function PinkForm() {
                     <form onSubmit={handleSubmit(onSubmit)}>
                     <img src={pink_alert} alt="pink_alert" width="604" height="86"/> 
                     <br/><br/>
-                        {/* 활동이름 */}
+                        {/* 수상이름 */}
                         <label className="pink-label">수상명을 적어줘! <span className="pink-small">교과우수상(수상과목), 표창장(부문), 대회(참가부문) - 참가부문이 있는 경우만 입력</span></label><br/>
                         <input
                             className = "pink_name_input"
@@ -32,47 +32,49 @@ function PinkForm() {
                             placeholder="ex) 풋풋고등학교 자치법정"
                             {...register("name", {required: true})}
                         />
-                        <span className="error">{errors.name?.type === "required" && " 활동이름은 필수로 입력해야합니다."}</span>
-                        <br/><br/>
-                        {/* 활동유형 */}    
+                        <span className="error">{errors.name?.type === "required" && " 수상명은 필수로 입력해야합니다."}</span>
+                        <br/>
+                        {/* 수상유형 */}    
                         <input
                             className = "pink_radio"
                             type="radio"
-                            value="자율"
+                            value="교과우수상"
                             {...register("type", {required: true})}                  
                         /><span className="pink-small">교과우수상</span>
                         <input
                             className = "pink_radio"
                             name= "pinkType"
                             type="radio"
-                            value="동아리"
+                            value="표창장"
                             {...register("type", {required: true})}        
-                        /><span className="pink-small">교과우수상</span> 
+                        /><span className="pink-small">표창장</span> 
                         <input
                             className = "pink_radio"
                             name= "pinkType"
                             type="radio"
-                            value="진로"
+                            value="대회"
                             {...register("type", {required: true})}
-                        /><span className="pink-small">교과우수상</span>   
-                        <span className="error">{errors.type?.type === "required" && " 활동유형은 필수로 선택해야합니다."}</span>
+                        /><span className="pink-small">대회</span>   
+                        <span className="error">{errors.type?.type === "required" && " 수상유형은 필수로 선택해야합니다."}</span>
                         <br/><br/>
-                        {/* 활동날짜 */}     
-                        <label className="pink-label">활동 날짜와 기간도 기록하자.</label><br/>
+                        {/* 대회등급 */}     
+                        <label className="pink-label">대회라면 등급도 함께 기록해줘. (선택)</label><br/>
+                        <input
+                            className = "pink_grade_input"
+                            type="text"
+                            placeholder="ex) 우수상 (2위)"
+                            {...register("name", {required: false})}
+                        />
+                        <br/><br/>
+                        {/* 수상날짜 */}
+                        <label className="green-label">수상날짜를 기록해줘</label><br/>
                         <input
                             className = "pink_date_input"
                             type="date"
                             {...register("date", {required: true})}                           
-                        />&nbsp;~&nbsp;
-                        <input
-                            className = "pink_date_input"
-                            type="date"
-                            name="pinkEndDate"
-                            {...register("date", {required: true})}   
                         />
-                        <br/><span className="error">{errors.date?.type === "required" && " 활동날짜는 필수로 입력해야합니다."}</span>
-                        <br/>
-                        {/* 활동학기 */}
+                        <br/><span className="error">{errors.date?.type === "required" && " 수상날짜는 필수로 입력해야합니다."}</span>
+                        {/* 수상학기 */}
                         <select
                             className="pink_semester_select"
                             name= "pinkSemester"

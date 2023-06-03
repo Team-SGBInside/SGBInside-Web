@@ -57,13 +57,22 @@ input, textarea, select {
   font-weight: lighter;
 }
 
+.pink_grade_input {
+  width: 360px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #F879B5;
+  background-color: #FEF3F5;
+}
+
 .pink_date_input {
   width: 360px;
   height: 40px;
   font-size: 20px;
   border-radius: 5px;
-  border-color: #6CBD3F;
-  background-color: #F6FCEF;
+  border-color: #F879B5;
+  background-color: #FEF3F5;
 }
 
 .pink_semester_select {
@@ -71,8 +80,8 @@ input, textarea, select {
   height: 40px;
   font-size: 20px;
   border-radius: 5px;
-  border-color: #6CBD3F;
-  background-color: #F6FCEF;
+  border-color: #F879B5;
+  background-color: #FEF3F5;
 }
 
 .pink_activity_text {
