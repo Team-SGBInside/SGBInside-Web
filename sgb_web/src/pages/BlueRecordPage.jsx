@@ -1,15 +1,19 @@
 import React from 'react';
 import Logo from './components/Logo';
 import Menubar from './components/Menubar';
+import BlueForm from './components/BlueForm';
+import Header from './components/Header';
+import Hello from './components/Hello';
 
 const BlueRecordPage = () => {
     return (
         <>
             <div class ="header">
-                <Logo/>
-                <Menubar/>
+            <Header/>
             </div>
-            <h1>BlueRecordPage</h1>
+            <Hello/>
+            <br/>
+            <BlueForm/>
         </>
     );
 };
