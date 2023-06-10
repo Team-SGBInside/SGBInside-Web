@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+
+* {
+  font-family: 'Noto Sans KR', 'sans serif';
+}
+
+.blueform {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-width: fit-content;
+}
+
+.blueform_bg {
+    position: relative;
+    text-align: center;
+}
+
+.blueform_alert {
+  position: absolute;
+  left: 3%;
+  bottom: 60%;
+  text-align: left;
+  font-size: 15px;
+  z-index: 999;
+}
+
+.blue-small {
+  font-size: smaller;
+  font-weight: lighter;
+}
+
+input, textarea, select {
+  padding-left: 1%;
+  margin-top: 1%;
+}
+
+.blueform_content {
+    position: absolute;
+    left: 5%;
+    top: 7%;
+    text-align: left;
+    font-size: 20px;
+    z-index: 999;
+}
+
+.blue_name_input, .blue_subject_input {
+  width: 380px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #B1C2CA;
+  background-color: #F8FAF7;
+}
+
+.blue-radio {
+  font-weight: lighter;
+}
+
+.blue_image_input {
+  background-color: #FDE2E6;
+  font-size: 15px;
+}
+
+.blue_grade_input {
+  width: 360px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #B1C2CA;
+  background-color: #F8FAF7;
+}
+
+.blue_date_input {
+  width: 360px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #B1C2CA;
+  background-color: #F8FAF7;
+}
+
+.blue_semester_select {
+  width: 200px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #B1C2CA;
+  background-color: #F8FAF7;
+}
+
+.blue_activity_text {
+  width: 1000px;
+  height: 150px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #B1C2CA;
+  background-color: #F8FAF7;
+}
+
+.blue_thought_text {
+  width: 1000px;
+  height: 150px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #B1C2CA;
+  background-color: #F8FAF7;
+}
+
+.blue_save {
+  text-align: center;
+  color: #EEF2EB;
+  padding-left: auto;
+  padding-right: auto;
+}
+
+button {
+  border: 0;
+}
+
+.error {
+  color : red;
+  font-weight: lighter;
+  font-size: 17px;
+}
+
+.tip_button {
+  text-align: center;
+}
+
+.blue_button {
+  padding-left: 5px;
+  padding-right: 105px;
+  text-align: center;
+}
