@@ -6,7 +6,6 @@ import './BlueForm.css';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
 import BlueModal from './BlueModal';
-import Uploader from "./Uploader";
 
 
 function BlueForm() {
@@ -87,7 +86,6 @@ function BlueForm() {
                         >
                         </textarea>
                         <br/><br/>
-                        <Uploader/>
                         <div className = "blue_button">
                             <BlueModal/>
                             <div className = "tip_button">

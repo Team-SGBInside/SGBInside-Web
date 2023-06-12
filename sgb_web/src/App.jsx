@@ -6,14 +6,13 @@ import GreenRecordPage from './pages/GreenRecordPage';
 import RedRecordPage from './pages/RedRecordPage';
 import PinkRecordPage from './pages/PinkRecordPage';
 import BlueRecordPage from './pages/BlueRecordPage';
-import GreenModal from './pages/GreenModal';
 import GreenTip from './pages/GreenTip';
 import RedTip from './pages/RedTip';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import LandingPage from './pages/LandingPage';
 import SignupSuccess from './pages/SignupSuccess';
-
+import GreenModal from './pages/components/Modal';
 
 export default function App() {
   return (

@@ -20,11 +20,11 @@ const GreenModal = (props) => {
           <main>{props.children}</main>
             <footer>
               <div class="button-wrap">
-                  <Link to = "/mypage">
+                  {/* <Link to = "/mypage">
                     <button className="mypage">
                       마이페이지 이동
                     </button> 
-                  </Link>
+                  </Link> */}
                   &nbsp;
                   <button className="close" onClick={close}>
                     뒤로가기
