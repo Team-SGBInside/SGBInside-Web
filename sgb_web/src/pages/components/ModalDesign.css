@@ -1,4 +1,3 @@
-
 .button-position {
     text-align: center;
 }
@@ -8,19 +7,19 @@
 }
 
 .modal-bold {
-    text-align: center;
-    font-size: 23px;
+    text-align: left;
+    font-size: 18px;
 }
 
 .modal-light {
-    text-align: center;
+    text-align: left;
     font-size: 18px;
     font-weight: lighter;
 }
 
 .modal-red {
-    text-align: center;
+    text-align: left;
     font-size: 15px;
-    color: red;
+    color: blue;
     font-weight: lighter;
 }

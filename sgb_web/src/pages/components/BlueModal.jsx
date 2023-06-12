@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Modal from './Modal';
-import './BlueModal.css';
 import dadok from './img/dadok.png'
 import blue_save from './img/blue_save.png'
 

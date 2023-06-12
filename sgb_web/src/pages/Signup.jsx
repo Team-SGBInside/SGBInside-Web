@@ -16,11 +16,11 @@ const Signup = () => {
   const ageRef = useRef();
   const isTeenRef = useRef();
 
-  const handleMember = async () => {
+ const handleMember = async () => {
     console.log("clicked");
     try {
       const response = await axios.post(
-         "http://3.37.215.18:3000/auth",
+         "http://3.37.215.18:3002/auth",
         {
           loginId: idRef.current.value,
           password: pwRef.current.value,
@@ -44,7 +44,7 @@ const Signup = () => {
       console.log(error);
       window.alert("입력되지 않은 항목이 있습니다."); //실패페이지로 라우팅
     }
-  };
+  }; 
   return (
     <>
       <div>

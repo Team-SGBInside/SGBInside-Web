@@ -6,6 +6,7 @@ import './PinkForm.css';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
 import PinkModal from './PinkModal';
+import Uploader from "./Uploader";
 
 function PinkForm() {
         //리액트 훅 폼 사용해보기
@@ -18,7 +19,7 @@ function PinkForm() {
         return (
         <div className="pinkform">
             <div className="pinkform_bg">
-            <img src={pinkform_bg} alt="pinkform_bg" width="1200" height="1450"/>
+            <img src={pinkform_bg} alt="pinkform_bg" width="1200" height="1500"/>
                 <div className="pinkform_content">
                     <form onSubmit={handleSubmit(onSubmit)}>
                     <img src={pink_alert} alt="pink_alert" width="604" height="86"/> 
@@ -58,11 +59,8 @@ function PinkForm() {
                         <br/>
                         {/* 수상이미지 업로드 */}
                         <label className="pink-label">여기에 상장 이미지를 첨부해줘! (선택)</label><br/>
-                        <input 
-                          className = "pink_image_input"
-                          type="file"  
-                        />
-                        <br/><br/>
+                        <Uploader/>
+                        <br/>
                         {/* 대회등급 */}     
                         <label className="pink-label">대회라면 등급도 함께 기록해줘. (선택)</label><br/>
                         <input

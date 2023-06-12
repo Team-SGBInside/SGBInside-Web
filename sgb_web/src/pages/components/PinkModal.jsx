@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Modal from './Modal';
-import './PinkModal.css';
 import awardy from './img/awardy.png'
 import pink_save from './img/pink_save.png'
 
