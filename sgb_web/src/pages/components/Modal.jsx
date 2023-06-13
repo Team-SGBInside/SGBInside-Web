@@ -2,7 +2,7 @@ import React from 'react';
 import './Modal.css';
 import { Link } from 'react-router-dom';
 
-const GreenModal = (props) => {
+const Modal = (props) => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
   const { open, close, header } = props;
 
@@ -37,4 +37,4 @@ const GreenModal = (props) => {
   );
 };
 
-export default GreenModal;
+export default Modal;

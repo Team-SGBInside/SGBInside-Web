@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Modal from './Modal';
 import teukteuk from './img/teukteuk.png'
-import red_save from './img/red_save.png'
+import tip_button from './img/tip_button.png'
+import './ModalDesign.css';
 
 function RedModal(props) {
   // useState를 사용하여 open상태를 변경한다. (open일때 true로 만들어 열리는 방식)
@@ -19,7 +20,7 @@ function RedModal(props) {
     <React.Fragment>
       <div class="button-position">
         <button style={{backgroundColor: '#FCE7DE'}} type="submit" class="button-style" onClick={openModal}>
-        <img src={red_save} alt="red_save" width="230" height="60"/>
+        <img src={tip_button} alt="tip_button" width="230" height="60"/>
         </button> 
       </div>
       <Modal open={modalOpen} close={closeModal}>
