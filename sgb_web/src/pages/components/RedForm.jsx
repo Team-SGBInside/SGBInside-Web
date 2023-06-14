@@ -5,7 +5,7 @@ import './RedForm.css';
 import RedModal from "./RedModal";
 import red_save from './img/red_save.png';
 import axios from "axios";
-
+ 
 
 function RedForm() {
     const redNameRef = useRef();
