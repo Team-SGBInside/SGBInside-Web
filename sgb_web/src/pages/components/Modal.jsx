@@ -37,4 +37,4 @@ const Modal = (props) => {
   );
 };
 
-export default nModal;
+export default Modal;
