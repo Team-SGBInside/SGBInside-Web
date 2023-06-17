@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import default_image from './img/default_image.png';
-
+import './Uploader.css';
 
 const Uploader = () => {
 
@@ -67,12 +67,11 @@ const Uploader = () => {
       <div className="img-wrapper">
         <img src={image.preview_URL} />
       </div>
-
       <div className="upload-button">
-        <button type="primary" variant="contained" onClick={() => inputRef.click()}>
+        <button onClick={() => inputRef.click()}>
           파일 찾기
         </button>
-        <button color="error" variant="contained" onClick={deleteImage}>
+        <button onClick={deleteImage}>
           삭제
         </button>
         {/* <button color="success" variant="contained" onClick={sendImageToServer}>

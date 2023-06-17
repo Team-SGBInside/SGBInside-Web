@@ -133,3 +133,17 @@ button {
   padding-right: 105px;
   text-align: center;
 }
+
+.pink-container {
+  width: 100%;
+  display: flex;
+}
+
+.pink-a, .pink-b {
+  flex: 1;
+  width: 50%;
+}
+
+.pink-a {
+  padding-right: 30px;
+}
