@@ -130,7 +130,7 @@ function RedForm() {
                         <div className = "red_button">
                             <RedModal/>
                             <div className = "tip_button">
-                                    <button type="submit" style={{backgroundColor: '#FDE2E6'}} onClick={handleMember}><img src={red_save} alt="red_save" width="230" height="60"/></button>
+                                    <button type="submit" style={{backgroundColor: '#FCE7DE'}} onClick={handleMember}><img src={red_save} alt="red_save" width="230" height="60"/></button>
                             </div>
                         </div>         
                 </div>

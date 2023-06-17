@@ -28,7 +28,7 @@ const Signup = () => {
           school: schoolRef.current.value,
           grade: gradeRef.current.value,
           age: ageRef.current.value,
-          isTeen: true,
+          isTeen: isTeenRef.current.value,
           //* isTeen
           // 어느 radio를 클릭했는지에 따라 true/false가 반환되도록 분기처리(if문 try-catch문 등..) 필요
         },
@@ -65,14 +65,18 @@ const Signup = () => {
                   ref={nameRef}
                 ></input>
               </div>
+              <br/>
               <div className="member">
-                <input type="radio" />
-                고등학생 회원
-                <br />
-                <input type="radio" />
-                대학생 멘토 회원
-                <br />
-              </div>
+                <label>회원유형</label><br/>
+                <select
+                    className="green_semester_select"
+                    name= "greenSemester"
+                    ref = {isTeenRef}
+                    >                           
+                    <option value="1-1">고등학생 회원</option>
+                    <option value="1-2">대학생멘토 회원</option>
+                </select>
+            </div>
             </div>
             <div className="school">
               <label>학교</label>
