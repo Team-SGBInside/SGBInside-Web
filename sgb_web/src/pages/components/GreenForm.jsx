@@ -59,36 +59,18 @@ function GreenForm () {
                             placeholder="ex) 풋풋고등학교 자치법정"
                             ref={greenNameRef}
                         />
-                        <br/><br/>
+                        <br/>                        
                         {/* 활동유형 */}    
-                        <input
-                            className = "green_radio"
-                            type="radio"
-                            name="greenType"
-                            value="자율"
-                            ref={greenTypeRef}
-                        />자율활동 
-                        <input
-                            className = "green_radio"
-                            name= "greenType"
-                            type="radio"
-                            value="동아리"
-                            ref={greenTypeRef}
-                        />동아리활동 
-                        <input
-                            className = "green_radio"
-                            name= "greenType"
-                            type="radio"
-                            value="진로"
-                            ref={greenTypeRef}
-                        />진로활동 
-                        <input
-                            className = "green_radio"
-                            name= "greenType"
-                            type="radio"
-                            value="봉사"
-                            ref={greenTypeRef}
-                        />봉사활동     
+                        <select
+                            className="green_semester_select"
+                            name= "greenSemester"
+                            ref = {greenTypeRef}
+                            >                           
+                            <option value="self">자율활동</option>
+                            <option value="club">동아리활동</option>
+                            <option value="career">진로활동</option>
+                            <option value="volunteer">봉사활동</option>
+                        </select>  
                         <br/><br/>
                         {/* 활동날짜 */}     
                         <label className="green-label">활동 날짜와 기간도 기록하자.</label><br/>
