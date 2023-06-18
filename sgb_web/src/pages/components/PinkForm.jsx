@@ -28,7 +28,7 @@ function PinkForm() {
                     prize : pinkGradeRef.current.value,
                     date: pinkDateRef.current.value,
                     semester: pinkSemesterRef.current.value,
-                    prizeImage : "~~~",
+                    prizeImage : "imageURL",
                     role: pinkRoleRef.current.value,
                     thoughts: pinkThoughtRef.current.value,
                     type : pinkTypeRef.current.value,
@@ -52,7 +52,7 @@ function PinkForm() {
             <img src={pinkform_bg} alt="pinkform_bg" width="1200" height="1500"/>
                 <div className="pinkform_content">
                     <img src={pink_alert} alt="pink_alert" width="604" height="86"/> 
-                    <br/><br/>
+                    <br/>
                     <div className="pink-container">
                         <div className="pink-a">
                         {/* 수상이름 */}
@@ -70,18 +70,20 @@ function PinkForm() {
                             name= "pinkType"
                             ref = {pinkTypeRef}
                             >
-                            <option value = "subject_award">교과우수상</option>
-                            <option value = "recognition_award">표창장</option>
-                            <option value = "competition_award">교내대회</option>
+                            <option value = "교과우수상">교과우수상</option>
+                            <option value = "표창장">표창장</option>
+                            <option value = "교내대회">교내대회</option>
                         </select>
                         </div>
+                        <br/>
                         <div className="pink-b">
                         {/* 수상이미지 업로드 */}
                         <label className="pink-label">여기에 상장 이미지를 첨부해줘! (선택)</label><br/>
-                        <Uploader ref={pinkImageRef}/>
+                        <Uploader/>
                         <br/>
                         </div>
                     </div>
+                        <br/><br/>
                         {/* 대회등급 */}     
                         <label className="pink-label">대회라면 등급도 함께 기록해줘. (선택)</label><br/>
                         <input
