@@ -12,6 +12,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import LandingPage from './pages/LandingPage';
 import GreenModal from './pages/components/Modal';
+import MyPage from './pages/MyPage';
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
             <Route path={"/pinkRecord"} element= {<PinkRecordPage/>}></Route>
             <Route path={"/blueRecord"} element= {<BlueRecordPage/>}></Route>
             <Route path={"/modaltest"} element={<GreenModal/>}></Route>
+            <Route path={"/mypage"} element={<MyPage/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
