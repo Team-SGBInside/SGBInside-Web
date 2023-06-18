@@ -62,8 +62,8 @@ function GreenForm () {
                         <br/>                        
                         {/* 활동유형 */}    
                         <select
-                            className="green_semester_select"
-                            name= "greenSemester"
+                            className="green_type_select"
+                            name= "greenType"
                             ref = {greenTypeRef}
                             >                           
                             <option value="self">자율활동</option>

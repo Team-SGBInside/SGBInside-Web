@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Logo from "./components/Logo";
 import { useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Signup.css";
 import signup_submit from "./components/img/signup_submit.png";
@@ -20,7 +19,7 @@ const Signup = () => {
     console.log("clicked");
     try {
       const response = await axios.post(
-         "http://3.37.215.18:3002/auth",
+         "http://3.37.215.18:3000/auth",
         {
           loginId: idRef.current.value,
           password: pwRef.current.value,
@@ -28,7 +27,7 @@ const Signup = () => {
           school: schoolRef.current.value,
           grade: gradeRef.current.value,
           age: ageRef.current.value,
-          isTeen: isTeenRef.current.value,
+          isTeen: isTeenRef.current.value == "high-school" ? true : false,
           //* isTeen
           // 어느 radio를 클릭했는지에 따라 true/false가 반환되도록 분기처리(if문 try-catch문 등..) 필요
         },
@@ -69,12 +68,12 @@ const Signup = () => {
               <div className="member">
                 <label>회원유형</label><br/>
                 <select
-                    className="green_semester_select"
-                    name= "greenSemester"
+                    className="isTeen"
+                    name= "isTeen"
                     ref = {isTeenRef}
                     >                           
-                    <option value="1-1">고등학생 회원</option>
-                    <option value="1-2">대학생멘토 회원</option>
+                    <option value="high-school">고등학생 회원</option>
+                    <option value="univ">대학생멘토 회원</option>
                 </select>
             </div>
             </div>
