@@ -4,7 +4,6 @@ import pinkform_bg from './img/pinkform_bg.png';
 import pink_alert from './img/pink_alert.png';
 import pink_save from './img/pink_save.png';
 import './PinkForm.css';
-import { Link } from 'react-router-dom';
 import Uploader from "./Uploader";
 import axios from "axios";
 
@@ -29,9 +28,10 @@ function PinkForm() {
                     prize : pinkGradeRef.current.value,
                     date: pinkDateRef.current.value,
                     semester: pinkSemesterRef.current.value,
-                    prizeImage : pinkImageRef.current.value,
+                    prizeImage : "~~~",
                     role: pinkRoleRef.current.value,
                     thoughts: pinkThoughtRef.current.value,
+                    type : pinkTypeRef.current.value,
                 },
                 {
                 headers: {
@@ -78,7 +78,7 @@ function PinkForm() {
                         <div className="pink-b">
                         {/* 수상이미지 업로드 */}
                         <label className="pink-label">여기에 상장 이미지를 첨부해줘! (선택)</label><br/>
-                        <Uploader/>
+                        <Uploader ref={pinkImageRef}/>
                         <br/>
                         </div>
                     </div>
@@ -88,6 +88,7 @@ function PinkForm() {
                             className = "pink_grade_input"
                             type="text"
                             placeholder="ex) 우수상 (2위)"
+                            ref={pinkGradeRef}
                         />
                         <br/><br/>
                         {/* 수상날짜 */}
@@ -101,7 +102,7 @@ function PinkForm() {
                         <select
                             className="pink_semester_select"
                             name= "pinkSemester"
-                            ref={pinkDateRef}
+                            ref={pinkSemesterRef}
                             >                           
                             <option value="1-1">1학년 1학기</option>
                             <option value="1-2">1학년 2학기</option>
