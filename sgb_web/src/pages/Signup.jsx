@@ -39,11 +39,11 @@ const Signup = () => {
       );
       console.log(response);
       window.alert("회원가입 되었습니다."); //성공페이지로 라우팅
+      location.href="/home"
     } catch (error) {
       console.log(error);
       window.alert("입력되지 않은 항목이 있습니다."); //실패페이지로 라우팅
     }
-    location.href="/home"
   }; 
   return (
     <>

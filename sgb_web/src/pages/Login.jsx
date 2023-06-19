@@ -28,11 +28,12 @@ const Login = () => {
       );
       console.log(response);
       window.alert("로그인 되었습니다.");
+      location.href="/loginedHome";
     } catch (error) {
       console.log(error);
       window.alert("아이디 또는 비밀번호가 일치하지 않습니다. 다시 시도해주세요.");
     }
-    location.href="/loginedHome";
+  
   };
 
   return (
