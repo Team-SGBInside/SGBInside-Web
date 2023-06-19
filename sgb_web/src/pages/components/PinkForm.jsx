@@ -22,28 +22,28 @@ function PinkForm() {
             try {
             const response = await axios.post(
                 "http://3.37.215.18:3000/activity/prize",
-                {
-                    userId: 9,
+                {     
                     name: pinkNameRef.current.value,
                     prize : pinkGradeRef.current.value,
                     date: pinkDateRef.current.value,
                     semester: pinkSemesterRef.current.value,
-                    prizeImage : "imageURL",
+                    prizeImage : null,
                     role: pinkRoleRef.current.value,
                     thoughts: pinkThoughtRef.current.value,
+                    writerId: 9,
                     type : pinkTypeRef.current.value,
                 },
                 {
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-Type": "multipart/form-data",
                     },
                 }
             );
             console.log(response);
-            window.alert("기록되었습니다."); //성공페이지로 라우팅
+            window.alert("성공적으로 기록되었습니다."); //성공페이지로 라우팅
             } catch (error) {
             console.log(error);
-            window.alert("기록 실패"); //실패페이지로 라우팅
+            window.alert("기록에 실패했습니다. 필수입력란을 전부 기입해주세요."); //실패페이지로 라우팅
             }
         }  
         return (
