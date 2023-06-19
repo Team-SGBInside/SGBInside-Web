@@ -23,7 +23,6 @@ function RedForm() {
         const response = await axios.post(
             "http://3.37.215.18:3000/activity/subject",
             {
-                userId: 9,
                 subjectName: redNameRef.current.value,
                 subjectContent: redLessonRef.current.value,
                 mainActivity: redSubjectRef.current.value,
@@ -32,6 +31,7 @@ function RedForm() {
                 activitySemester: redSemester.current.value,
                 activityContentDetail: redActivity.current.value,
                 subjectFurtherStudy: redThought.current.value,
+                writerId: 9,
             },
             {
             headers: {
@@ -40,10 +40,10 @@ function RedForm() {
             }
         );
         console.log(response);
-        window.alert("기록되었습니다."); //성공페이지로 라우팅
+        window.alert("성공적으로 기록되었습니다.");//성공페이지로 라우팅
         } catch (error) {
         console.log(error);
-        window.alert("기록 실패"); //실패페이지로 라우팅
+        window.alert("기록에 실패했습니다. 필수입력란을 전부 기입해주세요."); //실패페이지로 라우팅
         }
     }
         return (
