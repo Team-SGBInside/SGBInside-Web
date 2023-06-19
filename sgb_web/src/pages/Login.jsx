@@ -32,6 +32,7 @@ const Login = () => {
       console.log(error);
       window.alert("아이디 또는 비밀번호가 일치하지 않습니다. 다시 시도해주세요.");
     }
+    location.href="/loginedHome";
   };
 
   return (
