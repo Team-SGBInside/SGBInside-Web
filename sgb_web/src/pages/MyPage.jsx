@@ -12,7 +12,7 @@ const MyPage = () => {
         <div>
             <Hello/>
         </div>
-        <br/><br/>
+        <br/><br/> 
         <div>
             <MyPageInfo/>
         </div>

@@ -1,3 +1,56 @@
+.mypage, .mypage2 {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-width: fit-content;
+}
+
 .infobox {
-    text-align: center;
+    position: relative;
+    right: 25%;
+}    
+    
+.infobox_content {
+    position: absolute;
+    left: 35%;
+    bottom: 30%;
+    font-weight: lighter;
+    font-size: 32px;
+    width: 100%;
+}    
+
+.info_big {
+    font-weight: bolder;
+    font-size: 40px;
+}
+
+.info_small {
+    font-weight: lighter;
+    font-size: 20px;
+}
+
+.infobox2 {
+    position: relative;
+    left: 2%;
+    width: 95%;
+}
+
+.semester_menu {
+    display: flex;
+    position: relative;
+}
+
+.semester {
+    position: relative;
+    flex: 1;
+}
+
+.semester_select {
+    font-size: 25px;
+}
+
+.menu_btn {
+    position: relative;
+    flex: 1;
+    right: 1%;
 }
