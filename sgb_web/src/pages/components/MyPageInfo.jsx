@@ -104,8 +104,8 @@ const MyPageInfo = () => {
               &nbsp;</Link>
               <Link to="/pinkClicked"><img src={menu_pink} alt="pink" width="80" height="40" />
               &nbsp;</Link>
-              <img src={menu_blue} alt="blue" width="80" height="40" />
-              &nbsp;
+              <Link to="/blueClicked"><img src={menu_blue} alt="blue" width="80" height="40" />
+              &nbsp;</Link>
             </div>
           </div>
         </div>
