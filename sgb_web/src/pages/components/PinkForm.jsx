@@ -22,15 +22,15 @@ function PinkForm() {
             try {
             const response = await axios.post(
                 "http://3.37.215.18:3000/activity/prize",
-                {
-                    userId: 9,
+                {     
                     name: pinkNameRef.current.value,
                     prize : pinkGradeRef.current.value,
                     date: pinkDateRef.current.value,
                     semester: pinkSemesterRef.current.value,
-                    prizeImage : "imageURL",
+                    prizeImage : "prizeImage",
                     role: pinkRoleRef.current.value,
                     thoughts: pinkThoughtRef.current.value,
+                    writerId: 9,
                     type : pinkTypeRef.current.value,
                 },
                 {
@@ -40,10 +40,10 @@ function PinkForm() {
                 }
             );
             console.log(response);
-            window.alert("기록되었습니다."); //성공페이지로 라우팅
+            window.alert("성공적으로 기록되었습니다."); //성공페이지로 라우팅
             } catch (error) {
             console.log(error);
-            window.alert("기록 실패"); //실패페이지로 라우팅
+            window.alert("기록에 실패했습니다. 필수입력란을 전부 기입해주세요."); //실패페이지로 라우팅
             }
         }  
         return (
@@ -79,7 +79,7 @@ function PinkForm() {
                         <div className="pink-b">
                         {/* 수상이미지 업로드 */}
                         <label className="pink-label">여기에 상장 이미지를 첨부해줘! (선택)</label><br/>
-                        <Uploader/>
+                        <Uploader ref={pinkImageRef}/>
                         <br/>
                         </div>
                     </div>

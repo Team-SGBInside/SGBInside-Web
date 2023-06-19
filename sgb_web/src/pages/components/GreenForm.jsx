@@ -21,7 +21,6 @@ function GreenForm () {
         const response = await axios.post(
             "http://3.37.215.18:3000/activity/creative",
             {
-                userId: 9,
                 name: greenNameRef.current.value,
                 activityType: greenTypeRef.current.value,
                 startDate: greenStartDateRef.current.value,
@@ -29,6 +28,7 @@ function GreenForm () {
                 semester: greenSemesterRef.current.value,
                 role: greenActivityRef.current.value,
                 thoughts: greenThoughtRef.current.value,
+                writerId: 9,
             },
             {
             headers: {
@@ -37,10 +37,10 @@ function GreenForm () {
             }
         );
         console.log(response);
-        window.alert("기록되었습니다."); //성공페이지로 라우팅
+        window.alert("성공적으로 기록되었습니다."); //성공페이지로 라우팅
         } catch (error) {
         console.log(error);
-        window.alert("기록 실패"); //실패페이지로 라우팅
+        window.alert("기록에 실패했습니다. 필수입력란을 전부 기입해주세요."); //실패페이지로 라우팅
         }
     }  
         return (

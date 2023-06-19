@@ -6,7 +6,7 @@ import menu_whole from "./img/menu_whole.png";
 import menu_green from "./img/menu_green.png";
 import menu_red from "./img/menu_red.png";
 import menu_pink from "./img/menu_pink.png";
-import menu_blue from "./img/menu_blue.png";
+import blue_clicked from "./img/blue_clicked.png";
 import mypage_green from './img/mypage_green.png';
 import mypage_red from './img/mypage_red.png';
 import mypage_pink from './img/mypage_pink.png';
@@ -104,7 +104,7 @@ const MyPageInfo = () => {
               &nbsp;</Link>
               <Link to="/pinkClicked"><img src={menu_pink} alt="pink" width="80" height="40" />
               &nbsp;</Link>
-              <Link to="/blueClicked"><img src={menu_blue} alt="blue" width="80" height="40" />
+              <Link to="/blueClicked"><img src={blue_clicked} alt="blue" width="80" height="40" />
               &nbsp;</Link>
             </div>
           </div>
@@ -113,12 +113,8 @@ const MyPageInfo = () => {
       <br/>
       <div className="mypage3">
             <div className="activity_list">
-                <img src={mypage_green} alt="green" width="553" height="130"/><br/>
-                <img src={mypage_red} alt="red" width="553" height="130"/><br/>
-                <img src={mypage_pink} alt="pink" width="553" height="130"/><br/>
                 <img src={mypage_blue} alt="blue" width="553" height="130"/><br/>
                 <img src={mypage_blue2} alt="blue2" width="553" height="130"/><br/>
-                <img src={mypage_green2} alt="green2" width="553" height="130"/><br/>
             </div>
         </div>
     </>
