@@ -27,7 +27,7 @@ function PinkForm() {
                     prize : pinkGradeRef.current.value,
                     date: pinkDateRef.current.value,
                     semester: pinkSemesterRef.current.value,
-                    prizeImage : null,
+                    prizeImage : "prizeImage",
                     role: pinkRoleRef.current.value,
                     thoughts: pinkThoughtRef.current.value,
                     writerId: 9,
@@ -35,7 +35,7 @@ function PinkForm() {
                 },
                 {
                 headers: {
-                    "Content-Type": "multipart/form-data",
+                    "Content-Type": "application/json",
                     },
                 }
             );
@@ -79,7 +79,7 @@ function PinkForm() {
                         <div className="pink-b">
                         {/* 수상이미지 업로드 */}
                         <label className="pink-label">여기에 상장 이미지를 첨부해줘! (선택)</label><br/>
-                        <Uploader/>
+                        <Uploader ref={pinkImageRef}/>
                         <br/>
                         </div>
                     </div>

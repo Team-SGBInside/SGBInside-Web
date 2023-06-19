@@ -14,6 +14,11 @@ import LandingPage from './pages/LandingPage';
 import GreenModal from './pages/components/Modal';
 import MyPage from './pages/MyPage';
 import LoginedHome from './pages/LoginedHome';
+import GreenClicked from './pages/GreenClicked';
+import RedClicked from './pages/RedClicked';
+import PinkClicked from './pages/PinkClicked';
+import BlueClicked from './pages/BlueClicked';
+
 
 export default function App() {
   return (
@@ -34,6 +39,10 @@ export default function App() {
             <Route path={"/modaltest"} element={<GreenModal/>}></Route>
             <Route path={"/mypage"} element={<MyPage/>}></Route>
             <Route path={"/loginedHome"} element={<LoginedHome/>}></Route>
+            <Route path={"/greenClicked"} element={<GreenClicked/>}></Route>
+            <Route path={"/redClicked"} element={<RedClicked/>}></Route>
+            <Route path={"/pinkClicked"} element={<PinkClicked/>}></Route>
+            <Route path={"/blueClicked"} element={<BlueClicked/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
