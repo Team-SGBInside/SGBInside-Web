@@ -13,6 +13,7 @@ import Signup from './pages/Signup';
 import LandingPage from './pages/LandingPage';
 import GreenModal from './pages/components/Modal';
 import MyPage from './pages/MyPage';
+import LoginedHome from './pages/LoginedHome';
 
 export default function App() {
   return (
@@ -32,6 +33,7 @@ export default function App() {
             <Route path={"/blueRecord"} element= {<BlueRecordPage/>}></Route>
             <Route path={"/modaltest"} element={<GreenModal/>}></Route>
             <Route path={"/mypage"} element={<MyPage/>}></Route>
+            <Route path={"/loginedHome"} element={<LoginedHome/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
