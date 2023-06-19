@@ -1,4 +1,4 @@
-.mypage, .mypage2 {
+.mypage, .mypage2, .mypage3 {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -53,4 +53,9 @@
     position: relative;
     flex: 1;
     right: 1%;
+}
+
+.activity_list {
+    position: relative;
+    right: 25%;
 }

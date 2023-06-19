@@ -43,6 +43,7 @@ const Signup = () => {
       console.log(error);
       window.alert("입력되지 않은 항목이 있습니다."); //실패페이지로 라우팅
     }
+    location.href="/home"
   }; 
   return (
     <>
