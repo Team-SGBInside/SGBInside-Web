@@ -35,7 +35,7 @@ function PinkForm() {
                 },
                 {
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-Type": "multipart/form-data",
                     },
                 }
             );
@@ -49,14 +49,15 @@ function PinkForm() {
         return (
         <div className="pinkform">
             <div className="pinkform_bg">
-            <img src={pinkform_bg} alt="pinkform_bg" width="1200" height="1500"/>
+            <img src={pinkform_bg} alt="pinkform_bg" width="1200" height="1300"/>
                 <div className="pinkform_content">
                     <img src={pink_alert} alt="pink_alert" width="604" height="86"/> 
                     <br/>
                     <div className="pink-container">
                         <div className="pink-a">
                         {/* 수상이름 */}
-                        <label className="pink-label">수상명을 적어줘! <span className="pink-small">교과우수상(수상과목), 표창장(부문), 대회(참가부문) - 참가부문이 있는 경우만 입력</span></label><br/>
+                        <label className="pink-label">수상명을 적어줘! 
+                        <br/><span className="pink-small">교과우수상(수상과목), 표창장(부문), 대회(참가부문) - 참가부문이 있는 경우만 입력</span></label><br/>
                         <input
                             className = "pink_name_input"
                             type="text"
@@ -79,7 +80,7 @@ function PinkForm() {
                         <div className="pink-b">
                         {/* 수상이미지 업로드 */}
                         <label className="pink-label">여기에 상장 이미지를 첨부해줘! (선택)</label><br/>
-                        <Uploader ref={pinkImageRef}/>
+                        <input className="pink-image" type="file" name="myfile"/>
                         <br/>
                         </div>
                     </div>
@@ -136,7 +137,7 @@ function PinkForm() {
                         <div className = "pink_button">
                             <PinkModal/>
                             <div className = "tip_button">
-                                <button style={{backgroundColor: '#FDE2E6'}} onClick={handleMember}><img src={pink_save} alt="pink_save" width="230" height="60"/></button>
+                                <button style={{backgroundColor: '#FDE2E6'}} onClick={handleMember} type="submit"><img src={pink_save} alt="pink_save" width="230" height="60"/></button>
                             </div>
                         </div> 
                 </div>
