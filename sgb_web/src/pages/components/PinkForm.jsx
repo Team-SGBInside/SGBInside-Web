@@ -27,7 +27,7 @@ function PinkForm() {
                     prize : pinkGradeRef.current.value,
                     date: pinkDateRef.current.value,
                     semester: pinkSemesterRef.current.value,
-                    prizeImage : "prizeImage",
+                    prizeImage : pinkImageRef.current.value,
                     role: pinkRoleRef.current.value,
                     thoughts: pinkThoughtRef.current.value,
                     writerId: 9,
@@ -80,7 +80,7 @@ function PinkForm() {
                         <div className="pink-b">
                         {/* 수상이미지 업로드 */}
                         <label className="pink-label">여기에 상장 이미지를 첨부해줘! (선택)</label><br/>
-                        <input className="pink-image" type="file" name="myfile"/>
+                        <input className="pink-image" type="file" name="myfile" ref = {pinkImageRef}/>
                         <br/>
                         </div>
                     </div>
