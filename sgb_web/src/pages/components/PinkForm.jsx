@@ -4,7 +4,6 @@ import pinkform_bg from './img/pinkform_bg.png';
 import pink_alert from './img/pink_alert.png';
 import pink_save from './img/pink_save.png';
 import './PinkForm.css';
-import Uploader from "./Uploader";
 import axios from "axios";
 
 function PinkForm() {
@@ -16,7 +15,7 @@ function PinkForm() {
         const pinkSemesterRef = useRef();
         const pinkRoleRef = useRef();
         const pinkThoughtRef = useRef();
-
+        
         const handleMember = async () => {
             console.log("clicked");
             try {
@@ -30,7 +29,7 @@ function PinkForm() {
                     prizeImage : pinkImageRef.current.value,
                     role: pinkRoleRef.current.value,
                     thoughts: pinkThoughtRef.current.value,
-                    writerId: 9,
+                    writerId: "009",
                     type : pinkTypeRef.current.value,
                 },
                 {
@@ -45,8 +44,31 @@ function PinkForm() {
             console.log(error);
             window.alert("기록에 실패했습니다. 필수입력란을 전부 기입해주세요."); //실패페이지로 라우팅
             }
-        }  
+        }
+
+        const handleSubmit = async(e) => {
+            e.preventDefault();
+            const formData = new FormData();
+            formData.append("photo", file.length && file[0].uploadedFile);
+        
+           await axios({
+              method: "post",
+              url: process.env.REACT_APP_STREAMING_COMMENT_URL, //환경변수
+              data: formData,
+              headers: { "Content-Type": "multipart/form-data", Authorization: localStorage.getItem("access_token") }
+            });
+            setCommentValue("");
+            setFile([]);
+        };
+                
+        const handleUpload = (e) => {
+            e.preventDefault();
+            const file = e.target.file[0];
+            setFiles([...file, { uploadedFile: file }]);
+        }; 
+
         return (
+        <form name="file" encType="multipart/form-data" onSubmit={handleSubmit}>  
         <div className="pinkform">
             <div className="pinkform_bg">
             <img src={pinkform_bg} alt="pinkform_bg" width="1200" height="1300"/>
@@ -80,7 +102,13 @@ function PinkForm() {
                         <div className="pink-b">
                         {/* 수상이미지 업로드 */}
                         <label className="pink-label">여기에 상장 이미지를 첨부해줘! (선택)</label><br/>
-                        <input className="pink-image" type="file" name="myfile" ref = {pinkImageRef}/>
+                        <input 
+                            type="file"
+                            name="file"
+                            accept="image/*,audio/*,video/mp4,video/x-m4v,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,.csv"
+                            onChange={handleUpload}
+                            ref = {pinkImageRef} 
+                        />
                         <br/>
                         </div>
                     </div>
@@ -137,12 +165,15 @@ function PinkForm() {
                         <div className = "pink_button">
                             <PinkModal/>
                             <div className = "tip_button">
-                                <button style={{backgroundColor: '#FDE2E6'}} onClick={handleMember} type="submit"><img src={pink_save} alt="pink_save" width="230" height="60"/></button>
+                                <button type="submit" style={{backgroundColor: '#FDE2E6'}} onClick={handleMember}>
+                                    <img src={pink_save} alt="pink_save" width="230" height="60"/>
+                                </button>
                             </div>
                         </div> 
                 </div>
             </div>  
         </div>
+        </form>  
         );
     };
 
