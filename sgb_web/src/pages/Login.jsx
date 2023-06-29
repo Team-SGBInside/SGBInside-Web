@@ -23,11 +23,12 @@ const Login = () => {
         {
           headers: {
             "Content-Type": "application/json",
+      
           },
         }
       );
       console.log(response);
-      window.alert("환영합니다");
+      window.alert("환영합니다!");
       location.href="/loginedHome";
     } catch (error) {
       console.log(error);

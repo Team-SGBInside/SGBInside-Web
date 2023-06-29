@@ -18,7 +18,7 @@ import GreenClicked from './pages/GreenClicked';
 import RedClicked from './pages/RedClicked';
 import PinkClicked from './pages/PinkClicked';
 import BlueClicked from './pages/BlueClicked';
-
+import Test from './pages/Test';
 
 export default function App() {
   return (
@@ -43,6 +43,7 @@ export default function App() {
             <Route path={"/redClicked"} element={<RedClicked/>}></Route>
             <Route path={"/pinkClicked"} element={<PinkClicked/>}></Route>
             <Route path={"/blueClicked"} element={<BlueClicked/>}></Route>
+            <Route path={"/test"} element={<Test/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>

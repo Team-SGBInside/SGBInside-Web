@@ -38,7 +38,7 @@ const Signup = () => {
         }
       );
       console.log(response);
-      window.alert("회원가입 되었습니다."); //성공페이지로 라우팅
+      window.alert("회원가입이 성공적으로 되었습니다."); //성공페이지로 라우팅
       location.href="/home"
     } catch (error) {
       console.log(error);
