@@ -22,8 +22,8 @@ function Test() {
         const formData = new FormData();
 
         if(e.target.files) {
-            const uploadFile = e.target.files -[0]
-            formData.appent('file',uploadFile)
+            const uploadFile = e.target.files[0]
+            formData.append('file',uploadFile)
             setFile(uploadFile)
             console.log(uploadFile)
             console.log('====useState===')
