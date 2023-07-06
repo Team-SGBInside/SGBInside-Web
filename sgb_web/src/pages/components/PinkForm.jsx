@@ -106,7 +106,7 @@ function PinkForm() {
             <img src={pinkform_bg} alt="pinkform_bg" width="1200" height="1300"/>
                 <div className="pinkform_content">
                     <img src={pink_alert} alt="pink_alert" width="604" height="86"/> 
-                    <br/>
+                    <br/><br/>
                     <div className="pink-container">
                         <div className="pink-a">
                         {/* 수상이름 */}
