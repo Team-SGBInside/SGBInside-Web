@@ -49,7 +49,7 @@ function RedForm() {
         return (
         <div className="redform">
             <div className="redform_bg">
-            <img src={redform_bg} alt="redform_bg" width="1200" height="1510"/>
+            <img src={redform_bg} alt="redform_bg" width="1200" height="1420"/>
                 <div className="redform_content">
                     <img src={red_alert} alt="red_alert" width="656.5" height="111.5"/> 
                     <br/><br/>
