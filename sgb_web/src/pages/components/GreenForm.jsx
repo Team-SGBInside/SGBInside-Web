@@ -3,8 +3,10 @@ import GreenModal from "./GreenModal";
 import greenform_bg from './img/greenform_bg.png';
 import green_alert from './img/green_alert.png';
 import green_save from './img/green_save.png';
+import green_recom from './img/green_recom.png';
 import './GreenForm.css';
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function GreenForm () {
     const greenNameRef = useRef();
@@ -50,6 +52,9 @@ function GreenForm () {
                 <div className="greenform_content">
                     <img src={green_alert} alt="green_alert" width="604" height="86"/> 
                     <br/><br/>
+                        <div className="green_recom">
+                            <Link to ="/greenRecom"><img src={green_recom} alt="green_recom" width="300" height="100"/></Link>
+                        </div>
                         {/* 활동이름 */}
                         <label className="green-label">활동 이름을 적고, 창의적체험활동 유형을 선택해줘!</label><br/>
                         <input
