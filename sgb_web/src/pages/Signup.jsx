@@ -27,7 +27,7 @@ const Signup = () => {
           school: schoolRef.current.value,
           grade: gradeRef.current.value,
           age: ageRef.current.value,
-          isTeen: isTeenRef.current.value == "high-school" ? true : false,
+          isTeen: isTeenRef.current.value,
           //* isTeen
           // 어느 radio를 클릭했는지에 따라 true/false가 반환되도록 분기처리(if문 try-catch문 등..) 필요
         },
@@ -39,11 +39,13 @@ const Signup = () => {
       );
       console.log(response);
       window.alert("회원가입이 성공적으로 되었습니다."); //성공페이지로 라우팅
-      location.href="/home"
+      // location.href="/home"
     } catch (error) {
       console.log(error);
       window.alert("입력되지 않은 항목이 있습니다."); //실패페이지로 라우팅
     }
+    console.log(typeof isTeenRef.current.value)
+    console.log(isTeenRef.current.value);
   }; 
   return (
     <>
@@ -73,8 +75,8 @@ const Signup = () => {
                     name= "isTeen"
                     ref = {isTeenRef}
                     >                           
-                    <option value="high-school">고등학생 회원</option>
-                    <option value="univ">대학생멘토 회원</option>
+                    <option value="true">고등학생 회원</option>
+                    <option value="false">대학생멘토 회원</option>
                 </select>
             </div>
             </div>
