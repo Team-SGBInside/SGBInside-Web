@@ -48,7 +48,7 @@ function GreenForm () {
         return (
         <div className="greenform">
             <div className="greenform_bg">
-            <img src={greenform_bg} alt="greenform_bg" width="1200" height="1310"/>
+            <img src={greenform_bg} alt="greenform_bg" width="1200" height="1210"/>
                 <div className="greenform_content">
                     <img src={green_alert} alt="green_alert" width="604" height="86"/> 
                     <br/><br/>
