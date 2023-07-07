@@ -1,0 +1,29 @@
+.bluerecom {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-width: fit-content;
+  }
+  
+.bluerecom_bg {
+      position: relative;
+      text-align: center;
+  }
+  
+.blue_talk {
+    position: absolute;
+    left: 3%;
+    bottom: 60%;
+    text-align: left;
+    font-size: 15px;
+    z-index: 999;
+  }
+
+.bluerecom_content {
+    position: absolute;
+    left: 5%;
+    top: 7%;
+    text-align: left;
+    font-size: 20px;
+    z-index: 999;
+}

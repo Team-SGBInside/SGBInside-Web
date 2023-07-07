@@ -3,8 +3,10 @@ import BlueModal from "./BlueModal";
 import blueform_bg from './img/blueform_bg.png';
 import blue_alert from './img/blue_alert.png';
 import blue_save from './img/blue_save.png';
+import blue_recom from './img/blue_recom.png';
 import './BlueForm.css';
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function BlueForm() {
         const blueNameRef = useRef();
@@ -56,6 +58,9 @@ function BlueForm() {
                 <div className="blueform_content">
                    <img src={blue_alert} alt="blue_alert" width="604" height="120"/> 
                     <br/><br/>
+                    <div className="blue_recom">
+                        <Link to ="/blueRecom"><img src={blue_recom} alt="blue_recom" width="300" height="100"/></Link>
+                    </div>
                         {/* 도서이름 */}
                         <label className="blue-label">책이름과 저자를 기록해줘. ISBN 등재 도서만 기재 가능해 :) </label><br/>
                         <input

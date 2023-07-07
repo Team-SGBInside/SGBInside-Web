@@ -20,6 +20,9 @@ import PinkClicked from './pages/PinkClicked';
 import BlueClicked from './pages/BlueClicked';
 import Test from './pages/Test';
 import GreenRecomPage from './pages/GreenRecomPage';
+import RedRecomPage from './pages/RedRecomPage';
+import PinkRecomPage from './pages/PinkRecomPage';
+import BlueRecomPage from './pages/BlueRecomPage';
 
 export default function App() {
   return (
@@ -45,6 +48,9 @@ export default function App() {
             <Route path={"/pinkClicked"} element={<PinkClicked/>}></Route>
             <Route path={"/blueClicked"} element={<BlueClicked/>}></Route>
             <Route path={"/greenRecom"} element={<GreenRecomPage/>}></Route>
+            <Route path={"/redRecom"} element={<RedRecomPage/>}></Route>
+            <Route path={"/pinkRecom"} element={<PinkRecomPage/>}></Route>
+            <Route path={"/blueRecom"} element={<BlueRecomPage/>}></Route>
             <Route path={"/test"} element={<Test/>}></Route>
         </Routes>
       </BrowserRouter>
