@@ -133,3 +133,9 @@ button {
   padding-right: 105px;
   text-align: center;
 }
+
+.blue_recom {
+  position: absolute; 
+  right: 50px; 
+  top: 0px;
+}
