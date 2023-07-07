@@ -3,8 +3,10 @@ import PinkModal from './PinkModal';
 import pinkform_bg from './img/pinkform_bg.png';
 import pink_alert from './img/pink_alert.png';
 import pink_save from './img/pink_save.png';
+import pink_recom from './img/pink_recom.png';
 import './PinkForm.css';
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function PinkForm() {
 
@@ -103,10 +105,13 @@ function PinkForm() {
         return (
         <div className="pinkform">
             <div className="pinkform_bg">
-            <img src={pinkform_bg} alt="pinkform_bg" width="1200" height="1300"/>
+            <img src={pinkform_bg} alt="pinkform_bg" width="1200" height="1350"/>
                 <div className="pinkform_content">
                     <img src={pink_alert} alt="pink_alert" width="604" height="86"/> 
-                    <br/>
+                    <br/><br/><br/>
+                    <div className="pink_recom">
+                        <Link to ="/pinkRecom"><img src={pink_recom} alt="pink_recom" width="300" height="100"/></Link>
+                    </div>
                     <div className="pink-container">
                         <div className="pink-a">
                         {/* 수상이름 */}

@@ -5,7 +5,8 @@ import './RedForm.css';
 import RedModal from "./RedModal";
 import red_save from './img/red_save.png';
 import axios from "axios";
- 
+import { Link } from "react-router-dom";
+import red_recom from './img/red_recom.png'; 
 
 function RedForm() {
     const redNameRef = useRef();
@@ -53,6 +54,9 @@ function RedForm() {
                 <div className="redform_content">
                     <img src={red_alert} alt="red_alert" width="656.5" height="111.5"/> 
                     <br/><br/>
+                        <div className="red_recom">
+                            <Link to="/redRecom"><img src={red_recom} alt="red_recom" width="300" height="100"/></Link>
+                        </div>
                         {/* 과목이름 */}
                         <label className="red-label">과목명을 적어줘!</label><br/>
                         <input
