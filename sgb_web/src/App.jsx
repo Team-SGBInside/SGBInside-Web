@@ -23,6 +23,7 @@ import RedRecomPage from './pages/RedRecomPage';
 import PinkRecomPage from './pages/PinkRecomPage';
 import BlueRecomPage from './pages/BlueRecomPage';
 import LandingPage from './pages/LandingPage';
+import MentorHome from './pages/MentorHome';
 
 export default function App() {
   return (
@@ -51,6 +52,7 @@ export default function App() {
             <Route path={"/redRecom"} element={<RedRecomPage/>}></Route>
             <Route path={"/pinkRecom"} element={<PinkRecomPage/>}></Route>
             <Route path={"/blueRecom"} element={<BlueRecomPage/>}></Route>
+            <Route path={"/mentorHome"} element={<MentorHome/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
