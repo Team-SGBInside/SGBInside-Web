@@ -13,6 +13,15 @@ function BlueRecom () {
                         <img src={blue_talk} alt="blue_talk" width="555" height="90"/> 
                     </div>     
                 <br/><br/>
+                {/* Search 관련 코드 */}
+                <div className="search_div_blue">
+                <input
+                    type="search"
+                    placeholder="검색어를 입력 하세요..."
+                    name="query"
+                    className="search_input_blue"
+                />
+                </div>
                 </div>
             </div>
         </div>
