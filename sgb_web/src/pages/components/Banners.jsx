@@ -9,7 +9,7 @@ const Banners = () => {
     return (
         <div className = "banners">
             <Link to ="/greenRecord"><span className = "green-banner"><img src={green_banner} alt="green_banner" width="500" height="300"/></span></Link>
-            <Link to ="/redRecord"><img src={red_banner} alt="green_banner" width="500" height="300"/><br/><br/></Link>
+            <Link to ="/redRecord"><img src={red_banner} alt="red_banner" width="500" height="300"/><br/><br/></Link>
             <Link to ="/pinkRecord"><span className = "pink-banner"><img src={pink_banner} alt="green_banner" width="500" height="300"/></span></Link>
             <Link to ="/blueRecord"><span className = "blue-banner"><img src={blue_banner} alt="green_banner" width="500" height="300"/></span></Link>
         </div>
