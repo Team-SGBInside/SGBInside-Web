@@ -5,7 +5,6 @@ import axios from "axios";
 import "./Login.css";
 import { Link } from "react-router-dom";
 import login_submit from "./components/img/login_submit.png";
-import { useNavigate } from "react-router-dom";
 
 const MentorLogin = () => {
   const idRef = useRef();
