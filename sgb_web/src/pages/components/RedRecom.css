@@ -27,3 +27,16 @@
     font-size: 20px;
     z-index: 999;
 }
+
+.search_div_red {
+  padding-left: 10%;
+}
+
+.search_input_red {
+  padding-left: 10px;
+  height: 70px;
+  width: 700px;
+  border-color: #F29191;
+  border-width: 15px;
+  border-style: solid;
+}
