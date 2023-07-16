@@ -1,0 +1,35 @@
+.green_mentor_banner  {
+    display: flex;
+    width: 100%;
+    min-width: fit-content;
+    padding-top: 30px;
+}
+
+.green_banner_bg {
+    position: relative;
+}
+
+.activity_type {
+    width: 100%;
+    position: absolute;
+    font-size: small;
+    font-weight: lighter;
+    bottom: 16%;
+    left: 10%;
+}
+
+.activity_name {
+    width: 100%;
+    position: absolute;
+    bottom: 53%;
+    left: 50%;
+}
+
+.activity_writer {
+    width: 100%;
+    position: absolute;
+    bottom: 25%;
+    left: 50%;
+    font-weight: lighter;
+    font-size: 20px;
+}
