@@ -1,0 +1,51 @@
+.greenmentor {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-width: fit-content;
+  }
+  
+.greenmentor_bg {
+      position: relative;
+      text-align: center;
+}
+
+.green_mentor_talk {
+    position: absolute;
+    left: 3%;
+    bottom: 75%;
+    text-align: left;
+    font-size: 15px;
+    z-index: 999;
+}
+
+.greenmentor_content {
+    position: absolute;
+    left: 5%;
+    top: 15%;
+    text-align: left;
+    font-size: 20px;
+    z-index: 999;
+}
+
+.search_div_green {
+    position: absolute;
+    padding-left: 10%;
+    padding-top: 50px;
+    padding-bottom: 100px;
+  }
+  
+.search_input_green {
+    padding-left: 10px;
+    height: 70px;
+    width: 700px;
+    border-color: #D6EBCA;
+    border-width: 15px;
+    border-style: solid;
+}
+
+.green_mentor_banner_div {
+    position: absolute;
+    padding-top: 90%;
+    padding-bottom: 90%;
+}

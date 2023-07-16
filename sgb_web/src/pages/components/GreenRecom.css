@@ -22,7 +22,7 @@
 .greenrecom_content {
     position: absolute;
     left: 5%;
-    top: 7%;
+    top: 15%;
     text-align: left;
     font-size: 20px;
     z-index: 999;
@@ -39,4 +39,10 @@
   border-color: #D6EBCA;
   border-width: 15px;
   border-style: solid;
+}
+
+.green_mentor {
+  position: absolute; 
+  left: 780px; 
+  bottom: 100px;
 }

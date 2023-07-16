@@ -26,6 +26,7 @@ import LandingPage from './pages/LandingPage';
 import MentorHome from './pages/MentorHome';
 import MentorLogin from './pages/MentorLogin';
 import MentorSignup from './pages/MentorSignup';
+import GreenMentorPage from './pages/GreenMentorPage';
 
 export default function App() {
   return (
@@ -57,6 +58,7 @@ export default function App() {
             <Route path={"/mentorHome"} element={<MentorHome/>}></Route>
             <Route path={"/mentorLogin"} element={<MentorLogin/>}></Route>
             <Route path={"/mentorSignup"} element={<MentorSignup/>}></Route>
+            <Route path={"/greenMentor"} element={<GreenMentorPage/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
