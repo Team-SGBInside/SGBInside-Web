@@ -55,7 +55,6 @@ const handleInfo = async () => {
         <div>
             <h1> TEST PAGE입니다! </h1>
             <button onClick={handleInfo}>Info Get Button</button>
-            <p>{handleInfo.content}</p>
         </div>
     );
 };
