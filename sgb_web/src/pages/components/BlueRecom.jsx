@@ -9,8 +9,8 @@ function BlueRecom () {
             <div className="bluerecom_bg">
                 <img src={blueform_bg} alt="blueform_bg" width="1200" height="1310"/>
                 <div className="bluerecom_content">
-                    <div classNmae="blue_talk">   
-                        <img src={blue_talk} alt="blue_talk" width="555" height="90"/> 
+                    <div classNmae="blue_talk">
+                        <img src={blue_talk} alt="blue_talk" width="555" height="120"/> 
                     </div>     
                 <br/><br/>
                 {/* Search 관련 코드 */}
