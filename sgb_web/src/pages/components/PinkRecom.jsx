@@ -11,7 +11,7 @@ function PinkRecom () {
                 <img src={pinkform_bg} alt="pinkform_bg" width="1200" height="1310"/>
                 <div className="pinkrecom_content">
                     <div classNmae="pink_talk">   
-                        <img src={pink_talk} alt="pink_talk" width="555" height="90"/> 
+                        <img src={pink_talk} alt="pink_talk" width="555" height="130"/> 
                     </div>     
                 <br/><br/>
                 <div className="search_div_pink">

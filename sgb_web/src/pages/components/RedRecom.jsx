@@ -10,7 +10,7 @@ function RedRecom () {
                 <img src={redform_bg} alt="redform_bg" width="1200" height="1310"/>
                 <div className="redrecom_content">
                     <div classNmae="red_talk">   
-                        <img src={red_talk} alt="red_talk" width="555" height="90"/> 
+                        <img src={red_talk} alt="red_talk" width="555" height="120"/> 
                     </div>     
                 <br/><br/>
                 {/* Search 관련 코드 */}
