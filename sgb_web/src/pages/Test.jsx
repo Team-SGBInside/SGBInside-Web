@@ -1,74 +1,64 @@
+import React from 'react';
+// import { Request, Response } from "express";
+// 저는 nodejs를 위해 express를 쓰는데 어떤 함수 호출 시에 파라미터로 전달되는 res, req 변수를 이런 식으로 express에서 끌어옵니다
 import axios from "axios";
-import {useEffect,useState} from 'react';
+
+//* async-await 문 주의사항:
+// async 후 await 없이 api 호출 혹은 DB에 접근해서
+// response를 콘솔에 찍어보면 잘 안 나오는 경우가 있음
 
 function Test() {
-
-    const [code, setCode] = useState('')
-    const [file, setFile] = useState()
-    const [name, setName] = useState('')
-
-    const handlecode = (event) => {
-        event.preventDefault();
-        setCode(event.target.value);
-    }
-
-    const handlename = (event) => {
-        event.preventDefault();
-        setName(event.target.value);
-    }
-
-    const onChangeImg = (e) => {
-        e.preventDefault();
-        const formData = new FormData();
-
-        if(e.target.files) {
-            const uploadFile = e.target.files[0]
-            formData.append('file',uploadFile)
-            setFile(uploadFile)
-            console.log(uploadFile)
-            console.log('====useState===')
-            console.log(file)
-        }
-    }
-
-    const onPrint = () => {
-        console.log(file)
-    }
-
-    const onClickLogin = (event) => {
-        event.preventDefault();
-        const formData = new FormData();
-        formData.append('code', code)
-        formData.append('file', file)
-        formData.append('engName', name)
-        axios({
-            method:'post',
-            url: "~~",
-            data: formData,
-        })
-        .then((result)=>{console.log('요청성공')
-        console.log(result)
     
-    })
-        .catch((error)=>{console.log('요청실패')
-        console.log(error)
-    })
+// 어떤 버튼 클릭 혹은 페이지 액션을 취할 때 실행될 함수 "handleInfo"
+const handleInfo = async () => {
+    console.log("clicked");
+    // ***1. svcCode: MAJOR -> 학과코드를 얻는다
+    try {
+    const response = await axios.get(
+        `http://www.career.go.kr/cnet/openapi/getOpenApi?apiKey=dd9125011e548bb9ba986fc83305a811&svcType=api&svcCode=MAJOR&contentType=json&gubun=univ_list&univSe=univ`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+    );
+    // 커리어넷 학과정보 api 호출 결과 안의 data 안의 dataSearch(커리어넷 api 최상위노드)에 접근 
+    const data = response.data.dataSearch;
+    console.log(data);
+  
+    // dataSearch 안에서 학과코드를 받아와야 하는데...
+  
+    // 학과코드들을 담아줄 빈 배열 선언
+    let majorSeqArray = [];
+  
+    // 학과정보 api 호출 결과는 content라는 거대한 배열 안에 여러 개의 객체가 담겨 있다.
+  
+    for (let i = 0; i < data.content.length; i++) {
+      // 따라서 content라는 배열의 길이만큼 for문을 돌려서,
+      const majorSeq = data.content[i].majorSeq; // content라는 배열을 인덱스로 접근해 각 배열마다 majorSeq 필드의 값을 가져오자
+      majorSeqArray.push(majorSeq); // 그리고 그 값을 비어있던 배열에 채워주자. 나중에 우리가 쓰기 편하게.
+    }
+    console.log(majorSeqArray); // for loop가 끝나고 나면 majorSeqArray에는 학과코드들이 전부 담긴다.
+  
+    // Q. 나중에 ["숫자", "숫자", ... "숫자"] 이런 식의 학과코드 배열은 어떻게 사용하나요?
+    // -> 마찬가지로 map 함수 또는 for문으로 배열의 인덱스에 접근할 수 있습니다!~
+    // console.log(response);
+  } catch(error){
+    console.log(error);
+  }
+}
+      
+    // *** 2. svcCode: MAJOR_VIEW -> 우리에게 정말 필요한 학과별 상세정보를 얻는다
+    // 중어중문학부 -> 10006번학과 코드 -> 학과코드에 맞게 api url을 호출.....
+    // 이런 식으로 학과 또는 계열에 따른 학과코드로의 연결고리를 만들고, 경우에 따라 다른 api url이 호출될 수 있도록 한다
+    return (
+        <div>
+            <h1> TEST PAGE입니다! </h1>
+            <button onClick={handleInfo}>Info Get Button</button>
+            <p>{handleInfo.content}</p>
+        </div>
+    );
 };
 
-return (
-    <>
-    <h1>TEST PAGE</h1>
-    언어코드{code}<input type="text" onChange={handlecode}></input>
-    <form>
-        <input type="file" id="profile-upload" accept="image/*" onChange={onChangeImg}/>
-    </form>
-    국가명{name}<input type="text" onChange={handlename}></input>
-    <button type="submit" onClick={onClickLogin}>
-        제출
-    </button>
-    </>
-    )
-}
-
-
 export default Test;
+
