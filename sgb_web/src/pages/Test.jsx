@@ -8,20 +8,26 @@ const Test = () => {
   useEffect(()=> {
     axios.get('http://www.career.go.kr/cnet/openapi/getOpenApi?apiKey=dd9125011e548bb9ba986fc83305a811&svcType=api&svcCode=MAJOR&contentType=json&gubun=univ_list&univSe=univ')
     .then(response => {
-      setGreens(response.data.dataSearch);
-      console.log(response.data.dataSearch);
+      setGreens(response.data.dataSearch.content);
+      console.log(response.data.dataSearch.content);
     })
     .catch(error => {
       console.log(error);
     })
   }, []);
 
+    console.log('greens: ', greens); //greens에 잘 담김
+
   return (
     <div>
       <h1>출력내용</h1>
-          {greens.content && greens.content.map(green => {
-              <p>{green.lClass}</p>
-          })}
+        <ul>
+          {greens && greens.map(green => {
+          <li key={green.id}>
+            <p>{green.lClass}</p>
+          </li>
+           })}
+        </ul>
     </div>
   );
 };
