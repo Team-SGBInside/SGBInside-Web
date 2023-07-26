@@ -28,6 +28,7 @@ import MentorLogin from './pages/MentorLogin';
 import MentorSignup from './pages/MentorSignup';
 import GreenMentorPage from './pages/GreenMentorPage';
 import GreenFormMentorPage from './pages/GreenFormMentorPage';
+import PinkFormMentorPage from './pages/PinkFormMentorPage';
 
 export default function App() {
   return (
@@ -62,6 +63,7 @@ export default function App() {
             <Route path={"/greenMentor"} element={<GreenMentorPage/>}></Route>
             <Route path={"/testpage"} element={<Test/>}></Route>
             <Route path={"/greenRecordMentor"} element={<GreenFormMentorPage/>}></Route>
+            <Route path={"/pinkRecordMentor"} element={<PinkFormMentorPage/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
