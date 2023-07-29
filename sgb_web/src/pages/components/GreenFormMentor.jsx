@@ -2,10 +2,8 @@ import React, { useRef } from "react";
 import greenform_bg from './img/greenform_bg.png';
 import green_alert_mentor from './img/green_alert_mentor.png';
 import green_save from './img/green_save.png';
-import green_recom from './img/green_recom.png';
 import './GreenForm.css';
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 function GreenFormMentor () {
     const greenNameRef = useRef();
