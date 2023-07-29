@@ -17,13 +17,14 @@ const Test = () => {
   }, []);
 
     console.log('greens: ', greens); //greens에 잘 담김
+    console.log(typeof(greens));
 
   return (
     <div>
       <h1>출력내용</h1>
         <ul>
           {greens && greens.map(green => {
-          <li key={green.id}>
+          <li key={green.lClass}>
             <p>{green.lClass}</p>
           </li>
            })}
