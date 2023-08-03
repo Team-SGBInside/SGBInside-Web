@@ -62,7 +62,7 @@ const getUserInfo = async () => {
 // data 안에는 age, grade, 기타등등이 있음
 const userInfo = await getUserInfo();
 
-const MyPageInfo = () => {
+const MyPageInfo4Mentor = () => {
   return (
     <>
       <div className="mypage">
@@ -103,11 +103,7 @@ const MyPageInfo = () => {
               {''}</Link>
               <Link to="/greenClicked"><img src={menu_green} alt="green" width="80" height="40" />
               {''}</Link>
-              <Link to="/redClicked"><img src={menu_red} alt="red" width="80" height="40" />
-              {''}</Link>
               <Link to="/pinkClicked"><img src={pink_clicked} alt="pink" width="80" height="40" />
-              {''}</Link>
-              <Link to="/blueClicked"><img src={menu_blue} alt="blue" width="80" height="40" />
               {''}</Link>
             </div>
           </div>
@@ -123,4 +119,4 @@ const MyPageInfo = () => {
   );
 };
 
-export default MyPageInfo;
+export default MyPageInfo4Mentor;

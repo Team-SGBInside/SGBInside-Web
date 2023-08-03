@@ -11,15 +11,21 @@ const getUserInfo = async () => {
     const writerId = 9;
     const sortQuery = "all";
     const semseterQuery = "all";
-    const response = await axios.get(
-      `http://3.37.215.18:3000/mypage/${writerId}?sort=${sortQuery}&semester=${semseterQuery}`,
+    const response = await axios.post(
+      `http://3.37.215.18:3000/mypage?sort=${sortQuery}&semester=${semseterQuery}`,
+      {
+        writerId: 9,
+      },
       {
         headers: {
           "Content-Type": "application/json",
         },
       }
     );
+    const firstresult = response;
+    console.log("firstresult: ", firstresult);
     const result = response.data.data;
+    console.log("result: ", result);
     const age = result.age;
     const grade = result.grade;
     const isTeen = result.isTeen;
@@ -30,6 +36,8 @@ const getUserInfo = async () => {
     console.log(response);
     console.log(response.data);
     console.log(response.data.data);
+    console.log(name);
+    console.log(typeof(name));
     const data = {
       // age,
       // grade,
@@ -42,10 +50,12 @@ const getUserInfo = async () => {
     console.log(error);
   }
 };
+
 // userInfo 변수에는 getUserInfo의 호출 결과가 담김(async함수이기 때문에 await문 사용)
 // -> return되는 것은 data이고,
 // data 안에는 name이 있음
 const userInfo = await getUserInfo();
+
 const MentorHello = () => {
   return (
     <>
@@ -54,7 +64,7 @@ const MentorHello = () => {
         &nbsp;
         <span className="light-text">님!</span>
         &nbsp; <br />
-        <Link to="/mypage">
+        <Link to="/mypageMentor">
           <img src={mypage_btn} alt="my_page" width="85" height="28" />
         </Link>
       </div>
