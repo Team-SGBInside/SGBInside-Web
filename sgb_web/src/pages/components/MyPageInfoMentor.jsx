@@ -5,7 +5,7 @@ import InfoBox from "./img/InfoBox.png";
 import menu_whole from "./img/menu_whole.png";
 import menu_green from "./img/menu_green.png";
 import menu_red from "./img/menu_red.png";
-import pink_clicked from "./img/pink_clicked.png";
+import menu_pink from "./img/menu_pink.png";
 import menu_blue from "./img/menu_blue.png";
 import mypage_green from './img/mypage_green.png';
 import mypage_red from './img/mypage_red.png';
@@ -62,7 +62,7 @@ const getUserInfo = async () => {
 // data 안에는 age, grade, 기타등등이 있음
 const userInfo = await getUserInfo();
 
-const MyPageInfo = () => {
+const MyPageInfoMentor = () => {
   return (
     <>
       <div className="mypage">
@@ -99,15 +99,11 @@ const MyPageInfo = () => {
               </select>
             </div>
             <div className="menu_btn">
-              <Link to="/mypage"><img src={menu_whole} alt="whole" width="80" height="40" />
+              <Link to="/mypageMentor"><img src={menu_whole} alt="whole" width="80" height="40" />
               {''}</Link>
-              <Link to="/greenClicked"><img src={menu_green} alt="green" width="80" height="40" />
+              <Link to="/greenClickedMentor"><img src={menu_green} alt="green" width="80" height="40" />
               {''}</Link>
-              <Link to="/redClicked"><img src={menu_red} alt="red" width="80" height="40" />
-              {''}</Link>
-              <Link to="/pinkClicked"><img src={pink_clicked} alt="pink" width="80" height="40" />
-              {''}</Link>
-              <Link to="/blueClicked"><img src={menu_blue} alt="blue" width="80" height="40" />
+              <Link to="/pinkClickedMentor"><img src={menu_pink} alt="pink" width="80" height="40" />
               {''}</Link>
             </div>
           </div>
@@ -116,11 +112,16 @@ const MyPageInfo = () => {
       <br/>
       <div className="mypage3">
             <div className="activity_list">
+                <img src={mypage_green} alt="green" width="553" height="130"/><br/>
+                <img src={mypage_red} alt="red" width="553" height="130"/><br/>
                 <img src={mypage_pink} alt="pink" width="553" height="130"/><br/>
+                <img src={mypage_blue} alt="blue" width="553" height="130"/><br/>
+                <img src={mypage_blue2} alt="blue2" width="553" height="130"/><br/>
+                <img src={mypage_green2} alt="green2" width="553" height="130"/><br/>
             </div>
         </div>
     </>
   );
 };
 
-export default MyPageInfo;
+export default MyPageInfoMentor;

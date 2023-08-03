@@ -8,11 +8,14 @@ const getUserInfo = async () => {
   // Hello가 렌더링될 때 getUserInfo가 잘 호출되는지 콘솔로 확인
   console.log("used11");
   try {
-    const writerId = 9;
+    //const writerId = 9;
     const sortQuery = "all";
     const semseterQuery = "all";
-    const response = await axios.get(
-      `http://3.37.215.18:3000/mypage/${writerId}?sort=${sortQuery}&semester=${semseterQuery}`,
+    const response = await axios.post(
+      `http://3.37.215.18:3000/mypage?sort=${sortQuery}&semester=${semseterQuery}`,
+      {
+        writerId: 9
+      },
       {
         headers: {
           "Content-Type": "application/json",
