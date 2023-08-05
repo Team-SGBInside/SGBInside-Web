@@ -13,6 +13,7 @@ import Signup from './pages/Signup';
 import GreenModal from './pages/components/Modal';
 import MyPage from './pages/MyPage';
 import LoginedHome from './pages/LoginedHome';
+import LoginedHomeMentor from './pages/LoginedHomeMentor';
 import GreenClicked from './pages/GreenClicked';
 import RedClicked from './pages/RedClicked';
 import PinkClicked from './pages/PinkClicked';
@@ -29,6 +30,9 @@ import MentorSignup from './pages/MentorSignup';
 import GreenMentorPage from './pages/GreenMentorPage';
 import GreenFormMentorPage from './pages/GreenFormMentorPage';
 import PinkFormMentorPage from './pages/PinkFormMentorPage';
+import MyPageMentor from './pages/MyPageMentor';
+import GreenClickedMentor from './pages/GreenClickedMentor';
+import PinkClickedMentor from './pages/PinkClickedMentor';
 
 export default function App() {
   return (
@@ -48,7 +52,9 @@ export default function App() {
             <Route path={"/blueRecord"} element= {<BlueRecordPage/>}></Route>
             <Route path={"/modaltest"} element={<GreenModal/>}></Route>
             <Route path={"/mypage"} element={<MyPage/>}></Route>
+            <Route path={"/mypageMentor"} element={<MyPageMentor/>}></Route>
             <Route path={"/loginedHome"} element={<LoginedHome/>}></Route>
+            <Route path={"/loginedMentorHome"} element={<LoginedHomeMentor/>}></Route>
             <Route path={"/greenClicked"} element={<GreenClicked/>}></Route>
             <Route path={"/redClicked"} element={<RedClicked/>}></Route>
             <Route path={"/pinkClicked"} element={<PinkClicked/>}></Route>
@@ -64,6 +70,8 @@ export default function App() {
             <Route path={"/testpage"} element={<Test/>}></Route>
             <Route path={"/greenRecordMentor"} element={<GreenFormMentorPage/>}></Route>
             <Route path={"/pinkRecordMentor"} element={<PinkFormMentorPage/>}></Route>
+            <Route path={"/greenClickedMentor"} element={<GreenClickedMentor/>}></Route>
+            <Route path={"/pinkClickedMentor"} element={<PinkClickedMentor/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>

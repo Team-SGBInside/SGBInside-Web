@@ -1,11 +1,11 @@
 import React from "react";
 import axios from "axios";
-import "./MyPageInfo.css";
+import "./MyPageInfoMentor.css";
 import InfoBox from "./img/InfoBox.png";
 import menu_whole from "./img/menu_whole.png";
-import menu_green from "./img/menu_green.png";
+import green_clicked from "./img/green_clicked.png";
 import menu_red from "./img/menu_red.png";
-import pink_clicked from "./img/pink_clicked.png";
+import menu_pink from "./img/menu_pink.png";
 import menu_blue from "./img/menu_blue.png";
 import mypage_green from './img/mypage_green.png';
 import mypage_red from './img/mypage_red.png';
@@ -26,7 +26,7 @@ const getUserInfo = async () => {
       `http://3.37.215.18:3000/mypage?sort=${sortQuery}&semester=${semseterQuery}`,
       {
         writerId: 9,
-      }, 
+      },       
       {
         headers: {
           "Content-Type": "application/json",
@@ -99,16 +99,12 @@ const MyPageInfo = () => {
               </select>
             </div>
             <div className="menu_btn">
-              <Link to="/mypage"><img src={menu_whole} alt="whole" width="80" height="40" />
+              <Link to="/mypageMentor"><img src={menu_whole} alt="whole" width="80" height="40" />
               {''}</Link>
-              <Link to="/greenClicked"><img src={menu_green} alt="green" width="80" height="40" />
+              <Link to="/greenClickedMentor"><img src={green_clicked} alt="green" width="80" height="40" />
               {''}</Link>
-              <Link to="/redClicked"><img src={menu_red} alt="red" width="80" height="40" />
-              {''}</Link>
-              <Link to="/pinkClicked"><img src={pink_clicked} alt="pink" width="80" height="40" />
-              {''}</Link>
-              <Link to="/blueClicked"><img src={menu_blue} alt="blue" width="80" height="40" />
-              {''}</Link>
+              <Link to="/pinkClickedMentor"><img src={menu_pink} alt="pink" width="80" height="40" />
+              {''}</Link>      
             </div>
           </div>
         </div>
@@ -116,7 +112,8 @@ const MyPageInfo = () => {
       <br/>
       <div className="mypage3">
             <div className="activity_list">
-                <img src={mypage_pink} alt="pink" width="553" height="130"/><br/>
+                <img src={mypage_green} alt="green" width="553" height="130"/><br/>
+                <img src={mypage_green2} alt="green2" width="553" height="130"/><br/>
             </div>
         </div>
     </>
