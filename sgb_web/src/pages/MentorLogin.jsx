@@ -28,10 +28,11 @@ const MentorLogin = () => {
       );
       console.log(response);
       window.alert("환영합니다!");
-    //   location.href="/loginedHome";
+      location.href="/loginedMentorHome";
     } catch (error) {
       console.log(error);
       window.alert("아이디 또는 비밀번호가 일치하지 않습니다. 다시 시도해주세요.");
+      location.href="/mentorLogin";
     }
   };
 

@@ -22,8 +22,11 @@ const getUserInfo = async () => {
     const writerId = 9;
     const sortQuery = "all";
     const semseterQuery = "all";
-    const response = await axios.get(
-      `http://3.37.215.18:3000/mypage/${writerId}?sort=${sortQuery}&semester=${semseterQuery}`,
+    const response = await axios.post(
+      `http://3.37.215.18:3000/mypage?sort=${sortQuery}&semester=${semseterQuery}`,
+      {
+        writerId: 9,
+      },       
       {
         headers: {
           "Content-Type": "application/json",
@@ -97,15 +100,15 @@ const MyPageInfo = () => {
             </div>
             <div className="menu_btn">
               <Link to="/mypage"><img src={menu_whole} alt="whole" width="80" height="40" />
-              &nbsp;</Link>
+              {''}</Link>
               <Link to="/greenClicked"><img src={menu_green} alt="green" width="80" height="40" />
-              &nbsp;</Link>
+              {''}</Link>
               <Link to="/redClicked"><img src={menu_red} alt="red" width="80" height="40" />
-              &nbsp;</Link>
+              {''}</Link>
               <Link to="/pinkClicked"><img src={menu_pink} alt="pink" width="80" height="40" />
-              &nbsp;</Link>
+              {''}</Link>
               <Link to="/blueClicked"><img src={blue_clicked} alt="blue" width="80" height="40" />
-              &nbsp;</Link>
+              {''}</Link>
             </div>
           </div>
         </div>
