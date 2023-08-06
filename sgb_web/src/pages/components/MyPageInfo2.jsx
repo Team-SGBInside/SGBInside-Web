@@ -7,29 +7,31 @@ import green_clicked from "./img/green_clicked.png";
 import menu_red from "./img/menu_red.png";
 import menu_pink from "./img/menu_pink.png";
 import menu_blue from "./img/menu_blue.png";
-import mypage_green from './img/mypage_green.png';
-import mypage_red from './img/mypage_red.png';
-import mypage_pink from './img/mypage_pink.png';
-import mypage_blue from './img/mypage_blue.png';
-import mypage_blue2 from './img/mypage_blue2.png';
-import mypage_green2 from './img/mypage_green2.png';
-import { Link } from 'react-router-dom';
+import mypage_green from "./img/mypage_green.png";
+import mypage_red from "./img/mypage_red.png";
+import mypage_pink from "./img/mypage_pink.png";
+import mypage_blue from "./img/mypage_blue.png";
+import mypage_blue2 from "./img/mypage_blue2.png";
+import mypage_green2 from "./img/mypage_green2.png";
+import { Link } from "react-router-dom";
+import { getCookie, setCookie } from "../../lib/cookie";
 
 const getUserInfo = async () => {
   // MyPageInfo가 렌더링될 때 getUserInfo가 잘 호출되는지 콘솔로 확인
   console.log("used22");
   try {
     // const writerId = 9;
+    const userId = await getCookie("userId");
+    const token = await getCookie("accessToken");
+
     const sortQuery = "all";
     const semseterQuery = "all";
-    const response = await axios.post(
+    const response = await axios.get(
       `http://3.37.215.18:3000/mypage?sort=${sortQuery}&semester=${semseterQuery}`,
-      {
-        writerId: 9,
-      },      
       {
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${getCookie("accessToken")}`,
         },
       }
     );
@@ -99,27 +101,39 @@ const MyPageInfo = () => {
               </select>
             </div>
             <div className="menu_btn">
-              <Link to="/mypage"><img src={menu_whole} alt="whole" width="80" height="40" />
-              {''}</Link>
-              <Link to="/greenClicked"><img src={green_clicked} alt="green" width="80" height="40" />
-              {''}</Link>
-              <Link to="/redClicked"><img src={menu_red} alt="red" width="80" height="40" />
-              {''}</Link>
-              <Link to="/pinkClicked"><img src={menu_pink} alt="pink" width="80" height="40" />
-              {''}</Link>
-              <Link to="/blueClicked"><img src={menu_blue} alt="blue" width="80" height="40" />
-              {''}</Link>      
+              <Link to="/mypage">
+                <img src={menu_whole} alt="whole" width="80" height="40" />
+                {""}
+              </Link>
+              <Link to="/greenClicked">
+                <img src={green_clicked} alt="green" width="80" height="40" />
+                {""}
+              </Link>
+              <Link to="/redClicked">
+                <img src={menu_red} alt="red" width="80" height="40" />
+                {""}
+              </Link>
+              <Link to="/pinkClicked">
+                <img src={menu_pink} alt="pink" width="80" height="40" />
+                {""}
+              </Link>
+              <Link to="/blueClicked">
+                <img src={menu_blue} alt="blue" width="80" height="40" />
+                {""}
+              </Link>
             </div>
           </div>
         </div>
       </div>
-      <br/>
+      <br />
       <div className="mypage3">
-            <div className="activity_list">
-                <img src={mypage_green} alt="green" width="553" height="130"/><br/>
-                <img src={mypage_green2} alt="green2" width="553" height="130"/><br/>
-            </div>
+        <div className="activity_list">
+          <img src={mypage_green} alt="green" width="553" height="130" />
+          <br />
+          <img src={mypage_green2} alt="green2" width="553" height="130" />
+          <br />
         </div>
+      </div>
     </>
   );
 };
