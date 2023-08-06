@@ -11,6 +11,7 @@ const getUserInfo = async () => {
   // console.log("used11");
   try {
     //const writerId = 9;
+    // await 없이 getCookie해도 되는듯합니다!
     const userId = getCookie("userId");
     const token = getCookie("accessToken");
 
@@ -66,7 +67,7 @@ const Hello = () => {
   return (
     <>
       <div className="hello">
-        <span className="light-text">오늘도 열공하세요, {userInfo}</span>
+        <span className="light-text">오늘도 열공하세요, {userInfo.name}</span>
         &nbsp;
         <span className="light-text">님!</span>
         &nbsp; <br />
