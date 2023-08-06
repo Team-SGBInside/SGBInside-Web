@@ -3,26 +3,37 @@ import axios from "axios";
 import "./Hello.css";
 import mypage_btn from "./img/mypage_btn.png";
 import { Link } from "react-router-dom";
+import { getCookie, setCookie } from "../../lib/cookie";
 
 const getUserInfo = async () => {
   // Hello가 렌더링될 때 getUserInfo가 잘 호출되는지 콘솔로 확인
-  console.log("used11");
+  console.log("herrrrrr");
+  // console.log("used11");
   try {
     //const writerId = 9;
+    const userId = getCookie("userId");
+    const token = getCookie("accessToken");
+
+    console.log("userId: ", userId);
+    console.log("token: ", token);
+
+    //* 마이페이지 계정정보 조회 및 전체활동 조회 api의 response data에서 계정정보만 활용하기
     const sortQuery = "all";
     const semseterQuery = "all";
-    const response = await axios.post(
+    console.log("we've reached here1");
+    const response = await axios.get(
       `http://3.37.215.18:3000/mypage?sort=${sortQuery}&semester=${semseterQuery}`,
-      {
-        writerId: 9
-      },
       {
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${getCookie("accessToken")}`,
+          withCredentials: true,
         },
       }
     );
+    console.log("we've reached here2");
     const result = response.data.data;
+    console.log("Hello result: ", result);
     const age = result.age;
     const grade = result.grade;
     const isTeen = result.isTeen;
@@ -30,6 +41,7 @@ const getUserInfo = async () => {
     const name = result.name;
     const totalActivitycount = result.totalActivity.activityCount;
     // 순차적으로 response를 찍어보는 코드인데, 필요에 따라 취사선택하세요
+    console.log("여기여기");
     console.log(response);
     console.log(response.data);
     console.log(response.data.data);
@@ -40,6 +52,7 @@ const getUserInfo = async () => {
       name,
       // totalActivitycount,
     };
+    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
@@ -53,7 +66,7 @@ const Hello = () => {
   return (
     <>
       <div className="hello">
-        <span className="light-text">오늘도 열공하세요, {userInfo.name}</span>
+        <span className="light-text">오늘도 열공하세요, {userInfo}</span>
         &nbsp;
         <span className="light-text">님!</span>
         &nbsp; <br />
