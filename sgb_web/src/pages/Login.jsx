@@ -9,6 +9,7 @@ import { setCookie } from "../lib/cookie";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigator = useNavigate();
   const idRef = useRef();
   const pwRef = useRef();
 
@@ -28,8 +29,13 @@ const Login = () => {
         }
       );
       console.log(response);
+      console.log(response.data.data);
       window.alert("환영합니다!");
-      location.href = "/loginedHome";
+      setCookie("userId", response.data.data.userId);
+      setCookie("accessToken", response.data.data.accessToken);
+      navigator("/loginedHome"); // 처리해줘야 할 로직이 있는 페이지 전환일때
+      // return response.data;
+      // location.href = "/loginedHome";
     } catch (error) {
       console.log(error);
       window.alert(
