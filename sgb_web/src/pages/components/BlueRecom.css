@@ -1,31 +1,31 @@
 .bluerecom {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    min-width: fit-content;
-  }
-  
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-width: fit-content;
+}
+
 .bluerecom_bg {
-      position: relative;
-      text-align: center;
-  }
-  
+  position: relative;
+  text-align: center;
+}
+
 .blue_talk {
-    position: absolute;
-    left: 3%;
-    bottom: 60%;
-    text-align: left;
-    font-size: 15px;
-    z-index: 999;
-  }
+  position: absolute;
+  left: 3%;
+  bottom: 60%;
+  text-align: left;
+  font-size: 15px;
+  z-index: 999;
+}
 
 .bluerecom_content {
-    position: absolute;
-    left: 5%;
-    top: 7%;
-    text-align: left;
-    font-size: 20px;
-    z-index: 999;
+  position: absolute;
+  left: 5%;
+  top: 7%;
+  text-align: left;
+  font-size: 20px;
+  z-index: 999;
 }
 
 .search_div_blue {
@@ -36,7 +36,25 @@
   padding-left: 10px;
   height: 70px;
   width: 700px;
-  border-color: #B1C2CA;
+  border-color: #b1c2ca;
   border-width: 15px;
   border-style: solid;
+}
+
+.search_result_blue {
+  font-size: 12px; /* 전체 요소 폰트 사이즈인 22px를 따라가서 적용이 안됨 */
+  /*thead는 폰트 크게 가져가도 될 것 같은데, tbody 폰트는 크기와 굵기 조정이 필요할것같아요!*/
+}
+
+.search_result_blue table {
+  background-color: #ffffff;
+  /* 테두리 */
+  border: none;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.search_result_blue table thead {
+  background-color: #d9d9d9;
+  border-color: #d9d9d9;
 }
