@@ -1,9 +1,72 @@
-import React from "react";
+import React, { useState } from "react";
 import blueform_bg from "./img/blueform_bg.png";
 import blue_talk from "./img/blue_talk.png";
 import "./BlueRecom.css";
+import axios from "axios";
+import { getCookie, setCookie } from "../../lib/cookie";
 
 function BlueRecom() {
+  const userId = getCookie("userId");
+  const token = getCookie("accessToken");
+  // useEffect(() => {
+  //   axios({
+  //     method: "post",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${getCookie("accessToken")}`,
+  //     },
+  //     url: "http://3.37.215.18:3000/recommend/book"
+  //     data: {
+  //       major: "영어영문"
+  //     }
+  //   }).then((result) => {
+  //     console.log("요청성공")
+  //     console.log(result);
+  //     window.alert("조회성공");
+  //   }).catch((error) => {
+  //     console.log("요청실패");
+  //     console.log(error);
+  //     window.alert("조회실패");
+  //   });
+  // }, []);
+
+  const [major, setMajor] = useState("");
+  const [books, setBooks] = useState("");
+
+  const handleMajor = (e) => {
+    e.preventDefault();
+    setMajor(e.target.value);
+  };
+
+  const onKeySubmitSearch = (e) => {
+    if (e.key === "Enter") {
+      axios({
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${getCookie("accessToken")}`,
+        },
+        url: "http://3.37.215.18:3000/recommend/book",
+        data: {
+          major: major,
+        },
+      })
+        .then((result) => {
+          console.log("요청성공");
+          console.log(result);
+          const books = result.data.data;
+          setBooks(books);
+          window.alert("조회성공");
+          const codes = JSON.stringify(books);
+          console.log(codes);
+        })
+        .catch((error) => {
+          console.log("요청실패");
+          console.log(error);
+          window.alert("조회실패");
+        });
+    }
+  };
   return (
     <div className="bluerecom">
       <div className="bluerecom_bg">
@@ -21,7 +84,34 @@ function BlueRecom() {
               placeholder="검색어를 입력 하세요..."
               name="query"
               className="search_input_blue"
+              onChange={handleMajor}
+              onKeyPress={onKeySubmitSearch}
             />
+          </div>
+          <div className="search_result_blue">
+            <table>
+              <thead>
+                <tr>
+                  <th>도서명</th>
+                  <th>저자</th>
+                  <th>출판사</th>
+                  <th>추천인</th>
+                </tr>
+              </thead>
+              <tbody>
+                {books &&
+                  books.map((book) => {
+                    return (
+                      <tr key={book.id}>
+                        <td>{book.도서명}</td>
+                        <td>{book.저자}</td>
+                        <td>{book.출판사}</td>
+                        <td>{book.추천인}</td>
+                      </tr>
+                    );
+                  })}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
