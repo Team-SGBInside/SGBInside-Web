@@ -95,7 +95,7 @@ function BlueRecom() {
                   <th>도서명</th>
                   <th>저자</th>
                   <th>출판사</th>
-                  <th>추천인</th>
+                  <th>추천대학</th>
                 </tr>
               </thead>
               <tbody>
