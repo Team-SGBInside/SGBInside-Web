@@ -136,7 +136,12 @@ function RedRecom() {
                     {relateSubject["subject_name"]}
                   </pre>
                   <pre id="search_result_red_subject_desc">
-                    {relateSubject["subject_description"]}
+                    {relateSubject["subject_description"]
+                      ? relateSubject["subject_description"].replace(
+                          "<br>",
+                          "\n"
+                        )
+                      : relateSubject["subject_description"]}
                   </pre>
                 </div>
               );
