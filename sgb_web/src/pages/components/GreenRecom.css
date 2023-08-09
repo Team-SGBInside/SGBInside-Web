@@ -4,12 +4,12 @@
   width: 100%;
   min-width: fit-content;
 }
-  
+
 .greenrecom_bg {
   position: relative;
   text-align: center;
 }
-  
+
 .green_talk {
   position: absolute;
   left: 3%;
@@ -32,17 +32,25 @@
   padding-left: 10%;
 }
 
+.search_result_green {
+  font-size: 17px;
+}
+
+.search_result_green b {
+  font-size: 20px;
+}
+
 .search_input_green {
   padding-left: 10px;
   height: 70px;
   width: 700px;
-  border-color: #D6EBCA;
+  border-color: #d6ebca;
   border-width: 15px;
   border-style: solid;
 }
 
 .green_mentor {
-  position: absolute; 
-  left: 790px; 
+  position: absolute;
+  left: 790px;
   bottom: 63px;
 }
