@@ -69,9 +69,10 @@ function BlueRecom() {
   };
   return (
     <div className="bluerecom">
-      <div className="bluerecom_bg">
-        <img src={blueform_bg} alt="blueform_bg" width="1200" height="1510" />
+      {/* <div className="bluerecom_bg"> */}
+        {/* <img src={blueform_bg} alt="blueform_bg" width="1200" height="1510" /> */}
         <div className="bluerecom_content">
+          <br />
           <div className="blue_talk">
             <img src={blue_talk} alt="blue_talk" width="555" height="120" />
           </div>
@@ -115,7 +116,7 @@ function BlueRecom() {
             </table>
           </div>
         </div>
-      </div>
+      {/* </div> */}
     </div>
   );
 }
