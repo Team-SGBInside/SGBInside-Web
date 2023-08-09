@@ -57,11 +57,21 @@
 
 table {
   margin: 0 auto;
+  table-layout: fixed;
+  width: 90%;
 }
 
 .search_result_blue table thead {
   background-color: #d9d9d9;
   border-color: #d9d9d9;
   position: relative;
+}
+
+th {
+  text-align: center;
+}
+
+tbody td {
+  font-weight: lighter;
 }
 
