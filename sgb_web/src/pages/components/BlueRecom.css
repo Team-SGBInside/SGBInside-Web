@@ -21,11 +21,14 @@
 
 .bluerecom_content {
   position: absolute;
-  left: 5%;
-  top: 7%;
+  left: 25px;
+  top: 35%;
   text-align: left;
   font-size: 20px;
   z-index: 999;
+  background-color: #EEF2EB;
+  border: 10px solid #B1C2CA;
+
 }
 
 .search_div_blue {
@@ -58,7 +61,10 @@
 table {
   margin: 0 auto;
   table-layout: fixed;
-  width: 90%;
+  width: 1330px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 30px;
 }
 
 .search_result_blue table thead {
@@ -73,5 +79,6 @@ th {
 
 tbody td {
   font-weight: lighter;
+  font-size: 20px;
 }
 
