@@ -74,7 +74,7 @@ function BlueRecom() {
         <div className="bluerecom_content">
           <br />
           <div className="blue_talk">
-            <img src={blue_talk} alt="blue_talk" width="555" height="120" />
+            <img src={blue_talk} alt="blue_talk" width="555" height="130" />
           </div>
           <br />
           <br />
