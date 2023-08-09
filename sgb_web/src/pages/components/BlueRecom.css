@@ -11,7 +11,7 @@
 }
 
 .blue_talk {
-  position: absolute;
+  position: relative;
   left: 3%;
   bottom: 60%;
   text-align: left;
@@ -30,6 +30,7 @@
 
 .search_div_blue {
   padding-left: 10%;
+  position: relative;
 }
 
 .search_input_blue {
@@ -54,7 +55,13 @@
   border-collapse: collapse;
 }
 
+table {
+  margin: 0 auto;
+}
+
 .search_result_blue table thead {
   background-color: #d9d9d9;
   border-color: #d9d9d9;
+  position: relative;
 }
+

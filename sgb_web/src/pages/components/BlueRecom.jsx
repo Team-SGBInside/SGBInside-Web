@@ -56,7 +56,7 @@ function BlueRecom() {
           console.log(result);
           const books = result.data.data;
           setBooks(books);
-          window.alert("조회성공");
+          //window.alert("조회성공");
           const codes = JSON.stringify(books);
           console.log(codes);
         })
@@ -88,14 +88,15 @@ function BlueRecom() {
               onKeyPress={onKeySubmitSearch}
             />
           </div>
+          <br/>
           <div className="search_result_blue">
             <table>
               <thead>
                 <tr>
-                  <th>도서명</th>
-                  <th>저자</th>
-                  <th>출판사</th>
-                  <th>추천대학</th>
+                  <th>&nbsp;&nbsp;도서명&nbsp;&nbsp;</th>
+                  <th>&nbsp;&nbsp;저자&nbsp;&nbsp;</th>
+                  <th>&nbsp;&nbsp;출판사&nbsp;&nbsp;</th>
+                  <th>&nbsp;&nbsp;추천대학&nbsp;&nbsp;</th>
                 </tr>
               </thead>
               <tbody>
