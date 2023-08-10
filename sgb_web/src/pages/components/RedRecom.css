@@ -1,31 +1,31 @@
 .redrecom {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    min-width: fit-content;
-  }
-  
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-width: fit-content;
+}
+
 .redrecom_bg {
-      position: relative;
-      text-align: center;
-  }
-  
+  position: relative;
+  text-align: center;
+}
+
 .red_talk {
-    position: absolute;
-    left: 3%;
-    bottom: 60%;
-    text-align: left;
-    font-size: 15px;
-    z-index: 999;
-  }
+  position: absolute;
+  left: 3%;
+  bottom: 60%;
+  text-align: left;
+  font-size: 15px;
+  z-index: 999;
+}
 
 .redrecom_content {
-    position: absolute;
-    left: 5%;
-    top: 7%;
-    text-align: left;
-    font-size: 20px;
-    z-index: 999;
+  position: absolute;
+  left: 5%;
+  top: 7%;
+  text-align: left;
+  font-size: 20px;
+  z-index: 999;
 }
 
 .search_div_red {
@@ -36,7 +36,18 @@
   padding-left: 10px;
   height: 70px;
   width: 700px;
-  border-color: #F29191;
+  border-color: #f29191;
   border-width: 15px;
   border-style: solid;
+}
+
+#search_result_red_subject_name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#search_result_red_subject_desc {
+  font-size: 16px;
+  font-weight: lighter;
+  margin-bottom: 40px;
 }
