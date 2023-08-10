@@ -68,7 +68,7 @@ export default function App() {
             <Route path={"/mentorLogin"} element={<MentorLogin/>}></Route>
             <Route path={"/mentorSignup"} element={<MentorSignup/>}></Route>
             <Route path={"/greenMentor"} element={<GreenMentorPage/>}></Route>
-            <Route path={"/greenMentor/:id"} element={<GreenMentorDetail/>}></Route>
+            {/* <Route path={"/greenMentor/:id"} element={<GreenMentorDetail/>}></Route> */}
             <Route path={"/testpage"} element={<Test/>}></Route>
             <Route path={"/greenRecordMentor"} element={<GreenFormMentorPage/>}></Route>
             <Route path={"/pinkRecordMentor"} element={<PinkFormMentorPage/>}></Route>
