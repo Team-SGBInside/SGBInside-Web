@@ -8,27 +8,6 @@ import { getCookie, setCookie } from "../../lib/cookie";
 function BlueRecom() {
   const userId = getCookie("userId");
   const token = getCookie("accessToken");
-  // useEffect(() => {
-  //   axios({
-  //     method: "post",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: `Bearer ${getCookie("accessToken")}`,
-  //     },
-  //     url: "http://3.37.215.18:3000/recommend/book"
-  //     data: {
-  //       major: "영어영문"
-  //     }
-  //   }).then((result) => {
-  //     console.log("요청성공")
-  //     console.log(result);
-  //     window.alert("조회성공");
-  //   }).catch((error) => {
-  //     console.log("요청실패");
-  //     console.log(error);
-  //     window.alert("조회실패");
-  //   });
-  // }, []);
 
   const [major, setMajor] = useState("");
   const [books, setBooks] = useState("");
