@@ -1,35 +1,39 @@
-.pink_mentor_banner  {
-    display: flex;
-    width: 100%;
-    min-width: fit-content;
-    padding-top: 1px;
+.pink_mentor_banner {
+  display: flex;
+  width: 100%;
+  min-width: fit-content;
+  padding-top: 1px;
 }
 
 .pink_banner_bg {
-    position: relative;
+  position: relative;
 }
 
 .activity_type {
-    width: 100%;
-    position: absolute;
-    font-size: small;
-    font-weight: lighter;
-    bottom: 16%;
-    left: 10%;
+  width: 100%;
+  position: absolute;
+  font-size: small;
+  font-weight: lighter;
+  bottom: 16%;
+  left: 10%;
 }
 
-.activity_name {
-    width: 100%;
-    position: absolute;
-    bottom: 53%;
-    left: 50%;
+.activity_name_pink {
+  /* GreenMentorBanner.css의 
+  .activity_name이 가진 
+  css를 먹어버려서 
+  width 조정이 안되기 때문에 className 변경*/
+  width: 1000px;
+  position: absolute;
+  bottom: 53%;
+  left: 50%;
 }
 
 .activity_writer {
-    width: 100%;
-    position: absolute;
-    bottom: 25%;
-    left: 50%;
-    font-weight: lighter;
-    font-size: 20px;
+  width: 100%;
+  position: absolute;
+  bottom: 25%;
+  left: 50%;
+  font-weight: lighter;
+  font-size: 20px;
 }
