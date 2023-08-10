@@ -96,6 +96,7 @@ const GreenMentor = () => {
           console.log(result);
           console.log(result.data.data); // 전체 창체 활동 배열
           setActivityList(result.data.data);
+
           if (result.data.data.length === 0) {
             alert(
               "해당 학과에 재학중인 멘토의 창의적 체험활동을 조회하지 못했습니다.\n\n다른 학과명으로 조회해볼까요?\n\n생기부 인사이드는 더 많은 멘토들과의 만남을\n계획중이니 조금만 기다려주세요!"
