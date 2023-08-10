@@ -30,7 +30,8 @@
 }
 
 .activity_writer {
-  width: 100%;
+  /*마찬가지로 너비 조정*/
+  width: 1000px;
   position: absolute;
   bottom: 25%;
   left: 50%;
