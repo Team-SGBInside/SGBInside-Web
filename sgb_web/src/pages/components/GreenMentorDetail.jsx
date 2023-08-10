@@ -7,6 +7,7 @@ import axios from "axios";
 import GreenMentorBanner from "./GreenMentorBanner";
 import { getCookie, setCookie } from "../../lib/cookie";
 import { useNavigate } from "react-router-dom";
+import BackButton from "./BackButton";
 
 const GreenMentorDetail = () => {
   const { id } = useParams();
@@ -54,6 +55,7 @@ const GreenMentorDetail = () => {
           활동 시작일자: {activity.startDate} <br />
           활동 종료일자: {activity.endDate} <br />
           기타 조언 및 활동소감: {activity.thoughts} <br />
+          <BackButton />
         </div>
       </div>
     </div>
