@@ -1,35 +1,38 @@
-.green_mentor_banner  {
-    display: flex;
-    width: 100%;
-    min-width: fit-content;
-    padding-top: 30px;
+.green_mentor_banner {
+  display: flex;
+  width: 100%;
+  min-width: fit-content;
+  padding-top: 30px;
 }
 
 .green_banner_bg {
-    position: relative;
+  position: relative;
 }
 
 .activity_type {
-    width: 100%;
-    position: absolute;
-    font-size: small;
-    font-weight: lighter;
-    bottom: 16%;
-    left: 10%;
+  /* width: 100%; */
+  position: absolute;
+  font-size: small;
+  font-weight: lighter;
+  bottom: 16%;
+  left: 10%;
 }
 
 .activity_name {
-    width: 100%;
-    position: absolute;
-    bottom: 53%;
-    left: 50%;
+  width: 100%;
+  position: absolute;
+  bottom: 53%;
+  left: 50%;
 }
 
 .activity_writer {
-    width: 100%;
-    position: absolute;
-    bottom: 25%;
-    left: 50%;
-    font-weight: lighter;
-    font-size: 20px;
+  /* width: 100%; */
+  /* %는 박스 모델 상 부모 요소의 컨텐트 박스 크기를 따라가기 때문에 주의 필요*/
+  width: 500px;
+  /* width: 500px 이런 식으로 주면 일단 해결가능하지만 절대적인 px이기 때문에 화면 크기가 바뀌어도 계속 500px를 유지해버려 화면 비율에 따른 대응이어려움*/
+  position: absolute;
+  bottom: 25%;
+  left: 50%;
+  font-weight: lighter;
+  font-size: 20px;
 }
