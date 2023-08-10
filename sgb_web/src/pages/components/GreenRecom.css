@@ -11,9 +11,9 @@
 }
 
 .green_talk {
-  position: absolute;
-  left: 3%;
-  bottom: 60%;
+  position: relative;
+  left: 20%;
+  top: 40%;
   text-align: left;
   font-size: 15px;
   z-index: 999;
@@ -21,19 +21,26 @@
 
 .greenrecom_content {
   position: absolute;
-  left: 5%;
-  top: 15%;
+  left: 25px;
+  top: 35%;
   text-align: left;
   font-size: 20px;
-  z-index: 999;
+  z-index: 999;  
 }
 
 .search_div_green {
-  padding-left: 10%;
+  position: relative;
+  margin-left: 30%;
 }
 
 .search_result_green {
   font-size: 17px;
+  width: 900px;
+  position: relative;
+  margin-left: 30%;
+  margin-top: 160px;
+  padding-top: 50px;
+  padding-left: 10px;
 }
 
 .search_result_green b {
@@ -41,7 +48,6 @@
 }
 
 .search_input_green {
-  padding-left: 10px;
   height: 70px;
   width: 700px;
   border-color: #d6ebca;
@@ -50,7 +56,23 @@
 }
 
 .green_mentor {
-  position: absolute;
-  left: 790px;
-  bottom: 63px;
+  width: 300px;
+  position: relative;
+  left: 930px;
+  bottom: 100px;
+}
+
+.red-text {
+  color: #BD1700;
+  font-weight: lighter;
+  font-size: 22px;
+}
+
+.light-text{
+  font-weight: lighter;
+  font-size: 22px;
+}
+
+#career-net {
+  display: none;
 }
