@@ -27,12 +27,27 @@ const GreenRecom = () => {
     setMajor(e.target.value);
   };
 
+  const doDisplay = () => {
+    var con = document.getElementById("career-net");
+    console.log("con: ", con);
+    console.log("con.style.display: ", con.style.display);
+    console.log("typeof display: ", typeof con.style.display);
+
+    con.style.display = "block";
+    // green의 value를 바꾸는 함수 따로 분리할 필요는 없을 것 같아요~
+    const green = document.getElementById("green").value;
+    console.log("green: ", green);
+    document.getElementById("result").innerText = green;
+    console.log("printGreen");
+  };
+
   const onKeySubmitSearch = async (e) => {
     if (e.key === "Enter") {
       if (!major || trimmedMajor === "") {
         alert("검색어를 입력해주세요");
         return;
       }
+      // printGreen(); //검색창 입력 값 출력
       await axios({
         method: "get",
         url: `http://www.career.go.kr/cnet/openapi/getOpenApi?apiKey=${apiKey}&svcType=api&svcCode=MAJOR&contentType=json&gubun=univ_list&univSe=univ&searchTitle=${major}`,
@@ -75,7 +90,9 @@ const GreenRecom = () => {
           console.log("전공계열정보 조회 실패");
           console.log(error);
         });
-      await getMajorInfo();
+
+      await getMajorInfo(); //검색 결과 출력
+      doDisplay(); //display none => block으로 변경하는 코드
     }
   };
 
@@ -95,7 +112,7 @@ const GreenRecom = () => {
         console.log("careeracts: ", careerActs);
       })
       .catch((error) => {
-        alert("학과코드에 따른 학과정보 조회 실패");
+        alert("검색결과가 존재하지 않습니다.");
         console.log("학과코드에 따른 학과정보 조회 실패");
         console.log(error);
       });
@@ -103,54 +120,55 @@ const GreenRecom = () => {
 
   return (
     <div className="greenrecom">
-      <div className="greenrecom_bg">
-        <img src={greenform_bg} alt="greenform_bg" width="1200" height="1310" />
-        <div className="greenrecom_content">
-          <div className="green_talk">
-            <img src={green_talk} alt="green_talk" width="555" height="120" />
-          </div>
-          <br />
-          <br />
-          <div className="green_mentor">
-            <Link to="/greenMentor">
-              <img
-                src={green_mentor}
-                alt="green_mentor"
-                width="300"
-                height="100"
-              />
-            </Link>
-          </div>
-          {/* Search 관련 코드 */}
-          <div className="search_div_green">
-            <input
-              type="search"
-              placeholder="검색어를 입력 하세요..."
-              name="query"
-              className="search_input_green"
-              onChange={handleMajor}
-              onKeyPress={onKeySubmitSearch}
+      <img src={greenform_bg} alt="greenform_bg" width="1200" height="1310" />
+      <div className="greenrecom_content">
+        <div className="green_talk">
+          <img src={green_talk} alt="green_talk" width="555" height="120" />
+        </div>
+        <div className="green_mentor">
+          <Link to="/greenMentor">
+            <img
+              src={green_mentor}
+              alt="green_mentor"
+              width="300"
+              height="100"
             />
+          </Link>
+        </div>
+        {/* Search 관련 코드 */}
+        <div className="search_div_green">
+          <input
+            id="green"
+            type="search"
+            placeholder="검색어를 입력 하세요..."
+            name="query"
+            className="search_input_green"
+            onChange={handleMajor}
+            onKeyPress={onKeySubmitSearch}
+            value={major}
+          />
+        </div>
+        <div className="search_result_green">
+          <div id="career-net">
+            <span className="red-text">커리어넷</span>
+            <span className="light-text">에서 제공하는 </span>
+            <span id="result"></span>
+            <span className="light-text">
+              {" "}
+              관련 진로활동은 다음과 같습니다.
+            </span>
+            <br />
+            <br />
           </div>
-
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-
           {careerActs &&
             careerActs.map((careerAct) => {
               return (
                 <>
-                  <div className="search_result_green">
-                    <b>{careerAct.act_name.replace("<br>", "")}</b>
-                    <br />
-                    {careerAct.act_description}
-                    <br />
-                    <br />
-                  </div>
+                  <b>{careerAct.act_name.replace("<br>", "")}</b>
+                  <br />
+                  {careerAct.act_description}
+                  <br />
+                  <br />
                 </>
               );
             })}
