@@ -7,6 +7,7 @@ import pink_recom from "./img/pink_recom.png";
 import "./PinkForm.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { getCookie, setCookie } from "../../lib/cookie";
 
 function PinkForm() {
   //useState
@@ -44,6 +45,7 @@ function PinkForm() {
   const handlesemester = (event) => {
     event.preventDefault();
     setSemester(event.target.value);
+    console.log(semester);
   };
 
   const handlerole = (event) => {
@@ -87,7 +89,10 @@ function PinkForm() {
 
     await axios({
       method: "post",
-      headers: { "Content-Type": "multipart/form-data" },
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${getCookie("accessToken")}`,
+      },
       url: "http://3.37.215.18:3000/activity/prize",
       data: formData,
     })
