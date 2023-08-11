@@ -18,13 +18,12 @@ import { getCookie, setCookie } from "../../lib/cookie";
 
 const getUserInfo = async () => {
   // MyPageInfo가 렌더링될 때 getUserInfo가 잘 호출되는지 콘솔로 확인
-  console.log("used22");
+  // console.log("used22");
   try {
-    // const writerId = 9;
     const userId = await getCookie("userId");
     const token = await getCookie("accessToken");
-    console.log("userId: ", userId);
-    console.log("token: ", token);
+    // console.log("userId: ", userId);
+    // console.log("token: ", token);
 
     const sortQuery = "all";
     const semseterQuery = "all";
@@ -43,28 +42,22 @@ const getUserInfo = async () => {
     const school = result.school;
     const isTeen = result.isTeen;
     const name = result.name;
-    const totalActivitycount = result.totalActivity.activityCount;
+    const totalActivityArray = result.totalActivity.activityCount;
     // 순차적으로 response를 찍어보는 코드인데, 필요에 따라 취사선택하세요
-    console.log(response);
-    console.log(response.data);
-    console.log(response.data.data);
-    const data = {
-      age,
-      grade,
-      school,
-      isTeen,
-      name,
-      totalActivitycount,
-    };
-    return data;
+    console.log("response: ", response);
+    console.log("response.data.data: ", response.data.data);
+
+    // getUserInfo 호출 결과 최종적으로 리턴되는 데이터
+    return result;
   } catch (error) {
     console.log(error);
   }
 };
 // userInfo 변수에는 getUserInfo의 호출 결과가 담김(async함수이기 때문에 await문 사용)
-// -> return되는 것은 data이고,
-// data 안에는 age, grade, 기타등등이 있음
+// -> return되는 것은 result이고,
+// result 안에는 age, grade, 기타등등이 있음
 const userInfo = await getUserInfo();
+const totalActivityCount = userInfo.totalActivity.activityCount;
 
 const MyPageInfo = () => {
   return (
@@ -87,8 +80,8 @@ const MyPageInfo = () => {
       <div className="mypage2">
         <div className="infobox2">
           <div className="total_inside">
-            <span className="info_big">{userInfo.totalActivitycount}</span>개의
-            생기부 인사이드
+            <span className="info_big">{totalActivityCount}</span>
+            개의 생기부 인사이드
           </div>
           <br />
           <div className="semester_menu">
@@ -130,6 +123,7 @@ const MyPageInfo = () => {
       <br />
       <div className="mypage3">
         <div className="activity_list">
+          {userInfo.totalActivity}
           <img src={mypage_green} alt="green" width="553" height="130" />
           <br />
           <img src={mypage_red} alt="red" width="553" height="130" />
