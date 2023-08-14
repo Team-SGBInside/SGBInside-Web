@@ -34,6 +34,7 @@ const getUserInfo = async () => {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${getCookie("accessToken")}`,
+          withCredentials: true,
         },
       }
     );

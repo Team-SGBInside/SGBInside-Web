@@ -37,6 +37,7 @@ const GreenMentor = () => {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${getCookie("accessToken")}`,
+        withCredentials: true,
       },
     })
       .then((result) => {

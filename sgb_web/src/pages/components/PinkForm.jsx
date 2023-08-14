@@ -92,6 +92,7 @@ function PinkForm() {
       headers: {
         "Content-Type": "multipart/form-data",
         Authorization: `Bearer ${getCookie("accessToken")}`,
+        withCredentials: true,
       },
       url: "http://3.37.215.18:3000/activity/prize",
       data: formData,
