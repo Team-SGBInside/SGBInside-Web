@@ -72,7 +72,8 @@
 }
 
 #pink_mentor_detail_prize_img {
-  width: 10vw;
+  max-width: 10%;
+  height: auto;
   margin: 30px;
 }
 
