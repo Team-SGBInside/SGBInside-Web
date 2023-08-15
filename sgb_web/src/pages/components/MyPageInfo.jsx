@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import GreenMentorBanner from "./GreenMentorBanner";
-import PinkMentorBanner from "./PinkMentorBanner";
 import "./MyPageInfo.css";
 import InfoBox from "./img/InfoBox.png";
 import menu_whole from "./img/menu_whole.png";
@@ -20,14 +18,23 @@ import { getCookie, setCookie } from "../../lib/cookie";
 import RedMypageBanner from "./RedMypageBanner";
 import BlueMypageBanner from "./BlueMypageBanner";
 import GreenMypageBanner from "./GreenMypageBanner";
+import PinkMypageBanner from "./PinkMypageBanner";
+import { useNavigate } from "react-router-dom";
 
 const getUserInfo = async () => {
-  // const userId = await getCookie("userId");
-  // const token = await getCookie("accessToken");
+  const navigator = useNavigate();
+
+  const tokenUserId = await getCookie("userId");
+  const token = await getCookie("accessToken");
+  if (!tokenUserId || !token) {
+    console.log("cannnot get userId or token from cookie");
+
+    navigator("/login"); // 처리해줘야 할 로직이 있는 페이지 전환일때
+  }
   // console.log("userId: ", userId);
   // console.log("token: ", token);
-  const sortQuery = "all";
-  const semseterQuery = "all";
+  let sortQuery = "all";
+  let semseterQuery = "all";
   const response = await axios.get(
     `http://3.37.215.18:3000/mypage?sort=${sortQuery}&semester=${semseterQuery}`,
     {
@@ -206,12 +213,11 @@ const MyPageInfo = () => {
 
               if (item.sort === "prize") {
                 return (
-                  <PinkMentorBanner
+                  <PinkMypageBanner
                     activityId={item.activityId}
                     name={item.name}
                     type="수상경력"
-                    writerSchoolMajor={item.writerSchoolMajor}
-                    writerGrade={item.writerGrade}
+                    date={item.date}
                     parentFunction={parentFunction}
                   />
                 );
@@ -224,7 +230,6 @@ const MyPageInfo = () => {
                     titleAuthor={item.titleAuthor}
                     sort="독서활동"
                     endDate={item.endDate}
-                    // writerGrade={item.writerGrade}
                     parentFunction={parentFunction}
                   />
                 );

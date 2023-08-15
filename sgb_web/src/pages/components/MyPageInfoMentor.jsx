@@ -15,16 +15,23 @@ import mypage_blue2 from "./img/mypage_blue2.png";
 import mypage_green2 from "./img/mypage_green2.png";
 import { Link } from "react-router-dom";
 import { getCookie, setCookie } from "../../lib/cookie";
+import { useNavigate } from "react-router-dom";
 
 const getUserInfo = async () => {
   // MyPageInfo가 렌더링될 때 getUserInfo가 잘 호출되는지 콘솔로 확인
   // console.log("used22");
   try {
     // const writerId = 9;
+    const navigator = useNavigate();
     const userId = await getCookie("userId");
     const token = await getCookie("accessToken");
     console.log("userId: ", userId);
     console.log("token: ", token);
+    if (!userId || !token) {
+      console.log("cannnot get userId or token from cookie");
+
+      navigator("/login"); // 처리해줘야 할 로직이 있는 페이지 전환일때
+    }
 
     const sortQuery = "all";
     const semseterQuery = "all";
