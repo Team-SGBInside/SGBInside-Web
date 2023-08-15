@@ -1,6 +1,6 @@
 .pink_mypage_banner {
   display: flex;
-  width: 100%;
+  width: 1000px;
   min-width: fit-content;
   padding-top: 1px;
 }
