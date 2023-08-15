@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./MyPageInfo.css";
 import InfoBox from "./img/InfoBox.png";
@@ -20,104 +20,211 @@ import BlueMypageBanner from "./BlueMypageBanner";
 import GreenMypageBanner from "./GreenMypageBanner";
 import PinkMypageBanner from "./PinkMypageBanner";
 
-const getUserInfo = async () => {
+const MyPageInfo = () => {
+  console.log("Hi i'm first");
+  const [userInfo, setUserInfo] = useState({});
+  const [semester, setSemester] = useState("all");
+  const [activitySort, setActivitySort] = useState("all");
+  const [bannerClicked, setBannerClicked] = useState(false);
+
   const tokenUserId = getCookie("userId");
   const token = getCookie("accessToken");
   if (!tokenUserId || !token) {
     console.log("cannnot get userId or token from cookie");
     return;
   }
-  let sortQuery = "all";
-  let semseterQuery = "all";
-  const response = await axios.get(
-    `http://3.37.215.18:3000/mypage?sort=${sortQuery}&semester=${semseterQuery}`,
-    {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${getCookie("accessToken")}`,
-        withCredentials: true,
-      },
-    }
-  );
-  const result = response.data.data;
-  const age = result.age;
-  const grade = result.grade;
-  const school = result.school;
-  const isTeen = result.isTeen;
-  const name = result.name;
-  const userId = result.userId;
-  const totalActivitycount = result.totalActivity.activityCount;
 
-  // 활동 유형별 배열 내부 객체에 활동 유형 구별가능하도록 sort key 추가
-  let allBookActivity = result.totalActivity.allBookActivity;
-  allBookActivity.map((item) => {
-    item.sort = "book";
-  });
-
-  let allPrizeActivity = result.totalActivity.allPrizeActivity;
-  allPrizeActivity.map((item) => {
-    item.sort = "prize";
-  });
-
-  let allSubjectDetailedActivity =
-    result.totalActivity.allSubjectDetailedActivity;
-  allSubjectDetailedActivity.map((item) => {
-    item.sort = "subject";
-  });
-
-  let allCreativeActivity = result.totalActivity.allcreativeActivity;
-  allCreativeActivity.map((item) => {
-    item.sort = "creative";
-  });
-
-  // 전체 활동 통합, 배열 내 인덱스 번호에 따른 uniqId로 id key 부여
-  let allActivity = [
-    ...allBookActivity,
-    ...allPrizeActivity,
-    ...allSubjectDetailedActivity,
-    ...allCreativeActivity,
-  ];
-
-  allActivity.map((item, index) => {
-    let uniqId = parseInt(index);
-    item.id = uniqId;
-  });
-
-  console.log("allActivity: ", allActivity);
-  // console.log("newAllActivity: ", newAllActivity);
-  // 순차적으로 response를 찍어보는 코드인데, 필요에 따라 취사선택하세요
-  console.log("response:", response);
-  console.log("response.data: ", response.data);
-  console.log("response.data.data: ", response.data.data);
-
-  // 객체 내에 객체(totalActivity)가 담기지 않도록 totalAcitivity 안 요소를 꺼내 data로 재구성
-  const data = {
-    age,
-    grade,
-    school,
-    isTeen,
-    name,
-    totalActivitycount,
-    allActivity,
-    userId,
+  let semesterQuery = semester;
+  let sortQuery = activitySort;
+  const handleSemester = (event) => {
+    event.preventDefault();
+    setSemester(event.target.value);
+    console.log("semesterQuery: ", semesterQuery);
+    console.log("sortQuery: ", sortQuery);
+    getUserInfo(sortQuery, semesterQuery);
   };
-  console.log("data: ", data);
-  return data;
-};
-// userInfo 변수에는 getUserInfo의 호출 결과가 담김(async함수이기 때문에 await문 사용)
-// -> return되는 것은 data이고,
-// data 안에는 age, grade, 기타등등이 있음
-const userInfo = await getUserInfo();
 
-const MyPageInfo = () => {
-  const [bannerClicked, setBannerClicked] = useState(false);
+  const handleActivitySort = (sort) => {
+    setActivitySort(sort);
+    console.log("semesterQuery: ", semesterQuery);
+    console.log("sortQuery: ", sortQuery);
+    getUserInfo(sortQuery, semesterQuery);
+  };
+
+  const getUserInfo = (sortQuery, semesterQuery) => {
+    axios
+      .get(
+        `http://3.37.215.18:3000/mypage?sort=${sortQuery}&semester=${semesterQuery}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getCookie("accessToken")}`,
+            withCredentials: true,
+          },
+        }
+      )
+      .then((response) => {
+        const result = response.data.data;
+        const age = result.age;
+        const grade = result.grade;
+        const school = result.school;
+        const isTeen = result.isTeen;
+        const name = result.name;
+        const userId = result.userId;
+        const totalActivitycount = result.totalActivity.activityCount;
+
+        // 활동 유형별 배열 내부 객체에 활동 유형 구별가능하도록 sort key 추가
+        let allBookActivity = result.totalActivity.allBookActivity;
+        allBookActivity.map((item) => {
+          item.sort = "book";
+        });
+
+        let allPrizeActivity = result.totalActivity.allPrizeActivity;
+        allPrizeActivity.map((item) => {
+          item.sort = "prize";
+        });
+
+        let allSubjectDetailedActivity =
+          result.totalActivity.allSubjectDetailedActivity;
+        allSubjectDetailedActivity.map((item) => {
+          item.sort = "subject";
+        });
+
+        let allCreativeActivity = result.totalActivity.allcreativeActivity;
+        allCreativeActivity.map((item) => {
+          item.sort = "creative";
+        });
+
+        // 전체 활동 통합, 배열 내 인덱스 번호에 따른 uniqId로 id key 부여
+        let allActivity = [
+          ...allBookActivity,
+          ...allPrizeActivity,
+          ...allSubjectDetailedActivity,
+          ...allCreativeActivity,
+        ];
+
+        allActivity.map((item, index) => {
+          let uniqId = parseInt(index);
+          item.id = uniqId;
+        });
+
+        console.log("allActivity: ", allActivity);
+        // console.log("newAllActivity: ", newAllActivity);
+        // 순차적으로 response를 찍어보는 코드인데, 필요에 따라 취사선택하세요
+        console.log("response:", response);
+        console.log("response.data: ", response.data);
+        console.log("response.data.data: ", response.data.data);
+
+        // 객체 내에 객체(totalActivity)가 담기지 않도록 totalAcitivity 안 요소를 꺼내 data로 재구성
+        const data = {
+          age,
+          grade,
+          school,
+          isTeen,
+          name,
+          totalActivitycount,
+          allActivity,
+          userId,
+        };
+        console.log("data: ", data);
+        setUserInfo(data);
+        return data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  useEffect(() => {
+    axios
+      .get(
+        `http://3.37.215.18:3000/mypage?sort=${sortQuery}&semester=${semesterQuery}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getCookie("accessToken")}`,
+            withCredentials: true,
+          },
+        }
+      )
+      .then((response) => {
+        console.log("response: ", response);
+        const result = response.data.data;
+        const age = result.age;
+        const grade = result.grade;
+        const school = result.school;
+        const isTeen = result.isTeen;
+        const name = result.name;
+        const userId = result.userId;
+        const totalActivitycount = result.totalActivity.activityCount;
+
+        // 활동 유형별 배열 내부 객체에 활동 유형 구별가능하도록 sort key 추가
+        let allBookActivity = result.totalActivity.allBookActivity;
+        allBookActivity.map((item) => {
+          item.sort = "book";
+        });
+
+        let allPrizeActivity = result.totalActivity.allPrizeActivity;
+        allPrizeActivity.map((item) => {
+          item.sort = "prize";
+        });
+
+        let allSubjectDetailedActivity =
+          result.totalActivity.allSubjectDetailedActivity;
+        allSubjectDetailedActivity.map((item) => {
+          item.sort = "subject";
+        });
+
+        let allCreativeActivity = result.totalActivity.allcreativeActivity;
+        allCreativeActivity.map((item) => {
+          item.sort = "creative";
+        });
+
+        // 전체 활동 통합, 배열 내 인덱스 번호에 따른 uniqId로 id key 부여
+        let allActivity = [
+          ...allBookActivity,
+          ...allPrizeActivity,
+          ...allSubjectDetailedActivity,
+          ...allCreativeActivity,
+        ];
+
+        allActivity.map((item, index) => {
+          let uniqId = parseInt(index);
+          item.id = uniqId;
+        });
+
+        console.log("allActivity: ", allActivity);
+        // console.log("newAllActivity: ", newAllActivity);
+        // 순차적으로 response를 찍어보는 코드인데, 필요에 따라 취사선택하세요
+        console.log("response:", response);
+        console.log("response.data: ", response.data);
+        console.log("response.data.data: ", response.data.data);
+
+        // 객체 내에 객체(totalActivity)가 담기지 않도록 totalAcitivity 안 요소를 꺼내 data로 재구성
+        const data = {
+          age,
+          grade,
+          school,
+          isTeen,
+          name,
+          totalActivitycount,
+          allActivity,
+          userId,
+        };
+        console.log("data: ", data);
+        setUserInfo(data);
+        return data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   const parentFunction = (data, activityId) => {
     setBannerClicked(data);
 
     // GreenMentorBanner를 클릭한 것이 state에 bookean으로 담기면 모달창 출력
     // 모달창 전체
     var modal = document.getElementById("mypage_detail_div");
-    console.log("modal:", modal);
     modal.style.display = "flex";
 
     // 모달창 닫기 버튼
@@ -126,6 +233,13 @@ const MyPageInfo = () => {
     // closeBtn.style.display = "flex";
     // showCreativeActivityById(activityId);
   };
+  // 학기 및 활동유형 버튼 클릭 시 액션
+  // const handleClick = (x) => {
+  //   useEffect(() => {
+  //     setActivitySort(x);
+  //   }, []);
+  //   console.log("activitySort: ", activitySort);
+  // };
   return (
     <>
       <div className="mypage">
@@ -152,25 +266,56 @@ const MyPageInfo = () => {
           <br />
           <div className="semester_menu">
             <div className="semester">
-              <select className="semester_select">
-                <option>1-1&nbsp;&nbsp;</option>
-                <option>1-2&nbsp;&nbsp;</option>
-                <option>2-1&nbsp;&nbsp;</option>
-                <option>2-2&nbsp;&nbsp;</option>
-                <option>3-1&nbsp;&nbsp;</option>
-                <option>3-2&nbsp;&nbsp;</option>
+              <select className="semester_select" onClick={handleSemester}>
+                <option>all</option>
+                <option>1-1</option>
+                <option>1-2</option>
+                <option>2-1</option>
+                <option>2-2</option>
+                <option>3-1</option>
+                <option>3-2</option>
               </select>
             </div>
             <div className="menu_btn">
-              <img src={menu_whole} alt="whole" width="80" height="40" />
+              <img
+                src={menu_whole}
+                alt="all"
+                width="80"
+                height="40"
+                onClick={() => handleActivitySort("all")}
+              />
 
-              <img src={menu_green} alt="green" width="80" height="40" />
+              <img
+                src={menu_green}
+                alt="green"
+                width="80"
+                height="40"
+                onClick={() => handleActivitySort("creative")}
+              />
 
-              <img src={menu_red} alt="red" width="80" height="40" />
+              <img
+                src={menu_red}
+                alt="red"
+                width="80"
+                height="40"
+                onClick={() => handleActivitySort("subject")}
+              />
 
-              <img src={menu_pink} alt="pink" width="80" height="40" />
+              <img
+                src={menu_pink}
+                alt="pink"
+                width="80"
+                height="40"
+                onClick={() => handleActivitySort("prize")}
+              />
 
-              <img src={menu_blue} alt="blue" width="80" height="40" />
+              <img
+                src={menu_blue}
+                alt="blue"
+                width="80"
+                height="40"
+                onClick={() => handleActivitySort("book")}
+              />
             </div>
           </div>
         </div>
