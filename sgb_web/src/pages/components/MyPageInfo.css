@@ -103,35 +103,35 @@
 #mypage_detail_fixbutton {
   position: absolute;
   bottom: 20px;
-  right: 80px;
+  right: 90px;
   padding: 5px 10px;
-  border-radius: 10%;
+  border-radius: 50px;
   border: 1px solid #B1C2CA;
   background-color: #B1C2CA;
   color: #fffff4;
-  font-size: 17px;
+  font-size: 15px;
 }
 
 #mypage_detail_deletebutton {
   position: absolute;
   bottom: 20px;
-  right: 140px;
+  right: 150px;
   padding: 5px 10px;
-  border-radius: 10%;
+  border-radius: 50px;
   border: 1px solid #f29191;
   background-color: #f29191;
   color: #fffff4;
-  font-size: 17px;
+  font-size: 15px;
 }
 
 #mypage_detail_copybutton {
   position: absolute;
   bottom: 20px;
-  right: 200px;
+  right: 210px;
   padding: 5px 10px;
-  border-radius: 10%;
+  border-radius: 50px;
   border: 1px solid #A0D97E;
   background-color: #A0D97E;
   color: #fffff4;
-  font-size: 17px;
+  font-size: 15px;
 }
