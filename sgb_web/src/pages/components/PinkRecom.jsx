@@ -58,7 +58,7 @@ function PinkRecom() {
         modal.appendChild(prizeImg);
         prizeImg.id = "pink_mentor_detail_prize_img";
         prizeImg.src = activity.prizeImage;
-        prizeImg.width = "10vw";
+        prizeImg.style.maxWidth = "10%";
         var closeButton = document.createElement("button");
         modal.appendChild(closeButton);
         closeButton.id = "pink_mentor_detail_closebutton";
