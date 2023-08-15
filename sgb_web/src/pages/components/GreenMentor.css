@@ -51,7 +51,7 @@
 }
 
 #green_mentor_detail_div {
-  max-width: 500px;
+  max-width: 700px;
   max-height: fit-content;
   padding: 50px;
   margin-left: 300px;
@@ -74,8 +74,16 @@
   font-weight: lighter;
 }
 
-#green_mentor_detail_closeBtn {
-  display: none;
-  position: fixed;
+#green_mentor_detail_closebutton {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 5px 10px;
+  border-radius: 10%;
+  border: 1px solid white;
+  background-color: white;
+  color: rgba(93, 126, 49, 0.9);
+  font-size: 17px;
 }
+
 

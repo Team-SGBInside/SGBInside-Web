@@ -53,7 +53,8 @@ const GreenMentor = () => {
         console.log(result.data.data); // 우리가 접근해야 하는 개별 활동 객체
         const activity = result.data.data;
         console.log(activity);
-        document.getElementById("green_mentor_detail_div").innerText = `
+        var modal = document.getElementById("green_mentor_detail_div");
+        modal.innerText = `
         ${major} 합격 멘토의 창의적 체험활동 추천활동 \n
         활동 유형: ${activity.activityType}
         ${activity.name} | ${activity.startDate} ~ ${activity.endDate}
@@ -62,8 +63,13 @@ const GreenMentor = () => {
         활동 학기: ${activity.semester}
         활동 시작일자: ${activity.startDate}
         활동 종료일자: ${activity.endDate}
-        기타 조언 및 활동소감: ${activity.thoughts} 
+        기타 조언 및 활동소감: ${activity.thoughts}\n 
         `;
+        var closeButton = document.createElement("button");
+        modal.appendChild(closeButton);
+        closeButton.id = "green_mentor_detail_closebutton";
+        closeButton.addEventListener("click", closeBtnHandler);
+        closeButton.innerText = "닫기";
       })
       .catch((error) => {
         console.log("개별 창의적체험활동 조회 실패");
