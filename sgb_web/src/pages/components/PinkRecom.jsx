@@ -19,7 +19,12 @@ function PinkRecom() {
     // 모달창 전체
     var modal = document.getElementById("pink_mentor_detail_div");
     console.log("modal:", modal);
-    modal.style.display = "flex";
+    if (modal.style.display === "none"){
+      modal.style.display = "flex";
+    } else {
+      modal.style.display = "none";
+    }
+    //modal.style.display = "flex";
 
     showPrizeActivityById(activityId);
   };
@@ -43,9 +48,8 @@ function PinkRecom() {
         console.log(activity);
         var modal = document.getElementById("pink_mentor_detail_div");
         modal.innerText = `
-          수상 유형: ${activity.type}
           ${activity.name} | ${activity.date} | ${activity.semester}
-          ${activity.name}(피그마에 ???라고 나와있는데 뭔지 모르겠음) / ${activity.prize} / ${activity.semester}\n
+          ${activity.type}/ ${activity.prize}\n
           활동 내 역할과 구체적인 활동 내용: ${activity.role}
           수상 학기: ${activity.semester}
           수상일자: ${activity.date}
