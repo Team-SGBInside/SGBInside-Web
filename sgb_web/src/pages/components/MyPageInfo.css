@@ -111,3 +111,15 @@
   color: #fffff4;
   font-size: 17px;
 }
+
+#mypage_detail_deletebutton {
+  position: absolute;
+  bottom: 20px;
+  right: 140px;
+  padding: 5px 10px;
+  border-radius: 10%;
+  border: 1px solid #f29191;
+  background-color: #f29191;
+  color: #fffff4;
+  font-size: 17px;
+}

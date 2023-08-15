@@ -201,6 +201,10 @@ const MyPageInfo = () => {
       modal.appendChild(fixButton);
       fixButton.id = "mypage_detail_fixbutton";
       fixButton.innerText="수정";
+      var deleteButton = document.createElement("button");
+      modal.appendChild(deleteButton);
+      deleteButton.id = "mypage_detail_deletebutton";
+      deleteButton.innerText="삭제";
     }
 
     if (sort === "세부능력") {
