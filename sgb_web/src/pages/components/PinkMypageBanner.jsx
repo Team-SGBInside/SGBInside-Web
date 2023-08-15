@@ -2,12 +2,19 @@ import React, { useState } from "react";
 import pink_banner_bg from "./img/pink_banner_bg.png";
 import "./PinkMypageBanner.css";
 
-const PinkMypageBanner = ({ activityId, name, type, date, parentFunction }) => {
+const PinkMypageBanner = ({
+  activityId,
+  name,
+  sort,
+  type,
+  date,
+  parentFunction,
+}) => {
   const [data, setData] = useState(true);
 
   const handleClick = () => {
     console.log("activity clicked");
-    parentFunction(data, activityId);
+    parentFunction(data, sort, activityId);
     console.log("activity clicked 2");
   };
 
