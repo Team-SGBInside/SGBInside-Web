@@ -19,7 +19,6 @@ import RedMypageBanner from "./RedMypageBanner";
 import BlueMypageBanner from "./BlueMypageBanner";
 import GreenMypageBanner from "./GreenMypageBanner";
 import PinkMypageBanner from "./PinkMypageBanner";
-import { useNavigate } from "react-router-dom";
 
 const getUserInfo = async () => {
   const tokenUserId = getCookie("userId");
@@ -28,8 +27,6 @@ const getUserInfo = async () => {
     console.log("cannnot get userId or token from cookie");
     return;
   }
-  // console.log("userId: ", userId);
-  // console.log("token: ", token);
   let sortQuery = "all";
   let semseterQuery = "all";
   const response = await axios.get(
@@ -189,8 +186,8 @@ const MyPageInfo = () => {
                     activityId={item.activityId}
                     name={item.name}
                     activityType="창체활동"
-                    writerSchoolMajor={item.writerSchoolMajor}
-                    writerGrade={item.writerGrade}
+                    startDate={item.startDate}
+                    endDate={item.endDate}
                     parentFunction={parentFunction}
                   />
                 );

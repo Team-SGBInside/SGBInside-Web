@@ -14,16 +14,12 @@ const getUserInfo = async () => {
     console.log("cannnot get userId or token from cookie");
     return;
   }
-  console.log("userId: ", userId);
-  console.log("token: ", token);
-  // console.log("used11");
   try {
     // await 없이 getCookie해도 되는듯합니다!
 
     //* 마이페이지 계정정보 조회 및 전체활동 조회 api의 response data에서 계정정보만 활용하기
     const sortQuery = "all";
     const semseterQuery = "all";
-    console.log("we've reached here1");
     const response = await axios.get(
       `http://3.37.215.18:3000/mypage?sort=${sortQuery}&semester=${semseterQuery}`,
       {
@@ -34,7 +30,6 @@ const getUserInfo = async () => {
         },
       }
     );
-    console.log("we've reached here2");
     const result = response.data.data;
     console.log("Hello result: ", result);
     const age = result.age;
@@ -44,7 +39,6 @@ const getUserInfo = async () => {
     const name = result.name;
     const totalActivitycount = result.totalActivity.activityCount;
     // 순차적으로 response를 찍어보는 코드인데, 필요에 따라 취사선택하세요
-    console.log("여기여기");
     console.log(response);
     console.log(response.data);
     console.log(response.data.data);
