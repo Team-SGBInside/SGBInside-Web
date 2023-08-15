@@ -7,6 +7,10 @@ import menu_green from "./img/menu_green.png";
 import menu_red from "./img/menu_red.png";
 import menu_pink from "./img/menu_pink.png";
 import menu_blue from "./img/menu_blue.png";
+import green_clicked from "./img/green_clicked.png";
+import red_clicked from "./img/red_clicked.png";
+import pink_clicked from "./img/pink_clicked.png";
+import blue_clicked from "./img/blue_clicked.png";
 import mypage_green from "./img/mypage_green.png";
 import mypage_red from "./img/mypage_red.png";
 import mypage_pink from "./img/mypage_pink.png";
@@ -37,8 +41,8 @@ const MyPageInfo = () => {
   let semesterQuery = semester;
   let sortQuery = activitySort;
   const handleSemester = (event) => {
-    event.preventDefault();
     setSemester(event.target.value);
+    console.log("semester event.target: ", event.target);
     console.log("semesterQuery: ", semesterQuery);
     console.log("sortQuery: ", sortQuery);
     getUserInfo(sortQuery, semesterQuery);
@@ -52,6 +56,8 @@ const MyPageInfo = () => {
   };
 
   const getUserInfo = (sortQuery, semesterQuery) => {
+    console.log("semesterQuery in getUserInfo: ", semesterQuery);
+    console.log("sortQuery in getUserInfo: ", sortQuery);
     axios
       .get(
         `http://3.37.215.18:3000/mypage?sort=${sortQuery}&semester=${semesterQuery}`,
@@ -72,16 +78,15 @@ const MyPageInfo = () => {
         const name = result.name;
         const userId = result.userId;
         const totalActivitycount = result.totalActivity.activityCount;
+        console.log("totalActivityCount: ", totalActivitycount);
+        console.log("response:", response);
+        console.log("response.data: ", response.data);
+        console.log("response.data.data: ", response.data.data);
 
         // 활동 유형별 배열 내부 객체에 활동 유형 구별가능하도록 sort key 추가
-        let allBookActivity = result.totalActivity.allBookActivity;
-        allBookActivity.map((item) => {
-          item.sort = "book";
-        });
-
-        let allPrizeActivity = result.totalActivity.allPrizeActivity;
-        allPrizeActivity.map((item) => {
-          item.sort = "prize";
+        let allCreativeActivity = result.totalActivity.allcreativeActivity;
+        allCreativeActivity.map((item) => {
+          item.sort = "creative";
         });
 
         let allSubjectDetailedActivity =
@@ -90,9 +95,16 @@ const MyPageInfo = () => {
           item.sort = "subject";
         });
 
-        let allCreativeActivity = result.totalActivity.allcreativeActivity;
-        allCreativeActivity.map((item) => {
-          item.sort = "creative";
+        let allPrizeActivity = result.totalActivity.allPrizeActivity;
+
+        allPrizeActivity.map((item) => {
+          item.sort = "prize";
+        });
+
+        let allBookActivity = result.totalActivity.allBookActivity;
+
+        allBookActivity.map((item) => {
+          item.sort = "book";
         });
 
         // 전체 활동 통합, 배열 내 인덱스 번호에 따른 uniqId로 id key 부여
@@ -111,9 +123,6 @@ const MyPageInfo = () => {
         console.log("allActivity: ", allActivity);
         // console.log("newAllActivity: ", newAllActivity);
         // 순차적으로 response를 찍어보는 코드인데, 필요에 따라 취사선택하세요
-        console.log("response:", response);
-        console.log("response.data: ", response.data);
-        console.log("response.data.data: ", response.data.data);
 
         // 객체 내에 객체(totalActivity)가 담기지 않도록 totalAcitivity 안 요소를 꺼내 data로 재구성
         const data = {
@@ -128,6 +137,11 @@ const MyPageInfo = () => {
         };
         console.log("data: ", data);
         setUserInfo(data);
+        if (data.allActivity.length === 0) {
+          // var activityList = document.getElementById("activity_list");
+          // console.log("no data activityList: ", activityList);
+          // activityList.innerText = `아직 해당 조건으로 작성한 활동이 없습니다.`;
+        }
         return data;
       })
       .catch((error) => {
@@ -135,111 +149,114 @@ const MyPageInfo = () => {
       });
   };
   useEffect(() => {
-    axios
-      .get(
-        `http://3.37.215.18:3000/mypage?sort=${sortQuery}&semester=${semesterQuery}`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${getCookie("accessToken")}`,
-            withCredentials: true,
-          },
-        }
-      )
-      .then((response) => {
-        console.log("response: ", response);
-        const result = response.data.data;
-        const age = result.age;
-        const grade = result.grade;
-        const school = result.school;
-        const isTeen = result.isTeen;
-        const name = result.name;
-        const userId = result.userId;
-        const totalActivitycount = result.totalActivity.activityCount;
-
-        // 활동 유형별 배열 내부 객체에 활동 유형 구별가능하도록 sort key 추가
-        let allBookActivity = result.totalActivity.allBookActivity;
-        allBookActivity.map((item) => {
-          item.sort = "book";
-        });
-
-        let allPrizeActivity = result.totalActivity.allPrizeActivity;
-        allPrizeActivity.map((item) => {
-          item.sort = "prize";
-        });
-
-        let allSubjectDetailedActivity =
-          result.totalActivity.allSubjectDetailedActivity;
-        allSubjectDetailedActivity.map((item) => {
-          item.sort = "subject";
-        });
-
-        let allCreativeActivity = result.totalActivity.allcreativeActivity;
-        allCreativeActivity.map((item) => {
-          item.sort = "creative";
-        });
-
-        // 전체 활동 통합, 배열 내 인덱스 번호에 따른 uniqId로 id key 부여
-        let allActivity = [
-          ...allBookActivity,
-          ...allPrizeActivity,
-          ...allSubjectDetailedActivity,
-          ...allCreativeActivity,
-        ];
-
-        allActivity.map((item, index) => {
-          let uniqId = parseInt(index);
-          item.id = uniqId;
-        });
-
-        console.log("allActivity: ", allActivity);
-        // console.log("newAllActivity: ", newAllActivity);
-        // 순차적으로 response를 찍어보는 코드인데, 필요에 따라 취사선택하세요
-        console.log("response:", response);
-        console.log("response.data: ", response.data);
-        console.log("response.data.data: ", response.data.data);
-
-        // 객체 내에 객체(totalActivity)가 담기지 않도록 totalAcitivity 안 요소를 꺼내 data로 재구성
-        const data = {
-          age,
-          grade,
-          school,
-          isTeen,
-          name,
-          totalActivitycount,
-          allActivity,
-          userId,
-        };
-        console.log("data: ", data);
-        setUserInfo(data);
-        return data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    getUserInfo(sortQuery, semesterQuery);
   }, []);
 
-  const parentFunction = (data, activityId) => {
+  const parentFunction = (data, sort, id) => {
     setBannerClicked(data);
+    console.log("data, sort, id :", data, sort, id);
 
     // GreenMentorBanner를 클릭한 것이 state에 bookean으로 담기면 모달창 출력
     // 모달창 전체
     var modal = document.getElementById("mypage_detail_div");
     modal.style.display = "flex";
 
-    // 모달창 닫기 버튼
-    // var closeBtn = document.getElementById("green_mentor_detail_closeBtn");
-    // console.log("closeBtn:", closeBtn);
-    // closeBtn.style.display = "flex";
-    // showCreativeActivityById(activityId);
+    if (sort === "창체활동") {
+      const activity = userInfo.allActivity.filter((obj) => {
+        return obj.sort === "creative" && obj.activityId === id;
+      });
+      console.log("activity: ", activity);
+      modal.innerText = `sort: 창체
+      \n name: ${activity[0].name}
+      \n activityType: ${activity[0].activityType}
+      \n startDate: ${activity[0].startDate}
+      \n endDate: ${activity[0].endDate}
+      \n activityId: ${activity[0].activityId}
+      \n semester: ${activity[0].semester}
+      \n role: ${activity[0].role}
+      \n thoughts: ${activity[0].thoughts}
+      \n writerId: ${activity[0].writerId}
+
+      ${activity[0].name} | ${activity[0].startDate} ~ ${activity[0].endDate} | ${activity[0].semester} | ${activity[0].activityType}\n
+      ${activity[0].name}(${activity[0].startDate} ~ ${activity[0].endDate}) ${activity[0].role}\n
+      ${activity[0].thoughts}
+      `;
+    }
+    if (sort === "세부능력") {
+      const activity = userInfo.allActivity.filter((obj) => {
+        return obj.sort === "subject" && obj.activityId === id;
+      });
+      console.log("activity: ", activity);
+      modal.innerText = `sort: 세특
+      \n activityId: ${activity[0].activityId}
+      \n activitySemester: ${activity[0].activitySemester}
+      \n startDate: ${activity[0].startDate}
+      \n endDate: ${activity[0].endDate}
+      \n subjectName: ${activity[0].subjectName}
+      \n subjectContent: ${activity[0].subjectContent}
+      \n mainActivity: ${activity[0].mainActivity}
+      \n activityContentDetail: ${activity[0].activityContentDetail}
+      \n subjectFurtherStudy: ${activity[0].subjectFurtherStudy}
+      \n writerId: ${activity[0].writerId}
+
+      ${activity[0].subjectName} ${activity[0].mainActivity} | ${activity[0].startDate} ~ ${activity[0].endDate} | ${activity[0].activitySemester}\n
+      ${activity[0].subjectName} - ${activity[0].subjectContent}\n
+      ${activity[0].subjectName} ${activity[0].mainActivity} (${activity[0].startDate} ~ ${activity[0].endDate}) ${activity[0].activityContentDetail}\n
+      ${activity[0].subjectFurtherStudy}
+       `;
+    }
+    if (sort === "수상경력") {
+      const activity = userInfo.allActivity.filter((obj) => {
+        return obj.sort === "prize" && obj.activityId === id;
+      });
+      console.log("activity: ", activity);
+      modal.innerText = `sort: 수상
+      \n activityId: ${activity[0].activityId}
+      \n semester: ${activity[0].semester}
+      \n date: ${activity[0].date}
+      \n name: ${activity[0].name}
+      \n prize: ${activity[0].prize}
+      \n role: ${activity[0].role}
+      \n thoughts: ${activity[0].thoughts}
+      \n type: ${activity[0].type}
+      \n writerId: ${activity[0].writerId}
+      
+      ${activity[0].name} | ${activity[0].date} | ${activity[0].semester}\n
+      ${activity[0].name} / ${activity[0].prize} / ${activity[0].date}\n
+      ${activity[0].role}\n
+      ${activity[0].thoughts}`;
+    }
+    if (sort === "독서활동") {
+      const activity = userInfo.allActivity.filter((obj) => {
+        return obj.sort === "book" && obj.activityId === id;
+      });
+      console.log("activity: ", activity);
+      modal.innerText = `sort: 독서
+      \n activityId: ${activity[0].activityId}
+      \n semester: ${activity[0].semester}
+      \n endDate: ${activity[0].endDate}
+      \n titleAuthor: ${activity[0].titleAuthor}
+      \n relatedSubject: ${activity[0].relatedSubject}
+      \n thoughts: ${activity[0].thoughts}
+      \n quote1: ${activity[0].quote1}
+      \n quote2: ${activity[0].quote2}
+      \n quote3: ${activity[0].quote3}
+      \n quote4: ${activity[0].quote4}
+      \n quote5: ${activity[0].quote5}
+      \n writerId: ${activity[0].writerId}\n
+      
+      ${activity[0].titleAuthor} | ${activity[0].endDate} | ${activity[0].semester} | ${activity[0].relatedSubject}\n
+      ${activity[0].thoughts}\n
+      - ${activity[0].quote1}\n
+      - ${activity[0].quote2}\n
+      - ${activity[0].quote3}\n
+      - ${activity[0].quote4}\n
+      - ${activity[0].quote5}\n
+
+      `;
+    }
   };
-  // 학기 및 활동유형 버튼 클릭 시 액션
-  // const handleClick = (x) => {
-  //   useEffect(() => {
-  //     setActivitySort(x);
-  //   }, []);
-  //   console.log("activitySort: ", activitySort);
-  // };
+
   return (
     <>
       <div className="mypage">
@@ -266,14 +283,17 @@ const MyPageInfo = () => {
           <br />
           <div className="semester_menu">
             <div className="semester">
-              <select className="semester_select" onClick={handleSemester}>
-                <option>all</option>
-                <option>1-1</option>
-                <option>1-2</option>
-                <option>2-1</option>
-                <option>2-2</option>
-                <option>3-1</option>
-                <option>3-2</option>
+              <select
+                className="semester_select"
+                onChange={(e) => handleSemester(e)}
+              >
+                <option value="all">all</option>
+                <option value="1-1">1-1</option>
+                <option value="1-2">1-2</option>
+                <option value="2-1">2-1</option>
+                <option value="2-2">2-2</option>
+                <option value="3-1">3-1</option>
+                <option value="3-2">3-2</option>
               </select>
             </div>
             <div className="menu_btn">
@@ -322,7 +342,7 @@ const MyPageInfo = () => {
       </div>
       <br />
       <div className="mypage3">
-        <div className="activity_list">
+        <div className="activity_list" id="activity_list">
           {userInfo.allActivity &&
             userInfo.allActivity.map((item) => {
               if (item.sort === "creative") {
@@ -330,7 +350,7 @@ const MyPageInfo = () => {
                   <GreenMypageBanner
                     activityId={item.activityId}
                     name={item.name}
-                    activityType="창체활동"
+                    sort="창체활동"
                     startDate={item.startDate}
                     endDate={item.endDate}
                     parentFunction={parentFunction}
@@ -355,7 +375,8 @@ const MyPageInfo = () => {
                   <PinkMypageBanner
                     activityId={item.activityId}
                     name={item.name}
-                    type="수상경력"
+                    sort="수상경력"
+                    type={item.type}
                     date={item.date}
                     parentFunction={parentFunction}
                   />
