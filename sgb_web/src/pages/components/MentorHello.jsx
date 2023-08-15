@@ -13,12 +13,6 @@ const getUserInfo = async () => {
     return;
   }
   try {
-    // const writerId = 9;
-    const userId = getCookie("userId");
-    const token = getCookie("accessToken");
-    console.log("userId: ", userId);
-    console.log("token: ", token);
-
     const sortQuery = "all";
     const semseterQuery = "all";
     const response = await axios.get(

@@ -20,8 +20,6 @@ import { useNavigate } from "react-router-dom";
 const getUserInfo = async () => {
   const userId = getCookie("userId");
   const token = getCookie("accessToken");
-  console.log("userId: ", userId);
-  console.log("token: ", token);
   if (!userId || !token) {
     console.log("cannnot get userId or token from cookie");
 
