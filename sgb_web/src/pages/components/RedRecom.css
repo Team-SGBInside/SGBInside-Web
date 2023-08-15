@@ -11,9 +11,9 @@
 }
 
 .red_talk {
-  position: absolute;
+  position: relative;
   left: 3%;
-  bottom: 60%;
+  top: 40%;
   text-align: left;
   font-size: 15px;
   z-index: 999;
@@ -21,15 +21,16 @@
 
 .redrecom_content {
   position: absolute;
-  left: 5%;
-  top: 7%;
+  left: 25px;
+  top: 10%;
   text-align: left;
   font-size: 20px;
   z-index: 999;
 }
 
 .search_div_red {
-  padding-left: 10%;
+  position: relative;
+  margin-left: 230px;
 }
 
 .search_input_red {
@@ -39,6 +40,12 @@
   border-color: #f29191;
   border-width: 15px;
   border-style: solid;
+}
+
+.search_result_red {
+  width: 100%;
+  position: relative;
+  margin-left: 90px;
 }
 
 #search_result_red_subject_name {
@@ -51,3 +58,26 @@
   font-weight: lighter;
   margin-bottom: 40px;
 }
+
+.red-text {
+  color: #BD1700;
+  font-weight: lighter;
+  font-size: 22px;
+}
+
+.light-text{
+  font-weight: lighter;
+  font-size: 22px;
+}
+
+#career-net {
+  display: none;
+}
+
+.careernet-div {
+  padding-left: 90px;
+}
+
+
+
+

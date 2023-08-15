@@ -140,7 +140,7 @@ const GreenRecom = () => {
           <input
             id="green"
             type="search"
-            placeholder="검색어를 입력 하세요..."
+            placeholder="검색어를 입력하세요..."
             name="query"
             className="search_input_green"
             onChange={handleMajor}
@@ -164,7 +164,7 @@ const GreenRecom = () => {
             careerActs.map((careerAct) => {
               return (
                 <>
-                  <b>{careerAct.act_name.replace("<br>", "")}</b>
+                  <b>{careerAct.act_name.replace(/<br>/g, " ")}</b>
                   <br />
                   {careerAct.act_description}
                   <br />
