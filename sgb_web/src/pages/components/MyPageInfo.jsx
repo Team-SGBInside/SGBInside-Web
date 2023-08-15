@@ -205,6 +205,10 @@ const MyPageInfo = () => {
       modal.appendChild(deleteButton);
       deleteButton.id = "mypage_detail_deletebutton";
       deleteButton.innerText="삭제";
+      var copyButton = document.createElement("button");
+      modal.appendChild(copyButton);
+      copyButton.id = "mypage_detail_copybutton";
+      copyButton.innerText="복사";
     }
 
     if (sort === "세부능력") {
