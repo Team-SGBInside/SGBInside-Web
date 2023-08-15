@@ -159,7 +159,11 @@ const MyPageInfo = () => {
     // GreenMentorBanner를 클릭한 것이 state에 bookean으로 담기면 모달창 출력
     // 모달창 전체
     var modal = document.getElementById("mypage_detail_div");
-    modal.style.display = "flex";
+    if (modal.style.display === "none"){
+      modal.style.display = "flex";
+    } else {
+      modal.style.display = "none";
+    }
 
     if (sort === "창체활동") {
       const activity = userInfo.allActivity.filter((obj) => {
