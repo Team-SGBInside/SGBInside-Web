@@ -14,7 +14,7 @@ const BlueMypageBanner = ({
 
   const handleClick = () => {
     console.log("activity clicked");
-    parentFunction(data, activityId);
+    parentFunction(data, sort, activityId);
     console.log("activity clicked 2");
   };
 

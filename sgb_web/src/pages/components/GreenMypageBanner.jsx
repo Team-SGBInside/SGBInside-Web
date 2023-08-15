@@ -8,7 +8,7 @@ import { getCookie, setCookie } from "../../lib/cookie";
 // props로 전달된 key들의 value값들을 활용
 const GreenMypageBanner = ({
   activityId,
-  activityType,
+  sort,
   name,
   startDate,
   endDate,
@@ -25,7 +25,7 @@ const GreenMypageBanner = ({
 
   const handleClick = () => {
     console.log("activity clicked");
-    parentFunction(data, activityId);
+    parentFunction(data, sort, activityId);
     console.log("activity clicked 2");
   };
 
@@ -42,7 +42,7 @@ const GreenMypageBanner = ({
           />
           <div className="green_banner_content">
             <div className="green_mypage_activity_type" onClick={handleClick}>
-              {activityType}
+              {sort}
             </div>
             <div className="green_mypage_activity_name" onClick={handleClick}>
               {name}

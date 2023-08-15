@@ -8,8 +8,8 @@ import { getCookie, setCookie } from "../../lib/cookie";
 // props로 전달된 key들의 value값들을 활용
 const RedMypageBanner = ({
   activityId,
-  mainActivity,
   sort,
+  mainActivity,
   startDate,
   endDate,
   parentFunction,
@@ -25,7 +25,7 @@ const RedMypageBanner = ({
 
   const handleClick = () => {
     console.log("activity clicked");
-    parentFunction(data, activityId);
+    parentFunction(data, sort, activityId);
     console.log("activity clicked 2");
   };
 
