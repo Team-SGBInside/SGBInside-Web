@@ -14,7 +14,6 @@ const GreenMentorBanner = ({
   writerGrade,
   parentFunction,
 }) => {
-  const navigator = useNavigate();
   const [data, setData] = useState(true);
 
   // console.log("activityId: ", activityId);
@@ -28,7 +27,6 @@ const GreenMentorBanner = ({
     console.log("activity clicked");
     parentFunction(data, activityId);
     console.log("activity clicked 2");
-    // navigator(`/greenMentor/${activityId}`);
   };
 
   return (

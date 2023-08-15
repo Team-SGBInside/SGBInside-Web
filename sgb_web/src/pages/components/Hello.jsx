@@ -7,23 +7,18 @@ import { getCookie, setCookie } from "../../lib/cookie";
 import { useNavigate } from "react-router-dom";
 
 const getUserInfo = async () => {
-  // Hello가 렌더링될 때 getUserInfo가 잘 호출되는지 콘솔로 확인
-  console.log("herrrrrr");
+  const userId = getCookie("userId");
+  const token = getCookie("accessToken");
+
+  if (!userId || !token) {
+    console.log("cannnot get userId or token from cookie");
+    return;
+  }
+  console.log("userId: ", userId);
+  console.log("token: ", token);
   // console.log("used11");
   try {
-    const navigator = useNavigate();
-
     // await 없이 getCookie해도 되는듯합니다!
-    const userId = getCookie("userId");
-    const token = getCookie("accessToken");
-
-    if (!userId || !token) {
-      console.log("cannnot get userId or token from cookie");
-
-      navigator("/login"); // 처리해줘야 할 로직이 있는 페이지 전환일때
-    }
-    console.log("userId: ", userId);
-    console.log("token: ", token);
 
     //* 마이페이지 계정정보 조회 및 전체활동 조회 api의 response data에서 계정정보만 활용하기
     const sortQuery = "all";

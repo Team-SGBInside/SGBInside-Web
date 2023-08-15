@@ -18,21 +18,16 @@ import { getCookie, setCookie } from "../../lib/cookie";
 import { useNavigate } from "react-router-dom";
 
 const getUserInfo = async () => {
-  // MyPageInfo가 렌더링될 때 getUserInfo가 잘 호출되는지 콘솔로 확인
-  // console.log("used22");
+  const userId = getCookie("userId");
+  const token = getCookie("accessToken");
+  console.log("userId: ", userId);
+  console.log("token: ", token);
+  if (!userId || !token) {
+    console.log("cannnot get userId or token from cookie");
+
+    return;
+  }
   try {
-    // const writerId = 9;
-    const navigator = useNavigate();
-    const userId = await getCookie("userId");
-    const token = await getCookie("accessToken");
-    console.log("userId: ", userId);
-    console.log("token: ", token);
-    if (!userId || !token) {
-      console.log("cannnot get userId or token from cookie");
-
-      navigator("/login"); // 처리해줘야 할 로직이 있는 페이지 전환일때
-    }
-
     const sortQuery = "all";
     const semseterQuery = "all";
     const response = await axios.get(

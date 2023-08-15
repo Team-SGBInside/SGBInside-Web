@@ -22,14 +22,11 @@ import PinkMypageBanner from "./PinkMypageBanner";
 import { useNavigate } from "react-router-dom";
 
 const getUserInfo = async () => {
-  const navigator = useNavigate();
-
-  const tokenUserId = await getCookie("userId");
-  const token = await getCookie("accessToken");
+  const tokenUserId = getCookie("userId");
+  const token = getCookie("accessToken");
   if (!tokenUserId || !token) {
     console.log("cannnot get userId or token from cookie");
-
-    navigator("/login"); // 처리해줘야 할 로직이 있는 페이지 전환일때
+    return;
   }
   // console.log("userId: ", userId);
   // console.log("token: ", token);
