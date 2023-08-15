@@ -59,11 +59,23 @@ function PinkRecom() {
         prizeImg.id = "pink_mentor_detail_prize_img";
         prizeImg.src = activity.prizeImage;
         prizeImg.width = "10vw";
+        var closeButton = document.createElement("button");
+        modal.appendChild(closeButton);
+        closeButton.id = "pink_mentor_detail_closebutton";
+        closeButton.addEventListener("click", closeBtnHandler);
+        closeButton.innerText = "닫기";
       })
       .catch((error) => {
         console.log("개별 수상경력 조회 실패");
         console.log(error);
       });
+  };
+
+  // 모달창 닫기 버튼
+  const closeBtnHandler = () => {
+    var modal = document.getElementById("pink_mentor_detail_div");
+    console.log("닫기버튼 눌림")
+    modal.style.display = "none";
   };
 
   const handleContest = (e) => {

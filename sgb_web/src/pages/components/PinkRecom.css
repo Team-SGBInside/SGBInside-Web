@@ -48,11 +48,11 @@
   /* background-color: rgba(248, 166, 204, 0.9); */
 
 #pink_mentor_detail_div {
-  max-width: fit-content;
+  max-width: 700px;
   max-height: fit-content;
-  padding: 30px;
-  margin-left: 100px;
-  margin-right: 100px;
+  padding: 50px;
+  margin-left: 300px;
+  margin-right: 300px;
   font-size: 15px;
   display: none;
   position: fixed;
@@ -67,10 +67,24 @@
   /* height: 70vh; */
   background-color: rgba(248, 166, 204, 0.9);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  border-radius: 3%;
   font-weight: lighter;
 }
 
 #pink_mentor_detail_prize_img {
   width: 10vw;
+  margin: 30px;
 }
+
+#pink_mentor_detail_closebutton {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 5px 10px;
+    border-radius: 10%;
+    border: 1px solid white;
+    background-color: white;
+    color: rgba(248, 166, 204, 0.9);
+    font-size: 17px;
+}
+
