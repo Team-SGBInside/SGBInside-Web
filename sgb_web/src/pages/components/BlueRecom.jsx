@@ -24,6 +24,7 @@ function BlueRecom() {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${getCookie("accessToken")}`,
+          withCredentials: true,
         },
         url: "http://3.37.215.18:3000/recommend/book",
         data: {
@@ -49,52 +50,54 @@ function BlueRecom() {
   return (
     <div className="bluerecom">
       {/* <div className="bluerecom_bg"> */}
-        {/* <img src={blueform_bg} alt="blueform_bg" width="1200" height="1510" /> */}
-        <div className="bluerecom_content">
-          <br />
-          <div className="blue_talk">
-            <img src={blue_talk} alt="blue_talk" width="555" height="130" />
-          </div>
-          <br />
-          <br />
-          {/* Search 관련 코드 */}
-          <div className="search_div_blue">
-            <input
-              type="search"
-              placeholder="검색어를 입력 하세요..."
-              name="query"
-              className="search_input_blue"
-              onChange={handleMajor}
-              onKeyPress={onKeySubmitSearch}
-            />
-          </div>
-          <br/>
-          <div className="search_result_blue">
-            <table>
-              <thead>
-                <tr>
-                  <th>&nbsp;&nbsp;&nbsp;&nbsp;도서명&nbsp;&nbsp;&nbsp;&nbsp;</th>
-                  <th>&nbsp;&nbsp;&nbsp;&nbsp;저자&nbsp;&nbsp;&nbsp;&nbsp;</th>
-                  <th>&nbsp;&nbsp;&nbsp;&nbsp;출판사&nbsp;&nbsp;&nbsp;&nbsp;</th>
-                  <th>&nbsp;&nbsp;&nbsp;&nbsp;추천대학&nbsp;&nbsp;&nbsp;&nbsp;</th>
-                </tr>
-              </thead>
-              <tbody>
-                {books &&
-                  books.map((book) => {
-                    return (
-                      <tr key={book.id}>
-                        <td>{book.도서명}</td>
-                        <td>{book.저자}</td>
-                        <td>{book.출판사}</td>
-                        <td>{book.추천인}</td>
-                      </tr>
-                    );
-                  })}
-              </tbody>
-            </table>
-          </div>
+      {/* <img src={blueform_bg} alt="blueform_bg" width="1200" height="1510" /> */}
+      <div className="bluerecom_content">
+        <br />
+        <div className="blue_talk">
+          <img src={blue_talk} alt="blue_talk" width="555" height="130" />
         </div>
+        <br />
+        <br />
+        {/* Search 관련 코드 */}
+        <div className="search_div_blue">
+          <input
+            type="search"
+            placeholder="검색어를 입력 하세요..."
+            name="query"
+            className="search_input_blue"
+            onChange={handleMajor}
+            onKeyPress={onKeySubmitSearch}
+          />
+        </div>
+        <br />
+        <div className="search_result_blue">
+          <table>
+            <thead>
+              <tr>
+                <th>&nbsp;&nbsp;&nbsp;&nbsp;도서명&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                <th>&nbsp;&nbsp;&nbsp;&nbsp;저자&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                <th>&nbsp;&nbsp;&nbsp;&nbsp;출판사&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                <th>
+                  &nbsp;&nbsp;&nbsp;&nbsp;추천대학&nbsp;&nbsp;&nbsp;&nbsp;
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {books &&
+                books.map((book) => {
+                  return (
+                    <tr key={book.id}>
+                      <td>{book.도서명}</td>
+                      <td>{book.저자}</td>
+                      <td>{book.출판사}</td>
+                      <td>{book.추천인}</td>
+                    </tr>
+                  );
+                })}
+            </tbody>
+          </table>
+        </div>
+      </div>
       {/* </div> */}
     </div>
   );

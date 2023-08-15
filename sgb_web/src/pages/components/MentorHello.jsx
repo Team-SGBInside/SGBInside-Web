@@ -6,12 +6,16 @@ import { Link } from "react-router-dom";
 import { getCookie, setCookie } from "../../lib/cookie";
 
 const getUserInfo = async () => {
-  // Hello가 렌더링될 때 getUserInfo가 잘 호출되는지 콘솔로 확인
-  // console.log("used11");
+  const tokenUserId = getCookie("userId");
+  const token = getCookie("accessToken");
+  if (!tokenUserId || !token) {
+    console.log("cannnot get userId or token from cookie");
+    return;
+  }
   try {
     // const writerId = 9;
-    const userId = await getCookie("userId");
-    const token = await getCookie("accessToken");
+    const userId = getCookie("userId");
+    const token = getCookie("accessToken");
     console.log("userId: ", userId);
     console.log("token: ", token);
 
@@ -23,6 +27,7 @@ const getUserInfo = async () => {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${getCookie("accessToken")}`,
+          withCredentials: true,
         },
       }
     );

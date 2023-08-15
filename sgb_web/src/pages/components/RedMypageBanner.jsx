@@ -1,23 +1,23 @@
 import React, { useState } from "react";
-import green_banner_bg from "./img/green_banner_bg.png";
-import "./GreenMentorBanner.css";
+import red_mypage_banner from "./img/red_mypage_banner.png";
+import "./RedMypageBanner.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { getCookie, setCookie } from "../../lib/cookie";
 
 // props로 전달된 key들의 value값들을 활용
-const GreenMentorBanner = ({
+const RedMypageBanner = ({
   activityId,
-  activityType,
-  name,
-  writerSchoolMajor,
-  writerGrade,
+  mainActivity,
+  sort,
+  startDate,
+  endDate,
   parentFunction,
 }) => {
   const [data, setData] = useState(true);
 
   // console.log("activityId: ", activityId);
-  // console.log("activityType: ", activityType);
+  // console.log("sort: ", sort);
   // console.log("name: ", name);
   // console.log("writerSchoolMajor: ", writerSchoolMajor);
   // console.log("writerGrade: ", writerGrade);
@@ -31,24 +31,24 @@ const GreenMentorBanner = ({
 
   return (
     <>
-      <div className="green_mentor_banner">
-        <div className="green_banner_bg">
+      <div className="red_mypage_banner">
+        <div className="red_mypage_banner_bg">
           <img
-            src={green_banner_bg}
+            src={red_mypage_banner}
             onClick={handleClick}
-            alt="green_banner_bg"
+            alt="red_mypage_banner"
             width="200"
             height="100"
           />
-          <div className="green_banner_content">
-            <div className="activity_type" onClick={handleClick}>
-              {activityType}
+          <div className="red_mypage_banner_content">
+            <div className="red_activity_type" onClick={handleClick}>
+              {sort}
             </div>
-            <div className="activity_name" onClick={handleClick}>
-              {name}
+            <div className="red_activity_name" onClick={handleClick}>
+              {mainActivity}
             </div>
-            <div className="activity_writer" onClick={handleClick}>
-              {writerSchoolMajor} {writerGrade}학년
+            <div className="red_activity_writer" onClick={handleClick}>
+              {startDate} ~ {endDate}
             </div>
           </div>
         </div>
@@ -57,4 +57,4 @@ const GreenMentorBanner = ({
   );
 };
 
-export default GreenMentorBanner;
+export default RedMypageBanner;
