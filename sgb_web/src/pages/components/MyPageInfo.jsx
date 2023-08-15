@@ -159,7 +159,18 @@ const MyPageInfo = () => {
     // GreenMentorBanner를 클릭한 것이 state에 bookean으로 담기면 모달창 출력
     // 모달창 전체
     var modal = document.getElementById("mypage_detail_div");
-    modal.style.display = "flex";
+    if (modal.style.display === "none"){
+      modal.style.display = "flex";
+    } else {
+      modal.style.display = "none";
+    }
+
+    // 모달창 닫기 버튼
+    const closeBtnHandler = () => {
+    var modal = document.getElementById("mypage_detail_div");
+    console.log("닫기버튼 눌림")
+    modal.style.display = "none";
+    };
 
     if (sort === "창체활동") {
       const activity = userInfo.allActivity.filter((obj) => {
@@ -181,7 +192,25 @@ const MyPageInfo = () => {
       ${activity[0].name}(${activity[0].startDate} ~ ${activity[0].endDate}) ${activity[0].role}\n
       ${activity[0].thoughts}
       `;
+      var closeButton = document.createElement("button");
+      modal.appendChild(closeButton);
+      closeButton.id = "mypage_detail_closebutton";
+      closeButton.addEventListener("click", closeBtnHandler);
+      closeButton.innerText = "닫기";
+      var fixButton = document.createElement("button");
+      modal.appendChild(fixButton);
+      fixButton.id = "mypage_detail_fixbutton";
+      fixButton.innerText="수정";
+      var deleteButton = document.createElement("button");
+      modal.appendChild(deleteButton);
+      deleteButton.id = "mypage_detail_deletebutton";
+      deleteButton.innerText="삭제";
+      var copyButton = document.createElement("button");
+      modal.appendChild(copyButton);
+      copyButton.id = "mypage_detail_copybutton";
+      copyButton.innerText="복사";
     }
+
     if (sort === "세부능력") {
       const activity = userInfo.allActivity.filter((obj) => {
         return obj.sort === "subject" && obj.activityId === id;
@@ -204,6 +233,23 @@ const MyPageInfo = () => {
       ${activity[0].subjectName} ${activity[0].mainActivity} (${activity[0].startDate} ~ ${activity[0].endDate}) ${activity[0].activityContentDetail}\n
       ${activity[0].subjectFurtherStudy}
        `;
+       var closeButton = document.createElement("button");
+       modal.appendChild(closeButton);
+       closeButton.id = "mypage_detail_closebutton";
+       closeButton.addEventListener("click", closeBtnHandler);
+       closeButton.innerText = "닫기";
+       var fixButton = document.createElement("button");
+       modal.appendChild(fixButton);
+       fixButton.id = "mypage_detail_fixbutton";
+       fixButton.innerText="수정";
+       var deleteButton = document.createElement("button");
+       modal.appendChild(deleteButton);
+       deleteButton.id = "mypage_detail_deletebutton";
+       deleteButton.innerText="삭제";
+       var copyButton = document.createElement("button");
+       modal.appendChild(copyButton);
+       copyButton.id = "mypage_detail_copybutton";
+       copyButton.innerText="복사";
     }
     if (sort === "수상경력") {
       const activity = userInfo.allActivity.filter((obj) => {
@@ -225,6 +271,23 @@ const MyPageInfo = () => {
       ${activity[0].name} / ${activity[0].prize} / ${activity[0].date}\n
       ${activity[0].role}\n
       ${activity[0].thoughts}`;
+      var closeButton = document.createElement("button");
+      modal.appendChild(closeButton);
+      closeButton.id = "mypage_detail_closebutton";
+      closeButton.addEventListener("click", closeBtnHandler);
+      closeButton.innerText = "닫기";
+      var fixButton = document.createElement("button");
+      modal.appendChild(fixButton);
+      fixButton.id = "mypage_detail_fixbutton";
+      fixButton.innerText="수정";
+      var deleteButton = document.createElement("button");
+      modal.appendChild(deleteButton);
+      deleteButton.id = "mypage_detail_deletebutton";
+      deleteButton.innerText="삭제";
+      var copyButton = document.createElement("button");
+      modal.appendChild(copyButton);
+      copyButton.id = "mypage_detail_copybutton";
+      copyButton.innerText="복사";
     }
     if (sort === "독서활동") {
       const activity = userInfo.allActivity.filter((obj) => {
@@ -254,6 +317,23 @@ const MyPageInfo = () => {
       - ${activity[0].quote5}\n
 
       `;
+      var closeButton = document.createElement("button");
+      modal.appendChild(closeButton);
+      closeButton.id = "mypage_detail_closebutton";
+      closeButton.addEventListener("click", closeBtnHandler);
+      closeButton.innerText = "닫기";
+      var fixButton = document.createElement("button");
+      modal.appendChild(fixButton);
+      fixButton.id = "mypage_detail_fixbutton";
+      fixButton.innerText="수정";
+      var deleteButton = document.createElement("button");
+      modal.appendChild(deleteButton);
+      deleteButton.id = "mypage_detail_deletebutton";
+      deleteButton.innerText="삭제";
+      var copyButton = document.createElement("button");
+      modal.appendChild(copyButton);
+      copyButton.id = "mypage_detail_copybutton";
+      copyButton.innerText="복사";
     }
   };
 
