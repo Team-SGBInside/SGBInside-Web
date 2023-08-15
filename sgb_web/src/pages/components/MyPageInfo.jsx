@@ -41,8 +41,8 @@ const MyPageInfo = () => {
   let semesterQuery = semester;
   let sortQuery = activitySort;
   const handleSemester = (event) => {
-    event.preventDefault();
     setSemester(event.target.value);
+    console.log("semester event.target: ", event.target);
     console.log("semesterQuery: ", semesterQuery);
     console.log("sortQuery: ", sortQuery);
     getUserInfo(sortQuery, semesterQuery);
@@ -152,19 +152,109 @@ const MyPageInfo = () => {
     getUserInfo(sortQuery, semesterQuery);
   }, []);
 
-  const parentFunction = (data, activityId) => {
+  const parentFunction = (data, sort, id) => {
     setBannerClicked(data);
+    console.log("data, sort, id :", data, sort, id);
 
     // GreenMentorBanner를 클릭한 것이 state에 bookean으로 담기면 모달창 출력
     // 모달창 전체
     var modal = document.getElementById("mypage_detail_div");
     modal.style.display = "flex";
 
-    // 모달창 닫기 버튼
-    // var closeBtn = document.getElementById("green_mentor_detail_closeBtn");
-    // console.log("closeBtn:", closeBtn);
-    // closeBtn.style.display = "flex";
-    // showCreativeActivityById(activityId);
+    if (sort === "창체활동") {
+      const activity = userInfo.allActivity.filter((obj) => {
+        return obj.sort === "creative" && obj.activityId === id;
+      });
+      console.log("activity: ", activity);
+      modal.innerText = `sort: 창체
+      \n name: ${activity[0].name}
+      \n activityType: ${activity[0].activityType}
+      \n startDate: ${activity[0].startDate}
+      \n endDate: ${activity[0].endDate}
+      \n activityId: ${activity[0].activityId}
+      \n semester: ${activity[0].semester}
+      \n role: ${activity[0].role}
+      \n thoughts: ${activity[0].thoughts}
+      \n writerId: ${activity[0].writerId}
+
+      ${activity[0].name} | ${activity[0].startDate} ~ ${activity[0].endDate} | ${activity[0].semester} | ${activity[0].activityType}\n
+      ${activity[0].name}(${activity[0].startDate} ~ ${activity[0].endDate}) ${activity[0].role}\n
+      ${activity[0].thoughts}
+      `;
+    }
+    if (sort === "세부능력") {
+      const activity = userInfo.allActivity.filter((obj) => {
+        return obj.sort === "subject" && obj.activityId === id;
+      });
+      console.log("activity: ", activity);
+      modal.innerText = `sort: 세특
+      \n activityId: ${activity[0].activityId}
+      \n activitySemester: ${activity[0].activitySemester}
+      \n startDate: ${activity[0].startDate}
+      \n endDate: ${activity[0].endDate}
+      \n subjectName: ${activity[0].subjectName}
+      \n subjectContent: ${activity[0].subjectContent}
+      \n mainActivity: ${activity[0].mainActivity}
+      \n activityContentDetail: ${activity[0].activityContentDetail}
+      \n subjectFurtherStudy: ${activity[0].subjectFurtherStudy}
+      \n writerId: ${activity[0].writerId}
+
+      ${activity[0].subjectName} ${activity[0].mainActivity} | ${activity[0].startDate} ~ ${activity[0].endDate} | ${activity[0].activitySemester}\n
+      ${activity[0].subjectName} - ${activity[0].subjectContent}\n
+      ${activity[0].subjectName} ${activity[0].mainActivity} (${activity[0].startDate} ~ ${activity[0].endDate}) ${activity[0].activityContentDetail}\n
+      ${activity[0].subjectFurtherStudy}
+       `;
+    }
+    if (sort === "수상경력") {
+      const activity = userInfo.allActivity.filter((obj) => {
+        return obj.sort === "prize" && obj.activityId === id;
+      });
+      console.log("activity: ", activity);
+      modal.innerText = `sort: 수상
+      \n activityId: ${activity[0].activityId}
+      \n semester: ${activity[0].semester}
+      \n date: ${activity[0].date}
+      \n name: ${activity[0].name}
+      \n prize: ${activity[0].prize}
+      \n role: ${activity[0].role}
+      \n thoughts: ${activity[0].thoughts}
+      \n type: ${activity[0].type}
+      \n writerId: ${activity[0].writerId}
+      
+      ${activity[0].name} | ${activity[0].date} | ${activity[0].semester}\n
+      ${activity[0].name} / ${activity[0].prize} / ${activity[0].date}\n
+      ${activity[0].role}\n
+      ${activity[0].thoughts}`;
+    }
+    if (sort === "독서활동") {
+      const activity = userInfo.allActivity.filter((obj) => {
+        return obj.sort === "book" && obj.activityId === id;
+      });
+      console.log("activity: ", activity);
+      modal.innerText = `sort: 독서
+      \n activityId: ${activity[0].activityId}
+      \n semester: ${activity[0].semester}
+      \n endDate: ${activity[0].endDate}
+      \n titleAuthor: ${activity[0].titleAuthor}
+      \n relatedSubject: ${activity[0].relatedSubject}
+      \n thoughts: ${activity[0].thoughts}
+      \n quote1: ${activity[0].quote1}
+      \n quote2: ${activity[0].quote2}
+      \n quote3: ${activity[0].quote3}
+      \n quote4: ${activity[0].quote4}
+      \n quote5: ${activity[0].quote5}
+      \n writerId: ${activity[0].writerId}\n
+      
+      ${activity[0].titleAuthor} | ${activity[0].endDate} | ${activity[0].semester} | ${activity[0].relatedSubject}\n
+      ${activity[0].thoughts}\n
+      - ${activity[0].quote1}\n
+      - ${activity[0].quote2}\n
+      - ${activity[0].quote3}\n
+      - ${activity[0].quote4}\n
+      - ${activity[0].quote5}\n
+
+      `;
+    }
   };
 
   return (
@@ -193,14 +283,17 @@ const MyPageInfo = () => {
           <br />
           <div className="semester_menu">
             <div className="semester">
-              <select className="semester_select" onClick={handleSemester}>
-                <option>all</option>
-                <option>1-1</option>
-                <option>1-2</option>
-                <option>2-1</option>
-                <option>2-2</option>
-                <option>3-1</option>
-                <option>3-2</option>
+              <select
+                className="semester_select"
+                onChange={(e) => handleSemester(e)}
+              >
+                <option value="all">all</option>
+                <option value="1-1">1-1</option>
+                <option value="1-2">1-2</option>
+                <option value="2-1">2-1</option>
+                <option value="2-2">2-2</option>
+                <option value="3-1">3-1</option>
+                <option value="3-2">3-2</option>
               </select>
             </div>
             <div className="menu_btn">
@@ -257,7 +350,7 @@ const MyPageInfo = () => {
                   <GreenMypageBanner
                     activityId={item.activityId}
                     name={item.name}
-                    activityType="창체활동"
+                    sort="창체활동"
                     startDate={item.startDate}
                     endDate={item.endDate}
                     parentFunction={parentFunction}
@@ -282,7 +375,8 @@ const MyPageInfo = () => {
                   <PinkMypageBanner
                     activityId={item.activityId}
                     name={item.name}
-                    type="수상경력"
+                    sort="수상경력"
+                    type={item.type}
                     date={item.date}
                     parentFunction={parentFunction}
                   />
