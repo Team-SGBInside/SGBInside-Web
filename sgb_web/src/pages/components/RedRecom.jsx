@@ -25,6 +25,21 @@ function RedRecom() {
     setMajor(e.target.value);
   };
 
+  const doDisplay = () => {
+    var con = document.getElementById("career-net");
+    console.log("con: ", con);
+    console.log("con.style.display: ", con.style.display);
+    console.log("typeof display: ", typeof con.style.display);
+
+    con.style.display = "block";
+    // green의 value를 바꾸는 함수 따로 분리할 필요는 없을 것 같아요~
+    const red = document.getElementById("red").value;
+    console.log("red: ", red);
+    document.getElementById("result").innerText = red;
+    console.log("printRed");
+  };
+
+
   const onKeySubmitSearch = async (e) => {
     if (e.key === "Enter") {
       if (!major || trimmedMajor === "") {
@@ -74,6 +89,7 @@ function RedRecom() {
           console.log(error);
         });
       await getMajorInfo();
+      doDisplay();
     }
   };
 
@@ -112,22 +128,36 @@ function RedRecom() {
           {/* Search 관련 코드 */}
           <div className="search_div_red">
             <input
+              id="red"
               type="search"
               placeholder="검색어를 입력 하세요..."
               name="query"
               className="search_input_red"
               onChange={handleMajor}
               onKeyPress={onKeySubmitSearch}
+              value={major}
             />
           </div>
-
+          <br/>
           {/* <br />
           <br />
           <br />
           <br />
           <br />
           <br /> */}
-
+          <div className="careernet-div">
+          <div id="career-net">
+              <span className="red-text">커리어넷</span>
+              <span className="light-text">에서 제공하는 </span>
+              <span id="result"></span>
+              <span className="light-text">
+                {" "}
+                관련 관리교과목은 다음과 같습니다.
+              </span>
+              <br />
+              <br />
+          </div>
+          </div>
           {relateSubjects &&
             relateSubjects.map((relateSubject) => {
               return (
@@ -138,8 +168,8 @@ function RedRecom() {
                   <pre id="search_result_red_subject_desc">
                     {relateSubject["subject_description"]
                       ? relateSubject["subject_description"].replace(
-                          "<br>",
-                          ""
+                          /<br>/g,
+                          "\n"
                         )
                       : relateSubject["subject_description"]}
                   </pre>
