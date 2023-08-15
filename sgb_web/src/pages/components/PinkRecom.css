@@ -11,12 +11,11 @@
 }
 
 .pink_talk {
-  position: absolute;
+  position: relative;
   left: 3%;
   bottom: 40%;
   text-align: left;
   font-size: 15px;
-  z-index: 999;
 }
 
 .pinkrecom_content {
@@ -46,9 +45,14 @@
   padding-top: 7%;
   padding-bottom: 90%;
 }
+  /* background-color: rgba(248, 166, 204, 0.9); */
 
 #pink_mentor_detail_div {
-  padding-left: 10px;
+  max-width: fit-content;
+  max-height: fit-content;
+  padding: 30px;
+  margin-left: 100px;
+  margin-right: 100px;
   font-size: 15px;
   display: none;
   position: fixed;
@@ -59,10 +63,12 @@
   margin: auto;
   align-items: center;
   /* border-radius: 10px; */
-  width: 50vw;
-  height: 70vh;
-  background-color: #ffffffc7;
-  box-shadow: 5px 5px 10px 1px;
+  /* width: 50vw; */
+  /* height: 70vh; */
+  background-color: rgba(248, 166, 204, 0.9);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  font-weight: lighter;
 }
 
 #pink_mentor_detail_prize_img {
