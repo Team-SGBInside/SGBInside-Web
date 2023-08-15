@@ -87,3 +87,27 @@
   border-radius: 3%;
   font-weight: lighter;
 }
+
+#mypage_detail_closebutton {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 5px 10px;
+  border-radius: 10%;
+  border: 1px solid gray;
+  background-color: gray;
+  color: #fffff4;
+  font-size: 17px;
+}
+
+#mypage_detail_fixbutton {
+  position: absolute;
+  bottom: 20px;
+  right: 80px;
+  padding: 5px 10px;
+  border-radius: 10%;
+  border: 1px solid #B1C2CA;
+  background-color: #B1C2CA;
+  color: #fffff4;
+  font-size: 17px;
+}

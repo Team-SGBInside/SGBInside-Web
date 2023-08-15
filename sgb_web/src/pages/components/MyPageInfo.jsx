@@ -165,6 +165,13 @@ const MyPageInfo = () => {
       modal.style.display = "none";
     }
 
+    // 모달창 닫기 버튼
+    const closeBtnHandler = () => {
+    var modal = document.getElementById("mypage_detail_div");
+    console.log("닫기버튼 눌림")
+    modal.style.display = "none";
+    };
+
     if (sort === "창체활동") {
       const activity = userInfo.allActivity.filter((obj) => {
         return obj.sort === "creative" && obj.activityId === id;
@@ -185,7 +192,17 @@ const MyPageInfo = () => {
       ${activity[0].name}(${activity[0].startDate} ~ ${activity[0].endDate}) ${activity[0].role}\n
       ${activity[0].thoughts}
       `;
+      var closeButton = document.createElement("button");
+      modal.appendChild(closeButton);
+      closeButton.id = "mypage_detail_closebutton";
+      closeButton.addEventListener("click", closeBtnHandler);
+      closeButton.innerText = "닫기";
+      var fixButton = document.createElement("button");
+      modal.appendChild(fixButton);
+      fixButton.id = "mypage_detail_fixbutton";
+      fixButton.innerText="수정";
     }
+
     if (sort === "세부능력") {
       const activity = userInfo.allActivity.filter((obj) => {
         return obj.sort === "subject" && obj.activityId === id;
