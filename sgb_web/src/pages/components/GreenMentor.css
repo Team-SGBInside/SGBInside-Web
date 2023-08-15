@@ -16,7 +16,6 @@
   bottom: 75%;
   text-align: left;
   font-size: 15px;
-  z-index: 999;
 }
 
 .greenmentor_content {
@@ -48,9 +47,12 @@
   position: absolute;
   padding-top: 90%;
   padding-bottom: 90%;
+  cursor: pointer;
 }
 
 #green_mentor_detail_div {
+  max-width: 700px;
+  max-height: 70vh;
   padding-left: 10px;
   font-size: 15px;
   display: none;
@@ -62,13 +64,16 @@
   margin: auto;
   align-items: center;
   /* border-radius: 10px; */
-  width: 50vw;
-  height: 70vh;
-  background-color: #ffffffc7;
-  box-shadow: 5px 5px 10px 1px;
+  /* width: 50vw; */
+  /* height: 70vh; */
+  background-color: rgba(238, 245, 229, 0.9);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 3%;
+  font-weight: lighter;
 }
 
 #green_mentor_detail_closeBtn {
-  display: block;
-  width: 80px;
+  display: none;
+  position: fixed;
 }
+

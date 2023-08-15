@@ -5,6 +5,8 @@ import "./GreenMentor.css";
 import axios from "axios";
 import GreenMentorBanner from "./GreenMentorBanner";
 import { getCookie, setCookie } from "../../lib/cookie";
+import BackButton from './BackButton';
+import App from './../../App';
 
 const GreenMentor = () => {
   const sort = "all";
@@ -20,7 +22,12 @@ const GreenMentor = () => {
     // 모달창 전체
     var modal = document.getElementById("green_mentor_detail_div");
     console.log("modal:", modal);
-    modal.style.display = "flex";
+    if (modal.style.display === "none"){
+      modal.style.display = "flex";
+    } else {
+      modal.style.display = "none";
+    }
+    // modal.style.display = "flex";
 
     // 모달창 닫기 버튼
     // var closeBtn = document.getElementById("green_mentor_detail_closeBtn");
@@ -47,7 +54,7 @@ const GreenMentor = () => {
         const activity = result.data.data;
         console.log(activity);
         document.getElementById("green_mentor_detail_div").innerText = `
-        "학과이름" 합격 멘토의 창의적 체험활동 추천활동 \n
+        ${major} 합격 멘토의 창의적 체험활동 추천활동 \n
         활동 유형: ${activity.activityType}
         ${activity.name} | ${activity.startDate} ~ ${activity.endDate}
         ${activity.name} (${activity.startDate} ~ ${activity.endDate})\n
@@ -55,7 +62,7 @@ const GreenMentor = () => {
         활동 학기: ${activity.semester}
         활동 시작일자: ${activity.startDate}
         활동 종료일자: ${activity.endDate}
-        기타 조언 및 활동소감: ${activity.thoughts}
+        기타 조언 및 활동소감: ${activity.thoughts} 
         `;
       })
       .catch((error) => {
@@ -67,6 +74,7 @@ const GreenMentor = () => {
   // 모달창 닫기 버튼
   const closeBtnHandler = () => {
     var modal = document.getElementById("green_mentor_detail_div");
+    console.log("닫기버튼 눌림")
     modal.style.display = "none";
   };
 
@@ -160,9 +168,8 @@ const GreenMentor = () => {
               ))}
           </div>
           <div id="green_mentor_detail_div">
-            <span id="green_mentor_detail_closeBtn" onClick={closeBtnHandler}>
-              닫기
-            </span>
+            {/* <span id="green_mentor_detail_closeBtn" onClick={closeBtnHandler}>
+              닫기 </span> */}
           </div>
         </div>
       </div>
