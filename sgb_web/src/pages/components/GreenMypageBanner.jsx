@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import green_banner_bg from "./img/green_banner_bg.png";
-import "./GreenMentorBanner.css";
+import "./GreenMypageBanner.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { getCookie, setCookie } from "../../lib/cookie";
 
 // props로 전달된 key들의 value값들을 활용
-const GreenMentorBanner = ({
+const GreenMypageBanner = ({
   activityId,
   activityType,
   name,
-  writerSchoolMajor,
-  writerGrade,
+  startDate,
+  endDate,
   parentFunction,
 }) => {
   const [data, setData] = useState(true);
@@ -31,8 +31,8 @@ const GreenMentorBanner = ({
 
   return (
     <>
-      <div className="green_mentor_banner">
-        <div className="green_banner_bg">
+      <div className="green_mypage_banner">
+        <div className="green_mypage_banner_bg">
           <img
             src={green_banner_bg}
             onClick={handleClick}
@@ -41,14 +41,14 @@ const GreenMentorBanner = ({
             height="100"
           />
           <div className="green_banner_content">
-            <div className="activity_type" onClick={handleClick}>
+            <div className="green_mypage_activity_type" onClick={handleClick}>
               {activityType}
             </div>
-            <div className="activity_name" onClick={handleClick}>
+            <div className="green_mypage_activity_name" onClick={handleClick}>
               {name}
             </div>
-            <div className="activity_writer" onClick={handleClick}>
-              {writerSchoolMajor} {writerGrade}학년
+            <div className="green_mypage_activity_date" onClick={handleClick}>
+              {startDate} ~ {endDate}
             </div>
           </div>
         </div>
@@ -57,4 +57,4 @@ const GreenMentorBanner = ({
   );
 };
 
-export default GreenMentorBanner;
+export default GreenMypageBanner;

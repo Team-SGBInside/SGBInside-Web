@@ -1,61 +1,83 @@
-.mypage, .mypage2, .mypage3 {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    min-width: fit-content;
+.mypage,
+.mypage2,
+.mypage3 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-width: fit-content;
 }
 
 .infobox {
-    position: relative;
-    right: 25%;
-}    
-    
+  position: relative;
+  right: 25%;
+}
+
 .infobox_content {
-    position: absolute;
-    left: 35%;
-    bottom: 30%;
-    font-weight: lighter;
-    font-size: 32px;
-    width: 100%;
-}    
+  position: absolute;
+  left: 35%;
+  bottom: 30%;
+  font-weight: lighter;
+  font-size: 32px;
+  width: 100%;
+}
 
 .info_big {
-    font-weight: bolder;
-    font-size: 40px;
+  font-weight: bolder;
+  font-size: 40px;
 }
 
 .info_small {
-    font-weight: lighter;
-    font-size: 20px;
+  font-weight: lighter;
+  font-size: 20px;
 }
 
 .infobox2 {
-    position: relative;
-    left: 2%;
-    width: 95%;
+  position: relative;
+  left: 2%;
+  width: 95%;
 }
 
 .semester_menu {
-    display: flex;
-    position: relative;
+  display: flex;
+  position: relative;
 }
 
 .semester {
-    position: relative;
-    flex: 1;
+  position: relative;
+  flex: 1;
 }
 
 .semester_select {
-    font-size: 25px;
+  font-size: 25px;
 }
 
 .menu_btn {
-    position: relative;
-    flex: 1;
-    right: 1%;
+  position: relative;
+  flex: 1;
+  right: 1%;
 }
 
 .activity_list {
-    position: relative;
-    right: 25%;
+  position: relative;
+  left: -10%;
+  /* 부모 div 인 mypage3에 가운데 정렬이 걸려 있기 때문에 
+  left: 0% 적용 시 가운데 정렬이 되는 듯*/
+}
+
+#mypage_detail_div {
+  padding-left: 10px;
+  font-size: 15px;
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  align-items: center;
+  /* border-radius: 10px; */
+  width: 50vw;
+  height: 70vh;
+  background-color: #ffffffc7;
+  box-shadow: 5px 5px 10px 1px;
 }

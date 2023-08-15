@@ -1,15 +1,15 @@
-.green_mentor_banner {
+.green_mypage_banner {
   display: flex;
   width: 1000px;
   min-width: fit-content;
   padding-top: 30px;
 }
 
-.green_banner_bg {
+.green_mypage_banner_bg {
   position: relative;
 }
 
-.activity_type {
+.green_mypage_activity_type {
   /* width: 100%; */
   position: absolute;
   font-size: small;
@@ -18,14 +18,14 @@
   left: 10%;
 }
 
-.activity_name {
+.green_mypage_activity_name {
   width: 500px;
   position: absolute;
   bottom: 53%;
   left: 50%;
 }
 
-.activity_writer {
+.green_mypage_activity_date {
   /* width: 100%; */
   /* %는 박스 모델 상 부모 요소의 컨텐트 박스 크기를 따라가기 때문에 주의 필요*/
   width: 500px;
