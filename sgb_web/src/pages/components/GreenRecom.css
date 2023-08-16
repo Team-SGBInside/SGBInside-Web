@@ -21,11 +21,12 @@
 
 .greenrecom_content {
   position: absolute;
-  left: 25px;
+  right: 40%;
   top: 35%;
   text-align: left;
   font-size: 20px;
-  z-index: 999;  
+  z-index: 999;
+  width: 20%;  
 }
 
 .search_div_green {
@@ -56,10 +57,10 @@
 }
 
 .green_mentor {
-  width: 300px;
-  position: relative;
-  left: 930px;
-  bottom: 100px;
+  width: 30%;
+  position: absolute;
+  left: 990px;
+  top: 5%;
 }
 
 .red-text {
