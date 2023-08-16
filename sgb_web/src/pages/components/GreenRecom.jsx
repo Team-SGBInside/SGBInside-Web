@@ -125,16 +125,16 @@ const GreenRecom = () => {
         <div className="green_talk">
           <img src={green_talk} alt="green_talk" width="555" height="120" />
         </div>
+        <Link to="/greenMentor">
         <div className="green_mentor">
-          <Link to="/greenMentor">
             <img
               src={green_mentor}
               alt="green_mentor"
-              width="300"
+              width="100"
               height="100"
             />
-          </Link>
         </div>
+        </Link>
         {/* Search 관련 코드 */}
         <div className="search_div_green">
           <input

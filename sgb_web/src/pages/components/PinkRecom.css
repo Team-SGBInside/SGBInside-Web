@@ -28,7 +28,7 @@
 }
 
 .search_div_pink {
-  padding-left: 10%;
+  padding-left: 25%;
 }
 
 .search_input_pink {
@@ -60,14 +60,14 @@
   bottom: 0;
   left: 0;
   right: 0;
-  margin: auto;
+  margin: 50px;
   align-items: center;
   /* border-radius: 10px; */
   /* width: 50vw; */
   /* height: 70vh; */
   background-color: rgba(248, 166, 204, 0.9);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 3%;
+  border-radius: 35px;
   font-weight: lighter;
 }
 
