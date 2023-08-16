@@ -1,8 +1,9 @@
 .blue_mentor_banner {
   display: flex;
-  width: 100%;
+  width: 1000px;
   min-width: fit-content;
   padding-top: 1px;
+  padding-left: 14%;
 }
 
 .blue_banner_bg {

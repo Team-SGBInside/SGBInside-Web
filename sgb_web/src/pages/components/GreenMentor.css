@@ -29,7 +29,7 @@
 
 .search_div_green {
   position: absolute;
-  padding-left: 10%;
+  padding-left: 12%;
   padding-top: 50px;
   padding-bottom: 100px;
 }
@@ -85,5 +85,7 @@
   color: rgba(93, 126, 49, 0.9);
   font-size: 17px;
 }
+
+
 
 

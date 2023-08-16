@@ -65,7 +65,11 @@
 }
 
 #mypage_detail_div {
-  padding-left: 10px;
+  max-width: 700px;
+  max-height: fit-content;
+  padding: 50px;
+  margin-left: 300px;
+  margin-right: 300px;
   font-size: 15px;
   display: none;
   position: fixed;
@@ -73,11 +77,61 @@
   bottom: 0;
   left: 0;
   right: 0;
-  margin: auto;
+  margin: 100px;
   align-items: center;
   /* border-radius: 10px; */
-  width: 50vw;
-  height: auto; /*70vh, 90vh 이정도면 괜찮은데 지금 띄워주는 데이터가 너무 많아서 auto로 해뒀습니다! 바꿔도 괜찮아요~~*/
-  background-color: #ffffffc7;
-  box-shadow: 5px 5px 10px 1px;
+  /* width: 50vw; */
+  /* height: 70vh; */
+  background-color: rgba(255,255,244,0.9);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 3%;
+  font-weight: lighter;
+}
+
+#mypage_detail_closebutton {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 5px 10px;
+  border-radius: 10%;
+  border: 1px solid gray;
+  background-color: gray;
+  color: #fffff4;
+  font-size: 17px;
+}
+
+#mypage_detail_fixbutton {
+  position: absolute;
+  bottom: 20px;
+  right: 90px;
+  padding: 5px 10px;
+  border-radius: 50px;
+  border: 1px solid #B1C2CA;
+  background-color: #B1C2CA;
+  color: #fffff4;
+  font-size: 15px;
+}
+
+#mypage_detail_deletebutton {
+  position: absolute;
+  bottom: 20px;
+  right: 150px;
+  padding: 5px 10px;
+  border-radius: 50px;
+  border: 1px solid #f29191;
+  background-color: #f29191;
+  color: #fffff4;
+  font-size: 15px;
+}
+
+#mypage_detail_copybutton {
+  position: absolute;
+  bottom: 20px;
+  right: 210px;
+  padding: 5px 10px;
+  border-radius: 50px;
+  border: 1px solid #A0D97E;
+  background-color: #A0D97E;
+  color: #fffff4;
+  font-size: 15px;
 }
