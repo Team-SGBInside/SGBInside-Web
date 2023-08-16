@@ -54,7 +54,7 @@ const GreenMentor = () => {
         const activity = result.data.data;
         console.log(activity);
         var modal = document.getElementById("green_mentor_detail_div");
-        modal.innerHTMLText = `
+        modal.innerText = `
         ${major} 합격 멘토의 창의적 체험활동 추천활동 \n
         활동 유형: ${activity.activityType}
         ${activity.name} | ${activity.startDate} ~ ${activity.endDate}
