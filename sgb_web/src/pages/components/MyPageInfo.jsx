@@ -3,10 +3,15 @@ import axios from "axios";
 import "./MyPageInfo.css";
 import InfoBox from "./img/InfoBox.png";
 import menu_whole from "./img/menu_whole.png";
+import menu_whole_active from "./img/menu_whole_active.png";
 import menu_green from "./img/menu_green.png";
+import menu_green_active from "./img/menu_green_active.png";
 import menu_red from "./img/menu_red.png";
+import menu_red_active from "./img/menu_red_active.png";
 import menu_pink from "./img/menu_pink.png";
+import menu_pink_active from "./img/menu_pink_active.png";
 import menu_blue from "./img/menu_blue.png";
+import menu_blue_active from "./img/menu_blue_active.png";
 import green_clicked from "./img/green_clicked.png";
 import red_clicked from "./img/red_clicked.png";
 import pink_clicked from "./img/pink_clicked.png";
@@ -337,6 +342,13 @@ const MyPageInfo = () => {
     }
   };
 
+  const [activeMenu, setActiveMenu] = useState("all");
+
+  const handleMenuClick = (menu) => {
+    setActiveMenu(menu);
+    handleActivitySort(menu); // 메뉴를 클릭하면 해당 메뉴에 해당하는 활동을 가져오도록 변경
+  };
+
   return (
     <>
       <div className="mypage">
@@ -378,43 +390,43 @@ const MyPageInfo = () => {
             </div>
             <div className="menu_btn">
               <img
-                src={menu_whole}
+                src={activeMenu === "all" ? menu_whole_active : menu_whole}
                 alt="all"
                 width="80"
                 height="40"
-                onClick={() => handleActivitySort("all")}
+                onClick={() => handleMenuClick("all")}
               />
 
               <img
-                src={menu_green}
+                src={activeMenu === "creative" ? menu_green_active : menu_green}
                 alt="green"
                 width="80"
                 height="40"
-                onClick={() => handleActivitySort("creative")}
+                onClick={() =>  handleMenuClick("creative")}
               />
 
               <img
-                src={menu_red}
+                src={activeMenu === "subject" ? menu_red_active : menu_red}
                 alt="red"
                 width="80"
                 height="40"
-                onClick={() => handleActivitySort("subject")}
+                onClick={() => handleMenuClick("subject")}
               />
 
               <img
-                src={menu_pink}
+                src={activeMenu === "prize" ? menu_pink_active : menu_pink}
                 alt="pink"
                 width="80"
                 height="40"
-                onClick={() => handleActivitySort("prize")}
+                onClick={() => handleMenuClick("prize")}
               />
 
               <img
-                src={menu_blue}
+                src={activeMenu === "book" ? menu_blue_active : menu_blue}
                 alt="blue"
                 width="80"
                 height="40"
-                onClick={() => handleActivitySort("book")}
+                onClick={() => handleMenuClick("book")}
               />
             </div>
           </div>
