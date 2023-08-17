@@ -185,10 +185,19 @@ function MyPageInfo() {
         },
       });
     }
-    if (activity.sort === "subject" && isFixClicked === true) {
+    if (activity.sort === "subject") {
       navigator("/mypage/edit", {
         state: {
           sort: "subject",
+          activityId: activity.activityId,
+          subjectName: activity.subjectName,
+          subjectContent: activity.subjectContent,
+          mainActivity: activity.mainActivity,
+          startDate: activity.startDate,
+          endDate: activity.endDate,
+          activitySemester: activity.activitySemester,
+          activityContentDetail: activity.activityContentDetail,
+          subjectFurtherStudy: activity.subjectFurtherStudy,
         },
       });
     }

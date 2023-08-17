@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Hello from "./components/Hello";
 import MyPageInfo from "./components/MyPageInfo";
 import GreenMyPageEdit from "./components/GreenMyPageEdit";
+import RedMyPageEdit from "./components/RedMyPageEdit";
 
 const MyPageEdit = () => {
   const location = useLocation();
@@ -31,9 +32,20 @@ const MyPageEdit = () => {
             role={activity.role}
             thoughts={activity.thoughts}
           />
-        ) : (
-          <p>창의적 체험활동 수정하기</p>
-        )}
+        ) : null}
+        {activity.sort === "subject" ? (
+          <RedMyPageEdit
+            activityId={activity.activityId}
+            subjectName={activity.subjectName}
+            subjectContent={activity.subjectContent}
+            mainActivity={activity.mainActivity}
+            startDate={activity.startDate}
+            endDate={activity.endDate}
+            activitySemester={activity.activitySemester}
+            activityContentDetail={activity.activityContentDetail}
+            subjectFurtherStudy={activity.subjectFurtherStudy}
+          />
+        ) : null}
       </div>
     </>
   );
