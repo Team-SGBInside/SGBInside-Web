@@ -5,6 +5,7 @@ import Hello from "./components/Hello";
 import MyPageInfo from "./components/MyPageInfo";
 import GreenMyPageEdit from "./components/GreenMyPageEdit";
 import RedMyPageEdit from "./components/RedMyPageEdit";
+import PinkMypageEdit from "./components/PinkMypageEdit";
 
 const MyPageEdit = () => {
   const location = useLocation();
@@ -44,6 +45,18 @@ const MyPageEdit = () => {
             activitySemester={activity.activitySemester}
             activityContentDetail={activity.activityContentDetail}
             subjectFurtherStudy={activity.subjectFurtherStudy}
+          />
+        ) : null}
+        {activity.sort === "prize" ? (
+          <PinkMypageEdit
+            activityId={activity.activityId}
+            semester={activity.semester}
+            date={activity.date}
+            name={activity.name}
+            prize={activity.prize}
+            role={activity.role}
+            thoughts={activity.thoughts}
+            type={activity.type}
           />
         ) : null}
       </div>

@@ -201,6 +201,21 @@ function MyPageInfo() {
         },
       });
     }
+    if (activity.sort === "prize") {
+      navigator("/mypage/edit", {
+        state: {
+          sort: "prize",
+          activityId: activity.activityId,
+          semester: activity.semester,
+          date: activity.date,
+          name: activity.name,
+          prize: activity.prize,
+          role: activity.role,
+          thoughts: activity.thoughts,
+          type: activity.type,
+        },
+      });
+    }
   }
 
   // 모달창 삭제 버튼
@@ -396,6 +411,9 @@ function MyPageInfo() {
       modal.appendChild(fixButton);
       fixButton.id = "mypage_detail_fixbutton";
       fixButton.innerText = "수정";
+      fixButton.addEventListener("click", function () {
+        editBtnHandler({ activity: activity[0] });
+      });
 
       var deleteButton = document.createElement("button");
       modal.appendChild(deleteButton);
