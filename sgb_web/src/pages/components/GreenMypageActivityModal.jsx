@@ -1,22 +1,30 @@
 import React, { useEffect, useState } from "react";
 
-export default function GreenMypageActivityModal(
+export default function GreenMypageActivityModal({
   activityId,
   startDate,
-  endDate
-) {
+  endDate,
+}) {
   console.log(
     "activityId, startDate, endDate:",
     activityId,
     startDate,
     endDate
   );
-  const id = activityId;
-  const stDate = startDate;
-  const edDate = endDate;
+
   // 활동 수정을 위한 state
   const [text, setText] = useState("Hello World");
   const [isEditable, setIsEditable] = useState(false);
+
+  const id = activityId;
+  const stDate = startDate;
+  const edDate = endDate;
+
+  const example = stDate + " ~ " + edDate;
+
+  useEffect(() => {
+    setText(example);
+  }, []);
 
   const handleDoubleClick = () => {
     setIsEditable(true);
