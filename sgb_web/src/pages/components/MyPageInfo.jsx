@@ -195,7 +195,29 @@ function MyPageInfo() {
   }
 
   // 모달창 삭제 버튼
-  const delBtnHandler = () => {};
+  const delBtnHandler = (activityId, sort) => {
+    if (confirm("정말로 이 활동 기록을 삭제하시겠어요?") == true) {
+      axios
+        .delete(`http://3.37.215.18:3000/mypage/${sort}/${activityId}`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getCookie("accessToken")}`,
+            withCredentials: true,
+          },
+        })
+        .then((response) => {
+          alert("삭제되었습니다.");
+          console.log("delete response: ", response);
+          location.reload(); // 새로고침
+        })
+        .catch((error) => {
+          alert("삭제에 실패했습니다.");
+          console.log(error);
+        });
+    } else {
+      return;
+    }
+  };
 
   function parentFunction(data, sort, id) {
     setBannerClicked(data);
@@ -225,6 +247,7 @@ function MyPageInfo() {
 
       // 창체 활동 객체 내부의 전체 필드
       const activityId = activity[0].activityId;
+      const sort = activity[0].sort; // creative
       const name = activity[0].name;
       const startDate = activity[0].startDate;
       const endDate = activity[0].endDate;
@@ -257,6 +280,9 @@ function MyPageInfo() {
       modal.appendChild(deleteButton);
       deleteButton.id = "mypage_detail_deletebutton";
       deleteButton.innerText = "삭제";
+      deleteButton.addEventListener("click", function () {
+        delBtnHandler(activityId, sort);
+      });
 
       var copyButton = document.createElement("button");
       modal.appendChild(copyButton);
