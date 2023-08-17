@@ -366,6 +366,31 @@ function MyPageInfo() {
               }
             })}
         </div>
+        <div id="mypage_detail_div">
+          {/* 창체 전체 필드 
+         \n name: ${activity[0].name}
+          \n activityType: ${activity[0].activityType}
+          \n startDate: ${activity[0].startDate}
+          \n endDate: ${activity[0].endDate}
+          \n activityId: ${activity[0].activityId}
+          \n semester: ${activity[0].semester}
+          \n role: ${activity[0].role}
+          \n thoughts: ${activity[0].thoughts}
+          \n writerId: ${activity[0].writerId} */}
+
+          {clickedActivity.sort === "creative" ? (
+            <GreenMypageActivityModal
+              activityId={clickedActivity.activityId}
+              startDate={clickedActivity.startDate}
+              endDate={clickedActivity.endDate}
+            />
+          ) : null}
+          {/* {
+            clickedActivity.sort === "subject" ? (
+
+            )
+          } */}
+        </div>
       </div>
     </>
   );
