@@ -34,6 +34,7 @@ import MyPageMentor from "./pages/MyPageMentor";
 import GreenClickedMentor from "./pages/GreenClickedMentor";
 import PinkClickedMentor from "./pages/PinkClickedMentor";
 import MyPageEdit from "./pages/MyPageEdit";
+import MyPageEditMentor from "./pages/MyPageEditMentor";
 
 export default function App() {
   return (
@@ -55,6 +56,10 @@ export default function App() {
           <Route path={"/mypage"} element={<MyPage />}></Route>
           <Route path={"/mypage/edit"} element={<MyPageEdit />}></Route>
           <Route path={"/mypageMentor"} element={<MyPageMentor />}></Route>
+          <Route
+            path={"/mypageMentor/edit"}
+            element={<MyPageEditMentor />}
+          ></Route>
           <Route path={"/loginedHome"} element={<LoginedHome />}></Route>
           <Route
             path={"/loginedMentorHome"}
