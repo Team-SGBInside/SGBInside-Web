@@ -22,22 +22,25 @@ import mypage_pink from "./img/mypage_pink.png";
 import mypage_blue from "./img/mypage_blue.png";
 import mypage_blue2 from "./img/mypage_blue2.png";
 import mypage_green2 from "./img/mypage_green2.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getCookie, setCookie } from "../../lib/cookie";
 import RedMypageBanner from "./RedMypageBanner";
 import BlueMypageBanner from "./BlueMypageBanner";
 import GreenMypageBanner from "./GreenMypageBanner";
 import PinkMypageBanner from "./PinkMypageBanner";
-import GreenMypageActivityModal from "./GreenMypageActivityModal";
 import RedMypageActivityModal from "./RedMypageActivityModal";
 
 function MyPageInfo() {
   console.log("Hi i'm first");
+  const navigator = useNavigate();
+
   const [userInfo, setUserInfo] = useState({});
   const [semester, setSemester] = useState("all");
   const [activitySort, setActivitySort] = useState("all");
   const [bannerClicked, setBannerClicked] = useState(false);
   const [clickedActivity, setClickedActivity] = useState({});
+
+  console.log("bannerClicked: ", bannerClicked);
 
   const tokenUserId = getCookie("userId");
   const token = getCookie("accessToken");
@@ -50,16 +53,11 @@ function MyPageInfo() {
   let sortQuery = activitySort;
   const handleSemester = (event) => {
     setSemester(event.target.value);
-    console.log("semester event.target: ", event.target);
-    console.log("semesterQuery: ", semesterQuery);
-    console.log("sortQuery: ", sortQuery);
     getUserInfo(sortQuery, semesterQuery);
   };
 
   const handleActivitySort = (sort) => {
     setActivitySort(sort);
-    console.log("semesterQuery: ", semesterQuery);
-    console.log("sortQuery: ", sortQuery);
     getUserInfo(sortQuery, semesterQuery);
   };
 
@@ -160,6 +158,110 @@ function MyPageInfo() {
     getUserInfo(sortQuery, semesterQuery);
   }, []);
 
+  // 모달창 닫기 버튼
+  const closeBtnHandler = () => {
+    var modal = document.getElementById("mypage_detail_div");
+    console.log("닫기버튼 눌림");
+    modal.style.display = "none";
+  };
+
+  // 모달창 수정 버튼
+  function editBtnHandler({ activity }) {
+    console.log("수정버튼 눌림");
+    console.log("activity: ", activity);
+
+    if (activity.sort === "creative") {
+      navigator("/mypage/edit", {
+        state: {
+          sort: "creative",
+          activityId: activity.activityId,
+          name: activity.name,
+          startDate: activity.startDate,
+          endDate: activity.endDate,
+          semester: activity.semester,
+          activityType: activity.activityType,
+          role: activity.role,
+          thoughts: activity.thoughts,
+        },
+      });
+    }
+    if (activity.sort === "subject") {
+      navigator("/mypage/edit", {
+        state: {
+          sort: "subject",
+          activityId: activity.activityId,
+          subjectName: activity.subjectName,
+          subjectContent: activity.subjectContent,
+          mainActivity: activity.mainActivity,
+          startDate: activity.startDate,
+          endDate: activity.endDate,
+          activitySemester: activity.activitySemester,
+          activityContentDetail: activity.activityContentDetail,
+          subjectFurtherStudy: activity.subjectFurtherStudy,
+        },
+      });
+    }
+
+    if (activity.sort === "prize") {
+      navigator("/mypage/edit", {
+        state: {
+          sort: "prize",
+          activityId: activity.activityId,
+          semester: activity.semester,
+          date: activity.date,
+          name: activity.name,
+          prize: activity.prize,
+          role: activity.role,
+          thoughts: activity.thoughts,
+          type: activity.type,
+        },
+      });
+    }
+    if (activity.sort === "book") {
+      navigator("/mypage/edit", {
+        state: {
+          sort: "book",
+          activityId: activity.activityId,
+          semester: activity.semester,
+          endDate: activity.endDate,
+          titleAuthor: activity.titleAuthor,
+          relatedSubject: activity.relatedSubject,
+          thoughts: activity.thoughts,
+          quote1: activity.quote1,
+          quote2: activity.quote2,
+          quote3: activity.quote3,
+          quote4: activity.quote4,
+          quote5: activity.quote5,
+        },
+      });
+    }
+  }
+
+  // 모달창 삭제 버튼
+  const delBtnHandler = (activityId, sort) => {
+    if (confirm("정말로 이 활동 기록을 삭제하시겠어요?") == true) {
+      axios
+        .delete(`http://3.37.215.18:3000/mypage/${sort}/${activityId}`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getCookie("accessToken")}`,
+            withCredentials: true,
+          },
+        })
+        .then((response) => {
+          alert("삭제되었습니다.");
+          console.log("delete response: ", response);
+          location.reload(); // 새로고침
+        })
+        .catch((error) => {
+          alert("삭제에 실패했습니다.");
+          console.log(error);
+        });
+    } else {
+      return;
+    }
+  };
+
   function parentFunction(data, sort, id) {
     setBannerClicked(data);
     console.log("data, sort, id :", data, sort, id);
@@ -169,40 +271,41 @@ function MyPageInfo() {
     var modal = document.getElementById("mypage_detail_div");
     if (modal.style.display === "none") {
       modal.style.display = "flex";
+      console.log("flexxxxed");
     } else {
+      console.log("modal.style,display: ", modal.style.display);
       modal.style.display = "none";
+      console.log("modal.style.display: ", modal.style.display);
     }
-
-    // 모달창 닫기 버튼
-    const closeBtnHandler = () => {
-      var modal = document.getElementById("mypage_detail_div");
-      console.log("닫기버튼 눌림");
-      modal.style.display = "none";
-    };
 
     if (sort === "창체활동") {
       const activity = userInfo.allActivity.filter((obj) => {
         return obj.sort === "creative" && obj.activityId === id;
       });
-      console.log(activity); // [{}]
-      setClickedActivity(activity[0]);
+      console.log("activity: ", activity); // [{}]
+
+      setClickedActivity(activity[0], function () {
+        console.log("clickedActivity: ", clickedActivity);
+      });
       console.log("clickedActivity: ", clickedActivity);
-      /* 창체 전체 필드
-      \n name: ${activity[0].name}
-      \n activityType: ${activity[0].activityType}
-      \n startDate: ${activity[0].startDate}
-      \n endDate: ${activity[0].endDate}
-      \n activityId: ${activity[0].activityId}
-      \n semester: ${activity[0].semester}
-      \n role: ${activity[0].role}
-      \n thoughts: ${activity[0].thoughts}
-      \n writerId: ${activity[0].writerId}
-      */
-      // modal.innerText = `sort: 창체
-      // ${activity[0].name} | ${activity[0].startDate} ~ ${activity[0].endDate} | ${activity[0].semester} | ${activity[0].activityType}\n
-      // ${activity[0].name}(${activity[0].startDate} ~ ${activity[0].endDate}) ${activity[0].role}\n
-      // ${activity[0].thoughts}
-      // `;
+
+      // 창체 활동 객체 내부의 전체 필드
+      const activityId = activity[0].activityId;
+      const sort = activity[0].sort; // creative
+      const name = activity[0].name;
+      const startDate = activity[0].startDate;
+      const endDate = activity[0].endDate;
+      const semester = activity[0].semester;
+      const activityType = activity[0].activityType;
+      const thoughts = activity[0].thoughts;
+      const role = activity[0].role;
+
+      modal.innerText = `sort: 창체
+      ${name} | ${startDate} ~ ${endDate} | ${semester} | ${activityType}\n
+      ${name}(${startDate} ~ ${endDate}) ${role}\n
+      ${thoughts}
+      `;
+
       var closeButton = document.createElement("button");
       modal.appendChild(closeButton);
       closeButton.id = "mypage_detail_closebutton";
@@ -213,11 +316,18 @@ function MyPageInfo() {
       modal.appendChild(fixButton);
       fixButton.id = "mypage_detail_fixbutton";
       fixButton.innerText = "수정";
+      fixButton.addEventListener("click", function () {
+        editBtnHandler({ activity: activity[0] });
+      });
 
       var deleteButton = document.createElement("button");
       modal.appendChild(deleteButton);
       deleteButton.id = "mypage_detail_deletebutton";
       deleteButton.innerText = "삭제";
+      deleteButton.addEventListener("click", function () {
+        console.log("about to delete : ", activityId, sort);
+        delBtnHandler(activityId, sort);
+      });
 
       var copyButton = document.createElement("button");
       modal.appendChild(copyButton);
@@ -225,32 +335,35 @@ function MyPageInfo() {
       copyButton.innerText = "복사";
     }
 
-    /* 세특 전체 필드
-      \n activityId: ${activity[0].activityId}
-      \n activitySemester: ${activity[0].activitySemester}
-      \n startDate: ${activity[0].startDate}
-      \n endDate: ${activity[0].endDate}
-      \n subjectName: ${activity[0].subjectName}
-      \n subjectContent: ${activity[0].subjectContent}
-      \n mainActivity: ${activity[0].mainActivity}
-      \n activityContentDetail: ${activity[0].activityContentDetail}
-      \n subjectFurtherStudy: ${activity[0].subjectFurtherStudy}
-      \n writerId: ${activity[0].writerId}
-    */
     if (sort === "세부능력") {
       const activity = userInfo.allActivity.filter((obj) => {
         return obj.sort === "subject" && obj.activityId === id;
       });
       console.log("activity: ", activity);
-      setClickedActivity(activity[0]);
+      setClickedActivity(activity[0], function () {
+        console.log("clickedActivity: ", clickedActivity);
+      });
       console.log("clickedActivity: ", clickedActivity);
 
-      // modal.innerText = `sort: 세특
-      // ${activity[0].subjectName} ${activity[0].mainActivity} | ${activity[0].startDate} ~ ${activity[0].endDate} | ${activity[0].activitySemester}\n
-      // ${activity[0].subjectName} - ${activity[0].subjectContent}\n
-      // ${activity[0].subjectName} ${activity[0].mainActivity} (${activity[0].startDate} ~ ${activity[0].endDate}) ${activity[0].activityContentDetail}\n
-      // ${activity[0].subjectFurtherStudy}
-      //  `;
+      // 세특 전체 필드
+      const activityId = activity[0].activityId;
+      const sort = activity[0].sort;
+      const activitySemester = activity[0].activitySemester;
+      const startDate = activity[0].startDate;
+      const endDate = activity[0].endDate;
+      const subjectName = activity[0].subjectName;
+      const subjectContent = activity[0].subjectContent;
+      const mainActivity = activity[0].mainActivity;
+      const activityContentDetail = activity[0].activityContentDetail;
+      const subjectFurtherStudy = activity[0].subjectFurtherStudy;
+      const writerId = activity[0].writerId;
+
+      modal.innerText = `sort: 세특
+      ${subjectName} ${mainActivity} | ${startDate} ~ ${endDate} | ${activitySemester}\n
+      ${subjectName} - ${subjectContent}\n
+      ${subjectName} ${mainActivity} (${startDate} ~ ${endDate}) ${activityContentDetail}\n
+      ${subjectFurtherStudy}
+       `;
       var closeButton = document.createElement("button");
       modal.appendChild(closeButton);
       closeButton.id = "mypage_detail_closebutton";
@@ -261,11 +374,18 @@ function MyPageInfo() {
       modal.appendChild(fixButton);
       fixButton.id = "mypage_detail_fixbutton";
       fixButton.innerText = "수정";
+      fixButton.addEventListener("click", function () {
+        editBtnHandler({ activity: activity[0] });
+      });
 
       var deleteButton = document.createElement("button");
       modal.appendChild(deleteButton);
       deleteButton.id = "mypage_detail_deletebutton";
       deleteButton.innerText = "삭제";
+      deleteButton.addEventListener("click", function () {
+        console.log("about to delete : ", activityId, sort);
+        delBtnHandler(activityId, sort);
+      });
 
       var copyButton = document.createElement("button");
       modal.appendChild(copyButton);
@@ -273,28 +393,33 @@ function MyPageInfo() {
       copyButton.innerText = "복사";
     }
 
-    /* 수상 전체 필드 
-      \n activityId: ${activity[0].activityId}
-      \n semester: ${activity[0].semester}
-      \n date: ${activity[0].date}
-      \n name: ${activity[0].name}
-      \n prize: ${activity[0].prize}
-      \n role: ${activity[0].role}
-      \n thoughts: ${activity[0].thoughts}
-      \n type: ${activity[0].type}
-      \n writerId: ${activity[0].writerId}
-    */
     if (sort === "수상경력") {
       const activity = userInfo.allActivity.filter((obj) => {
         return obj.sort === "prize" && obj.activityId === id;
       });
       console.log("activity: ", activity);
+      setClickedActivity(activity[0], function () {
+        console.log("clickedActivity: ", clickedActivity);
+      });
+      console.log("clickedActivity: ", clickedActivity);
+
+      // 수상 전체 필드
+      const activityId = activity[0].activityId;
+      const sort = activity[0].sort;
+      const semester = activity[0].semester;
+      const date = activity[0].date;
+      const name = activity[0].name;
+      const prize = activity[0].prize;
+      const role = activity[0].role;
+      const thoughts = activity[0].thoughts;
+      const type = activity[0].type;
+      const writerId = activity[0].writerId;
 
       modal.innerText = `sort: 수상
-      ${activity[0].name} | ${activity[0].date} | ${activity[0].semester}\n
-      ${activity[0].name} / ${activity[0].prize} / ${activity[0].date}\n
-      ${activity[0].role}\n
-      ${activity[0].thoughts}`;
+      ${name} | ${date} | ${semester}\n
+      ${name} / ${prize} / ${date}\n
+      ${role}\n
+      ${thoughts}`;
       var closeButton = document.createElement("button");
       modal.appendChild(closeButton);
       closeButton.id = "mypage_detail_closebutton";
@@ -305,11 +430,18 @@ function MyPageInfo() {
       modal.appendChild(fixButton);
       fixButton.id = "mypage_detail_fixbutton";
       fixButton.innerText = "수정";
+      fixButton.addEventListener("click", function () {
+        editBtnHandler({ activity: activity[0] });
+      });
 
       var deleteButton = document.createElement("button");
       modal.appendChild(deleteButton);
       deleteButton.id = "mypage_detail_deletebutton";
       deleteButton.innerText = "삭제";
+      deleteButton.addEventListener("click", function () {
+        console.log("about to delete : ", activityId, sort);
+        delBtnHandler(activityId, sort);
+      });
 
       var copyButton = document.createElement("button");
       modal.appendChild(copyButton);
@@ -317,33 +449,39 @@ function MyPageInfo() {
       copyButton.innerText = "복사";
     }
 
-    /* 독서 전체 필드
-      \n activityId: ${activity[0].activityId}
-      \n semester: ${activity[0].semester}
-      \n endDate: ${activity[0].endDate}
-      \n titleAuthor: ${activity[0].titleAuthor}
-      \n relatedSubject: ${activity[0].relatedSubject}
-      \n thoughts: ${activity[0].thoughts}
-      \n quote1: ${activity[0].quote1}
-      \n quote2: ${activity[0].quote2}
-      \n quote3: ${activity[0].quote3}
-      \n quote4: ${activity[0].quote4}
-      \n quote5: ${activity[0].quote5}
-      \n writerId: ${activity[0].writerId}\n
-    */
     if (sort === "독서활동") {
       const activity = userInfo.allActivity.filter((obj) => {
         return obj.sort === "book" && obj.activityId === id;
       });
       console.log("activity: ", activity);
+      setClickedActivity(activity[0], function () {
+        console.log("clickedActivity: ", clickedActivity);
+      });
+      console.log("clickedActivity: ", clickedActivity);
+
+      // 독서 전체 필드
+      const activityId = activity[0].activityId;
+      const sort = activity[0].sort;
+      const semester = activity[0].semester;
+      const endDate = activity[0].endDate;
+      const titleAuthor = activity[0].titleAuthor;
+      const relatedSubject = activity[0].relatedSubject;
+      const thoughts = activity[0].thoughts;
+      const quote1 = activity[0].quote1;
+      const quote2 = activity[0].quote2;
+      const quote3 = activity[0].quote3;
+      const quote4 = activity[0].quote4;
+      const quote5 = activity[0].quote5;
+      const writerId = activity[0].writerId;
+
       modal.innerText = `sort: 독서
-      ${activity[0].titleAuthor} | ${activity[0].endDate} | ${activity[0].semester} | ${activity[0].relatedSubject}\n
-      ${activity[0].thoughts}\n
-      - ${activity[0].quote1}\n
-      - ${activity[0].quote2}\n
-      - ${activity[0].quote3}\n
-      - ${activity[0].quote4}\n
-      - ${activity[0].quote5}\n
+      ${titleAuthor} | ${endDate} | ${semester} | ${relatedSubject}\n
+      ${thoughts}\n
+      - ${quote1}\n
+      - ${quote2}\n
+      - ${quote3}\n
+      - ${quote4}\n
+      - ${quote5}\n
 
       `;
       var closeButton = document.createElement("button");
@@ -356,11 +494,18 @@ function MyPageInfo() {
       modal.appendChild(fixButton);
       fixButton.id = "mypage_detail_fixbutton";
       fixButton.innerText = "수정";
+      fixButton.addEventListener("click", function () {
+        editBtnHandler({ activity: activity[0] });
+      });
 
       var deleteButton = document.createElement("button");
       modal.appendChild(deleteButton);
       deleteButton.id = "mypage_detail_deletebutton";
       deleteButton.innerText = "삭제";
+      deleteButton.addEventListener("click", function () {
+        console.log("about to delete : ", activityId, sort);
+        delBtnHandler(activityId, sort);
+      });
 
       var copyButton = document.createElement("button");
       modal.appendChild(copyButton);
@@ -515,31 +660,7 @@ function MyPageInfo() {
               }
             })}
         </div>
-        <div id="mypage_detail_div">
-          {/* 창체 전체 필드 
-         \n name: ${activity[0].name}
-          \n activityType: ${activity[0].activityType}
-          \n startDate: ${activity[0].startDate}
-          \n endDate: ${activity[0].endDate}
-          \n activityId: ${activity[0].activityId}
-          \n semester: ${activity[0].semester}
-          \n role: ${activity[0].role}
-          \n thoughts: ${activity[0].thoughts}
-          \n writerId: ${activity[0].writerId} */}
-
-          {clickedActivity.sort === "creative" ? (
-            <GreenMypageActivityModal
-              activityId={clickedActivity.activityId}
-              startDate={clickedActivity.startDate}
-              endDate={clickedActivity.endDate}
-            />
-          ) : null}
-          {/* {
-            clickedActivity.sort === "subject" ? (
-
-            )
-          } */}
-        </div>
+        <div id="mypage_detail_div"></div>
       </div>
     </>
   );
