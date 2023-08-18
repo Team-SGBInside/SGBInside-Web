@@ -201,6 +201,7 @@ function MyPageInfo() {
         },
       });
     }
+
     if (activity.sort === "prize") {
       navigator("/mypage/edit", {
         state: {
@@ -213,6 +214,24 @@ function MyPageInfo() {
           role: activity.role,
           thoughts: activity.thoughts,
           type: activity.type,
+        },
+      });
+    }
+    if (activity.sort === "book") {
+      navigator("/mypage/edit", {
+        state: {
+          sort: "book",
+          activityId: activity.activityId,
+          semester: activity.semester,
+          endDate: activity.endDate,
+          titleAuthor: activity.titleAuthor,
+          relatedSubject: activity.relatedSubject,
+          thoughts: activity.thoughts,
+          quote1: activity.quote1,
+          quote2: activity.quote2,
+          quote3: activity.quote3,
+          quote4: activity.quote4,
+          quote5: activity.quote5,
         },
       });
     }
@@ -475,6 +494,9 @@ function MyPageInfo() {
       modal.appendChild(fixButton);
       fixButton.id = "mypage_detail_fixbutton";
       fixButton.innerText = "수정";
+      fixButton.addEventListener("click", function () {
+        editBtnHandler({ activity: activity[0] });
+      });
 
       var deleteButton = document.createElement("button");
       modal.appendChild(deleteButton);
