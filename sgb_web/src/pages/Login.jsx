@@ -13,7 +13,8 @@ const Login = () => {
   const idRef = useRef();
   const pwRef = useRef();
 
-  const handleMember = async () => {
+  const handleMember = async (event) => {
+    event.preventDefault();
     console.log("clicked");
     try {
       const response = await axios.post(
@@ -45,23 +46,32 @@ const Login = () => {
     }
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      // 엔터 키를 눌렀을 때 handleMember 함수를 호출하여 제출
+      handleMember(event);
+    }
+  };
+
   return (
     <>
       <div>
         <Logo />
       </div>
       <div>
-        <form>
+        <form onSubmit={handleMember}>
           <div className="form">
             <div className="id">
               <label>아이디</label>
               <br />
               <input
+                className="login-input"
                 type="text"
                 name="id"
                 size="30"
                 defaultValue=""
                 ref={idRef}
+                onKeyPress={handleKeyPress}
               ></input>
               <br />
             </div>
@@ -69,19 +79,23 @@ const Login = () => {
               <label>비밀번호</label>
               <br />
               <input
+                className="login-input"
                 type="password"
                 name="pw"
                 size="30"
                 defaultValue=""
                 ref={pwRef}
+                onKeyPress={handleKeyPress}
               ></input>
               <br />
             </div>
             <br />
           </div>
-          <div className="login-button">
+          <div>
             <Link to="/login">
-              <button type="submit">
+              <button 
+              className="login-button"
+              type="submit">
                 <img
                   src={login_submit}
                   onClick={handleMember}
