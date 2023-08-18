@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { getCookie, setCookie } from "../../lib/cookie";
+import './MyPageEdit.css';
 
 function GreenMyPageEdit({
   activityId,
@@ -13,6 +14,7 @@ function GreenMyPageEdit({
   role,
   thoughts,
 }) {
+
   const navigator = useNavigate();
   const [actId, setActId] = useState(activityId);
   const [nme, setNme] = useState(name);
@@ -46,7 +48,7 @@ function GreenMyPageEdit({
   };
   const handleSubmit = () => {
     // alert에서 확인을 누를 경우에 POST
-    if (confirm("정말로 작성하신대로 저장하시겠습니까?") == true) {
+    if (confirm("변경된 수정사항을 저장하시겠습니까?") == true) {
       axios
         .post(
           `http://3.37.215.18:3000/mypage/creative/${actId}`,
@@ -65,14 +67,14 @@ function GreenMyPageEdit({
               Authorization: `Bearer ${getCookie("accessToken")}`,
               withCredentials: true,
             },
-          }
+          } 
         )
         .then((response) => {
           alert("저장되었습니다.");
           console.log("edit response: ", response);
           location.reload();
 
-          // navigator(-1); // 뒤로가기
+           navigator(-1); // 뒤로가기
         })
         .catch((error) => {
           alert("수정에 실패했습니다.");
@@ -85,66 +87,96 @@ function GreenMyPageEdit({
     }
   };
 
+
   return (
     <>
-      마이페이지 창의적 체험활동 수정
-      <br />
-      활동명: <input
+      {/* <button className="edit-back" onClick={handleBack}>←</button> */}
+      <div className="edit-body">
+      <br/><br/>
+      <span className="edit-label">활동명 {" "}</span>
+      <input
+        className="edit-input"
         type="text"
         name="name"
         value={nme}
         onChange={handleNme}
       />{" "}
-      *필수
+      <span className="edit-label-small">*필수</span>
       <br />
-      시작일자:{" "}
+      <span className="edit-label">시작일자 {" "}</span>
       <input
-        type="text"
+        className="edit-input"
+        type="date"
         name="startDate"
         value={stDate}
         onChange={handleStDate}
       />{" "}
-      *필수(예: 2023-01-01)
+      <span className="edit-label-small">*필수</span>
       <br />
-      종료일자:{" "}
+      <span className="edit-label">종료일자 {" "}</span>
       <input
-        type="text"
+        className="edit-input"
+        type="date"
         name="endDate"
         value={edDate}
         onChange={handleEdDate}
       />{" "}
-      *필수(예: 2023-03-12)
+      <span className="edit-label-small">*필수</span>
       <br />
-      활동학기:{" "}
-      <input
+      <span className="edit-label">활동학기 {" "}</span>
+      <select
+        className="edit-input"
         type="text"
         name="semester"
         value={smester}
         onChange={handleSmester}
-      />{" "}
-      *필수(예: 1-1)
+      >
+      <option value="1-1">1학년 1학기</option>
+      <option value="1-2">1학년 2학기</option>
+      <option value="2-1">2학년 1학기</option>
+      <option value="2-2">2학년 2학기</option>
+      <option value="3-1">3학년 1학기</option>
+      <option value="3-2">3학년 2학기</option>
+      </select>{" "}
+      <span className="edit-label-small">*필수</span>
       <br />
-      활동유형:{" "}
-      <input
+      <span className="edit-label">활동유형 {" "}</span>
+      <select
+        className="edit-input"
         type="text"
         name="activityType"
         value={actType}
         onChange={handleActType}
-      />{" "}
-      *필수(자율활동, 진로활동, 봉사활동, 동아리활동 중 택1)
-      <br />
-      활동 내 역할 및 구체적 활동내용:{" "}
-      <input type="text" name="role" value={rle} onChange={handleRle} /> *필수
-      <br />
-      활동 소감:{" "}
-      <input
+      >
+            <option value="self">자율활동</option>
+            <option value="club">동아리활동</option>
+            <option value="career">진로활동</option>
+            <option value="volunteer">봉사활동</option>
+      </select>{" "}
+      <span className="edit-label-small">*필수</span>
+      <br /><br/>
+      <span className="edit-label">활동 내 역할 및 구체적 활동내용 {" "}</span><br/>
+      <textarea 
+      type="text" 
+      className="edit-textarea" 
+      name="role" 
+      value={rle} 
+      onChange={handleRle} 
+      /> <br/>
+      <span className="edit-label-small">*필수</span>
+      <br /><br/>
+      <span className="edit-label">활동 소감 {" "}</span><br/>
+      <textarea
+        className="edit-textarea"
         type="text"
         name="thoughts"
         value={thghts}
         onChange={handleThghts}
       />
-      <br />
-      <input type="submit" value="저장" onClick={handleSubmit} />
+      <br/><br/>
+      <input className="edit-button" type="submit" value="  수정 완료  " onClick={handleSubmit} />
+      <br/><br/>
+      </div>
     </>
   );
 }

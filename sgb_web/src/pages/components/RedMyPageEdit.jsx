@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { getCookie, setCookie } from "../../lib/cookie";
+import './MyPageEdit.css';
 
 function RedMyPageEdit({
   activityId,
@@ -51,7 +52,7 @@ function RedMyPageEdit({
   };
   const handleSubmit = () => {
     // alert에서 확인을 누를 경우에 POST
-    if (confirm("정말로 작성하신대로 저장하시겠습니까?") == true) {
+    if (confirm("변경된 수정사항을 저장하시겠습니까?") == true) {
       axios
         .post(
           `http://3.37.215.18:3000/mypage/subject/${actId}`,
@@ -78,7 +79,7 @@ function RedMyPageEdit({
           console.log("edit response: ", response);
           location.reload();
 
-          // navigator(-1); // 뒤로가기
+          navigator(-1); // 뒤로가기
         })
         .catch((error) => {
           alert("수정에 실패했습니다.");
@@ -93,80 +94,98 @@ function RedMyPageEdit({
 
   return (
     <>
-      마이페이지 세부능력 특기사항 수정
-      <br />
-      과목명:{" "}
+      {/* <button className="edit-back">←</button> */}
+      <div className="edit-body">
+      <br/><br/>
+      <span className="edit-label">과목명 {" "}</span>
       <input
+        className="edit-input"    
         type="text"
         name="subName"
         value={subNme}
         onChange={handleSubNme}
       />{" "}
-      *필수
+      <span className="edit-label-small">*필수</span>
       <br />
-      과목에서 배운 내용:{" "}
+      <span className="edit-label">과목에서 배운 내용 {" "}</span>
       <input
+        className="edit-input"
         type="text"
         name="subContent"
         value={subCont}
         onChange={handleSubCont}
       />{" "}
-      *필수
+      <span className="edit-label-small">*필수</span>
       <br />
-      기억에 남은 활동 내용:{" "}
+      <span className="edit-label">기억에 남는 활동 {" "}</span>
       <input
+        className="edit-input"
         type="text"
         name="mainActivity"
         value={mainAct}
         onChange={handleMainAct}
       />{" "}
-      *필수
+      <span className="edit-label-small">*필수</span>
       <br />
-      시작일자:{" "}
+      <span className="edit-label">시작 일자 {" "}</span>
       <input
-        type="text"
+        className="edit-input"
+        type="date"
         name="startDate"
         value={stDate}
         onChange={handleStDate}
       />{" "}
-      *필수(예: 2023-01-01)
+      <span className="edit-label-small">*필수</span>
       <br />
-      종료일자:{" "}
+      <span className="edit-label">종료 일자 {" "}</span>
       <input
-        type="text"
+        className="edit-input"
+        type="date"
         name="endDate"
         value={edDate}
         onChange={handleEdDate}
       />{" "}
-      *필수(예: 2023-03-12)
+      <span className="edit-label-small">*필수</span>
       <br />
-      활동학기:{" "}
-      <input
+      <span className="edit-label">활동학기 {" "}</span>
+      <select
+        className="edit-input"
         type="text"
         name="semester"
         value={smester}
         onChange={handleSmester}
-      />{" "}
-      *필수(예: 1-1)
-      <br />
-      자세한 활동 내용:{" "}
-      <input
+      >
+      <option value="1-1">1학년 1학기</option>
+      <option value="1-2">1학년 2학기</option>
+      <option value="2-1">2학년 1학기</option>
+      <option value="2-2">2학년 2학기</option>
+      <option value="3-1">3학년 1학기</option>
+      <option value="3-2">3학년 2학기</option>
+      </select>{" "}
+      <span className="edit-label-small">*필수</span>
+      <br/><br/>
+      <span className="edit-label">자세한 활동 내용 {" "}</span><br/>
+      <textarea
+        className="edit-textarea" 
         type="text"
         name="actContentDetail"
         value={actDetail}
         onChange={handleActDetail}
-      />{" "}
-      *필수
+      />{" "}<br/>
+      <span className="edit-label-small">*필수</span>
       <br />
-      과목을 통해 배우고 성장한 점, 더 공부한 영역:{" "}
-      <input
+      <span className="edit-label">과목을 통해 배우고 성장한 점, 더 공부한 영역 {" "}</span><br/>
+      <textarea
+        className="edit-textarea" 
         type="text"
         name="subjectFurtherStudy"
         value={further}
         onChange={handleFurther}
       />{" "}
-      <br />
-      <input type="submit" value="저장" onClick={handleSubmit} />
+      <br/><br/>
+      <input className="edit-button" type="submit" value="  수정 완료  " onClick={handleSubmit} />
+      <br/><br/>
+      </div>
     </>
   );
 }

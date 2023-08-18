@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { getCookie, setCookie } from "../../lib/cookie";
+import './MyPageEdit.css';
 
 function PinkMypageEdit({
   activityId,
@@ -46,7 +47,7 @@ function PinkMypageEdit({
   };
   const handleSubmit = () => {
     // alert에서 확인을 누를 경우에 POST
-    if (confirm("정말로 작성하신대로 저장하시겠습니까?") == true) {
+    if (confirm("변경된 수정사항을 저장하시겠습니까?") == true) {
       axios
         .post(
           `http://3.37.215.18:3000/mypage/prize/${actId}`,
@@ -71,8 +72,7 @@ function PinkMypageEdit({
           alert("저장되었습니다.");
           console.log("edit response: ", response);
           location.reload();
-
-          // navigator(-1); // 뒤로가기
+          navigator(-1); // 뒤로가기
         })
         .catch((error) => {
           alert("수정에 실패했습니다.");
@@ -87,71 +87,85 @@ function PinkMypageEdit({
 
   return (
     <>
-      마이페이지 수상경력 수정
-      <br />
-      수상명:{" "}
+      <div className="edit-body">
+      <br/><br/>
+      <span className="edit-label">수상명 {" "}</span>
       <input
+        className="edit-input"
         type="text"
         name="prizeName"
         value={prizeName}
         onChange={handlePrizeName}
       />{" "}
-      *필수(교과우수상(수상과목), 표창장(부문), 대회(참가부문) - 참가부문이 있는
-      경우만 입력. 예: 정보통신대회(정보검색부문))
+      <span className="edit-label-small">*필수 - 교과우수상(수상과목), 표창장(부문), 대회(참가부문)</span>
       <br />
-      수상 등급:{" "}
+      <span className="edit-label">수상 등급 {" "}</span>
       <input
+        className="edit-input"
         type="text"
         name="prizeRank"
         value={prizeRank}
         onChange={handlePrizeRank}
       />{" "}
       <br />
-      수상 유형:{" "}
+      <span className="edit-label">수상 유형 {" "}</span>
       <input
+        className="edit-input"
         type="text"
         name="contestType"
         value={contestType}
         onChange={handleContestType}
       />{" "}
-      *필수(교과우수상, 표창장, 교내대회 중 택 1)
+      <span className="edit-label-small">*필수</span>
       <br />
-      수상 날짜:{" "}
+      <span className="edit-label">수상 날짜 {" "}</span>
       <input
-        type="text"
+        className="edit-input"
+        type="date"
         name="prizeDate"
         value={prizeDate}
         onChange={handlePrizeDate}
       />{" "}
-      *필수(예: 2023-01-01)
+      <span className="edit-label-small">*필수</span>
       <br />
-      수상 학기:{" "}
-      <input
+      <span className="edit-label">수상 학기 {" "}</span>
+      <select
+        className="edit-input"
         type="text"
         name="semester"
         value={smester}
         onChange={handleSmester}
-      />{" "}
-      *필수(예: 1-1)
-      <br />
-      수상 대회에서 특히 노력하거나 활약한 부분:{" "}
-      <input
+      >
+      <option value="1-1">1학년 1학기</option>
+      <option value="1-2">1학년 2학기</option>
+      <option value="2-1">2학년 1학기</option>
+      <option value="2-2">2학년 2학기</option>
+      <option value="3-1">3학년 1학기</option>
+      <option value="3-2">3학년 2학기</option>
+      </select>{" "}
+      <span className="edit-label-small">*필수</span>
+      <br /><br/>
+      <span className="edit-label">수상 대회에서 특히 노력하거나 활약한 부분 {" "}</span><br/>
+      <textarea
+        className="edit-textarea"
         type="text"
         name="prizeRole"
         value={prizeRole}
         onChange={handlePrizeRole}
-      />{" "}
-      *필수
-      <br />
-      활동 소감:{" "}
-      <input
-        type="text"
+      />{" "}<br />
+      <span className="edit-label-small">*필수</span>
+      <br /><br />
+      <span className="edit-label">수상 소감 {" "}</span><br/>
+      <textarea
+        className="edit-textarea"     
         name="prizeThoughts"
         value={prizeThoughts}
         onChange={handlePrizeThoughts}
       />{" "}
-      <br />
-      <input type="submit" value="저장" onClick={handleSubmit} />
+      <br /><br/>
+      <input className="edit-button" type="submit" value="  수정 완료  " onClick={handleSubmit} />
+      <br /><br/>
+      </div>
     </>
   );
 }
