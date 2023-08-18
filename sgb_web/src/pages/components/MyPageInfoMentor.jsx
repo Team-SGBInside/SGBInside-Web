@@ -99,7 +99,6 @@ function MyPageInfo() {
 
 
         let allPrizeActivity = result.totalActivity.allPrizeActivity;
-
         allPrizeActivity.map((item) => {
           item.sort = "prize";
         });
