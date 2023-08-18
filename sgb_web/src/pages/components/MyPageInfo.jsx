@@ -12,23 +12,12 @@ import menu_pink from "./img/menu_pink.png";
 import menu_pink_active from "./img/menu_pink_active.png";
 import menu_blue from "./img/menu_blue.png";
 import menu_blue_active from "./img/menu_blue_active.png";
-import green_clicked from "./img/green_clicked.png";
-import red_clicked from "./img/red_clicked.png";
-import pink_clicked from "./img/pink_clicked.png";
-import blue_clicked from "./img/blue_clicked.png";
-import mypage_green from "./img/mypage_green.png";
-import mypage_red from "./img/mypage_red.png";
-import mypage_pink from "./img/mypage_pink.png";
-import mypage_blue from "./img/mypage_blue.png";
-import mypage_blue2 from "./img/mypage_blue2.png";
-import mypage_green2 from "./img/mypage_green2.png";
 import { Link, useNavigate } from "react-router-dom";
 import { getCookie, setCookie } from "../../lib/cookie";
 import RedMypageBanner from "./RedMypageBanner";
 import BlueMypageBanner from "./BlueMypageBanner";
 import GreenMypageBanner from "./GreenMypageBanner";
 import PinkMypageBanner from "./PinkMypageBanner";
-import RedMypageActivityModal from "./RedMypageActivityModal";
 
 function MyPageInfo() {
   console.log("Hi i'm first");
@@ -211,6 +200,7 @@ function MyPageInfo() {
           date: activity.date,
           name: activity.name,
           prize: activity.prize,
+          prizeImage: activity.prizeImage,
           role: activity.role,
           thoughts: activity.thoughts,
           type: activity.type,
@@ -410,16 +400,24 @@ function MyPageInfo() {
       const date = activity[0].date;
       const name = activity[0].name;
       const prize = activity[0].prize;
+      const prizeImage = activity[0].prizeImage;
+
       const role = activity[0].role;
       const thoughts = activity[0].thoughts;
       const type = activity[0].type;
       const writerId = activity[0].writerId;
+
+      let image = document.createElement("img");
+      image.src = prizeImage;
 
       modal.innerText = `sort: 수상
       ${name} | ${date} | ${semester}\n
       ${name} / ${prize} / ${date}\n
       ${role}\n
       ${thoughts}`;
+
+      modal.appendChild(image);
+
       var closeButton = document.createElement("button");
       modal.appendChild(closeButton);
       closeButton.id = "mypage_detail_closebutton";

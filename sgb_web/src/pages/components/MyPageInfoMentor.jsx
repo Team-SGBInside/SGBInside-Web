@@ -6,38 +6,24 @@ import menu_whole from "./img/menu_whole.png";
 import menu_whole_active from "./img/menu_whole_active.png";
 import menu_green from "./img/menu_green.png";
 import menu_green_active from "./img/menu_green_active.png";
-import menu_red from "./img/menu_red.png";
-import menu_red_active from "./img/menu_red_active.png";
 import menu_pink from "./img/menu_pink.png";
 import menu_pink_active from "./img/menu_pink_active.png";
-import menu_blue from "./img/menu_blue.png";
-import menu_blue_active from "./img/menu_blue_active.png";
-import green_clicked from "./img/green_clicked.png";
-import red_clicked from "./img/red_clicked.png";
-import pink_clicked from "./img/pink_clicked.png";
-import blue_clicked from "./img/blue_clicked.png";
-import mypage_green from "./img/mypage_green.png";
-import mypage_red from "./img/mypage_red.png";
-import mypage_pink from "./img/mypage_pink.png";
-import mypage_blue from "./img/mypage_blue.png";
-import mypage_blue2 from "./img/mypage_blue2.png";
-import mypage_green2 from "./img/mypage_green2.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getCookie, setCookie } from "../../lib/cookie";
-import RedMypageBanner from "./RedMypageBanner";
-import BlueMypageBanner from "./BlueMypageBanner";
 import GreenMypageBanner from "./GreenMypageBanner";
 import PinkMypageBanner from "./PinkMypageBanner";
-import GreenMypageActivityModal from "./GreenMypageActivityModal";
-import RedMypageActivityModal from "./RedMypageActivityModal";
 
 function MyPageInfo() {
   console.log("Hi i'm first");
+  const navigator = useNavigate();
+
   const [userInfo, setUserInfo] = useState({});
   const [semester, setSemester] = useState("all");
   const [activitySort, setActivitySort] = useState("all");
   const [bannerClicked, setBannerClicked] = useState(false);
   const [clickedActivity, setClickedActivity] = useState({});
+
+  console.log("bannerClicked: ", bannerClicked);
 
   const tokenUserId = getCookie("userId");
   const token = getCookie("accessToken");
@@ -97,18 +83,13 @@ function MyPageInfo() {
           item.sort = "creative";
         });
 
-
         let allPrizeActivity = result.totalActivity.allPrizeActivity;
         allPrizeActivity.map((item) => {
           item.sort = "prize";
         });
 
-
         // 전체 활동 통합, 배열 내 인덱스 번호에 따른 uniqId로 id key 부여
-        let allActivity = [
-          ...allPrizeActivity,
-          ...allCreativeActivity,
-        ];
+        let allActivity = [...allPrizeActivity, ...allCreativeActivity];
 
         allActivity.map((item, index) => {
           let uniqId = parseInt(index);
@@ -167,6 +148,70 @@ function MyPageInfo() {
       modal.style.display = "none";
     };
 
+    // 모달창 수정 버튼
+    function editBtnHandler({ activity }) {
+      console.log("수정버튼 눌림");
+      console.log("activity: ", activity);
+
+      if (activity.sort === "creative") {
+        navigator("/mypageMentor/edit", {
+          state: {
+            sort: "creative",
+            activityId: activity.activityId,
+            name: activity.name,
+            startDate: activity.startDate,
+            endDate: activity.endDate,
+            semester: activity.semester,
+            activityType: activity.activityType,
+            role: activity.role,
+            thoughts: activity.thoughts,
+          },
+        });
+      }
+
+      if (activity.sort === "prize") {
+        navigator("/mypageMentor/edit", {
+          state: {
+            sort: "prize",
+            activityId: activity.activityId,
+            semester: activity.semester,
+            date: activity.date,
+            name: activity.name,
+            prize: activity.prize,
+            prizeImage: activity.prizeImage,
+            role: activity.role,
+            thoughts: activity.thoughts,
+            type: activity.type,
+          },
+        });
+      }
+    }
+
+    // 모달창 삭제 버튼
+    const delBtnHandler = (activityId, sort) => {
+      if (confirm("정말로 이 활동 기록을 삭제하시겠어요?") == true) {
+        axios
+          .delete(`http://3.37.215.18:3000/mypage/${sort}/${activityId}`, {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${getCookie("accessToken")}`,
+              withCredentials: true,
+            },
+          })
+          .then((response) => {
+            alert("삭제되었습니다.");
+            console.log("delete response: ", response);
+            location.reload(); // 새로고침
+          })
+          .catch((error) => {
+            alert("삭제에 실패했습니다.");
+            console.log(error);
+          });
+      } else {
+        return;
+      }
+    };
+
     if (sort === "창체활동") {
       const activity = userInfo.allActivity.filter((obj) => {
         return obj.sort === "creative" && obj.activityId === id;
@@ -174,22 +219,29 @@ function MyPageInfo() {
       console.log(activity); // [{}]
       setClickedActivity(activity[0]);
       console.log("clickedActivity: ", clickedActivity);
-      /* 창체 전체 필드
-      \n name: ${activity[0].name}
-      \n activityType: ${activity[0].activityType}
-      \n startDate: ${activity[0].startDate}
-      \n endDate: ${activity[0].endDate}
-      \n activityId: ${activity[0].activityId}
-      \n semester: ${activity[0].semester}
-      \n role: ${activity[0].role}
-      \n thoughts: ${activity[0].thoughts}
-      \n writerId: ${activity[0].writerId}
-      */
-      // modal.innerText = `sort: 창체
-      // ${activity[0].name} | ${activity[0].startDate} ~ ${activity[0].endDate} | ${activity[0].semester} | ${activity[0].activityType}\n
-      // ${activity[0].name}(${activity[0].startDate} ~ ${activity[0].endDate}) ${activity[0].role}\n
-      // ${activity[0].thoughts}
-      // `;
+
+      setClickedActivity(activity[0], function () {
+        console.log("clickedActivity: ", clickedActivity);
+      });
+      console.log("clickedActivity: ", clickedActivity);
+
+      // 창체 활동 객체 내부의 전체 필드
+      const activityId = activity[0].activityId;
+      const sort = activity[0].sort; // creative
+      const name = activity[0].name;
+      const startDate = activity[0].startDate;
+      const endDate = activity[0].endDate;
+      const semester = activity[0].semester;
+      const activityType = activity[0].activityType;
+      const thoughts = activity[0].thoughts;
+      const role = activity[0].role;
+
+      modal.innerText = `sort: 창체
+      ${name} | ${startDate} ~ ${endDate} | ${semester} | ${activityType}\n
+      ${name}(${startDate} ~ ${endDate}) ${role}\n
+      ${thoughts}
+      `;
+
       var closeButton = document.createElement("button");
       modal.appendChild(closeButton);
       closeButton.id = "mypage_detail_closebutton";
@@ -200,11 +252,18 @@ function MyPageInfo() {
       modal.appendChild(fixButton);
       fixButton.id = "mypage_detail_fixbutton";
       fixButton.innerText = "수정";
+      fixButton.addEventListener("click", function () {
+        editBtnHandler({ activity: activity[0] });
+      });
 
       var deleteButton = document.createElement("button");
       modal.appendChild(deleteButton);
       deleteButton.id = "mypage_detail_deletebutton";
       deleteButton.innerText = "삭제";
+      deleteButton.addEventListener("click", function () {
+        console.log("about to delete : ", activityId, sort);
+        delBtnHandler(activityId, sort);
+      });
 
       var copyButton = document.createElement("button");
       modal.appendChild(copyButton);
@@ -212,29 +271,41 @@ function MyPageInfo() {
       copyButton.innerText = "복사";
     }
 
-
-    /* 수상 전체 필드 
-      \n activityId: ${activity[0].activityId}
-      \n semester: ${activity[0].semester}
-      \n date: ${activity[0].date}
-      \n name: ${activity[0].name}
-      \n prize: ${activity[0].prize}
-      \n role: ${activity[0].role}
-      \n thoughts: ${activity[0].thoughts}
-      \n type: ${activity[0].type}
-      \n writerId: ${activity[0].writerId}
-    */
     if (sort === "수상경력") {
       const activity = userInfo.allActivity.filter((obj) => {
         return obj.sort === "prize" && obj.activityId === id;
       });
       console.log("activity: ", activity);
+      setClickedActivity(activity[0], function () {
+        console.log("clickedActivity: ", clickedActivity);
+      });
+      console.log("clickedActivity: ", clickedActivity);
+
+      // 수상 전체 필드
+      const activityId = activity[0].activityId;
+      const sort = activity[0].sort;
+      const semester = activity[0].semester;
+      const date = activity[0].date;
+      const name = activity[0].name;
+      const prize = activity[0].prize;
+      const prizeImage = activity[0].prizeImage;
+      const role = activity[0].role;
+      const thoughts = activity[0].thoughts;
+      const type = activity[0].type;
+      const writerId = activity[0].writerId;
+
+      let image = document.createElement("img");
+      image.src = prizeImage;
 
       modal.innerText = `sort: 수상
-      ${activity[0].name} | ${activity[0].date} | ${activity[0].semester}\n
-      ${activity[0].name} / ${activity[0].prize} / ${activity[0].date}\n
-      ${activity[0].role}\n
-      ${activity[0].thoughts}`;
+      ${name} | ${date} | ${semester}\n
+      ${name} / ${prize} / ${date}\n
+      ${role}\n
+      ${thoughts} 
+      `;
+      // image.style.width = "200px"; - 적용이 안되는듯
+      modal.appendChild(image);
+
       var closeButton = document.createElement("button");
       modal.appendChild(closeButton);
       closeButton.id = "mypage_detail_closebutton";
@@ -245,11 +316,18 @@ function MyPageInfo() {
       modal.appendChild(fixButton);
       fixButton.id = "mypage_detail_fixbutton";
       fixButton.innerText = "수정";
+      fixButton.addEventListener("click", function () {
+        editBtnHandler({ activity: activity[0] });
+      });
 
       var deleteButton = document.createElement("button");
       modal.appendChild(deleteButton);
       deleteButton.id = "mypage_detail_deletebutton";
       deleteButton.innerText = "삭제";
+      deleteButton.addEventListener("click", function () {
+        console.log("about to delete : ", activityId, sort);
+        delBtnHandler(activityId, sort);
+      });
 
       var copyButton = document.createElement("button");
       modal.appendChild(copyButton);
@@ -328,7 +406,6 @@ function MyPageInfo() {
                 height="40"
                 onClick={() => handleMenuClick("prize")}
               />
-
             </div>
           </div>
         </div>
@@ -365,31 +442,7 @@ function MyPageInfo() {
               }
             })}
         </div>
-        <div id="mypage_detail_div">
-          {/* 창체 전체 필드 
-         \n name: ${activity[0].name}
-          \n activityType: ${activity[0].activityType}
-          \n startDate: ${activity[0].startDate}
-          \n endDate: ${activity[0].endDate}
-          \n activityId: ${activity[0].activityId}
-          \n semester: ${activity[0].semester}
-          \n role: ${activity[0].role}
-          \n thoughts: ${activity[0].thoughts}
-          \n writerId: ${activity[0].writerId} */}
-
-          {clickedActivity.sort === "creative" ? (
-            <GreenMypageActivityModal
-              activityId={clickedActivity.activityId}
-              startDate={clickedActivity.startDate}
-              endDate={clickedActivity.endDate}
-            />
-          ) : null}
-          {/* {
-            clickedActivity.sort === "subject" ? (
-
-            )
-          } */}
-        </div>
+        <div id="mypage_detail_div"></div>
       </div>
     </>
   );
