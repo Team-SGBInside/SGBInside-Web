@@ -117,7 +117,8 @@ function BlueMypageEdit({
   return (
     <>
       <div className="edit-body2">
-      <br/><br/>
+      <br/><span classNmae="edit-title">독서활동 수정하기 ✏️</span>
+      <hr className="edit-divider" /> <br/> 
       <span className="edit-label">책이름(저자) {" "}</span>
       <input
         className="edit-input"

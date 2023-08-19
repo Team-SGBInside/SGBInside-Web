@@ -88,7 +88,8 @@ function PinkMypageEdit({
   return (
     <>
       <div className="edit-body">
-      <br/><br/>
+      <br/><span classNmae="edit-title">수상경력 수정하기 ✏️</span>
+      <hr className="edit-divider" /> <br/>
       <span className="edit-label">수상명 {" "}</span>
       <input
         className="edit-input"
@@ -109,13 +110,17 @@ function PinkMypageEdit({
       />{" "}
       <br />
       <span className="edit-label">수상 유형 {" "}</span>
-      <input
+      <select
         className="edit-input"
         type="text"
         name="contestType"
         value={contestType}
         onChange={handleContestType}
-      />{" "}
+      >
+        <option value="교과우수상">교과우수상</option>
+        <option value="표창장">표창장</option>
+        <option value="교내대회">교내대회</option>
+      </select>{" "}
       <span className="edit-label-small">*필수</span>
       <br />
       <span className="edit-label">수상 날짜 {" "}</span>
