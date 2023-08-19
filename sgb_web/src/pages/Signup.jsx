@@ -6,8 +6,10 @@ import "./Signup.css";
 import signup_submit from "./components/img/signup_submit.png";
 import login_submit from "./components/img/login_submit.png";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const navigator = useNavigate();
   const idRef = useRef();
   const pwRef = useRef();
   const nameRef = useRef();
@@ -41,6 +43,7 @@ const Signup = () => {
       console.log(response);
       window.alert("회원가입이 성공적으로 되었습니다."); //성공페이지로 라우팅
       // location.href="/home"
+      navigator("/home")
     } catch (error) {
       console.log(error);
       window.alert("입력되지 않은 항목이 있습니다."); //실패페이지로 라우팅

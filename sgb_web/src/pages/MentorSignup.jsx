@@ -6,8 +6,10 @@ import "./Signup.css";
 import signup_submit from "./components/img/signup_submit.png";
 import login_submit from "./components/img/login_submit.png";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const MentorSignup = () => {
+  const navigator = useNavigate();
   const idRef = useRef();
   const pwRef = useRef();
   const nameRef = useRef();
@@ -27,6 +29,7 @@ const MentorSignup = () => {
           password: pwRef.current.value,
           name: nameRef.current.value,
           school: schoolRef.current.value,
+          major: majorRef.current.value,
           grade: gradeRef.current.value,
           age: ageRef.current.value,
           isTeen: isTeenRef.current.value,
@@ -41,7 +44,7 @@ const MentorSignup = () => {
       );
       console.log(response);
       window.alert("회원가입이 성공적으로 되었습니다."); //성공페이지로 라우팅
-      location.href="/mentorHome"
+      navigator("/mentorHome")
     } catch (error) {
       console.log(error);
       window.alert("입력되지 않은 항목이 있습니다."); 
