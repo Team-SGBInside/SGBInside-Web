@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const MentorLogin = () => {
+  const navigator = useNavigate();
   const idRef = useRef();
   const pwRef = useRef();
 
@@ -34,7 +35,7 @@ const MentorLogin = () => {
       window.alert("환영합니다!");
       setCookie("userId", response.data.data.userId);
       setCookie("accessToken", response.data.data.accessToken);
-      navigator("/loginedHome"); 
+      navigator("/loginedMentorHome"); 
       // 만약 react-router-dom의 history를 사용할 수 있다면, 아래처럼 history.push를 사용하여 페이지 이동 가능
       // history.push("/loginedMentorHome");
     } catch (error) {
@@ -91,7 +92,6 @@ const MentorLogin = () => {
             <br />
           </div>
           <div>
-            <Link to="/login">
               <button 
               className="login-button"
               type="submit">
@@ -102,7 +102,6 @@ const MentorLogin = () => {
                   height="50"
                 />
               </button>
-            </Link>
           </div>
           <div className="login-q">
             <Link to="/signup">

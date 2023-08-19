@@ -65,10 +65,10 @@ function GreenFormMentor () {
                             name= "greenType"
                             ref = {greenTypeRef}
                             >                           
-                            <option value="self">자율활동</option>
-                            <option value="club">동아리활동</option>
-                            <option value="career">진로활동</option>
-                            <option value="volunteer">봉사활동</option>
+                            <option value="자율활동">자율활동</option>
+                            <option value="동아리활동">동아리활동</option>
+                            <option value="진로활동">진로활동</option>
+                            <option value="봉사활동">봉사활동</option>
                         </select>  
                         <br/><br/>
                         {/* 활동날짜 */}     
