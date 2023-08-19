@@ -4,6 +4,7 @@ import blue_talk from "./img/blue_talk.png";
 import "./BlueRecom.css";
 import axios from "axios";
 import { getCookie, setCookie } from "../../lib/cookie";
+import link from "./img/external-link.png";
 
 function BlueRecom() {
   const userId = getCookie("userId");
@@ -36,9 +37,12 @@ function BlueRecom() {
           console.log(result);
           const books = result.data.data;
           setBooks(books);
-          //window.alert("조회성공");
+          if (books.length === 0) {
+            alert(
+              "해당 검색어으로 조회된 권장도서가 없습니다. \n 다른 학과명을 입력해보시겠어요?"
+            );
+          }
           const codes = JSON.stringify(books);
-          console.log(codes);
         })
         .catch((error) => {
           console.log("요청실패");
@@ -87,7 +91,20 @@ function BlueRecom() {
                 books.map((book) => {
                   return (
                     <tr key={book.id}>
-                      <td>{book.도서명}</td>
+                      <td id="book-title">
+                        <a
+                          id="book-title-link"
+                          href={book.purchaseLink}
+                          target="_blank"
+                        >
+                          {book.도서명}
+                          <img
+                            id="book-title-link-img"
+                            src={link}
+                            alt="구매링크"
+                          />
+                        </a>
+                      </td>
                       <td>{book.저자}</td>
                       <td>{book.출판사}</td>
                       <td>{book.추천인}</td>
