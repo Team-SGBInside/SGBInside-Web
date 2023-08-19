@@ -19,12 +19,15 @@ form {
     margin : 0 auto;
 }
 
-input {
-    border: 0.1;
-    border-color : #d9d9d9;
-    padding-top : 3;
+.signup-title {
+    padding-left: 19%; 
+}
+
+.signup-input {
+    border-radius: 15px;
+    border: 2px solid #d9d9d9;
+    padding-top : 5;
     background-color: #fffff4;
-    font-weight: lighter;
 }
 
 label {

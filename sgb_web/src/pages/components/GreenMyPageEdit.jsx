@@ -92,7 +92,8 @@ function GreenMyPageEdit({
     <>
       {/* <button className="edit-back" onClick={handleBack}>←</button> */}
       <div className="edit-body">
-      <br/><br/>
+      <br/><span classNmae="edit-title">창의적체험활동 수정하기 ✏️</span>
+      <hr className="edit-divider" /> <br/>
       <span className="edit-label">활동명 {" "}</span>
       <input
         className="edit-input"
@@ -148,10 +149,10 @@ function GreenMyPageEdit({
         value={actType}
         onChange={handleActType}
       >
-            <option value="self">자율활동</option>
-            <option value="club">동아리활동</option>
-            <option value="career">진로활동</option>
-            <option value="volunteer">봉사활동</option>
+            <option value="자율활동">자율활동</option>
+            <option value="동아리활동">동아리활동</option>
+            <option value="진로활동">진로활동</option>
+            <option value="봉사활동">봉사활동</option>
       </select>{" "}
       <span className="edit-label-small">*필수</span>
       <br /><br/>
