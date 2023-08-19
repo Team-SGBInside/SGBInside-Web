@@ -3,7 +3,7 @@ import "./LandingPage.css";
 import landing_student from "./components/img/landing_student.png";
 import landing_mentor from "./components/img/landing_mentor.png";
 import { Link } from "react-router-dom";
-import { getCookie, setCookie } from "../../lib/cookie";
+import { getCookie, setCookie } from "../lib/cookie";
 
 const LandingPage = () => {
   const userId = getCookie("userId");
