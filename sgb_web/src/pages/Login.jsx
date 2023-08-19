@@ -31,8 +31,6 @@ const Login = () => {
           },
         }
       );
-      console.log(response);
-      console.log(response.data.data);
       window.alert("환영합니다!");
       setCookie("userId", response.data.data.userId);
       setCookie("accessToken", response.data.data.accessToken);
@@ -62,7 +60,7 @@ const Login = () => {
       <div>
         <form onSubmit={handleMember}>
           <div className="form">
-          <h2 className="login-title">로그인</h2>
+            <h2 className="login-title">로그인</h2>
             <div className="id">
               <label>아이디</label>
               <br />
@@ -95,9 +93,7 @@ const Login = () => {
           </div>
           <div>
             <Link to="/login">
-              <button 
-              className="login-button"
-              type="submit">
+              <button className="login-button" type="submit">
                 <img
                   src={login_submit}
                   onClick={handleMember}
@@ -108,17 +104,11 @@ const Login = () => {
               </button>
             </Link>
           </div>
-            <Link to="/signup">
-              <button
-              className="login-button"
-            >
-              <img
-               src={signup_submit}
-               width="200"
-               height="50"
-              ></img>
-            </button>  
-            </Link>
+          <Link to="/signup">
+            <button className="login-button">
+              <img src={signup_submit} width="200" height="50"></img>
+            </button>
+          </Link>
         </form>
       </div>
     </>
