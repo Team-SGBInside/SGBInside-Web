@@ -23,9 +23,13 @@ form {
   margin : 0 auto;
 }
 
+.login-title {
+  padding-left: 19%; 
+}
+
 .login-input {
-  border-radius: 30px;
-  border-color : #d9d9d9;
+  border-radius: 15px;
+  border: 2px solid #d9d9d9;
   padding-top : 3;
   background-color: #fffff4;
 }
@@ -46,8 +50,8 @@ label {
 }
 
 .login_q {
-  font-size: 15px;
-  cursor: pointer;
-  text-align: center;
-  margin : 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 90%;
 }

@@ -5,11 +5,13 @@ import axios from "axios";
 import "./Login.css";
 import { Link } from "react-router-dom";
 import login_submit from "./components/img/login_submit.png";
+import signup_submit from "./components/img/signup_submit.png";
 import { setCookie } from "../lib/cookie";
 import { useNavigate } from "react-router-dom";
 
 
 const MentorLogin = () => {
+  const navigator = useNavigate();
   const idRef = useRef();
   const pwRef = useRef();
 
@@ -34,7 +36,7 @@ const MentorLogin = () => {
       window.alert("환영합니다!");
       setCookie("userId", response.data.data.userId);
       setCookie("accessToken", response.data.data.accessToken);
-      navigator("/loginedHome"); 
+      navigator("/loginedMentorHome"); 
       // 만약 react-router-dom의 history를 사용할 수 있다면, 아래처럼 history.push를 사용하여 페이지 이동 가능
       // history.push("/loginedMentorHome");
     } catch (error) {
@@ -60,6 +62,7 @@ const MentorLogin = () => {
       <div>
         <form onSubmit={handleMember}>
           <div className="form">
+          <h2 className="login-title">로그인</h2>
             <div className="id">
               <label>아이디</label>
               <br />
@@ -97,6 +100,7 @@ const MentorLogin = () => {
               type="submit">
                 <img
                   src={login_submit}
+                  onClick={handleMember}
                   alt="submit"
                   width="200"
                   height="50"
@@ -104,11 +108,17 @@ const MentorLogin = () => {
               </button>
             </Link>
           </div>
-          <div className="login-q">
-            <Link to="/signup">
-              <p>아직 회원이 아니신가요?</p>
+            <Link to="/mentorSignup">
+              <button
+              className="login-button"
+            >
+              <img
+               src={signup_submit}
+               width="200"
+               height="50"
+              ></img>
+            </button>  
             </Link>
-          </div>
         </form>
       </div>
     </>
