@@ -92,7 +92,8 @@ function GreenMyPageEdit({
     <>
       {/* <button className="edit-back" onClick={handleBack}>←</button> */}
       <div className="edit-body">
-      <br/><br/>
+      <br/><span classNmae="edit-title">창의적체험활동 수정하기 ✏️</span>
+      <hr className="edit-divider" /> <br/>
       <span className="edit-label">활동명 {" "}</span>
       <input
         className="edit-input"

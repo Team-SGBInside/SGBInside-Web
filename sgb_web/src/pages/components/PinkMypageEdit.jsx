@@ -88,7 +88,8 @@ function PinkMypageEdit({
   return (
     <>
       <div className="edit-body">
-      <br/><br/>
+      <br/><span classNmae="edit-title">수상경력 수정하기 ✏️</span>
+      <hr className="edit-divider" /> <br/>
       <span className="edit-label">수상명 {" "}</span>
       <input
         className="edit-input"

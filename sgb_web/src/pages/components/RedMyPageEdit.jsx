@@ -96,7 +96,8 @@ function RedMyPageEdit({
     <>
       {/* <button className="edit-back">←</button> */}
       <div className="edit-body">
-      <br/><br/>
+      <br/><span classNmae="edit-title">세부능력 및 특기사항 수정하기 ✏️</span>
+      <hr className="edit-divider" /> <br/>      
       <span className="edit-label">과목명 {" "}</span>
       <input
         className="edit-input"    
