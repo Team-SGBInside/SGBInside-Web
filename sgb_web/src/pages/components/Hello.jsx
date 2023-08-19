@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useId } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Hello.css";
 import mypage_btn from "./img/mypage_btn.png";
