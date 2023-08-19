@@ -89,7 +89,7 @@ function MyPageInfo() {
         });
 
         // 전체 활동 통합, 배열 내 인덱스 번호에 따른 uniqId로 id key 부여
-        let allActivity = [...allPrizeActivity, ...allCreativeActivity];
+        let allActivity = [...allCreativeActivity, ...allPrizeActivity ];
 
         allActivity.map((item, index) => {
           let uniqId = parseInt(index);
@@ -136,7 +136,7 @@ function MyPageInfo() {
     // 모달창 전체
     var modal = document.getElementById("mypage_detail_div");
     if (modal.style.display === "none") {
-      modal.style.display = "flex";
+      modal.style.display = "block";
     } else {
       modal.style.display = "none";
     }
@@ -236,11 +236,27 @@ function MyPageInfo() {
       const thoughts = activity[0].thoughts;
       const role = activity[0].role;
 
-      modal.innerText = `sort: 창체
-      ${name} | ${startDate} ~ ${endDate} | ${semester} | ${activityType}\n
-      ${name}(${startDate} ~ ${endDate}) ${role}\n
-      ${thoughts}
+      modal.innerText = " "
+
+      var titleDiv = document.createElement("div");
+      titleDiv.id = "mypage_detail_title";
+      titleDiv.innerText = `창의적 체험활동 기록 상세보기`;
+      modal.appendChild(titleDiv);
+
+      var contentDiv = document.createElement("div");
+      contentDiv.id = "mypage_detail_content";
+      contentDiv.innerHTML = `
+        ${name} | ${startDate} ~ ${endDate} | ${semester} | ${activityType}<br>
       `;
+      modal.appendChild(contentDiv);
+
+      var sgbDiv = document.createElement("div");
+      sgbDiv.id = "mypage_detail_sgb";
+      sgbDiv.innerHTML=`
+      실제 생활기록부 기재양식<br><hr>
+      ${name}(${startDate} ~ ${endDate}) ${role}<br><hr>
+      ${thoughts}<br>`;
+      modal.appendChild(sgbDiv);
 
       var closeButton = document.createElement("button");
       modal.appendChild(closeButton);
@@ -269,6 +285,20 @@ function MyPageInfo() {
       modal.appendChild(copyButton);
       copyButton.id = "mypage_detail_copybutton";
       copyButton.innerText = "복사";
+      copyButton.addEventListener("click", function () {
+        var sgbContent = document.getElementById("mypage_detail_sgb").innerHTML;
+        sgbContent = sgbContent.replace(/<br>/g, '\n');
+        sgbContent = sgbContent.replace(/<hr>/g, ' ');
+        // 복사할 내용을 클립보드에 복사
+        const tempTextarea = document.createElement("textarea");
+        tempTextarea.value = sgbContent;
+        document.body.appendChild(tempTextarea);
+        tempTextarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempTextarea);
+      
+        alert("클립보드에 내용이 복사되었습니다. 원하는 곳에 붙여넣어 사용하세요.");
+      });
     }
 
     if (sort === "수상경력") {
@@ -289,6 +319,7 @@ function MyPageInfo() {
       const name = activity[0].name;
       const prize = activity[0].prize;
       const prizeImage = activity[0].prizeImage;
+
       const role = activity[0].role;
       const thoughts = activity[0].thoughts;
       const type = activity[0].type;
@@ -297,14 +328,39 @@ function MyPageInfo() {
       let image = document.createElement("img");
       image.src = prizeImage;
 
-      modal.innerText = `sort: 수상
-      ${name} | ${date} | ${semester}\n
-      ${name} / ${prize} / ${date}\n
-      ${role}\n
-      ${thoughts} 
+      modal.innerText = ` `;
+
+      var titleDiv = document.createElement("div");
+      titleDiv.id = "mypage_detail_title";
+      titleDiv.innerText = `수상경력 기록 상세보기`;
+      modal.appendChild(titleDiv);
+
+      var contentDiv = document.createElement("div");
+      contentDiv.id = "mypage_detail_content";
+      contentDiv.innerHTML = `
+        ${name} | ${date} | ${semester}<br>
       `;
-      // image.style.width = "200px"; - 적용이 안되는듯
-      modal.appendChild(image);
+      modal.appendChild(contentDiv);
+
+      var parentDiv = document.createElement("div");
+      parentDiv.style.display = "flex";
+      parentDiv.style.maxWidth = "1000px";
+      parentDiv.style.maxHeight = "250px";
+      modal.appendChild(parentDiv);
+
+      var sgbDiv = document.createElement("div");
+      sgbDiv.id = "mypage_detail_sgb";
+      sgbDiv.innerHTML=`
+      실제 생활기록부 기재양식<br><hr>
+      ${name} / ${prize || " "} / ${date}<br><hr> 
+      ${role}<br>
+      ${thoughts || " "}`;
+      parentDiv.appendChild(sgbDiv);
+      
+      var imageDiv = document.createElement("div");
+      imageDiv.style.maxWidth = "50px !important";
+      imageDiv.id = "mypage_detail_image";
+      parentDiv.appendChild(image);
 
       var closeButton = document.createElement("button");
       modal.appendChild(closeButton);
@@ -333,6 +389,20 @@ function MyPageInfo() {
       modal.appendChild(copyButton);
       copyButton.id = "mypage_detail_copybutton";
       copyButton.innerText = "복사";
+      copyButton.addEventListener("click", function () {
+        var sgbContent = document.getElementById("mypage_detail_sgb").innerHTML;
+        sgbContent = sgbContent.replace(/<br>/g, '\n');
+        sgbContent = sgbContent.replace(/<hr>/g, ' ');
+        // 복사할 내용을 클립보드에 복사
+        const tempTextarea = document.createElement("textarea");
+        tempTextarea.value = sgbContent;
+        document.body.appendChild(tempTextarea);
+        tempTextarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempTextarea);
+      
+        alert("클립보드에 내용이 복사되었습니다. 원하는 곳에 붙여넣어 사용하세요.");
+      });
     }
   }
 
