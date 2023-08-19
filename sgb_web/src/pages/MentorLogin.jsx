@@ -5,6 +5,7 @@ import axios from "axios";
 import "./Login.css";
 import { Link } from "react-router-dom";
 import login_submit from "./components/img/login_submit.png";
+import signup_submit from "./components/img/signup_submit.png";
 import { setCookie } from "../lib/cookie";
 import { useNavigate } from "react-router-dom";
 
@@ -61,6 +62,7 @@ const MentorLogin = () => {
       <div>
         <form onSubmit={handleMember}>
           <div className="form">
+          <h2 className="login-title">로그인</h2>
             <div className="id">
               <label>아이디</label>
               <br />
@@ -92,22 +94,31 @@ const MentorLogin = () => {
             <br />
           </div>
           <div>
+            <Link to="/login">
               <button 
               className="login-button"
               type="submit">
                 <img
                   src={login_submit}
+                  onClick={handleMember}
                   alt="submit"
                   width="200"
                   height="50"
                 />
               </button>
-          </div>
-          <div className="login-q">
-            <Link to="/signup">
-              <p>아직 회원이 아니신가요?</p>
             </Link>
           </div>
+            <Link to="/mentorSignup">
+              <button
+              className="login-button"
+            >
+              <img
+               src={signup_submit}
+               width="200"
+               height="50"
+              ></img>
+            </button>  
+            </Link>
         </form>
       </div>
     </>

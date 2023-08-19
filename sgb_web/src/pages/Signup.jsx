@@ -4,6 +4,7 @@ import { useRef } from "react";
 import axios from "axios";
 import "./Signup.css";
 import signup_submit from "./components/img/signup_submit.png";
+import login_submit from "./components/img/login_submit.png";
 import { Link } from "react-router-dom";
 
 const Signup = () => {
@@ -55,11 +56,13 @@ const Signup = () => {
       <div>
         <form>
           <div className="form">
+          <h2 className="signup-title">회원가입</h2>
             <div className="container">
               <div className="name">
                 <label>이름</label>
                 <br />
                 <input
+                  className="signup-input"
                   type="text"
                   name="name"
                   size="10"
@@ -84,6 +87,7 @@ const Signup = () => {
               <label>학교</label>
               <br />
               <input
+                className="signup-input"
                 type="text"
                 name="school"
                 size="30"
@@ -96,6 +100,7 @@ const Signup = () => {
                 <label>학년</label>
                 <br />
                 <input
+                className="signup-input"
                   type="text"
                   name="grade"
                   size="5"
@@ -107,6 +112,7 @@ const Signup = () => {
                 <label>나이</label>
                 <br />
                 <input
+                className="signup-input"
                   type="text"
                   name="age"
                   size="5"
@@ -119,6 +125,7 @@ const Signup = () => {
               <label>아이디</label>
               <br />
               <input
+              className="signup-input"
                 type="text"
                 name="id"
                 size="30"
@@ -131,6 +138,7 @@ const Signup = () => {
               <label>비밀번호</label>
               <br />
               <input
+              className="signup-input"
                 type="password"
                 name="pw"
                 size="30"
@@ -142,22 +150,26 @@ const Signup = () => {
             <div className="email">
               <label>이메일</label>
               <br />
-              <input type="text" name="email" size="30" defaultValue=""></input>
+              <input className="signup-input" type="text" name="email" size="30" defaultValue=""></input>
             </div>
             <br />
           </div>
-          <div className="signup-button">
             <Link to = "/signup">
-            <button type="submit" width="400" onClick={handleMember}>
+            <button className="signup-button" type="submit" width="400" onClick={handleMember}>
               <img src={signup_submit} alt="submit" height="50" />
             </button>
             </Link>
-          </div>
-          <div className="signup-q">
             <Link to="/login">
-              <p>이미 계정이 있으신가요?</p>
+              <button
+              className="signup-button"
+            >
+              <img
+               src={login_submit}
+               width="200"
+               height="50"
+              ></img>
+            </button>  
             </Link>
-          </div>
         </form>
       </div>
     </>
