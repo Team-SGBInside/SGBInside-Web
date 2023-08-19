@@ -4,9 +4,12 @@ import { useRef } from "react";
 import axios from "axios";
 import "./Signup.css";
 import signup_submit from "./components/img/signup_submit.png";
+import login_submit from "./components/img/login_submit.png";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const MentorSignup = () => {
+  const navigator = useNavigate();
   const idRef = useRef();
   const pwRef = useRef();
   const nameRef = useRef();
@@ -26,6 +29,7 @@ const MentorSignup = () => {
           password: pwRef.current.value,
           name: nameRef.current.value,
           school: schoolRef.current.value,
+          major: majorRef.current.value,
           grade: gradeRef.current.value,
           age: ageRef.current.value,
           isTeen: isTeenRef.current.value,
@@ -40,7 +44,7 @@ const MentorSignup = () => {
       );
       console.log(response);
       window.alert("회원가입이 성공적으로 되었습니다."); //성공페이지로 라우팅
-      location.href="/mentorHome"
+      navigator("/mentorHome")
     } catch (error) {
       console.log(error);
       window.alert("입력되지 않은 항목이 있습니다."); 
@@ -55,13 +59,15 @@ const MentorSignup = () => {
         <MentorLogo />
       </div>
       <div>
-        <form>
+      <form>
           <div className="form">
+          <h2 className="signup-title">회원가입</h2>
             <div className="container">
               <div className="name">
                 <label>이름</label>
                 <br />
                 <input
+                  className="signup-input"
                   type="text"
                   name="name"
                   size="10"
@@ -86,6 +92,7 @@ const MentorSignup = () => {
               <label>학교</label>
               <br />
               <input
+                className="signup-input"
                 type="text"
                 name="school"
                 size="30"
@@ -97,6 +104,7 @@ const MentorSignup = () => {
               <label>학과</label>
               <br />
               <input
+                className="signup-input"
                 type="text"
                 name="major"
                 size="30"
@@ -109,6 +117,7 @@ const MentorSignup = () => {
                 <label>학년</label>
                 <br />
                 <input
+                className="signup-input"
                   type="text"
                   name="grade"
                   size="5"
@@ -120,6 +129,7 @@ const MentorSignup = () => {
                 <label>나이</label>
                 <br />
                 <input
+                className="signup-input"
                   type="text"
                   name="age"
                   size="5"
@@ -132,6 +142,7 @@ const MentorSignup = () => {
               <label>아이디</label>
               <br />
               <input
+              className="signup-input"
                 type="text"
                 name="id"
                 size="30"
@@ -144,6 +155,7 @@ const MentorSignup = () => {
               <label>비밀번호</label>
               <br />
               <input
+              className="signup-input"
                 type="password"
                 name="pw"
                 size="30"
@@ -155,22 +167,26 @@ const MentorSignup = () => {
             <div className="email">
               <label>이메일</label>
               <br />
-              <input type="text" name="email" size="30" defaultValue=""></input>
+              <input className="signup-input" type="text" name="email" size="30" defaultValue=""></input>
             </div>
             <br />
           </div>
-          <div className="signup-button">
             <Link to = "/signup">
-            <button type="submit" width="400" onClick={handleMember}>
+            <button className="signup-button" type="submit" width="400" onClick={handleMember}>
               <img src={signup_submit} alt="submit" height="50" />
             </button>
             </Link>
-          </div>
-          <div className="signup-q">
-            <Link to="/login">
-              <p>이미 계정이 있으신가요?</p>
+            <Link to="/mentorLogin">
+              <button
+              className="signup-button"
+            >
+              <img
+               src={login_submit}
+               width="200"
+               height="50"
+              ></img>
+            </button>  
             </Link>
-          </div>
         </form>
       </div>
     </>
