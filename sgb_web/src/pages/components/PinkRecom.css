@@ -48,41 +48,74 @@
 /* background-color: rgba(248, 166, 204, 0.9); */
 
 #pink_mentor_detail_div {
-  max-width: 700px;
-  max-height: fit-content;
   padding: 50px;
-  margin-left: 300px;
-  margin-right: 300px;
+  /* padding-left: 0px; */
+  /*space-evenly로 인해 flexchild1과 flexchild2 div 사이 뿐만 아니라 
+  flexchild1이 모달에서 일종의 margin-left를 미리 부여받음 -> F12에서 확인가능 */
   font-size: 15px;
   display: none;
-  /* <여기> 부터 <저기>까지가 모달이 중앙에 위치하기 위한 코드인데요, 
-  margin: 50px인가 일때 저는 모달이 너무 위로 붙어버리더라고요
 
-  사실 margin: auto여야 중앙정렬이 되는데, 그렇게 하면 모달이 가로로 너무 길어지더라구요?? 
-  
-  그래서 margin: 25vh (브라우저 height의 25%)로 타협봤는데 
-  다른 브라우저에서 이상해보이면 그냥 모달 가로로 넓어지는거 슬프지만.. auto로 갑시다*/
+  /* <여기> 부터 <저기>까지가 
+  모달이 중앙에 위치하고 + pink_mentor_detail_div라는 flexbox 안에
+  flexchild_1과 flexchild_2가 가로로 병렬적으로 배치되기 위해 필요한 코드입니다
+  수정하게 될 경우 꼭 코멘트를 써주세요
+  */
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  margin: 25vh;
-  align-items: center;
+  margin: auto;
+  /* align-items: center; */
+  justify-content: space-evenly;
   /* <저기> */
-  /* border-radius: 10px; */
-  /* width: 50vw; */
-  /* height: 70vh; */
-  background-color: rgba(248, 166, 204, 0.9);
+
+  background-color: rgba(255, 178, 214, 0.9);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 35px;
+  width: 50vw;
+  max-height: fit-content;
+}
+
+#flexchild_1 {
+  /* <-- 수정 x */
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  /* 수정 x --> */
+  max-width: 30vw;
+}
+
+#flexchild_2 {
+  margin-left: 20px;
+}
+
+#pink_modal_title {
+  font-size: 18px;
+}
+
+#pink_modal_sgb_example,
+#pink_modal_type_prize,
+#pink_modal_role,
+#pink_modal_semester,
+#pink_modal_date,
+#pink_modal_thoughts {
+  font-size: 15px;
   font-weight: lighter;
+  margin-top: 10px;
+  /* width: 50px; */
+}
+
+#pink_mentor_detail_div span {
+  font-weight: bold;
+  font-size: 15px;
 }
 
 #pink_mentor_detail_prize_img {
-  max-width: 10%;
+  /* max-width: 10%;
   height: auto;
-  margin: 30px;
+  margin: 30px; */
+  /* float: right; */
 }
 
 #pink_mentor_detail_closebutton {
