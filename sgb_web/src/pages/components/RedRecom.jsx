@@ -142,7 +142,7 @@ function RedRecom() {
               value={major}
             />
           </div>
-          <br/>
+          <br/><br/>
           {isSearchResultVisible && (
           <> 
           <div className="red_result">

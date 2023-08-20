@@ -86,6 +86,24 @@
   font-size: 17px;
 }
 
+#green_modal_title {
+  font-size: 18px;
+}
+
+#green_modal_content {
+  font-size: 15px;
+}
+
+#green_mentor_detail {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+#flexchild_green {
+  width: 60vw;
+}
+
+
 
 
 

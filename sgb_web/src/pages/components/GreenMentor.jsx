@@ -23,7 +23,7 @@ const GreenMentor = () => {
     var modal = document.getElementById("green_mentor_detail_div");
     console.log("modal:", modal);
     if (modal.style.display === "none"){
-      modal.style.display = "flex";
+      modal.style.display = "block";
     } else {
       modal.style.display = "none";
     }
@@ -54,17 +54,21 @@ const GreenMentor = () => {
         const activity = result.data.data;
         console.log(activity);
         var modal = document.getElementById("green_mentor_detail_div");
-        modal.innerText = `
-        ${major} 합격 멘토의 창의적 체험활동 추천활동 \n
-        활동 유형: ${activity.activityType}
-        ${activity.name} | ${activity.startDate} ~ ${activity.endDate}
-        ${activity.name} (${activity.startDate} ~ ${activity.endDate})\n
-        활동 내 역할과 구체적인 활동 내용: ${activity.role}
-        활동 학기: ${activity.semester}
-        활동 시작일자: ${activity.startDate}
-        활동 종료일자: ${activity.endDate}
-        기타 조언 및 활동소감: ${activity.thoughts}\n 
-        `;
+        modal.innerHTML = `
+        <div id="flexchild_green">
+        <div id="green_modal_title">${major} 합격 멘토의 창의적 체험활동 추천활동 <hr/></div><br/>
+        <span id="green_mentor_detail">
+        <span id="green_modal_content">📌활동명</span> | ${activity.name} <br/>
+        <span id="green_modal_content">💡활동 유형</span> | ${activity.activityType} <br/>
+        <span id="green_modal_content">✏️활동 내 역할과 구체적인 활동 내용</span> | ${activity.role}<br/>
+        <span id="green_modal_content">📆활동 학기</span> | ${activity.semester}<br/>
+        <span id="green_modal_content">🗓️활동일자</span> | ${activity.startDate} ~  ${activity.endDate}<br/>
+        <span id="green_modal_content">💭기타 조언 및 활동소감</span> | ${activity.thoughts}<br/>
+        </span>
+        </div>
+        <div id="flexchild_green2">
+        </div>
+        `; 
         var closeButton = document.createElement("button");
         modal.appendChild(closeButton);
         closeButton.id = "green_mentor_detail_closebutton";

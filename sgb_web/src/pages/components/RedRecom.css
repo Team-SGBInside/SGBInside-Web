@@ -78,6 +78,7 @@
 } */
 
 .red_result {
+  position: absolute;
   background-color: #e3e3e3;
   padding: 5%;
   border-radius: 15px;
