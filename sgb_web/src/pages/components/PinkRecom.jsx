@@ -50,13 +50,13 @@ function PinkRecom() {
         // innerHTML을 쓰면 태그까지 작성 가능
         modal.innerHTML = `
         <div id="flexchild_1">
-        <div id="pink_modal_title">${writerSchoolMajor} ${writerGrade}학년 멘토의 수상경력</div>
-          <div id="pink_modal_sgb_example">${activity.name} | ${activity.date} | ${activity.semester}</div>
-          <div id="pink_modal_type_prize">${activity.type} / ${activity.prize}</div>
-          <div id="pink_modal_role"><span>활동 내 역할 및 활동 내용</span> : ${activity.role}</div>
-          <div id="pink_modal_semester"><span>수상 학기</span> : ${activity.semester}</div>
-          <div id="pink_modal_date"><span>수상일자</span> : ${activity.date}</div>
-          <div id="pink_modal_thoughts"><span>기타 조언 및 활동소감</span> : ${activity.thoughts}</div>
+        <div id="pink_modal_title">${writerSchoolMajor} ${writerGrade}학년 멘토의 수상경력<hr/></div>
+          <div id="pink_modal_sgb_example"><span>📌수상명</span> | ${activity.name}</div>
+          <div id="pink_modal_type_prize"><span>🏆수상 유형 및 등급</span> | ${activity.type} / ${activity.prize}</div>
+          <div id="pink_modal_role"><span>✏️활동 내 역할 및 활동 내용</span> | ${activity.role}</div>
+          <div id="pink_modal_semester"><span>📆수상 학기</span> | ${activity.semester}</div>
+          <div id="pink_modal_date"><span>🗓️수상일자</span> | ${activity.date}</div>
+          <div id="pink_modal_thoughts"><span>💭기타 조언 및 활동소감</span> | ${activity.thoughts}</div>
         </div>
         <div id="flexchild_2">
         </div>

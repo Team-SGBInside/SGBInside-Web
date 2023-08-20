@@ -8,6 +8,8 @@ import { getCookie, setCookie } from "../../lib/cookie";
 function RedRecom() {
   const apiKey = process.env.REACT_APP_CAREER_ACCESS_KEY;
 
+  const [searchResult, setSearchResult] = useState("");
+  const [isSearchResultVisible, setIsSearchResultVisible] = useState(false);
   // 검색한 학과로 조회한 전공계열정보
   let majorFieldInfo = [];
 
@@ -25,19 +27,19 @@ function RedRecom() {
     setMajor(e.target.value);
   };
 
-  const doDisplay = () => {
-    var con = document.getElementById("career-net");
-    console.log("con: ", con);
-    console.log("con.style.display: ", con.style.display);
-    console.log("typeof display: ", typeof con.style.display);
+  // const doDisplay = () => {
+  //   var con = document.getElementById("career-net");
+  //   console.log("con: ", con);
+  //   console.log("con.style.display: ", con.style.display);
+  //   console.log("typeof display: ", typeof con.style.display);
 
-    con.style.display = "block";
-    // green의 value를 바꾸는 함수 따로 분리할 필요는 없을 것 같아요~
-    const red = document.getElementById("red").value;
-    console.log("red: ", red);
-    document.getElementById("result").innerText = red;
-    console.log("printRed");
-  };
+  //   con.style.display = "block";
+  //   // green의 value를 바꾸는 함수 따로 분리할 필요는 없을 것 같아요~
+  //   const red = document.getElementById("red").value;
+  //   console.log("red: ", red);
+  //   document.getElementById("result").innerText = red;
+  //   console.log("printRed");
+  // };
 
 
   const onKeySubmitSearch = async (e) => {
@@ -89,7 +91,9 @@ function RedRecom() {
           console.log(error);
         });
       await getMajorInfo();
-      doDisplay();
+      setSearchResult(trimmedMajor);
+      setIsSearchResultVisible(true);
+      // doDisplay();
     }
   };
 
@@ -138,14 +142,18 @@ function RedRecom() {
               value={major}
             />
           </div>
-          <br/>
-          {/* <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br /> */}
-          <div className="careernet-div">
+          <br/><br/>
+          {isSearchResultVisible && (
+          <> 
+          <div className="red_result">
+          <span className="red-text">커리어넷</span>
+            <span className="light-text">에서 제공하는 </span>
+            <span id="result">{searchResult}</span>
+            <span className="light-text">
+              {" "}
+              관련 진로활동은 다음과 같습니다.
+          </span> <br/><hr/>  
+          {/* <div className="careernet-div">
           <div id="career-net">
               <span className="red-text">커리어넷</span>
               <span className="light-text">에서 제공하는 </span>
@@ -157,7 +165,7 @@ function RedRecom() {
               <br />
               <br />
           </div>
-          </div>
+          </div> */}
           {relateSubjects &&
             relateSubjects.map((relateSubject) => {
               return (
@@ -176,6 +184,9 @@ function RedRecom() {
                 </div>
               );
             })}
+          </div>
+          </>
+          )}  
         </div>
       </div>
     </div>

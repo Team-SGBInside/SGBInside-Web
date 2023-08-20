@@ -30,7 +30,7 @@
 
 .search_div_red {
   position: relative;
-  margin-left: 230px;
+  margin-left: 10%;
 }
 
 .search_input_red {
@@ -44,8 +44,7 @@
 
 .search_result_red {
   width: 100%;
-  position: relative;
-  margin-left: 90px;
+  position: relative; 
 }
 
 #search_result_red_subject_name {
@@ -73,11 +72,16 @@
 #career-net {
   display: none;
 }
-
+/* 
 .careernet-div {
   padding-left: 90px;
+} */
+
+.red_result {
+  position: absolute;
+  background-color: #e3e3e3;
+  padding: 5%;
+  border-radius: 15px;
+  margin-left: 10%;
+  width: 900px;
 }
-
-
-
-
