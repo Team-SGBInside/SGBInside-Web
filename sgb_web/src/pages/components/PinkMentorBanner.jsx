@@ -14,7 +14,7 @@ const PinkMentorBanner = ({
 
   const handleClick = () => {
     console.log("activity clicked");
-    parentFunction(data, activityId);
+    parentFunction(data, activityId, writerSchoolMajor, writerGrade);
     console.log("activity clicked 2");
   };
 
