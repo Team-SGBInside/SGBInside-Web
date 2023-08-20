@@ -10,6 +10,10 @@ import { getCookie, setCookie } from "../../lib/cookie";
 const GreenRecom = () => {
   const apiKey = process.env.REACT_APP_CAREER_ACCESS_KEY;
 
+  const [searchResult, setSearchResult] = useState("");
+  const [isSearchResultVisible, setIsSearchResultVisible] = useState(false);
+
+
   // 검색한 학과로 조회한 전공계열정보
   let majorFieldInfo = [];
 
@@ -27,19 +31,19 @@ const GreenRecom = () => {
     setMajor(e.target.value);
   };
 
-  const doDisplay = () => {
-    var con = document.getElementById("career-net");
-    console.log("con: ", con);
-    console.log("con.style.display: ", con.style.display);
-    console.log("typeof display: ", typeof con.style.display);
+  // const doDisplay = () => {
+  //   var con = document.getElementById("career-net");
+  //   console.log("con: ", con);
+  //   console.log("con.style.display: ", con.style.display);
+  //   console.log("typeof display: ", typeof con.style.display);
 
-    con.style.display = "block";
-    // green의 value를 바꾸는 함수 따로 분리할 필요는 없을 것 같아요~
-    const green = document.getElementById("green").value;
-    console.log("green: ", green);
-    document.getElementById("result").innerText = green;
-    console.log("printGreen");
-  };
+  //   con.style.display = "block";
+  //   // green의 value를 바꾸는 함수 따로 분리할 필요는 없을 것 같아요~
+  //   const green = document.getElementById("green").value;
+  //   console.log("green: ", green);
+  //   document.getElementById("result").innerText = green;
+  //   console.log("printGreen");
+  // };
 
   const onKeySubmitSearch = async (e) => {
     if (e.key === "Enter") {
@@ -92,7 +96,9 @@ const GreenRecom = () => {
         });
 
       await getMajorInfo(); //검색 결과 출력
-      doDisplay(); //display none => block으로 변경하는 코드
+      setSearchResult(trimmedMajor);
+      setIsSearchResultVisible(true);
+      // doDisplay(); //display none => block으로 변경하는 코드
     }
   };
 
@@ -148,7 +154,17 @@ const GreenRecom = () => {
             value={major}
           />
         </div>
+        {isSearchResultVisible && (
+          <> 
         <div className="search_result_green">
+        <span className="red-text">커리어넷</span>
+            <span className="light-text">에서 제공하는 </span>
+            <span id="result">{searchResult}</span>
+            <span className="light-text">
+              {" "}
+              관련 진로활동은 다음과 같습니다.
+        </span> <br/><hr/>
+{/*         
           <div id="career-net">
             <span className="red-text">커리어넷</span>
             <span className="light-text">에서 제공하는 </span>
@@ -156,10 +172,10 @@ const GreenRecom = () => {
             <span className="light-text">
               {" "}
               관련 진로활동은 다음과 같습니다.
-            </span>
+            </span> 
             <br />
             <br />
-          </div>
+          </div> */}
           {careerActs &&
             careerActs.map((careerAct) => {
               return (
@@ -171,8 +187,10 @@ const GreenRecom = () => {
                   <br />
                 </>
               );
-            })}
+            })}  
         </div>
+        </>
+        )}
       </div>
     </div>
   );

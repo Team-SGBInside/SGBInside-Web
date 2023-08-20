@@ -139,12 +139,7 @@ function RedRecom() {
             />
           </div>
           <br/>
-          {/* <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br /> */}
+          <div className="red_result">
           <div className="careernet-div">
           <div id="career-net">
               <span className="red-text">커리어넷</span>
@@ -176,6 +171,7 @@ function RedRecom() {
                 </div>
               );
             })}
+          </div>
         </div>
       </div>
     </div>
