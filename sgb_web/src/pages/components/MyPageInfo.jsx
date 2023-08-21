@@ -396,7 +396,7 @@ function MyPageInfo() {
       sgbDiv.id = "mypage_detail_sgb";
       sgbDiv.innerHTML=`
       실제 생활기록부 기재양식<br><hr>
-      ${subjectName} (${startDate} ~ ${endDate}) ${mainActivity}
+      ${subjectName} ${mainActivity} (${startDate} ~ ${endDate}) 
       ${subjectFurtherStudy}<hr>`;
       modal.appendChild(sgbDiv);
 
