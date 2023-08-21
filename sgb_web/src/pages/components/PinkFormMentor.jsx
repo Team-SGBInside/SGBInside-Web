@@ -5,6 +5,7 @@ import pink_alert_mentor from "./img/pink_alert_mentor.png";
 import pink_save from "./img/pink_save.png";
 import "./PinkForm.css";
 import axios from "axios";
+import { getCookie, setCookie } from "../../lib/cookie";
 
 function PinkForm() {
   //useState
