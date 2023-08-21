@@ -79,13 +79,16 @@ function PinkForm() {
     formData.append("file", file);
     formData.append("role", role);
     formData.append("thought", thought);
-    formData.append("writerId", 9);
     formData.append("type", type);
     console.log("onClickSubmit: ", formData);
 
     await axios({
       method: "post",
-      headers: { "Content-Type": "multipart/form-data" },
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${getCookie("accessToken")}`,
+        withCredentials: true,
+      },
       url: "http://3.37.215.18:3000/activity/prize",
       data: formData,
     })
@@ -118,7 +121,12 @@ function PinkForm() {
       <div className="pinkform_bg">
         <img src={pinkform_bg} alt="pinkform_bg" width="1200" height="1370" />
         <div className="pinkform_content">
-          <img src={pink_alert_mentor} alt="pink_alert_mentor" width="604" height="120" />
+          <img
+            src={pink_alert_mentor}
+            alt="pink_alert_mentor"
+            width="604"
+            height="120"
+          />
           <br />
           <br />
           <br />

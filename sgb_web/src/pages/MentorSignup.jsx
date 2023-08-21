@@ -19,11 +19,11 @@ const MentorSignup = () => {
   const ageRef = useRef();
   const isTeenRef = useRef();
 
- const handleMember = async () => {
+  const handleMember = async () => {
     console.log("clicked");
     try {
       const response = await axios.post(
-         "http://3.37.215.18:3000/auth",
+        "http://3.37.215.18:3000/auth",
         {
           loginId: idRef.current.value,
           password: pwRef.current.value,
@@ -44,24 +44,24 @@ const MentorSignup = () => {
       );
       console.log(response);
       window.alert("회원가입이 성공적으로 되었습니다."); //성공페이지로 라우팅
-      navigator("/mentorHome")
+      navigator("/mentorHome");
     } catch (error) {
       console.log(error);
-      window.alert("입력되지 않은 항목이 있습니다."); 
-      location.href="/mentorSignup"//실패페이지로 라우팅
+      window.alert("입력되지 않은 항목이 있습니다.");
+      location.href = "/mentorSignup"; //실패페이지로 라우팅
     }
     // console.log(typeof isTeenRef.current.value)
     // console.log(isTeenRef.current.value);
-  }; 
+  };
   return (
     <>
       <div>
         <MentorLogo />
       </div>
       <div>
-      <form>
+        <form>
           <div className="form">
-          <h2 className="signup-title">회원가입</h2>
+            <h2 className="signup-title">회원가입</h2>
             <div className="container">
               <div className="name">
                 <label>이름</label>
@@ -75,18 +75,15 @@ const MentorSignup = () => {
                   ref={nameRef}
                 ></input>
               </div>
-              <br/>
+              <br />
               <div className="member">
-                <label>회원유형</label><br/>
-                <select
-                    className="isTeen"
-                    name= "isTeen"
-                    ref = {isTeenRef}
-                    >                           
-                    <option value="true">고등학생 회원</option>
-                    <option value="false">대학생멘토 회원</option>
+                <label>회원유형</label>
+                <br />
+                <select className="isTeen" name="isTeen" ref={isTeenRef}>
+                  <option value="true">고등학생 회원</option>
+                  <option value="false">대학생멘토 회원</option>
                 </select>
-            </div>
+              </div>
             </div>
             <div className="school">
               <label>학교</label>
@@ -99,7 +96,8 @@ const MentorSignup = () => {
                 defaultValue=""
                 ref={schoolRef}
               ></input>
-            </div><br/>
+            </div>
+            <br />
             <div className="major">
               <label>학과</label>
               <br />
@@ -117,7 +115,7 @@ const MentorSignup = () => {
                 <label>학년</label>
                 <br />
                 <input
-                className="signup-input"
+                  className="signup-input"
                   type="text"
                   name="grade"
                   size="5"
@@ -129,7 +127,7 @@ const MentorSignup = () => {
                 <label>나이</label>
                 <br />
                 <input
-                className="signup-input"
+                  className="signup-input"
                   type="text"
                   name="age"
                   size="5"
@@ -142,7 +140,7 @@ const MentorSignup = () => {
               <label>아이디</label>
               <br />
               <input
-              className="signup-input"
+                className="signup-input"
                 type="text"
                 name="id"
                 size="30"
@@ -155,7 +153,7 @@ const MentorSignup = () => {
               <label>비밀번호</label>
               <br />
               <input
-              className="signup-input"
+                className="signup-input"
                 type="password"
                 name="pw"
                 size="30"
@@ -164,29 +162,23 @@ const MentorSignup = () => {
               ></input>
               <br />
             </div>
-            <div className="email">
-              <label>이메일</label>
-              <br />
-              <input className="signup-input" type="text" name="email" size="30" defaultValue=""></input>
-            </div>
             <br />
           </div>
-            <Link to = "/signup">
-            <button className="signup-button" type="submit" width="400" onClick={handleMember}>
+          <Link to="/signup">
+            <button
+              className="signup-button"
+              type="submit"
+              width="400"
+              onClick={handleMember}
+            >
               <img src={signup_submit} alt="submit" height="50" />
             </button>
-            </Link>
-            <Link to="/mentorLogin">
-              <button
-              className="signup-button"
-            >
-              <img
-               src={login_submit}
-               width="200"
-               height="50"
-              ></img>
-            </button>  
-            </Link>
+          </Link>
+          <Link to="/mentorLogin">
+            <button className="signup-button">
+              <img src={login_submit} width="200" height="50"></img>
+            </button>
+          </Link>
         </form>
       </div>
     </>

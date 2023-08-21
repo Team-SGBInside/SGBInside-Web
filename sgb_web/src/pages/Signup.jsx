@@ -18,11 +18,11 @@ const Signup = () => {
   const ageRef = useRef();
   const isTeenRef = useRef();
 
- const handleMember = async () => {
+  const handleMember = async () => {
     console.log("clicked");
     try {
       const response = await axios.post(
-         "http://3.37.215.18:3000/auth",
+        "http://3.37.215.18:3000/auth",
         {
           loginId: idRef.current.value,
           password: pwRef.current.value,
@@ -43,14 +43,14 @@ const Signup = () => {
       console.log(response);
       window.alert("회원가입이 성공적으로 되었습니다."); //성공페이지로 라우팅
       // location.href="/home"
-      navigator("/home")
+      navigator("/home");
     } catch (error) {
       console.log(error);
       window.alert("입력되지 않은 항목이 있습니다."); //실패페이지로 라우팅
     }
-    console.log(typeof isTeenRef.current.value)
+    console.log(typeof isTeenRef.current.value);
     console.log(isTeenRef.current.value);
-  }; 
+  };
   return (
     <>
       <div>
@@ -59,7 +59,7 @@ const Signup = () => {
       <div>
         <form>
           <div className="form">
-          <h2 className="signup-title">회원가입</h2>
+            <h2 className="signup-title">회원가입</h2>
             <div className="container">
               <div className="name">
                 <label>이름</label>
@@ -73,18 +73,15 @@ const Signup = () => {
                   ref={nameRef}
                 ></input>
               </div>
-              <br/>
+              <br />
               <div className="member">
-                <label>회원유형</label><br/>
-                <select
-                    className="isTeen"
-                    name= "isTeen"
-                    ref = {isTeenRef}
-                    >                           
-                    <option value="true">고등학생 회원</option>
-                    <option value="false">대학생멘토 회원</option>
+                <label>회원유형</label>
+                <br />
+                <select className="isTeen" name="isTeen" ref={isTeenRef}>
+                  <option value="true">고등학생 회원</option>
+                  <option value="false">대학생멘토 회원</option>
                 </select>
-            </div>
+              </div>
             </div>
             <div className="school">
               <label>학교</label>
@@ -103,7 +100,7 @@ const Signup = () => {
                 <label>학년</label>
                 <br />
                 <input
-                className="signup-input"
+                  className="signup-input"
                   type="text"
                   name="grade"
                   size="5"
@@ -115,7 +112,7 @@ const Signup = () => {
                 <label>나이</label>
                 <br />
                 <input
-                className="signup-input"
+                  className="signup-input"
                   type="text"
                   name="age"
                   size="5"
@@ -128,7 +125,7 @@ const Signup = () => {
               <label>아이디</label>
               <br />
               <input
-              className="signup-input"
+                className="signup-input"
                 type="text"
                 name="id"
                 size="30"
@@ -141,7 +138,7 @@ const Signup = () => {
               <label>비밀번호</label>
               <br />
               <input
-              className="signup-input"
+                className="signup-input"
                 type="password"
                 name="pw"
                 size="30"
@@ -150,29 +147,23 @@ const Signup = () => {
               ></input>
               <br />
             </div>
-            <div className="email">
-              <label>이메일</label>
-              <br />
-              <input className="signup-input" type="text" name="email" size="30" defaultValue=""></input>
-            </div>
             <br />
           </div>
-            <Link to = "/signup">
-            <button className="signup-button" type="submit" width="400" onClick={handleMember}>
+          <Link to="/signup">
+            <button
+              className="signup-button"
+              type="submit"
+              width="400"
+              onClick={handleMember}
+            >
               <img src={signup_submit} alt="submit" height="50" />
             </button>
-            </Link>
-            <Link to="/login">
-              <button
-              className="signup-button"
-            >
-              <img
-               src={login_submit}
-               width="200"
-               height="50"
-              ></img>
-            </button>  
-            </Link>
+          </Link>
+          <Link to="/login">
+            <button className="signup-button">
+              <img src={login_submit} width="200" height="50"></img>
+            </button>
+          </Link>
         </form>
       </div>
     </>
