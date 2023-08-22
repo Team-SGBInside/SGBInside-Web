@@ -42,20 +42,21 @@ function MyPageInfo() {
   let sortQuery = activitySort;
   const handleSemester = (event) => {
     setSemester(event.target.value);
-    getUserInfo(sortQuery, semesterQuery);
+    // getUserInfo(sortQuery, semesterQuery);
   };
 
   const handleActivitySort = (sort) => {
     setActivitySort(sort);
-    getUserInfo(sortQuery, semesterQuery);
+    // getUserInfo(sortQuery, semesterQuery);
   };
 
-  const getUserInfo = (sortQuery, semesterQuery) => {
-    console.log("semesterQuery in getUserInfo: ", semesterQuery);
-    console.log("sortQuery in getUserInfo: ", sortQuery);
+  const getUserInfo = (activitySort, semester) => {
+    console.log("activitySort in getUserInfo: ", activitySort);
+    console.log("semester in getUserInfo: ", semester);
+
     axios
       .get(
-        `http://3.37.215.18:3000/mypage?sort=${sortQuery}&semester=${semesterQuery}`,
+        `http://3.37.215.18:3000/mypage?sort=${activitySort}&semester=${semester}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -144,8 +145,8 @@ function MyPageInfo() {
       });
   };
   useEffect(() => {
-    getUserInfo(sortQuery, semesterQuery);
-  }, []);
+    getUserInfo(activitySort, semester);
+  }, [activitySort, semester]);
 
   // 모달창 닫기 버튼
   const closeBtnHandler = () => {
@@ -289,8 +290,8 @@ function MyPageInfo() {
       const activityType = activity[0].activityType;
       const thoughts = activity[0].thoughts;
       const role = activity[0].role;
-      
-      modal.innerText = " "
+
+      modal.innerText = " ";
 
       var titleDiv = document.createElement("div");
       titleDiv.id = "mypage_detail_title";
@@ -306,7 +307,7 @@ function MyPageInfo() {
 
       var sgbDiv = document.createElement("div");
       sgbDiv.id = "mypage_detail_sgb";
-      sgbDiv.innerHTML=`
+      sgbDiv.innerHTML = `
       실제 생활기록부 기재양식<br><hr>
       ${name}(${startDate} ~ ${endDate}) ${role}<br><hr>
       ${thoughts}<br>`;
@@ -341,8 +342,8 @@ function MyPageInfo() {
       copyButton.innerText = "복사";
       copyButton.addEventListener("click", function () {
         var sgbContent = document.getElementById("mypage_detail_sgb").innerHTML;
-        sgbContent = sgbContent.replace(/<br>/g, '\n');
-        sgbContent = sgbContent.replace(/<hr>/g, ' ');
+        sgbContent = sgbContent.replace(/<br>/g, "\n");
+        sgbContent = sgbContent.replace(/<hr>/g, " ");
         // 복사할 내용을 클립보드에 복사
         const tempTextarea = document.createElement("textarea");
         tempTextarea.value = sgbContent;
@@ -350,8 +351,10 @@ function MyPageInfo() {
         tempTextarea.select();
         document.execCommand("copy");
         document.body.removeChild(tempTextarea);
-      
-        alert("클립보드에 내용이 복사되었습니다. 원하는 곳에 붙여넣어 사용하세요.");
+
+        alert(
+          "클립보드에 내용이 복사되었습니다. 원하는 곳에 붙여넣어 사용하세요."
+        );
       });
     }
 
@@ -394,7 +397,7 @@ function MyPageInfo() {
 
       var sgbDiv = document.createElement("div");
       sgbDiv.id = "mypage_detail_sgb";
-      sgbDiv.innerHTML=`
+      sgbDiv.innerHTML = `
       실제 생활기록부 기재양식<br><hr>
       ${subjectName} ${mainActivity} (${startDate} ~ ${endDate}) 
       ${subjectFurtherStudy}<hr>`;
@@ -429,8 +432,8 @@ function MyPageInfo() {
       copyButton.innerText = "복사";
       copyButton.addEventListener("click", function () {
         var sgbContent = document.getElementById("mypage_detail_sgb").innerHTML;
-        sgbContent = sgbContent.replace(/<br>/g, '\n');
-        sgbContent = sgbContent.replace(/<hr>/g, ' ');
+        sgbContent = sgbContent.replace(/<br>/g, "\n");
+        sgbContent = sgbContent.replace(/<hr>/g, " ");
         // 복사할 내용을 클립보드에 복사
         const tempTextarea = document.createElement("textarea");
         tempTextarea.value = sgbContent;
@@ -438,8 +441,10 @@ function MyPageInfo() {
         tempTextarea.select();
         document.execCommand("copy");
         document.body.removeChild(tempTextarea);
-      
-        alert("클립보드에 내용이 복사되었습니다. 원하는 곳에 붙여넣어 사용하세요.");
+
+        alert(
+          "클립보드에 내용이 복사되었습니다. 원하는 곳에 붙여넣어 사용하세요."
+        );
       });
     }
 
@@ -492,13 +497,13 @@ function MyPageInfo() {
 
       var sgbDiv = document.createElement("div");
       sgbDiv.id = "mypage_detail_sgb";
-      sgbDiv.innerHTML=`
+      sgbDiv.innerHTML = `
       실제 생활기록부 기재양식<br><hr>
       ${name} / ${prize || " "} / ${date}<br><hr> 
       ${role}<br>
       ${thoughts || " "}`;
       parentDiv.appendChild(sgbDiv);
-      
+
       var imageDiv = document.createElement("div");
       imageDiv.style.maxWidth = "50px !important";
       imageDiv.id = "mypage_detail_image";
@@ -533,8 +538,8 @@ function MyPageInfo() {
       copyButton.innerText = "복사";
       copyButton.addEventListener("click", function () {
         var sgbContent = document.getElementById("mypage_detail_sgb").innerHTML;
-        sgbContent = sgbContent.replace(/<br>/g, '\n');
-        sgbContent = sgbContent.replace(/<hr>/g, ' ');
+        sgbContent = sgbContent.replace(/<br>/g, "\n");
+        sgbContent = sgbContent.replace(/<hr>/g, " ");
         // 복사할 내용을 클립보드에 복사
         const tempTextarea = document.createElement("textarea");
         tempTextarea.value = sgbContent;
@@ -542,8 +547,10 @@ function MyPageInfo() {
         tempTextarea.select();
         document.execCommand("copy");
         document.body.removeChild(tempTextarea);
-      
-        alert("클립보드에 내용이 복사되었습니다. 원하는 곳에 붙여넣어 사용하세요.");
+
+        alert(
+          "클립보드에 내용이 복사되었습니다. 원하는 곳에 붙여넣어 사용하세요."
+        );
       });
     }
 
@@ -589,7 +596,7 @@ function MyPageInfo() {
       var sgbDiv = document.createElement("div");
       sgbDiv.id = "mypage_detail_sgb";
       sgbDiv.style.maxWidth = "250px";
-      sgbDiv.innerHTML=`
+      sgbDiv.innerHTML = `
       <hr>
       ${thoughts}<br>
       <hr>
@@ -630,9 +637,9 @@ function MyPageInfo() {
       copyButton.innerText = "복사";
       copyButton.addEventListener("click", function () {
         var sgbContent = document.getElementById("mypage_detail_sgb").innerHTML;
-        sgbContent = sgbContent.replace(/<br>/g, '\n');
-        sgbContent = sgbContent.replace(/<hr>/g, ' ');
-        sgbContent = sgbContent.replace(/&nbsp;/g, ' ');
+        sgbContent = sgbContent.replace(/<br>/g, "\n");
+        sgbContent = sgbContent.replace(/<hr>/g, " ");
+        sgbContent = sgbContent.replace(/&nbsp;/g, " ");
         // 복사할 내용을 클립보드에 복사
         const tempTextarea = document.createElement("textarea");
         tempTextarea.value = sgbContent;
@@ -640,8 +647,10 @@ function MyPageInfo() {
         tempTextarea.select();
         document.execCommand("copy");
         document.body.removeChild(tempTextarea);
-      
-        alert("클립보드에 내용이 복사되었습니다. 원하는 곳에 붙여넣어 사용하세요.");
+
+        alert(
+          "클립보드에 내용이 복사되었습니다. 원하는 곳에 붙여넣어 사용하세요."
+        );
       });
     }
   }
@@ -650,7 +659,8 @@ function MyPageInfo() {
 
   const handleMenuClick = (menu) => {
     setActiveMenu(menu);
-    handleActivitySort(menu); // 메뉴를 클릭하면 해당 메뉴에 해당하는 활동을 가져오도록 변경
+    setActivitySort(menu);
+    // handleActivitySort(menu); // 메뉴를 클릭하면 해당 메뉴에 해당하는 활동을 가져오도록 변경
   };
 
   return (
@@ -681,7 +691,7 @@ function MyPageInfo() {
             <div className="semester">
               <select
                 className="semester_select"
-                onChange={(e) => handleSemester(e)}
+                onChange={(e) => setSemester(e.target.value)}
               >
                 <option value="all">all</option>
                 <option value="1-1">1-1</option>
@@ -698,7 +708,7 @@ function MyPageInfo() {
                 alt="all"
                 width="80"
                 height="40"
-                onClick={() => handleMenuClick("all")}
+                onClick={(e) => handleMenuClick("all")}
               />
 
               <img
