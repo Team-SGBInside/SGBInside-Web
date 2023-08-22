@@ -36,22 +36,22 @@ function MyPageInfo() {
   let sortQuery = activitySort;
   const handleSemester = (event) => {
     setSemester(event.target.value);
-    console.log("semester event.target: ", event.target);
-    console.log("semesterQuery: ", semesterQuery);
-    console.log("sortQuery: ", sortQuery);
-    getUserInfo(sortQuery, semesterQuery);
+    // console.log("semester event.target: ", event.target);
+    // console.log("semesterQuery: ", semesterQuery);
+    // console.log("sortQuery: ", sortQuery);
+    // getUserInfo(sortQuery, semesterQuery);
   };
 
   const handleActivitySort = (sort) => {
     setActivitySort(sort);
-    console.log("semesterQuery: ", semesterQuery);
-    console.log("sortQuery: ", sortQuery);
-    getUserInfo(sortQuery, semesterQuery);
+    // console.log("semesterQuery: ", semesterQuery);
+    // console.log("sortQuery: ", sortQuery);
+    // getUserInfo(sortQuery, semesterQuery);
   };
 
-  const getUserInfo = (sortQuery, semesterQuery) => {
-    console.log("semesterQuery in getUserInfo: ", semesterQuery);
-    console.log("sortQuery in getUserInfo: ", sortQuery);
+  const getUserInfo = (activitySort, semester) => {
+    console.log("activitySort in getUserInfo: ", activitySort);
+    console.log("semester in getUserInfo: ", semester);
     axios
       .get(
         `http://3.37.215.18:3000/mypage?sort=${sortQuery}&semester=${semesterQuery}`,
@@ -89,7 +89,7 @@ function MyPageInfo() {
         });
 
         // 전체 활동 통합, 배열 내 인덱스 번호에 따른 uniqId로 id key 부여
-        let allActivity = [...allCreativeActivity, ...allPrizeActivity ];
+        let allActivity = [...allCreativeActivity, ...allPrizeActivity];
 
         allActivity.map((item, index) => {
           let uniqId = parseInt(index);
@@ -124,9 +124,11 @@ function MyPageInfo() {
         console.log(error);
       });
   };
+
+  // 활동유형, 학기 state값이 변경될 때마다 axios 통신을 다시하며 리렌더링
   useEffect(() => {
-    getUserInfo(sortQuery, semesterQuery);
-  }, []);
+    getUserInfo(activitySort, semester);
+  }, [activitySort, semester]);
 
   function parentFunction(data, sort, id) {
     setBannerClicked(data);
@@ -236,7 +238,7 @@ function MyPageInfo() {
       const thoughts = activity[0].thoughts;
       const role = activity[0].role;
 
-      modal.innerText = " "
+      modal.innerText = " ";
 
       var titleDiv = document.createElement("div");
       titleDiv.id = "mypage_detail_title";
@@ -252,7 +254,7 @@ function MyPageInfo() {
 
       var sgbDiv = document.createElement("div");
       sgbDiv.id = "mypage_detail_sgb";
-      sgbDiv.innerHTML=`
+      sgbDiv.innerHTML = `
       실제 생활기록부 기재양식<br><hr>
       ${name}(${startDate} ~ ${endDate}) ${role}<br><hr>
       ${thoughts}<br>`;
@@ -287,8 +289,8 @@ function MyPageInfo() {
       copyButton.innerText = "복사";
       copyButton.addEventListener("click", function () {
         var sgbContent = document.getElementById("mypage_detail_sgb").innerHTML;
-        sgbContent = sgbContent.replace(/<br>/g, '\n');
-        sgbContent = sgbContent.replace(/<hr>/g, ' ');
+        sgbContent = sgbContent.replace(/<br>/g, "\n");
+        sgbContent = sgbContent.replace(/<hr>/g, " ");
         // 복사할 내용을 클립보드에 복사
         const tempTextarea = document.createElement("textarea");
         tempTextarea.value = sgbContent;
@@ -296,8 +298,10 @@ function MyPageInfo() {
         tempTextarea.select();
         document.execCommand("copy");
         document.body.removeChild(tempTextarea);
-      
-        alert("클립보드에 내용이 복사되었습니다. 원하는 곳에 붙여넣어 사용하세요.");
+
+        alert(
+          "클립보드에 내용이 복사되었습니다. 원하는 곳에 붙여넣어 사용하세요."
+        );
       });
     }
 
@@ -350,13 +354,13 @@ function MyPageInfo() {
 
       var sgbDiv = document.createElement("div");
       sgbDiv.id = "mypage_detail_sgb";
-      sgbDiv.innerHTML=`
+      sgbDiv.innerHTML = `
       실제 생활기록부 기재양식<br><hr>
       ${name} / ${prize || " "} / ${date}<br><hr> 
       ${role}<br>
       ${thoughts || " "}`;
       parentDiv.appendChild(sgbDiv);
-      
+
       var imageDiv = document.createElement("div");
       imageDiv.style.maxWidth = "50px !important";
       imageDiv.id = "mypage_detail_image";
@@ -391,8 +395,8 @@ function MyPageInfo() {
       copyButton.innerText = "복사";
       copyButton.addEventListener("click", function () {
         var sgbContent = document.getElementById("mypage_detail_sgb").innerHTML;
-        sgbContent = sgbContent.replace(/<br>/g, '\n');
-        sgbContent = sgbContent.replace(/<hr>/g, ' ');
+        sgbContent = sgbContent.replace(/<br>/g, "\n");
+        sgbContent = sgbContent.replace(/<hr>/g, " ");
         // 복사할 내용을 클립보드에 복사
         const tempTextarea = document.createElement("textarea");
         tempTextarea.value = sgbContent;
@@ -400,8 +404,10 @@ function MyPageInfo() {
         tempTextarea.select();
         document.execCommand("copy");
         document.body.removeChild(tempTextarea);
-      
-        alert("클립보드에 내용이 복사되었습니다. 원하는 곳에 붙여넣어 사용하세요.");
+
+        alert(
+          "클립보드에 내용이 복사되었습니다. 원하는 곳에 붙여넣어 사용하세요."
+        );
       });
     }
   }
@@ -441,7 +447,7 @@ function MyPageInfo() {
             <div className="semester">
               <select
                 className="semester_select"
-                onChange={(e) => handleSemester(e)}
+                onChange={(e) => setSemester(e.target.value)}
               >
                 <option value="all">all</option>
                 <option value="1-1">1-1</option>
