@@ -144,6 +144,8 @@ function MyPageInfo() {
         console.log(error);
       });
   };
+
+  // 활동유형, 학기 state값이 변경될 때마다 axios 통신을 다시하며 리렌더링
   useEffect(() => {
     getUserInfo(activitySort, semester);
   }, [activitySort, semester]);
@@ -708,7 +710,7 @@ function MyPageInfo() {
                 alt="all"
                 width="80"
                 height="40"
-                onClick={(e) => handleMenuClick("all")}
+                onClick={() => handleMenuClick("all")}
               />
 
               <img
