@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import greenform_bg from "./img/greenform_bg.png";
 import green_talk from "./img/green_talk.png";
 import green_mentor from "./img/green_mentor.png";
+import loading from "./img/loading.gif";
 import "./GreenRecom.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -13,7 +14,8 @@ const GreenRecom = () => {
   const [searchResult, setSearchResult] = useState("");
   const [isSearchResultVisible, setIsSearchResultVisible] = useState(false);
 
-
+  const [isLoading, setIsLoading] = useState(false); 
+  
   // 검색한 학과로 조회한 전공계열정보
   let majorFieldInfo = [];
 
@@ -52,6 +54,7 @@ const GreenRecom = () => {
         return;
       }
       // printGreen(); //검색창 입력 값 출력
+      setIsLoading(true);
       await axios({
         method: "get",
         url: `http://www.career.go.kr/cnet/openapi/getOpenApi?apiKey=${apiKey}&svcType=api&svcCode=MAJOR&contentType=json&gubun=univ_list&univSe=univ&searchTitle=${major}`,
@@ -98,6 +101,7 @@ const GreenRecom = () => {
       await getMajorInfo(); //검색 결과 출력
       setSearchResult(trimmedMajor);
       setIsSearchResultVisible(true);
+      setIsLoading(false);
       // doDisplay(); //display none => block으로 변경하는 코드
     }
   };
@@ -157,13 +161,19 @@ const GreenRecom = () => {
         {isSearchResultVisible && (
           <> 
         <div className="search_result_green">
+        {isLoading ? (
+                // 로딩 중일 때 로딩 표시
+                <div className="loading"><img src={loading} alt="loading..." width="50" height="50"/></div>
+              ) : (
+                // 로딩이 아닐 때 검색 결과 표시
+                <>
         <span className="red-text">커리어넷</span>
             <span className="light-text">에서 제공하는 </span>
             <span id="result">{searchResult}</span>
             <span className="light-text">
               {" "}
               관련 진로활동은 다음과 같습니다.
-        </span> <br/><hr/>
+        </span> <br/><hr/><br/>
 {/*         
           <div id="career-net">
             <span className="red-text">커리어넷</span>
@@ -176,20 +186,22 @@ const GreenRecom = () => {
             <br />
             <br />
           </div> */}
-          {careerActs &&
-            careerActs.map((careerAct) => {
-              return (
-                <>
-                  <b>{careerAct.act_name.replace(/<br>/g, " ")}</b>
-                  <br />
-                  {careerAct.act_description}
-                  <br />
-                  <br />
+                  {careerActs &&
+                    careerActs.map((careerAct) => {
+                      return (
+                        <>
+                          <b>{careerAct.act_name.replace(/<br>/g, " ")}</b>
+                          <br />
+                          {careerAct.act_description}
+                          <br />
+                          <br />
+                        </>
+                      );
+                    })}
                 </>
-              );
-            })}  
-        </div>
-        </>
+              )}
+            </div>
+          </>
         )}
       </div>
     </div>
