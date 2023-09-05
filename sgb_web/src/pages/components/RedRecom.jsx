@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import redform_bg from "./img/redform_bg.png";
 import red_talk from "./img/red_talk.png";
+import loading from "./img/loading.gif";
 import "./RedRecom.css";
 import axios from "axios";
 import { getCookie, setCookie } from "../../lib/cookie";
@@ -10,6 +11,8 @@ function RedRecom() {
 
   const [searchResult, setSearchResult] = useState("");
   const [isSearchResultVisible, setIsSearchResultVisible] = useState(false);
+  
+  const [isLoading, setIsLoading] = useState(false);
   // 검색한 학과로 조회한 전공계열정보
   let majorFieldInfo = [];
 
@@ -48,6 +51,7 @@ function RedRecom() {
         alert("검색어를 입력해주세요");
         return;
       }
+      setIsLoading(true);
       await axios({
         method: "get",
         url: `http://www.career.go.kr/cnet/openapi/getOpenApi?apiKey=${apiKey}&svcType=api&svcCode=MAJOR&contentType=json&gubun=univ_list&univSe=univ&searchTitle=${major}`,
@@ -93,6 +97,7 @@ function RedRecom() {
       await getMajorInfo();
       setSearchResult(trimmedMajor);
       setIsSearchResultVisible(true);
+      setIsLoading(false);
       // doDisplay();
     }
   };
@@ -143,9 +148,16 @@ function RedRecom() {
             />
           </div>
           <br/><br/>
+          
           {isSearchResultVisible && (
           <> 
           <div className="red_result">
+          {isLoading ? (
+          // 로딩 중일 때 로딩 표시
+          <div className="loading"><img src={loading} alt="loading..." width="50" height="50"/></div>
+        ) : (
+          // 로딩이 아닐 때 검색 결과 표시
+          <>
           <span className="red-text">커리어넷</span>
             <span className="light-text">에서 제공하는 </span>
             <span id="result">{searchResult}</span>
@@ -166,6 +178,7 @@ function RedRecom() {
               <br />
           </div>
           </div> */}
+
           {relateSubjects &&
             relateSubjects.map((relateSubject) => {
               return (
@@ -184,9 +197,11 @@ function RedRecom() {
                 </div>
               );
             })}
-          </div>
           </>
-          )}  
+        )}  
+      </div>
+      </>
+      )}  
         </div>
       </div>
     </div>

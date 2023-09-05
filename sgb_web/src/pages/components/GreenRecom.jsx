@@ -161,6 +161,12 @@ const GreenRecom = () => {
         {isSearchResultVisible && (
           <> 
         <div className="search_result_green">
+        {isLoading ? (
+                // 로딩 중일 때 로딩 표시
+                <div className="loading"><img src={loading} alt="loading..." width="50" height="50"/></div>
+              ) : (
+                // 로딩이 아닐 때 검색 결과 표시
+                <>
         <span className="red-text">커리어넷</span>
             <span className="light-text">에서 제공하는 </span>
             <span id="result">{searchResult}</span>
@@ -180,12 +186,6 @@ const GreenRecom = () => {
             <br />
             <br />
           </div> */}
-               {isLoading ? (
-                // 로딩 중일 때 로딩 표시
-                <div className="loading"><img src={loading} alt="loading..." width="50" height="50"/></div>
-              ) : (
-                // 로딩이 아닐 때 검색 결과 표시
-                <>
                   {careerActs &&
                     careerActs.map((careerAct) => {
                       return (
