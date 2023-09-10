@@ -24,7 +24,7 @@ const LandingPage = () => {
                 width="400"
                 height="100"
               />
-              &nbsp;&nbsp;
+              {" "}
             </Link>
             <Link to="/mentorHome">
               <img src={landing_mentor} alt="mentor" width="400" height="100" />
@@ -49,7 +49,7 @@ const LandingPage = () => {
                 width="400"
                 height="100"
               />
-              &nbsp;&nbsp;
+            {" "}
             </Link>
             <Link to="/loginedMentorHome">
               <img src={landing_mentor} alt="mentor" width="400" height="100" />
