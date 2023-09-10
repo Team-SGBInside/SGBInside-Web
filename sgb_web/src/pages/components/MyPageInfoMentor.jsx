@@ -240,7 +240,7 @@ function MyPageInfo() {
 
       var titleDiv = document.createElement("div");
       titleDiv.id = "mypage_detail_title";
-      titleDiv.innerText = `창의적 체험활동 기록 상세보기`;
+      titleDiv.innerText = `창의적 체험활동 기록 상세보기🔍`;
       modal.appendChild(titleDiv);
 
       var contentDiv = document.createElement("div");
@@ -255,7 +255,7 @@ function MyPageInfo() {
       sgbDiv.innerHTML=`
       실제 생활기록부 기재양식<br><hr>
       ${name}(${startDate} ~ ${endDate}) ${role}<br><hr>
-      ${thoughts}<br>`;
+      ${thoughts||"-"}<br>`;
       modal.appendChild(sgbDiv);
 
       var closeButton = document.createElement("button");
@@ -332,7 +332,7 @@ function MyPageInfo() {
 
       var titleDiv = document.createElement("div");
       titleDiv.id = "mypage_detail_title";
-      titleDiv.innerText = `수상경력 기록 상세보기`;
+      titleDiv.innerText = `수상경력 기록 상세보기🔍`;
       modal.appendChild(titleDiv);
 
       var contentDiv = document.createElement("div");
@@ -352,9 +352,9 @@ function MyPageInfo() {
       sgbDiv.id = "mypage_detail_sgb";
       sgbDiv.innerHTML=`
       실제 생활기록부 기재양식<br><hr>
-      ${name} / ${prize || " "} / ${date}<br><hr> 
+      ${name} / ${prize || "-"} / ${date}<br><hr> 
       ${role}<br>
-      ${thoughts || " "}`;
+      ${thoughts || "-"}`;
       parentDiv.appendChild(sgbDiv);
       
       var imageDiv = document.createElement("div");

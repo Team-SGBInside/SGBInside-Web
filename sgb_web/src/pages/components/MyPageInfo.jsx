@@ -294,7 +294,7 @@ function MyPageInfo() {
 
       var titleDiv = document.createElement("div");
       titleDiv.id = "mypage_detail_title";
-      titleDiv.innerText = `창의적 체험활동 기록 상세보기`;
+      titleDiv.innerText = `창의적 체험활동 기록 상세보기🔍`;
       modal.appendChild(titleDiv);
 
       var contentDiv = document.createElement("div");
@@ -309,7 +309,7 @@ function MyPageInfo() {
       sgbDiv.innerHTML=`
       실제 생활기록부 기재양식<br><hr>
       ${name}(${startDate} ~ ${endDate}) ${role}<br><hr>
-      ${thoughts}<br>`;
+      ${thoughts || "-"}<br>`;
       modal.appendChild(sgbDiv);
 
       var closeButton = document.createElement("button");
@@ -382,7 +382,7 @@ function MyPageInfo() {
 
       var titleDiv = document.createElement("div");
       titleDiv.id = "mypage_detail_title";
-      titleDiv.innerText = `세부능력 및 특기사항 기록 상세보기`;
+      titleDiv.innerText = `세부능력 및 특기사항 기록 상세보기🔍`;
       modal.appendChild(titleDiv);
 
       var contentDiv = document.createElement("div");
@@ -474,7 +474,7 @@ function MyPageInfo() {
 
       var titleDiv = document.createElement("div");
       titleDiv.id = "mypage_detail_title";
-      titleDiv.innerText = `수상경력 기록 상세보기`;
+      titleDiv.innerText = `수상경력 기록 상세보기🔍`;
       modal.appendChild(titleDiv);
 
       var contentDiv = document.createElement("div");
@@ -494,15 +494,16 @@ function MyPageInfo() {
       sgbDiv.id = "mypage_detail_sgb";
       sgbDiv.innerHTML=`
       실제 생활기록부 기재양식<br><hr>
-      ${name} / ${prize || " "} / ${date}<br><hr> 
+      ${name} / ${prize || "-"} / ${date}<br><hr> 
       ${role}<br>
-      ${thoughts || " "}`;
+      ${thoughts || "-"}`;
       parentDiv.appendChild(sgbDiv);
       
       var imageDiv = document.createElement("div");
       imageDiv.style.maxWidth = "50px !important";
       imageDiv.id = "mypage_detail_image";
       parentDiv.appendChild(image);
+    
 
       var closeButton = document.createElement("button");
       modal.appendChild(closeButton);
@@ -576,7 +577,7 @@ function MyPageInfo() {
 
       var titleDiv = document.createElement("div");
       titleDiv.id = "mypage_detail_title";
-      titleDiv.innerText = `독서활동 기록 상세보기`;
+      titleDiv.innerText = `독서활동 기록 상세보기🔍`;
       modal.appendChild(titleDiv);
 
       var contentDiv = document.createElement("div");
@@ -593,11 +594,11 @@ function MyPageInfo() {
       <hr>
       ${thoughts}<br>
       <hr>
-      &nbsp; ${quote1 || " "}<br>
-      &nbsp; ${quote2 || " "}<br>
-      &nbsp; ${quote3 || " "}<br>
-      &nbsp; ${quote4 || " "}<br>
-      &nbsp; ${quote5 || " "}<br>
+      &nbsp; ${quote1 || "-"}<br>
+      &nbsp; ${quote2 || "-"}<br>
+      &nbsp; ${quote3 || "-"}<br>
+      &nbsp; ${quote4 || "-"}<br>
+      &nbsp; ${quote5 || "-"}<br>
       `;
       modal.appendChild(sgbDiv);
 
