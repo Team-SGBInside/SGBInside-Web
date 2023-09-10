@@ -297,22 +297,26 @@ function MyPageInfo() {
 
       var titleDiv = document.createElement("div");
       titleDiv.id = "mypage_detail_title";
-      titleDiv.innerText = `창의적 체험활동 기록 상세보기`;
+      titleDiv.innerText = `창의적 체험활동 기록 상세보기🔍`;
       modal.appendChild(titleDiv);
 
       var contentDiv = document.createElement("div");
       contentDiv.id = "mypage_detail_content";
       contentDiv.innerHTML = `
-        ${name} | ${startDate} ~ ${endDate} | ${semester} | ${activityType}<br>
+        📌활동명 | ${name}<br/>
+        🗓️활동일자 | ${startDate} ~ ${endDate}<br/>
+        📆활동학기 | ${semester}<br/>
+        💡활동유형 | ${activityType}<br/>
+        💭활동소감 | ${thoughts || "-"}<br/><br/><hr/>
+        ✏️실제 생활기록부 기재양식✏️<br/>
       `;
       modal.appendChild(contentDiv);
 
       var sgbDiv = document.createElement("div");
       sgbDiv.id = "mypage_detail_sgb";
-      sgbDiv.innerHTML = `
-      실제 생활기록부 기재양식<br><hr>
-      ${name}(${startDate} ~ ${endDate}) ${role}<br><hr>
-      ${thoughts}<br>`;
+      sgbDiv.innerHTML=`
+      ${name}(${startDate} ~ ${endDate}) ${role}<br>
+      <br>`;
       modal.appendChild(sgbDiv);
 
       var closeButton = document.createElement("button");
@@ -387,22 +391,26 @@ function MyPageInfo() {
 
       var titleDiv = document.createElement("div");
       titleDiv.id = "mypage_detail_title";
-      titleDiv.innerText = `세부능력 및 특기사항 기록 상세보기`;
+      titleDiv.innerText = `세부능력 및 특기사항 기록 상세보기🔍`;
       modal.appendChild(titleDiv);
 
       var contentDiv = document.createElement("div");
       contentDiv.id = "mypage_detail_content";
       contentDiv.innerHTML = `
-       ${subjectName}: ${mainActivity} | ${startDate} ~ ${endDate} | ${activitySemester}<br>
-      ${subjectName} - ${subjectContent}<br>`;
+        📌활동명 | ${mainActivity}<br/>
+        📚과목명 | ${subjectName}<br/>
+        📖배운내용 | ${subjectContent}<br>
+        🗓️활동일자 | ${startDate} ~ ${endDate}&nbsp;&nbsp;&nbsp;📆활동학기 | ${activitySemester}<br/>
+        ✍️탐구내용 | ${activityContentDetail}<br/>
+        💭나아가 공부한 내용 | ${subjectFurtherStudy || "-"}<br/><br/><hr/>
+        ✏️실제 생활기록부 기재양식✏️<br/>`;
       modal.appendChild(contentDiv);
 
       var sgbDiv = document.createElement("div");
       sgbDiv.id = "mypage_detail_sgb";
-      sgbDiv.innerHTML = `
-      실제 생활기록부 기재양식<br><hr>
+      sgbDiv.innerHTML=`
       ${subjectName} ${mainActivity} (${startDate} ~ ${endDate}) 
-      ${subjectFurtherStudy}<hr>`;
+      ${activityContentDetail} ${subjectFurtherStudy}<br/><br/>`;
       modal.appendChild(sgbDiv);
 
       var closeButton = document.createElement("button");
@@ -481,35 +489,40 @@ function MyPageInfo() {
 
       var titleDiv = document.createElement("div");
       titleDiv.id = "mypage_detail_title";
-      titleDiv.innerText = `수상경력 기록 상세보기`;
+      titleDiv.innerText = `수상경력 기록 상세보기🔍`;
       modal.appendChild(titleDiv);
-
-      var contentDiv = document.createElement("div");
-      contentDiv.id = "mypage_detail_content";
-      contentDiv.innerHTML = `
-        ${name} | ${date} | ${semester}<br>
-      `;
-      modal.appendChild(contentDiv);
 
       var parentDiv = document.createElement("div");
       parentDiv.style.display = "flex";
-      parentDiv.style.maxWidth = "1000px";
-      parentDiv.style.maxHeight = "250px";
+      parentDiv.style.maxWidth = "200px";
+      parentDiv.style.maxHeight = "200px";
       modal.appendChild(parentDiv);
+
+      var contentDiv = document.createElement("div");
+      contentDiv.style.maxWidth = "600px"
+      contentDiv.id = "mypage_detail_content";
+      contentDiv.innerHTML = `
+      📌수상명 | ${name}&nbsp;&nbsp;
+      💡수상유형&등급 | ${type} ${prize} <br/>
+      🗓️수상일자 | ${date}&nbsp;&nbsp;
+      📆수상학기 | ${semester}<br/>
+      ✍️활동 내 역할 및 활동 내용 | ${role}<br/>
+      💭수상소감 | ${thoughts || "-"}<br/><br/>
+      `;
+      parentDiv.appendChild(contentDiv);
+
+      var imageDiv = document.createElement("div");
+      imageDiv.id = "mypage_detail_image";
+      parentDiv.appendChild(image);
 
       var sgbDiv = document.createElement("div");
       sgbDiv.id = "mypage_detail_sgb";
-      sgbDiv.innerHTML = `
-      실제 생활기록부 기재양식<br><hr>
-      ${name} / ${prize || " "} / ${date}<br><hr> 
-      ${role}<br>
-      ${thoughts || " "}`;
-      parentDiv.appendChild(sgbDiv);
-
-      var imageDiv = document.createElement("div");
-      imageDiv.style.maxWidth = "50px !important";
-      imageDiv.id = "mypage_detail_image";
-      parentDiv.appendChild(image);
+      sgbDiv.innerHTML=`
+      <hr/>
+      ✏️실제 생활기록부 기재양식✏️<br/>
+      ${name} / ${prize || "-"} / ${date}<br> 
+      `;
+      modal.appendChild(sgbDiv);
 
       var closeButton = document.createElement("button");
       modal.appendChild(closeButton);
@@ -585,13 +598,15 @@ function MyPageInfo() {
 
       var titleDiv = document.createElement("div");
       titleDiv.id = "mypage_detail_title";
-      titleDiv.innerText = `독서활동 기록 상세보기`;
+      titleDiv.innerText = `독서활동 기록 상세보기🔍`;
       modal.appendChild(titleDiv);
 
       var contentDiv = document.createElement("div");
       contentDiv.id = "mypage_detail_content";
       contentDiv.innerHTML = `
-      ${titleAuthor} | ${endDate} | ${semester} | ${relatedSubject}<br>
+      📌도서명&저자 | ${titleAuthor}<br/> 
+      🗓️독서일자 | ${endDate} &nbsp;&nbsp; 📆독서학기 | ${semester} 
+      ✍️연관과목 | ${relatedSubject}<br>
       `;
       modal.appendChild(contentDiv);
 
@@ -600,8 +615,9 @@ function MyPageInfo() {
       sgbDiv.style.maxWidth = "250px";
       sgbDiv.innerHTML = `
       <hr>
-      ${thoughts}<br>
-      <hr>
+      💭독후감상<br>
+      ${thoughts}<br><br/>
+      📖인상깊었던 구절<br/>
       &nbsp; ${quote1 || " "}<br>
       &nbsp; ${quote2 || " "}<br>
       &nbsp; ${quote3 || " "}<br>

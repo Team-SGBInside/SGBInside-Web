@@ -14,11 +14,11 @@ function PinkForm() {
   const [name, setName] = useState("");
   const [type, setType] = useState("");
   const [file, setFile] = useState("");
-  const [grade, setGrade] = useState("");
+  const [prize, setPrize] = useState("");
   const [date, setDate] = useState("");
   const [semester, setSemester] = useState("");
   const [role, setRole] = useState("");
-  const [thought, setThought] = useState("");
+  const [thoughts, setThoughts] = useState("");
 
   // const formData = new FormData();
 
@@ -32,9 +32,9 @@ function PinkForm() {
     setType(event.target.value);
   };
 
-  const handlegrade = (event) => {
+  const handleprize = (event) => {
     event.preventDefault();
-    setGrade(event.target.value);
+    setPrize(event.target.value);
   };
 
   const handledate = (event) => {
@@ -53,9 +53,9 @@ function PinkForm() {
     setRole(event.target.value);
   };
 
-  const handlethought = (event) => {
+  const handlethoughts = (event) => {
     event.preventDefault();
-    setThought(event.target.value);
+    setThoughts(event.target.value);
   };
 
   const onChangeImg = (e) => {
@@ -77,12 +77,12 @@ function PinkForm() {
     console.log("clicked");
     // event.preventDefault();
     formData.append("name", name);
-    formData.append("grade", grade);
+    formData.append("prize", prize);
     formData.append("date", date);
     formData.append("semester", semester);
     formData.append("file", file);
     formData.append("role", role);
-    formData.append("thought", thought);
+    formData.append("thoughts", thoughts);
     formData.append("writerId", 9);
     formData.append("type", type);
     console.log("onClickSubmit: ", formData);
@@ -191,10 +191,11 @@ function PinkForm() {
           </label>
           <br />
           <input
-            className="pink_grade_input"
+            className="pink_prize_input"
             type="text"
+            value={prize}
             placeholder="ex) 우수상 (2위)"
-            onChange={handlegrade}
+            onChange={handleprize}
           />
           <br />
           <br />
@@ -239,9 +240,10 @@ function PinkForm() {
             활동 소감도 함께 남겨두자! 기억에 더 오래남도록 말이야 :) (선택){" "}
           </label>
           <textarea
-            className="pink_thought_text"
+            className="pink_thoughts_text"
+            value={thoughts}
             placeholder="ex) 평소 관심있는 정보통신 분야에서 수상을 해서 기쁘고  뿌듯했다. 후에 정보통신 분야에서 어떤 진로를 잡을 수 있을까 고민해보게 되는 계기도 되었다.  "
-            onChange={handlethought}
+            onChange={handlethoughts}
           ></textarea>
           <br />
           <br />
