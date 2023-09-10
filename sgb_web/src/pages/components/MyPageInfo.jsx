@@ -503,7 +503,7 @@ function MyPageInfo() {
       contentDiv.id = "mypage_detail_content";
       contentDiv.innerHTML = `
       📌수상명 | ${name}&nbsp;&nbsp;
-      💡수상유형&등급 | ${type} ${prize} <br/>
+      💡수상유형&등급 | ${type} ${prize || "-"} <br/>
       🗓️수상일자 | ${date}&nbsp;&nbsp;
       📆수상학기 | ${semester}<br/>
       ✍️활동 내 역할 및 활동 내용 | ${role}<br/>
