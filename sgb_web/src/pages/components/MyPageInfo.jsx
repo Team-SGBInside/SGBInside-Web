@@ -42,20 +42,21 @@ function MyPageInfo() {
   let sortQuery = activitySort;
   const handleSemester = (event) => {
     setSemester(event.target.value);
-    getUserInfo(sortQuery, semesterQuery);
+    // getUserInfo(sortQuery, semesterQuery);
   };
 
   const handleActivitySort = (sort) => {
     setActivitySort(sort);
-    getUserInfo(sortQuery, semesterQuery);
+    // getUserInfo(sortQuery, semesterQuery);
   };
 
-  const getUserInfo = (sortQuery, semesterQuery) => {
-    console.log("semesterQuery in getUserInfo: ", semesterQuery);
-    console.log("sortQuery in getUserInfo: ", sortQuery);
+  const getUserInfo = (activitySort, semester) => {
+    console.log("activitySort in getUserInfo: ", activitySort);
+    console.log("semester in getUserInfo: ", semester);
+
     axios
       .get(
-        `http://3.37.215.18:3000/mypage?sort=${sortQuery}&semester=${semesterQuery}`,
+        `http://3.37.215.18:3000/mypage?sort=${activitySort}&semester=${semester}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -143,9 +144,11 @@ function MyPageInfo() {
         console.log(error);
       });
   };
+
+  // 활동유형, 학기 state값이 변경될 때마다 axios 통신을 다시하며 리렌더링
   useEffect(() => {
-    getUserInfo(sortQuery, semesterQuery);
-  }, []);
+    getUserInfo(activitySort, semester);
+  }, [activitySort, semester]);
 
   // 모달창 닫기 버튼
   const closeBtnHandler = () => {
@@ -289,8 +292,8 @@ function MyPageInfo() {
       const activityType = activity[0].activityType;
       const thoughts = activity[0].thoughts;
       const role = activity[0].role;
-      
-      modal.innerText = " "
+
+      modal.innerText = " ";
 
       var titleDiv = document.createElement("div");
       titleDiv.id = "mypage_detail_title";
@@ -345,8 +348,8 @@ function MyPageInfo() {
       copyButton.innerText = "복사";
       copyButton.addEventListener("click", function () {
         var sgbContent = document.getElementById("mypage_detail_sgb").innerHTML;
-        sgbContent = sgbContent.replace(/<br>/g, '\n');
-        sgbContent = sgbContent.replace(/<hr>/g, ' ');
+        sgbContent = sgbContent.replace(/<br>/g, "\n");
+        sgbContent = sgbContent.replace(/<hr>/g, " ");
         // 복사할 내용을 클립보드에 복사
         const tempTextarea = document.createElement("textarea");
         tempTextarea.value = sgbContent;
@@ -354,8 +357,10 @@ function MyPageInfo() {
         tempTextarea.select();
         document.execCommand("copy");
         document.body.removeChild(tempTextarea);
-      
-        alert("클립보드에 내용이 복사되었습니다. 원하는 곳에 붙여넣어 사용하세요.");
+
+        alert(
+          "클립보드에 내용이 복사되었습니다. 원하는 곳에 붙여넣어 사용하세요."
+        );
       });
     }
 
@@ -437,8 +442,8 @@ function MyPageInfo() {
       copyButton.innerText = "복사";
       copyButton.addEventListener("click", function () {
         var sgbContent = document.getElementById("mypage_detail_sgb").innerHTML;
-        sgbContent = sgbContent.replace(/<br>/g, '\n');
-        sgbContent = sgbContent.replace(/<hr>/g, ' ');
+        sgbContent = sgbContent.replace(/<br>/g, "\n");
+        sgbContent = sgbContent.replace(/<hr>/g, " ");
         // 복사할 내용을 클립보드에 복사
         const tempTextarea = document.createElement("textarea");
         tempTextarea.value = sgbContent;
@@ -446,8 +451,10 @@ function MyPageInfo() {
         tempTextarea.select();
         document.execCommand("copy");
         document.body.removeChild(tempTextarea);
-      
-        alert("클립보드에 내용이 복사되었습니다. 원하는 곳에 붙여넣어 사용하세요.");
+
+        alert(
+          "클립보드에 내용이 복사되었습니다. 원하는 곳에 붙여넣어 사용하세요."
+        );
       });
     }
 
@@ -516,7 +523,7 @@ function MyPageInfo() {
       ${name} / ${prize || "-"} / ${date}<br> 
       `;
       modal.appendChild(sgbDiv);
-      
+
       var closeButton = document.createElement("button");
       modal.appendChild(closeButton);
       closeButton.id = "mypage_detail_closebutton";
@@ -546,8 +553,8 @@ function MyPageInfo() {
       copyButton.innerText = "복사";
       copyButton.addEventListener("click", function () {
         var sgbContent = document.getElementById("mypage_detail_sgb").innerHTML;
-        sgbContent = sgbContent.replace(/<br>/g, '\n');
-        sgbContent = sgbContent.replace(/<hr>/g, ' ');
+        sgbContent = sgbContent.replace(/<br>/g, "\n");
+        sgbContent = sgbContent.replace(/<hr>/g, " ");
         // 복사할 내용을 클립보드에 복사
         const tempTextarea = document.createElement("textarea");
         tempTextarea.value = sgbContent;
@@ -555,8 +562,10 @@ function MyPageInfo() {
         tempTextarea.select();
         document.execCommand("copy");
         document.body.removeChild(tempTextarea);
-      
-        alert("클립보드에 내용이 복사되었습니다. 원하는 곳에 붙여넣어 사용하세요.");
+
+        alert(
+          "클립보드에 내용이 복사되었습니다. 원하는 곳에 붙여넣어 사용하세요."
+        );
       });
     }
 
@@ -604,7 +613,7 @@ function MyPageInfo() {
       var sgbDiv = document.createElement("div");
       sgbDiv.id = "mypage_detail_sgb";
       sgbDiv.style.maxWidth = "250px";
-      sgbDiv.innerHTML=`
+      sgbDiv.innerHTML = `
       <hr>
       💭독후감상<br>
       ${thoughts}<br><br/>
@@ -646,9 +655,9 @@ function MyPageInfo() {
       copyButton.innerText = "복사";
       copyButton.addEventListener("click", function () {
         var sgbContent = document.getElementById("mypage_detail_sgb").innerHTML;
-        sgbContent = sgbContent.replace(/<br>/g, '\n');
-        sgbContent = sgbContent.replace(/<hr>/g, ' ');
-        sgbContent = sgbContent.replace(/&nbsp;/g, ' ');
+        sgbContent = sgbContent.replace(/<br>/g, "\n");
+        sgbContent = sgbContent.replace(/<hr>/g, " ");
+        sgbContent = sgbContent.replace(/&nbsp;/g, " ");
         // 복사할 내용을 클립보드에 복사
         const tempTextarea = document.createElement("textarea");
         tempTextarea.value = sgbContent;
@@ -656,8 +665,10 @@ function MyPageInfo() {
         tempTextarea.select();
         document.execCommand("copy");
         document.body.removeChild(tempTextarea);
-      
-        alert("클립보드에 내용이 복사되었습니다. 원하는 곳에 붙여넣어 사용하세요.");
+
+        alert(
+          "클립보드에 내용이 복사되었습니다. 원하는 곳에 붙여넣어 사용하세요."
+        );
       });
     }
   }
@@ -666,7 +677,8 @@ function MyPageInfo() {
 
   const handleMenuClick = (menu) => {
     setActiveMenu(menu);
-    handleActivitySort(menu); // 메뉴를 클릭하면 해당 메뉴에 해당하는 활동을 가져오도록 변경
+    setActivitySort(menu);
+    // handleActivitySort(menu); // 메뉴를 클릭하면 해당 메뉴에 해당하는 활동을 가져오도록 변경
   };
 
   return (
@@ -697,7 +709,7 @@ function MyPageInfo() {
             <div className="semester">
               <select
                 className="semester_select"
-                onChange={(e) => handleSemester(e)}
+                onChange={(e) => setSemester(e.target.value)}
               >
                 <option value="all">all</option>
                 <option value="1-1">1-1</option>
