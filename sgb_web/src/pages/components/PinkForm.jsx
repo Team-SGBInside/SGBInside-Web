@@ -66,7 +66,6 @@ function PinkForm() {
     formData.append("file", file);
     formData.append("role", role);
     formData.append("thought", thought);
-    formData.append("writerId", 9);
     formData.append("type", type);
     console.log("onClickSubmit: ", formData);
 
