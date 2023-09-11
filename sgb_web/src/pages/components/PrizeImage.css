@@ -1,0 +1,11 @@
+#image-input-label {
+  font-weight: 700;
+  font-size: 19px;
+  margin-bottom: 10px;
+}
+
+input {
+  border: 0px solid;
+  font-weight: 500;
+  font-size: 17px;
+}
