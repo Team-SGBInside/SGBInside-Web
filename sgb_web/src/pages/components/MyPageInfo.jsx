@@ -314,7 +314,7 @@ function MyPageInfo() {
 
       var sgbDiv = document.createElement("div");
       sgbDiv.id = "mypage_detail_sgb";
-      sgbDiv.innerHTML=`
+      sgbDiv.innerHTML = `
       ${name}(${startDate} ~ ${endDate}) ${role}<br>
       <br>`;
       modal.appendChild(sgbDiv);
@@ -408,7 +408,7 @@ function MyPageInfo() {
 
       var sgbDiv = document.createElement("div");
       sgbDiv.id = "mypage_detail_sgb";
-      sgbDiv.innerHTML=`
+      sgbDiv.innerHTML = `
       ${subjectName} ${mainActivity} (${startDate} ~ ${endDate}) 
       ${activityContentDetail} ${subjectFurtherStudy}<br/><br/>`;
       modal.appendChild(sgbDiv);
@@ -482,9 +482,6 @@ function MyPageInfo() {
       const type = activity[0].type;
       const writerId = activity[0].writerId;
 
-      let image = document.createElement("img");
-      image.src = prizeImage;
-
       modal.innerText = ` `;
 
       var titleDiv = document.createElement("div");
@@ -499,7 +496,7 @@ function MyPageInfo() {
       modal.appendChild(parentDiv);
 
       var contentDiv = document.createElement("div");
-      contentDiv.style.maxWidth = "600px"
+      contentDiv.style.maxWidth = "600px";
       contentDiv.id = "mypage_detail_content";
       contentDiv.innerHTML = `
       📌수상명 | ${name}&nbsp;&nbsp;
@@ -513,11 +510,22 @@ function MyPageInfo() {
 
       var imageDiv = document.createElement("div");
       imageDiv.id = "mypage_detail_image";
-      parentDiv.appendChild(image);
 
+      // 상장 사진 img
+      let image = document.createElement("img");
+      image.src = prizeImage;
+      image.id = "mypage-prize-img";
+      parentDiv.appendChild(image);
+      if (
+        image.src ===
+        "https://sgbinside-bucket.s3.ap-northeast-2.amazonaws.com/no-image.jpg"
+      ) {
+        var prize_img = document.getElementById("mypage-prize-img");
+        prize_img.remove();
+      }
       var sgbDiv = document.createElement("div");
       sgbDiv.id = "mypage_detail_sgb";
-      sgbDiv.innerHTML=`
+      sgbDiv.innerHTML = `
       <hr/>
       ✏️실제 생활기록부 기재양식✏️<br/>
       ${name} / ${prize || "-"} / ${date}<br> 

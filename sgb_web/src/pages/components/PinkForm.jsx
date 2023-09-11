@@ -4,6 +4,7 @@ import pinkform_bg from "./img/pinkform_bg.png";
 import pink_alert from "./img/pink_alert.png";
 import pink_save from "./img/pink_save.png";
 import pink_recom from "./img/pink_recom.png";
+import default_image from "./img/no-image.jpg";
 import "./PinkForm.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -11,14 +12,13 @@ import { getCookie, setCookie } from "../../lib/cookie";
 
 function PinkForm() {
   const [name, setName] = useState("");
-  const [type, setType] = useState("");
+  const [type, setType] = useState("교과우수상"); // 토클 아무런 클릭안했을 때 디폴트
   const [file, setFile] = useState("");
   const [prize, setPrize] = useState("");
   const [date, setDate] = useState("");
-  const [semester, setSemester] = useState("");
+  const [semester, setSemester] = useState("1-1"); // 토클 아무런 클릭안했을 때 디폴트
   const [role, setRole] = useState("");
   const [thoughts, setThoughts] = useState("");
-
   const handlename = (event) => {
     event.preventDefault();
     setName(event.target.value);
@@ -67,7 +67,9 @@ function PinkForm() {
     formData.append("role", role);
     formData.append("thoughts", thoughts);
     formData.append("type", type);
-
+    for (let key of formData.keys()) {
+      console.log(key, ":", formData.get(key));
+    }
     await axios({
       method: "post",
       headers: {
@@ -90,9 +92,9 @@ function PinkForm() {
         console.log(error);
         window.alert("기록에 실패했습니다. 필수입력란을 전부 기입해주세요."); //실패페이지로 라우팅
       });
-    for (let key of formData.keys()) {
-      console.log(key, ":", formData.get(key));
-    }
+    // for (let key of formData.keys()) {
+    //   console.log(key, ":", formData.get(key));
+    // }
   };
 
   return (
