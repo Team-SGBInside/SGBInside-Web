@@ -10,11 +10,11 @@ import { getCookie, setCookie } from "../../lib/cookie";
 function PinkForm() {
   //useState
   const [name, setName] = useState("");
-  const [type, setType] = useState("");
+  const [type, setType] = useState("교과우수상"); // 토클 아무런 클릭안했을 때 디폴트
   const [file, setFile] = useState("");
   const [grade, setGrade] = useState("");
   const [date, setDate] = useState("");
-  const [semester, setSemester] = useState("");
+  const [semester, setSemester] = useState("1-1"); // 토클 아무런 클릭안했을 때 디폴트
   const [role, setRole] = useState("");
   const [thought, setThought] = useState("");
 
@@ -79,7 +79,7 @@ function PinkForm() {
     formData.append("semester", semester);
     formData.append("file", file);
     formData.append("role", role);
-    formData.append("thought", thought);
+    formData.append("thoughts", thought);
     formData.append("type", type);
     console.log("onClickSubmit: ", formData);
 
@@ -96,7 +96,9 @@ function PinkForm() {
       .then((result) => {
         console.log("요청성공");
         console.log(result);
-        window.alert("성공적으로 기록되었습니다. 기록한 내용은 '마이페이지'에서 확인 가능합니다."); //성공페이지로 라우팅
+        window.alert(
+          "성공적으로 기록되었습니다. 기록한 내용은 '마이페이지'에서 확인 가능합니다."
+        ); //성공페이지로 라우팅
       })
       .catch((error) => {
         console.log("요청실패");
