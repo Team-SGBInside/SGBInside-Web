@@ -259,7 +259,7 @@ function MyPageInfo() {
 
       var sgbDiv = document.createElement("div");
       sgbDiv.id = "mypage_detail_sgb";
-      sgbDiv.innerHTML=`
+      sgbDiv.innerHTML = `
       ${name}(${startDate} ~ ${endDate}) ${role}<br>
       <br>`;
 
@@ -332,10 +332,6 @@ function MyPageInfo() {
       const role = activity[0].role;
       const thoughts = activity[0].thoughts;
       const type = activity[0].type;
-      const writerId = activity[0].writerId;
-
-      let image = document.createElement("img");
-      image.src = prizeImage;
 
       modal.innerText = ` `;
 
@@ -351,7 +347,7 @@ function MyPageInfo() {
       modal.appendChild(parentDiv);
 
       var contentDiv = document.createElement("div");
-      contentDiv.style.maxWidth = "600px"
+      contentDiv.style.maxWidth = "600px";
       contentDiv.id = "mypage_detail_content";
       contentDiv.innerHTML = `
       📌수상명 | ${name}&nbsp;&nbsp;
@@ -365,17 +361,30 @@ function MyPageInfo() {
 
       var imageDiv = document.createElement("div");
       imageDiv.id = "mypage_detail_image";
+
+      // 상장 사진 img
+      let image = document.createElement("img");
+      image.src = prizeImage;
+      image.id = "mentor-mypage-prize-img";
       parentDiv.appendChild(image);
+
+      if (
+        image.src ===
+        "https://sgbinside-bucket.s3.ap-northeast-2.amazonaws.com/no-image.jpg"
+      ) {
+        var prize_img = document.getElementById("mentor-mypage-prize-img");
+        prize_img.remove();
+        // 이미지를 등록하지 않았을 경우 post되는 디폴트 이미지일 때, 모달창에서는 이미지를 보여주지 않음
+      }
 
       var sgbDiv = document.createElement("div");
       sgbDiv.id = "mypage_detail_sgb";
-      sgbDiv.innerHTML=`
+      sgbDiv.innerHTML = `
       <hr/>
       ✏️실제 생활기록부 기재양식✏️<br/>
       ${name} / ${prize || "-"} / ${date}<br> 
       `;
       modal.appendChild(sgbDiv);
-
 
       var closeButton = document.createElement("button");
       modal.appendChild(closeButton);
