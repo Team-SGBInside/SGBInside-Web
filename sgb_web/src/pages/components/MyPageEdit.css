@@ -13,7 +13,8 @@
   position: relative;
   justify-content: center;
   align-items: center;
-  /* height: 140vh; => 이미지 수정 구간 위해 제거*/
+  /* height: 140vh; 
+  => 이미지 수정 구간 위해 제거*/
   background-color: #fcf5d6;
   text-align: left;
   padding-left: 10%;
@@ -73,7 +74,9 @@
   border-color: #ffe77a;
   display: block;
   margin-left: 80%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 수평 오프셋, 수직 오프셋, 흐림 정도, 색상 */
+  box-shadow: 2px 4px 7px 3px rgba(0, 0, 0, 0.1);
+  /* 수평 오프셋, 수직 오프셋, 흐림 정도, 퍼짐 정도, 색상 */
+  /* x-position y-position blur spread color */
   padding: 5px 10px;
   color: black;
   border: none;
@@ -84,7 +87,7 @@
 
 .edit-button:hover {
   /* 마우스 호버 시 약간 더 강조된 그림자 효과 */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 4px 7px 5px rgba(0, 0, 0, 0.164);
 }
 
 .edit-back {
