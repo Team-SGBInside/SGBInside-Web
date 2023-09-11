@@ -19,6 +19,7 @@ const PrizeImage = ({ src, parentFunction }) => {
       <img src={image}></img>
       <br />
       <input
+        id="image-input"
         type="file"
         accept="image/*"
         name="profile_img"
