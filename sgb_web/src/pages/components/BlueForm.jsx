@@ -27,7 +27,6 @@ function BlueForm() {
       const response = await axios.post(
         "http://3.37.215.18:3000/activity/book",
         {
-          writerId: 9,
           titleAuthor: blueNameRef.current.value,
           endDate: blueDateRef.current.value,
           semester: blueSemesterRef.current.value,
@@ -48,7 +47,9 @@ function BlueForm() {
         }
       );
       console.log(response);
-      window.alert("성공적으로 기록되었습니다. 기록한 내용은 '마이페이지'에서 확인 가능합니다."); //성공페이지로 라우팅
+      window.alert(
+        "성공적으로 기록되었습니다. 기록한 내용은 '마이페이지'에서 확인 가능합니다."
+      ); //성공페이지로 라우팅
     } catch (error) {
       console.log(error);
       window.alert("기록에 실패했습니다. 필수입력란을 전부 기입해주세요."); //실패페이지로 라우팅
