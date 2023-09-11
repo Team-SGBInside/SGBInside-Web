@@ -23,7 +23,6 @@ function PinkMypageEdit({
   const [prizeName, setPrizeName] = useState(name);
   const [prizeRank, setPrizeRank] = useState(prize);
   const [prizeImg, setPrizeImg] = useState(prizeImage); // 이미지 url
-  const fileInput = useRef(null);
   const [prizeRole, setPrizeRole] = useState(role);
   const [prizeThoughts, setPrizeThoughts] = useState(thoughts);
   const [contestType, setContestType] = useState(type);
