@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import greenform_bg from "./img/greenform_bg.png";
 import green_talk from "./img/green_talk.png";
@@ -97,11 +98,11 @@ const GreenRecom = () => {
           console.log("전공계열정보 조회 실패");
           console.log(error);
         });
-
+        
       await getMajorInfo(); //검색 결과 출력
       setSearchResult(trimmedMajor);
       setIsSearchResultVisible(true);
-      setIsLoading(false);
+      setIsLoading(false);     
       // doDisplay(); //display none => block으로 변경하는 코드
     }
   };
