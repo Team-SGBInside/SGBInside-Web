@@ -55,6 +55,7 @@ const MyPageEdit = () => {
             date={activity.date}
             name={activity.name}
             prize={activity.prize}
+            prizeImage={activity.prizeImage}
             role={activity.role}
             thoughts={activity.thoughts}
             type={activity.type}
