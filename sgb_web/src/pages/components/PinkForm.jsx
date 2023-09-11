@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 import { getCookie, setCookie } from "../../lib/cookie";
 
 function PinkForm() {
-  //useState
   const [name, setName] = useState("");
   const [type, setType] = useState("");
   const [file, setFile] = useState("");
@@ -19,8 +18,6 @@ function PinkForm() {
   const [semester, setSemester] = useState("");
   const [role, setRole] = useState("");
   const [thought, setThought] = useState("");
-
-  // const formData = new FormData();
 
   const handlename = (event) => {
     event.preventDefault();
@@ -58,20 +55,6 @@ function PinkForm() {
     setThought(event.target.value);
   };
 
-  const onChangeImg = (e) => {
-    // e.preventDefault();
-    // const formData = new FormData();
-    // if (e.target.file) {
-    //   const uploadFile = e.target.file[0];
-    //   formData.append("file", uploadFile);
-    //   setFile(uploadFile);
-    //   console.log("onChangeImg: ", formData);
-    //   console.log(uploadFile);
-    //   console.log("===useState===");
-    //   console.log(file);
-    // }
-  };
-
   const onClickSubmit = async (event) => {
     const formData = new FormData();
     console.log("clicked");
@@ -100,25 +83,18 @@ function PinkForm() {
       .then((result) => {
         console.log("요청성공");
         console.log(result);
-        window.alert("성공적으로 기록되었습니다. 기록한 내용은 '마이페이지'에서 확인 가능합니다."); //성공페이지로 라우팅
+        window.alert(
+          "성공적으로 기록되었습니다. 기록한 내용은 '마이페이지'에서 확인 가능합니다."
+        ); //성공페이지로 라우팅
       })
       .catch((error) => {
         console.log("요청실패");
         console.log(error);
         window.alert("기록에 실패했습니다. 필수입력란을 전부 기입해주세요."); //실패페이지로 라우팅
       });
-    // let config = {
-    //   headers: {
-    //     "Content-Type": "multipart/form-data",
-    //   },
-    // };
     for (let key of formData.keys()) {
       console.log(key, ":", formData.get(key));
     }
-    // await axios
-    //   .post("http://3.37.215.18:3000/activity/prize", formData, config)
-    //   .then((res) => console.log(res))
-    //   .catch((err) => console.log(err));
   };
 
   return (
