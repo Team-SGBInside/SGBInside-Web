@@ -4,6 +4,7 @@ import pinkform_bg from "./img/pinkform_bg.png";
 import pink_alert from "./img/pink_alert.png";
 import pink_save from "./img/pink_save.png";
 import pink_recom from "./img/pink_recom.png";
+import default_image from "./img/no-image.jpg";
 import "./PinkForm.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -12,13 +13,12 @@ import { getCookie, setCookie } from "../../lib/cookie";
 function PinkForm() {
   const [name, setName] = useState("");
   const [type, setType] = useState("");
-  const [file, setFile] = useState("");
+  const [file, setFile] = useState(default_image);
   const [prize, setPrize] = useState("");
   const [date, setDate] = useState("");
   const [semester, setSemester] = useState("");
   const [role, setRole] = useState("");
   const [thoughts, setThoughts] = useState("");
-
   const handlename = (event) => {
     event.preventDefault();
     setName(event.target.value);
