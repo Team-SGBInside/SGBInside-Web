@@ -87,7 +87,7 @@ function PinkMypageEdit({
           alert("수정에 실패했습니다.");
           console.log(error);
           // 새로고침(필수값을 주지않았다던가 하는 등 api 통신요건을 만족시키지 못한 경우)
-          // location.reload();
+          location.reload();
         });
     } else {
       return; // alert에서 취소를 누를 경우

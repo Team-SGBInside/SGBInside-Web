@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import "./PrizeImage.css";
+import refresh from "./img/refresh.png";
 const PrizeImage = ({ src, parentFunction }) => {
+  // const [originalImg, setOriginalImg] = useState(src);
   const [image, setImage] = useState(src);
   const onChange = (e) => {
     setImage(e.target.files[0]);
@@ -13,6 +15,11 @@ const PrizeImage = ({ src, parentFunction }) => {
     };
     reader.readAsDataURL(e.target.files[0]);
   };
+  // const handleCanceler = () => {
+  //   console.log("originalImg: ", originalImg);
+  //   setImage(originalImg);
+  //   console.log("image: ", image);
+  // };
   return (
     <>
       <div id="image-input-label">상장 이미지 수정</div>
@@ -25,6 +32,8 @@ const PrizeImage = ({ src, parentFunction }) => {
         name="profile_img"
         onChange={onChange}
       />
+      <br />
+      {/* <img id="refresh-icon" onClick={handleCanceler} src={refresh} /> */}
     </>
   );
 };
