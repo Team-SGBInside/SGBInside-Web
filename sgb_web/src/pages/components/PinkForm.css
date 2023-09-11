@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap");
 
 * {
-  font-family: 'Noto Sans KR', 'sans serif';
+  font-family: "Noto Sans KR", "sans serif";
 }
 
 .pinkform {
@@ -12,8 +12,8 @@
 }
 
 .pinkform_bg {
-    position: relative;
-    text-align: center;
+  position: relative;
+  text-align: center;
 }
 
 .pinkform_alert {
@@ -30,18 +30,20 @@
   font-weight: lighter;
 }
 
-input, textarea, select {
+input,
+textarea,
+select {
   padding-left: 1%;
   margin-top: 1%;
 }
 
 .pinkform_content {
-    position: absolute;
-    left: 5%;
-    top: 7%;
-    text-align: left;
-    font-size: 20px;
-    z-index: 999;
+  position: absolute;
+  left: 5%;
+  top: 7%;
+  text-align: left;
+  font-size: 20px;
+  z-index: 999;
 }
 
 .pink_name_input {
@@ -49,8 +51,8 @@ input, textarea, select {
   height: 40px;
   font-size: 20px;
   border-radius: 5px;
-  border-color: #F879B5;
-  background-color: #FEF3F5;
+  border-color: #f879b5;
+  background-color: #fef3f5;
 }
 
 .pink-radio {
@@ -58,7 +60,7 @@ input, textarea, select {
 }
 
 .pink_image_input {
-  background-color: #FDE2E6;
+  background-color: #fde2e6;
   font-size: 15px;
 }
 
@@ -67,8 +69,8 @@ input, textarea, select {
   height: 40px;
   font-size: 20px;
   border-radius: 5px;
-  border-color: #F879B5;
-  background-color: #FEF3F5;
+  border-color: #f879b5;
+  background-color: #fef3f5;
 }
 
 .pink_date_input {
@@ -76,8 +78,8 @@ input, textarea, select {
   height: 40px;
   font-size: 20px;
   border-radius: 5px;
-  border-color: #F879B5;
-  background-color: #FEF3F5;
+  border-color: #f879b5;
+  background-color: #fef3f5;
 }
 
 .pink_semester_select {
@@ -85,8 +87,8 @@ input, textarea, select {
   height: 40px;
   font-size: 20px;
   border-radius: 5px;
-  border-color: #F879B5;
-  background-color: #FEF3F5;
+  border-color: #f879b5;
+  background-color: #fef3f5;
 }
 
 .pink_activity_text {
@@ -94,22 +96,24 @@ input, textarea, select {
   height: 150px;
   font-size: 20px;
   border-radius: 5px;
-  border-color: #F879B5;
-  background-color: #FEF3F5;
+  border-color: #f879b5;
+  background-color: #fef3f5;
 }
 
-.pink_thoughts_text {
+/* 고교생 페이지에는 thoughts, 멘토 페이지에는 thought로 클래스네임이 설정되어있어서 추가 */
+.pink_thoughts_text,
+.pink_thought_text {
   width: 1000px;
   height: 150px;
   font-size: 20px;
   border-radius: 5px;
-  border-color: #F879B5;
-  background-color: #FEF3F5;
+  border-color: #f879b5;
+  background-color: #fef3f5;
 }
 
 .pink_save {
   text-align: center;
-  color: #D6EBCA;
+  color: #d6ebca;
   padding-left: auto;
   padding-right: auto;
 }
@@ -119,7 +123,7 @@ button {
 }
 
 .error {
-  color : red;
+  color: red;
   font-weight: lighter;
   font-size: 17px;
 }
@@ -139,7 +143,8 @@ button {
   display: flex;
 }
 
-.pink-a, .pink-b {
+.pink-a,
+.pink-b {
   flex: 1;
   width: 50%;
 }
@@ -149,12 +154,12 @@ button {
 }
 
 .pink-image {
-  background-color: #FDE2E6;
+  background-color: #fde2e6;
   font-size: 17px;
 }
 
 .pink_recom {
-  position: absolute; 
-  right: 50px; 
+  position: absolute;
+  right: 50px;
   top: 0px;
 }
