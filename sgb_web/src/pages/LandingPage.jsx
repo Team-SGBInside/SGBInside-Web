@@ -17,7 +17,7 @@ const LandingPage = () => {
           <h3 className="landing-light">너의 길을 오롯이 응원해,</h3>
           <h1 className="landing-bold">생기부 인사이드</h1>
           <div className="landing-btn">
-            <Link to="/home">
+            <Link to="/login">
               <img
                 src={landing_student}
                 alt="student"
@@ -25,7 +25,7 @@ const LandingPage = () => {
                 height="100"
               />{" "}
             </Link>
-            <Link to="/mentorHome">
+            <Link to="/mentorLogin">
               <img src={landing_mentor} alt="mentor" width="400" height="100" />
             </Link>
           </div>
