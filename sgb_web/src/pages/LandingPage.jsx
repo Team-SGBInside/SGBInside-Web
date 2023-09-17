@@ -8,8 +8,6 @@ import { getCookie, setCookie, removeCookie } from "../lib/cookie";
 const LandingPage = () => {
   const userId = getCookie("userId");
   const token = getCookie("accessToken");
-  removeCookie("userId");
-  removeCookie("accessToken");
 
   // 미로그인 시 이미지 클릭 - 미로그인 홈으로 이동
   if (!userId || !token) {

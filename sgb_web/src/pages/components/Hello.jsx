@@ -14,7 +14,7 @@ const Hello = () => {
 
   if (!userId || !token) {
     console.log("cannnot get userId or token from cookie");
-    // return;
+    return;
   } else {
     console.log("userId or token found");
   }
