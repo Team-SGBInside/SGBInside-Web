@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./MyPageInfo.css";
-import InfoBox from "./img/InfoBox.png";
+import InfoBox_mentor from "./img/InfoBox_mentor.png";
 import menu_whole from "./img/menu_whole.png";
 import menu_whole_active from "./img/menu_whole_active.png";
 import menu_green from "./img/menu_green.png";
@@ -443,7 +443,7 @@ function MyPageInfo() {
     <>
       <div className="mypage">
         <div className="infobox">
-          <img src={InfoBox} alt="infobox" width="600" height="200" />
+          <img src={InfoBox_mentor} alt="infobox" width="600" height="200" />
           <div className="infobox_content">
             <span className="info_big">{userInfo.name}</span>님, 원하는 건
             뭐든지 이루어질거에요!
