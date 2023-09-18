@@ -62,7 +62,7 @@ const MentorLogin = () => {
       <div>
         <form onSubmit={handleMember}>
           <div className="form">
-          <h2 className="login-title">로그인</h2>
+          <h2 className="login-title">대학생 멘토 회원 로그인</h2>
             <div className="id">
               <label>아이디</label>
               <br />

@@ -60,7 +60,7 @@ const Login = () => {
       <div>
         <form onSubmit={handleMember}>
           <div className="form">
-            <h2 className="login-title">로그인</h2>
+            <h2 className="login-title">고등학생 회원 로그인</h2>
             <div className="id">
               <label>아이디</label>
               <br />
