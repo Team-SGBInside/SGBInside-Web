@@ -59,7 +59,7 @@ const Signup = () => {
       <div>
         <form>
           <div className="form">
-            <h2 className="signup-title">회원가입</h2>
+            <h2 className="signup-title">&nbsp;&nbsp;고등학생 회원가입</h2>
             <div className="container">
               <div className="name">
                 <label>이름</label>

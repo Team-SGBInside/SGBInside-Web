@@ -61,7 +61,7 @@ const MentorSignup = () => {
       <div>
         <form>
           <div className="form">
-            <h2 className="signup-title">회원가입</h2>
+            <h2 className="signup-title">대학생 멘토 회원가입</h2>
             <div className="container">
               <div className="name">
                 <label>이름</label>
