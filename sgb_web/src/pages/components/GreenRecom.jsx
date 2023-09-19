@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import greenform_bg from "./img/greenform_bg.png";
 import green_talk from "./img/green_talk.png";
@@ -15,8 +14,8 @@ const GreenRecom = () => {
   const [searchResult, setSearchResult] = useState("");
   const [isSearchResultVisible, setIsSearchResultVisible] = useState(false);
 
-  const [isLoading, setIsLoading] = useState(false); 
-  
+  const [isLoading, setIsLoading] = useState(false);
+
   // 검색한 학과로 조회한 전공계열정보
   let majorFieldInfo = [];
 
@@ -71,20 +70,19 @@ const GreenRecom = () => {
             console.log("hahaha");
           }
           for (let i = 0; i < majorFieldInfo.length; i++) {
-            if (majorFieldInfo[i].mClass.includes(trimmedMajor)) {
-              console.log("mclass: ", majorFieldInfo[i].mClass);
-              majorCode.push(majorFieldInfo[i].majorSeq);
-              console.log("majorCode: ", majorCode);
-              return;
-              // mClass에서 바로 검색어와 일치할 때 학과코드 정확도가 가장 높기 때문에 if문 조건에 일차하면 바로 return
-            }
-
             // mClass 대신 facilName(다양한 학과를 모두 포함함)에서 검색어가 일치할 때 차선책으로 해당 계열의 학과코드를 선택
             if (majorFieldInfo[i].facilName.includes(trimmedMajor)) {
               console.log("facilName: ", majorFieldInfo[i].mClass);
               majorCode.push(majorFieldInfo[i].majorSeq);
               console.log("f-majorCode: ", majorCode);
               return;
+            }
+            if (majorFieldInfo[i].mClass.includes(trimmedMajor)) {
+              console.log("mclass: ", majorFieldInfo[i].mClass);
+              majorCode.push(majorFieldInfo[i].majorSeq);
+              console.log("majorCode: ", majorCode);
+              return;
+              // mClass에서 바로 검색어와 일치할 때 학과코드 정확도가 가장 높기 때문에 if문 조건에 일차하면 바로 return
             }
           }
 
@@ -98,11 +96,11 @@ const GreenRecom = () => {
           console.log("전공계열정보 조회 실패");
           console.log(error);
         });
-        
+
       await getMajorInfo(); //검색 결과 출력
       setSearchResult(trimmedMajor);
       setIsSearchResultVisible(true);
-      setIsLoading(false);     
+      setIsLoading(false);
       // doDisplay(); //display none => block으로 변경하는 코드
     }
   };
@@ -137,14 +135,14 @@ const GreenRecom = () => {
           <img src={green_talk} alt="green_talk" width="555" height="120" />
         </div>
         <Link to="/greenMentor">
-        <div className="green_mentor">
+          <div className="green_mentor">
             <img
               src={green_mentor}
               alt="green_mentor"
               width="100"
               height="100"
             />
-        </div>
+          </div>
         </Link>
         {/* Search 관련 코드 */}
         <div className="search_div_green">
@@ -160,22 +158,27 @@ const GreenRecom = () => {
           />
         </div>
         {isSearchResultVisible && (
-          <> 
-        <div className="search_result_green">
-        {isLoading ? (
+          <>
+            <div className="search_result_green">
+              {isLoading ? (
                 // 로딩 중일 때 로딩 표시
-                <div className="loading"><img src={loading} alt="loading..." width="50" height="50"/></div>
+                <div className="loading">
+                  <img src={loading} alt="loading..." width="50" height="50" />
+                </div>
               ) : (
                 // 로딩이 아닐 때 검색 결과 표시
                 <>
-        <span className="red-text">커리어넷</span>
-            <span className="light-text">에서 제공하는 </span>
-            <span id="result">{searchResult}</span>
-            <span className="light-text">
-              {" "}
-              관련 진로활동은 다음과 같습니다.
-        </span> <br/><hr/><br/>
-{/*         
+                  <span className="red-text">커리어넷</span>
+                  <span className="light-text">에서 제공하는 </span>
+                  <span id="result">{searchResult}</span>
+                  <span className="light-text">
+                    {" "}
+                    관련 진로활동은 다음과 같습니다.
+                  </span>{" "}
+                  <br />
+                  <hr />
+                  <br />
+                  {/*         
           <div id="career-net">
             <span className="red-text">커리어넷</span>
             <span className="light-text">에서 제공하는 </span>
