@@ -163,7 +163,7 @@ function RedRecom() {
             <span id="result">{searchResult}</span>
             <span className="light-text">
               {" "}
-              관련 진로활동은 다음과 같습니다.
+              관련 교과목은 다음과 같습니다.
           </span> <br/><hr/>  
           {/* <div className="careernet-div">
           <div id="career-net">
