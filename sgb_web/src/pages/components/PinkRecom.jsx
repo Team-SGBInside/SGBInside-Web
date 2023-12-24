@@ -33,7 +33,7 @@ function PinkRecom() {
   const showPrizeActivityById = async (id, writerSchoolMajor, writerGrade) => {
     await axios({
       method: "get",
-      url: `http://3.37.215.18:3000/recommend/prize/${id}`,
+      url: `http://13.209.110.66:3000/recommend/prize/${id}`,
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${getCookie("accessToken")}`,
@@ -99,7 +99,7 @@ function PinkRecom() {
       }
       await axios({
         method: "post",
-        url: `http://3.37.215.18:3000/recommend/prize`,
+        url: `http://13.209.110.66:3000/recommend/prize`,
         data: {
           contest: contest,
         },

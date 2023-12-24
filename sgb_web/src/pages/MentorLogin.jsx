@@ -9,7 +9,6 @@ import signup_submit from "./components/img/signup_submit.png";
 import { setCookie } from "../lib/cookie";
 import { useNavigate } from "react-router-dom";
 
-
 const MentorLogin = () => {
   const navigator = useNavigate();
   const idRef = useRef();
@@ -20,7 +19,7 @@ const MentorLogin = () => {
     console.log("clicked");
     try {
       const response = await axios.post(
-        "http://3.37.215.18:3000/auth/signin",
+        "http://13.209.110.66:3000/auth/signin",
         {
           loginId: idRef.current.value,
           password: pwRef.current.value,
@@ -36,12 +35,14 @@ const MentorLogin = () => {
       window.alert("환영합니다!");
       setCookie("userId", response.data.data.userId);
       setCookie("accessToken", response.data.data.accessToken);
-      navigator("/loginedMentorHome"); 
+      navigator("/loginedMentorHome");
       // 만약 react-router-dom의 history를 사용할 수 있다면, 아래처럼 history.push를 사용하여 페이지 이동 가능
       // history.push("/loginedMentorHome");
     } catch (error) {
       console.log(error);
-      window.alert("아이디 또는 비밀번호가 일치하지 않습니다. 다시 시도해주세요.");
+      window.alert(
+        "아이디 또는 비밀번호가 일치하지 않습니다. 다시 시도해주세요."
+      );
       // 만약 react-router-dom의 history를 사용할 수 있다면, 아래처럼 history.push를 사용하여 페이지 이동 가능
       // history.push("/mentorLogin");
     }
@@ -62,7 +63,7 @@ const MentorLogin = () => {
       <div>
         <form onSubmit={handleMember}>
           <div className="form">
-          <h2 className="login-title">대학생 멘토 회원 로그인</h2>
+            <h2 className="login-title">대학생 멘토 회원 로그인</h2>
             <div className="id">
               <label>아이디</label>
               <br />
@@ -95,9 +96,7 @@ const MentorLogin = () => {
           </div>
           <div>
             <Link to="/login">
-              <button 
-              className="login-button"
-              type="submit">
+              <button className="login-button" type="submit">
                 <img
                   src={login_submit}
                   onClick={handleMember}
@@ -108,17 +107,11 @@ const MentorLogin = () => {
               </button>
             </Link>
           </div>
-            <Link to="/mentorSignup">
-              <button
-              className="login-button"
-            >
-              <img
-               src={signup_submit}
-               width="200"
-               height="50"
-              ></img>
-            </button>  
-            </Link>
+          <Link to="/mentorSignup">
+            <button className="login-button">
+              <img src={signup_submit} width="200" height="50"></img>
+            </button>
+          </Link>
         </form>
       </div>
     </>

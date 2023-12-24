@@ -77,7 +77,7 @@ function PinkForm() {
         Authorization: `Bearer ${getCookie("accessToken")}`,
         withCredentials: true,
       },
-      url: "http://3.37.215.18:3000/activity/prize",
+      url: "http://13.209.110.66:3000/activity/prize",
       data: formData,
     })
       .then((result) => {

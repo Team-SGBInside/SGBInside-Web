@@ -5,8 +5,8 @@ import "./GreenMentor.css";
 import axios from "axios";
 import GreenMentorBanner from "./GreenMentorBanner";
 import { getCookie, setCookie } from "../../lib/cookie";
-import BackButton from './BackButton';
-import App from './../../App';
+import BackButton from "./BackButton";
+import App from "./../../App";
 
 const GreenMentor = () => {
   const sort = "all";
@@ -22,7 +22,7 @@ const GreenMentor = () => {
     // 모달창 전체
     var modal = document.getElementById("green_mentor_detail_div");
     console.log("modal:", modal);
-    if (modal.style.display === "none"){
+    if (modal.style.display === "none") {
       modal.style.display = "block";
     } else {
       modal.style.display = "none";
@@ -40,7 +40,7 @@ const GreenMentor = () => {
   const showCreativeActivityById = async (id) => {
     await axios({
       method: "get",
-      url: `http://3.37.215.18:3000/recommend/creative/${id}`,
+      url: `http://13.209.110.66:3000/recommend/creative/${id}`,
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${getCookie("accessToken")}`,
@@ -68,7 +68,7 @@ const GreenMentor = () => {
         </div>
         <div id="flexchild_green2">
         </div>
-        `; 
+        `;
         var closeButton = document.createElement("button");
         modal.appendChild(closeButton);
         closeButton.id = "green_mentor_detail_closebutton";
@@ -84,7 +84,7 @@ const GreenMentor = () => {
   // 모달창 닫기 버튼
   const closeBtnHandler = () => {
     var modal = document.getElementById("green_mentor_detail_div");
-    console.log("닫기버튼 눌림")
+    console.log("닫기버튼 눌림");
     modal.style.display = "none";
   };
 
@@ -101,7 +101,7 @@ const GreenMentor = () => {
       }
       await axios({
         method: "post",
-        url: `http://3.37.215.18:3000/recommend/creative?sort=${sort}`,
+        url: `http://13.209.110.66:3000/recommend/creative?sort=${sort}`,
         data: {
           major: major,
         },

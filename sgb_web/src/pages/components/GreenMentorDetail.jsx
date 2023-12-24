@@ -19,7 +19,7 @@ const GreenMentorDetail = () => {
   const showCreativeActivityById = async (id) => {
     await axios({
       method: "get",
-      url: `http://3.37.215.18:3000/recommend/creative/${id}`,
+      url: `http://13.209.110.66:3000/recommend/creative/${id}`,
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${getCookie("accessToken")}`,

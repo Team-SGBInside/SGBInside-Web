@@ -73,7 +73,7 @@ function PinkMypageEdit({
           Authorization: `Bearer ${getCookie("accessToken")}`,
           withCredentials: true,
         },
-        url: `http://3.37.215.18:3000/mypage/prize/${actId}`,
+        url: `http://13.209.110.66:3000/mypage/prize/${actId}`,
         data: formData,
       })
         .then((response) => {

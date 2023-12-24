@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { getCookie, setCookie } from "../../lib/cookie";
-import './MyPageEdit.css';
+import "./MyPageEdit.css";
 
 function GreenMyPageEdit({
   activityId,
@@ -14,7 +14,6 @@ function GreenMyPageEdit({
   role,
   thoughts,
 }) {
-
   const navigator = useNavigate();
   const [actId, setActId] = useState(activityId);
   const [nme, setNme] = useState(name);
@@ -51,7 +50,7 @@ function GreenMyPageEdit({
     if (confirm("변경된 수정사항을 저장하시겠습니까?") == true) {
       axios
         .post(
-          `http://3.37.215.18:3000/mypage/creative/${actId}`,
+          `http://13.209.110.66:3000/mypage/creative/${actId}`,
           {
             name: nme,
             activityType: actType,
@@ -67,14 +66,14 @@ function GreenMyPageEdit({
               Authorization: `Bearer ${getCookie("accessToken")}`,
               withCredentials: true,
             },
-          } 
+          }
         )
         .then((response) => {
           alert("저장되었습니다.");
           console.log("edit response: ", response);
           location.reload();
 
-           navigator(-1); // 뒤로가기
+          navigator(-1); // 뒤로가기
         })
         .catch((error) => {
           alert("수정에 실패했습니다.");
@@ -87,96 +86,108 @@ function GreenMyPageEdit({
     }
   };
 
-
   return (
     <>
       {/* <button className="edit-back" onClick={handleBack}>←</button> */}
       <div className="edit-body">
-      <br/><span classNmae="edit-title">창의적체험활동 수정하기 ✏️</span>
-      <hr className="edit-divider" /> <br/>
-      <span className="edit-label">활동명 {" "}</span>
-      <input
-        className="edit-input"
-        type="text"
-        name="name"
-        value={nme}
-        onChange={handleNme}
-      />{" "}
-      <span className="edit-label-small">*필수</span>
-      <br />
-      <span className="edit-label">시작일자 {" "}</span>
-      <input
-        className="edit-input"
-        type="date"
-        name="startDate"
-        value={stDate}
-        onChange={handleStDate}
-      />{" "}
-      <span className="edit-label-small">*필수</span>
-      <br />
-      <span className="edit-label">종료일자 {" "}</span>
-      <input
-        className="edit-input"
-        type="date"
-        name="endDate"
-        value={edDate}
-        onChange={handleEdDate}
-      />{" "}
-      <span className="edit-label-small">*필수</span>
-      <br />
-      <span className="edit-label">활동학기 {" "}</span>
-      <select
-        className="edit-input"
-        type="text"
-        name="semester"
-        value={smester}
-        onChange={handleSmester}
-      >
-      <option value="1-1">1학년 1학기</option>
-      <option value="1-2">1학년 2학기</option>
-      <option value="2-1">2학년 1학기</option>
-      <option value="2-2">2학년 2학기</option>
-      <option value="3-1">3학년 1학기</option>
-      <option value="3-2">3학년 2학기</option>
-      </select>{" "}
-      <span className="edit-label-small">*필수</span>
-      <br />
-      <span className="edit-label">활동유형 {" "}</span>
-      <select
-        className="edit-input"
-        type="text"
-        name="activityType"
-        value={actType}
-        onChange={handleActType}
-      >
-            <option value="자율활동">자율활동</option>
-            <option value="동아리활동">동아리활동</option>
-            <option value="진로활동">진로활동</option>
-            <option value="봉사활동">봉사활동</option>
-      </select>{" "}
-      <span className="edit-label-small">*필수</span>
-      <br /><br/>
-      <span className="edit-label">활동 내 역할 및 구체적 활동내용 {" "}</span><br/>
-      <textarea 
-      type="text" 
-      className="edit-textarea" 
-      name="role" 
-      value={rle} 
-      onChange={handleRle} 
-      /> <br/>
-      <span className="edit-label-small">*필수</span>
-      <br /><br/>
-      <span className="edit-label">활동 소감 {" "}</span><br/>
-      <textarea
-        className="edit-textarea"
-        type="text"
-        name="thoughts"
-        value={thghts}
-        onChange={handleThghts}
-      />
-      <br/><br/>
-      <input className="edit-button" type="submit" value="  수정 완료  " onClick={handleSubmit} />
-      <br/><br/>
+        <br />
+        <span classNmae="edit-title">창의적체험활동 수정하기 ✏️</span>
+        <hr className="edit-divider" /> <br />
+        <span className="edit-label">활동명 </span>
+        <input
+          className="edit-input"
+          type="text"
+          name="name"
+          value={nme}
+          onChange={handleNme}
+        />{" "}
+        <span className="edit-label-small">*필수</span>
+        <br />
+        <span className="edit-label">시작일자 </span>
+        <input
+          className="edit-input"
+          type="date"
+          name="startDate"
+          value={stDate}
+          onChange={handleStDate}
+        />{" "}
+        <span className="edit-label-small">*필수</span>
+        <br />
+        <span className="edit-label">종료일자 </span>
+        <input
+          className="edit-input"
+          type="date"
+          name="endDate"
+          value={edDate}
+          onChange={handleEdDate}
+        />{" "}
+        <span className="edit-label-small">*필수</span>
+        <br />
+        <span className="edit-label">활동학기 </span>
+        <select
+          className="edit-input"
+          type="text"
+          name="semester"
+          value={smester}
+          onChange={handleSmester}
+        >
+          <option value="1-1">1학년 1학기</option>
+          <option value="1-2">1학년 2학기</option>
+          <option value="2-1">2학년 1학기</option>
+          <option value="2-2">2학년 2학기</option>
+          <option value="3-1">3학년 1학기</option>
+          <option value="3-2">3학년 2학기</option>
+        </select>{" "}
+        <span className="edit-label-small">*필수</span>
+        <br />
+        <span className="edit-label">활동유형 </span>
+        <select
+          className="edit-input"
+          type="text"
+          name="activityType"
+          value={actType}
+          onChange={handleActType}
+        >
+          <option value="자율활동">자율활동</option>
+          <option value="동아리활동">동아리활동</option>
+          <option value="진로활동">진로활동</option>
+          <option value="봉사활동">봉사활동</option>
+        </select>{" "}
+        <span className="edit-label-small">*필수</span>
+        <br />
+        <br />
+        <span className="edit-label">활동 내 역할 및 구체적 활동내용 </span>
+        <br />
+        <textarea
+          type="text"
+          className="edit-textarea"
+          name="role"
+          value={rle}
+          onChange={handleRle}
+        />{" "}
+        <br />
+        <span className="edit-label-small">*필수</span>
+        <br />
+        <br />
+        <span className="edit-label">활동 소감 </span>
+        <br />
+        <textarea
+          className="edit-textarea"
+          type="text"
+          name="thoughts"
+          value={thghts}
+          onChange={handleThghts}
+        />
+        <br />
+        <br />
+        <input
+          className="edit-button"
+          type="submit"
+          value="  수정 완료  "
+          onClick={handleSubmit}
+        />
+        <br />
+        <br />
       </div>
     </>
   );

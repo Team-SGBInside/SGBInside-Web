@@ -22,7 +22,7 @@ function GreenForm() {
     console.log("clicked");
     try {
       const response = await axios.post(
-        "http://3.37.215.18:3000/activity/creative",
+        "http://13.209.110.66:3000/activity/creative",
         {
           name: greenNameRef.current.value,
           activityType: greenTypeRef.current.value,

@@ -23,7 +23,7 @@ function RedForm() {
     console.log("clicked");
     try {
       const response = await axios.post(
-        "http://3.37.215.18:3000/activity/subject",
+        "http://13.209.110.66:3000/activity/subject",
         {
           subjectName: redNameRef.current.value,
           subjectContent: redLessonRef.current.value,

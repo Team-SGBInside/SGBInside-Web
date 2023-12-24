@@ -54,7 +54,7 @@ function MyPageInfo() {
     console.log("semester in getUserInfo: ", semester);
     axios
       .get(
-        `http://3.37.215.18:3000/mypage?sort=${sortQuery}&semester=${semesterQuery}`,
+        `http://13.209.110.66:3000/mypage?sort=${sortQuery}&semester=${semesterQuery}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -193,7 +193,7 @@ function MyPageInfo() {
     const delBtnHandler = (activityId, sort) => {
       if (confirm("정말로 이 활동 기록을 삭제하시겠어요?") == true) {
         axios
-          .delete(`http://3.37.215.18:3000/mypage/${sort}/${activityId}`, {
+          .delete(`http://13.209.110.66:3000/mypage/${sort}/${activityId}`, {
             headers: {
               "Content-Type": "application/json",
               Authorization: `Bearer ${getCookie("accessToken")}`,

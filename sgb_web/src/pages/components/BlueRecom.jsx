@@ -27,7 +27,7 @@ function BlueRecom() {
           Authorization: `Bearer ${getCookie("accessToken")}`,
           withCredentials: true,
         },
-        url: "http://3.37.215.18:3000/recommend/book",
+        url: "http://13.209.110.66:3000/recommend/book",
         data: {
           major: major,
         },

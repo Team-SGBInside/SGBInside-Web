@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { getCookie, setCookie } from "../../lib/cookie";
-import './MyPageEdit.css';
+import "./MyPageEdit.css";
 
 function BlueMypageEdit({
   activityId,
@@ -76,7 +76,7 @@ function BlueMypageEdit({
     if (confirm("변경된 수정사항을 저장하시겠습니까?") == true) {
       axios
         .post(
-          `http://3.37.215.18:3000/mypage/book/${actId}`,
+          `http://13.209.110.66:3000/mypage/book/${actId}`,
           {
             titleAuthor: titleAuth,
             endDate: eDate,
@@ -117,77 +117,133 @@ function BlueMypageEdit({
   return (
     <>
       <div className="edit-body2">
-      <br/><span classNmae="edit-title">독서활동 수정하기 ✏️</span>
-      <hr className="edit-divider" /> <br/> 
-      <span className="edit-label">책이름(저자) {" "}</span>
-      <input
-        className="edit-input"
-        type="text"
-        name="titleAuthor"
-        value={titleAuth}
-        onChange={handleTitleAuthor}
-      />{" "}
-      <span className="edit-label-small">*필수</span>
-      <br />
-      <span className="edit-label">독서 완료 일자 {" "}</span>
-      <input
-        className="edit-input"
-        type="date"
-        name="endDate"
-        value={eDate}
-        onChange={handleEdate}
-      />{" "}
-      <span className="edit-label-small">*필수</span>
-      <br />
-      <span className="edit-label">독서 학기 {" "}</span>
-      <select
-        className="edit-input"
-        type="text"
-        name="semester"
-        value={smester}
-        onChange={handleSmester}
-      >
-      <option value="1-1">1학년 1학기</option>
-      <option value="1-2">1학년 2학기</option>
-      <option value="2-1">2학년 1학기</option>
-      <option value="2-2">2학년 2학기</option>
-      <option value="3-1">3학년 1학기</option>
-      <option value="3-2">3학년 2학기</option>
-      </select>{" "}
-      <span className="edit-label-small">*필수</span>
-      <br/><br/>
-      <span className="edit-label">독서 계기 및 감상 {" "}</span><br/>
-      <textarea
-        className="edit-textarea"
-        type="text"
-        name="thoughts"
-        value={thghts}
-        onChange={handleThghts}
-      />{" "}
-      <span className="edit-label-small">*필수</span>
-      <br />
-      <span className="edit-label">연계 과목 및 영역 {" "}</span>
-      <input
-        className="edit-input"
-        type="text"
-        name="relSubj"
-        value={relSubj}
-        onChange={handleRelSubj}
-      />{" "}
-      <span className="edit-label-small">*필수(없으면 '없음')</span> <br /><br />
-      <span className="edit-label">인상깊었던 구절 1 {" "}</span>
-      <input className="edit-input" type="text" name="quote1" value={q1} onChange={handleQ1} style={{ width: "80%",  height: "5%" }}  /> <br /><br />
-      <span className="edit-label">인상깊었던 구절 2 {" "}</span>
-      <input className="edit-input" type="text" name="quote2" value={q2} onChange={handleQ2} style={{ width: "80%",  height: "5%" }} /> <br /><br />
-      <span className="edit-label">인상깊었던 구절 3 {" "}</span>
-      <input className="edit-input" type="text" name="quote3" value={q3} onChange={handleQ3} style={{ width: "80%",  height: "5%" }} /> <br /><br />
-      <span className="edit-label">인상깊었던 구절 4 {" "}</span>
-      <input className="edit-input" type="text" name="quote4" value={q4} onChange={handleQ4} style={{ width: "80%",  height: "5%" }} /> <br /><br />
-      <span className="edit-label">인상깊었던 구절 5 {" "}</span>
-      <input className="edit-input" type="text" name="quote5" value={q5} onChange={handleQ5} style={{ width: "80%",  height: "5%" }} /> <br /><br />
-      <br /><br/>
-      <input className="edit-button" type="submit" value="  수정 완료  " onClick={handleSubmit} />
-      <br /><br/>
+        <br />
+        <span classNmae="edit-title">독서활동 수정하기 ✏️</span>
+        <hr className="edit-divider" /> <br />
+        <span className="edit-label">책이름(저자) </span>
+        <input
+          className="edit-input"
+          type="text"
+          name="titleAuthor"
+          value={titleAuth}
+          onChange={handleTitleAuthor}
+        />{" "}
+        <span className="edit-label-small">*필수</span>
+        <br />
+        <span className="edit-label">독서 완료 일자 </span>
+        <input
+          className="edit-input"
+          type="date"
+          name="endDate"
+          value={eDate}
+          onChange={handleEdate}
+        />{" "}
+        <span className="edit-label-small">*필수</span>
+        <br />
+        <span className="edit-label">독서 학기 </span>
+        <select
+          className="edit-input"
+          type="text"
+          name="semester"
+          value={smester}
+          onChange={handleSmester}
+        >
+          <option value="1-1">1학년 1학기</option>
+          <option value="1-2">1학년 2학기</option>
+          <option value="2-1">2학년 1학기</option>
+          <option value="2-2">2학년 2학기</option>
+          <option value="3-1">3학년 1학기</option>
+          <option value="3-2">3학년 2학기</option>
+        </select>{" "}
+        <span className="edit-label-small">*필수</span>
+        <br />
+        <br />
+        <span className="edit-label">독서 계기 및 감상 </span>
+        <br />
+        <textarea
+          className="edit-textarea"
+          type="text"
+          name="thoughts"
+          value={thghts}
+          onChange={handleThghts}
+        />{" "}
+        <span className="edit-label-small">*필수</span>
+        <br />
+        <span className="edit-label">연계 과목 및 영역 </span>
+        <input
+          className="edit-input"
+          type="text"
+          name="relSubj"
+          value={relSubj}
+          onChange={handleRelSubj}
+        />{" "}
+        <span className="edit-label-small">*필수(없으면 '없음')</span> <br />
+        <br />
+        <span className="edit-label">인상깊었던 구절 1 </span>
+        <input
+          className="edit-input"
+          type="text"
+          name="quote1"
+          value={q1}
+          onChange={handleQ1}
+          style={{ width: "80%", height: "5%" }}
+        />{" "}
+        <br />
+        <br />
+        <span className="edit-label">인상깊었던 구절 2 </span>
+        <input
+          className="edit-input"
+          type="text"
+          name="quote2"
+          value={q2}
+          onChange={handleQ2}
+          style={{ width: "80%", height: "5%" }}
+        />{" "}
+        <br />
+        <br />
+        <span className="edit-label">인상깊었던 구절 3 </span>
+        <input
+          className="edit-input"
+          type="text"
+          name="quote3"
+          value={q3}
+          onChange={handleQ3}
+          style={{ width: "80%", height: "5%" }}
+        />{" "}
+        <br />
+        <br />
+        <span className="edit-label">인상깊었던 구절 4 </span>
+        <input
+          className="edit-input"
+          type="text"
+          name="quote4"
+          value={q4}
+          onChange={handleQ4}
+          style={{ width: "80%", height: "5%" }}
+        />{" "}
+        <br />
+        <br />
+        <span className="edit-label">인상깊었던 구절 5 </span>
+        <input
+          className="edit-input"
+          type="text"
+          name="quote5"
+          value={q5}
+          onChange={handleQ5}
+          style={{ width: "80%", height: "5%" }}
+        />{" "}
+        <br />
+        <br />
+        <br />
+        <br />
+        <input
+          className="edit-button"
+          type="submit"
+          value="  수정 완료  "
+          onClick={handleSubmit}
+        />
+        <br />
+        <br />
       </div>
     </>
   );

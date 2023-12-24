@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { getCookie, setCookie } from "../../lib/cookie";
-import './MyPageEdit.css';
+import "./MyPageEdit.css";
 
 function RedMyPageEdit({
   activityId,
@@ -55,7 +55,7 @@ function RedMyPageEdit({
     if (confirm("변경된 수정사항을 저장하시겠습니까?") == true) {
       axios
         .post(
-          `http://3.37.215.18:3000/mypage/subject/${actId}`,
+          `http://13.209.110.66:3000/mypage/subject/${actId}`,
           {
             subjectName: subNme,
             subjectContent: subCont,
@@ -96,96 +96,110 @@ function RedMyPageEdit({
     <>
       {/* <button className="edit-back">←</button> */}
       <div className="edit-body">
-      <br/><span classNmae="edit-title">세부능력 및 특기사항 수정하기 ✏️</span>
-      <hr className="edit-divider" /> <br/>      
-      <span className="edit-label">과목명 {" "}</span>
-      <input
-        className="edit-input"    
-        type="text"
-        name="subName"
-        value={subNme}
-        onChange={handleSubNme}
-      />{" "}
-      <span className="edit-label-small">*필수</span>
-      <br />
-      <span className="edit-label">과목에서 배운 내용 {" "}</span>
-      <input
-        className="edit-input"
-        type="text"
-        name="subContent"
-        value={subCont}
-        onChange={handleSubCont}
-      />{" "}
-      <span className="edit-label-small">*필수</span>
-      <br />
-      <span className="edit-label">기억에 남는 활동 {" "}</span>
-      <input
-        className="edit-input"
-        type="text"
-        name="mainActivity"
-        value={mainAct}
-        onChange={handleMainAct}
-      />{" "}
-      <span className="edit-label-small">*필수</span>
-      <br />
-      <span className="edit-label">시작 일자 {" "}</span>
-      <input
-        className="edit-input"
-        type="date"
-        name="startDate"
-        value={stDate}
-        onChange={handleStDate}
-      />{" "}
-      <span className="edit-label-small">*필수</span>
-      <br />
-      <span className="edit-label">종료 일자 {" "}</span>
-      <input
-        className="edit-input"
-        type="date"
-        name="endDate"
-        value={edDate}
-        onChange={handleEdDate}
-      />{" "}
-      <span className="edit-label-small">*필수</span>
-      <br />
-      <span className="edit-label">활동학기 {" "}</span>
-      <select
-        className="edit-input"
-        type="text"
-        name="semester"
-        value={smester}
-        onChange={handleSmester}
-      >
-      <option value="1-1">1학년 1학기</option>
-      <option value="1-2">1학년 2학기</option>
-      <option value="2-1">2학년 1학기</option>
-      <option value="2-2">2학년 2학기</option>
-      <option value="3-1">3학년 1학기</option>
-      <option value="3-2">3학년 2학기</option>
-      </select>{" "}
-      <span className="edit-label-small">*필수</span>
-      <br/><br/>
-      <span className="edit-label">자세한 활동 내용 {" "}</span><br/>
-      <textarea
-        className="edit-textarea" 
-        type="text"
-        name="actContentDetail"
-        value={actDetail}
-        onChange={handleActDetail}
-      />{" "}<br/>
-      <span className="edit-label-small">*필수</span>
-      <br />
-      <span className="edit-label">과목을 통해 배우고 성장한 점, 더 공부한 영역 {" "}</span><br/>
-      <textarea
-        className="edit-textarea" 
-        type="text"
-        name="subjectFurtherStudy"
-        value={further}
-        onChange={handleFurther}
-      />{" "}
-      <br/><br/>
-      <input className="edit-button" type="submit" value="  수정 완료  " onClick={handleSubmit} />
-      <br/><br/>
+        <br />
+        <span classNmae="edit-title">세부능력 및 특기사항 수정하기 ✏️</span>
+        <hr className="edit-divider" /> <br />
+        <span className="edit-label">과목명 </span>
+        <input
+          className="edit-input"
+          type="text"
+          name="subName"
+          value={subNme}
+          onChange={handleSubNme}
+        />{" "}
+        <span className="edit-label-small">*필수</span>
+        <br />
+        <span className="edit-label">과목에서 배운 내용 </span>
+        <input
+          className="edit-input"
+          type="text"
+          name="subContent"
+          value={subCont}
+          onChange={handleSubCont}
+        />{" "}
+        <span className="edit-label-small">*필수</span>
+        <br />
+        <span className="edit-label">기억에 남는 활동 </span>
+        <input
+          className="edit-input"
+          type="text"
+          name="mainActivity"
+          value={mainAct}
+          onChange={handleMainAct}
+        />{" "}
+        <span className="edit-label-small">*필수</span>
+        <br />
+        <span className="edit-label">시작 일자 </span>
+        <input
+          className="edit-input"
+          type="date"
+          name="startDate"
+          value={stDate}
+          onChange={handleStDate}
+        />{" "}
+        <span className="edit-label-small">*필수</span>
+        <br />
+        <span className="edit-label">종료 일자 </span>
+        <input
+          className="edit-input"
+          type="date"
+          name="endDate"
+          value={edDate}
+          onChange={handleEdDate}
+        />{" "}
+        <span className="edit-label-small">*필수</span>
+        <br />
+        <span className="edit-label">활동학기 </span>
+        <select
+          className="edit-input"
+          type="text"
+          name="semester"
+          value={smester}
+          onChange={handleSmester}
+        >
+          <option value="1-1">1학년 1학기</option>
+          <option value="1-2">1학년 2학기</option>
+          <option value="2-1">2학년 1학기</option>
+          <option value="2-2">2학년 2학기</option>
+          <option value="3-1">3학년 1학기</option>
+          <option value="3-2">3학년 2학기</option>
+        </select>{" "}
+        <span className="edit-label-small">*필수</span>
+        <br />
+        <br />
+        <span className="edit-label">자세한 활동 내용 </span>
+        <br />
+        <textarea
+          className="edit-textarea"
+          type="text"
+          name="actContentDetail"
+          value={actDetail}
+          onChange={handleActDetail}
+        />{" "}
+        <br />
+        <span className="edit-label-small">*필수</span>
+        <br />
+        <span className="edit-label">
+          과목을 통해 배우고 성장한 점, 더 공부한 영역{" "}
+        </span>
+        <br />
+        <textarea
+          className="edit-textarea"
+          type="text"
+          name="subjectFurtherStudy"
+          value={further}
+          onChange={handleFurther}
+        />{" "}
+        <br />
+        <br />
+        <input
+          className="edit-button"
+          type="submit"
+          value="  수정 완료  "
+          onClick={handleSubmit}
+        />
+        <br />
+        <br />
       </div>
     </>
   );

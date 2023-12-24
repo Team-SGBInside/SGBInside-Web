@@ -38,7 +38,7 @@ const Hello = () => {
   useEffect(() => {
     axios
       .get(
-        `http://3.37.215.18:3000/mypage?sort=${sortQuery}&semester=${semseterQuery}`,
+        `http://13.209.110.66:3000/mypage?sort=${sortQuery}&semester=${semseterQuery}`,
         {
           headers: {
             "Content-Type": "application/json",

@@ -23,7 +23,7 @@ const MentorSignup = () => {
     console.log("clicked");
     try {
       const response = await axios.post(
-        "http://3.37.215.18:3000/auth",
+        "http://13.209.110.66:3000/auth",
         {
           loginId: idRef.current.value,
           password: pwRef.current.value,
